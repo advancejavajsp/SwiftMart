@@ -1,0 +1,80 @@
+/* Something Went Wrong Page Styles */
+.something-went-wrong-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f6f8;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+}
+
+.error-message {
+  text-align: center;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+  animation: slideIn 0.5s ease-out;
+}
+
+.error-title {
+  font-size: 48px;
+  color: #0b0b0b;
+  margin: 0;
+  animation: fadeIn 1s ease-in;
+}
+
+.error-description {
+  font-size: 18px;
+  color: #555;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+.emoji {
+  font-size: 48px;
+  margin-right: 8px;
+}
+
+/* Button Style */
+.home-button {
+    display: inline-block;
+    margin-top: 30px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #020f18;
+    border: 2px solid #01101a;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #010406;
+    color: white;
+    transform: translateY(-4px);
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
