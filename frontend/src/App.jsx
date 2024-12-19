@@ -1,14 +1,20 @@
-import React from 'react'
-import GlobalContext from './GlobalContext/GlobalContext'
+
 import { RouterProvider } from 'react-router-dom'
 import { globalRoute } from './routing/GlobalRouting'
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
+import GlobalContext from './GlobalContext/GlobalContext'
 
 const App = () => {
+    console.log("Hello")
   return (
-   <GlobalContext>
-    <RouterProvider router={globalRoute}/>
-   </GlobalContext>
+    
+        <ErrorBoundary>
+          <GlobalContext>
+            <RouterProvider router={globalRoute}/>
+            </GlobalContext>  
+        </ErrorBoundary>
+    
   )
 }
 
-export default App;
+export default App
