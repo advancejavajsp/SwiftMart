@@ -1,0 +1,79 @@
+*{
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+.mainbody{
+    height: 80vh;
+    width: 60vw ;
+    box-shadow: 0 2px 10px gray;
+    margin: 0 auto;
+    margin-top: 80px;
+    display: flex;
+    border-radius: 10px;
+   
+}
+
+.mainbody .side{
+    height: 100%;
+    width: 30%;
+    border-right: 1px solid rgb(141, 136, 136);
+    display: flex;
+    justify-content: start;
+}
+
+.mainbody .side ul{
+    margin-top: 70px;
+    height: 70%;
+    width: 100%;
+    list-style: none;
+    font-size: 13px;
+}
+
+.mainbody .side ul li{
+   
+    height: 50px;
+    width: 100%;
+    border-top: 1px solid rgb(150, 144, 144);
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: rgb(48, 43, 43);
+}
+
+.mainbody .side ul li .icon{
+    margin-right: 10px;
+    margin-left: 20px;
+}
+.mainbody .orders{
+    margin-top: 45px;
+}
+.mainbody .orders .ordercards{
+    margin-top: 20px;
+    margin-left: 20px;
+    display: flex; 
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+}
+.mainbody .orders .ordercards .text{
+    margin-left: 15px;
+    font-size: 13px;
+    
+}
+.mainbody .orders .ordercards button{
+ margin-left: 150px;
+ color: green;
+ background-color: white;
+ border: 1px solid gray;
+ height: 40px;
+ width: 100px;
+ border-radius: 10px;
+}
+
+.mainbody .side ul  :hover{
+    background-color: gray;
+    color: black;
+}
