@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './aboutnav.module.css'; 
 import { IoMenu } from "react-icons/io5";
-import logo from '../asset/logo.jpg';
-import image from '../asset/image.webp';
+import logo from  "../../asset/logo.jpg"
+import image from  "../../asset/image.webp"
 import { Link } from 'react-router-dom';
 
 

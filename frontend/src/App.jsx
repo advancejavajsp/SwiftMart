@@ -5,7 +5,7 @@ import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
 import GlobalContext from './GlobalContext/GlobalContext'
 
 const App = () => {
-    console.log("Hello")
+    
   return (
     
         <ErrorBoundary>
