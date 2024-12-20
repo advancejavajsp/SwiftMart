@@ -9,6 +9,8 @@ import PaymentSucessful from "../Component/paymentSuccessful/PaymentSucessful";
 import ErrorPage from "../Component/PageNotFound/ErrorPage";
 import Card from "../Component/Card/Card";
 import MyCart from "../Component/MyCart/MyCart";
+import CardPage from "../Component/CardPage/CardPage";
+import Footer from "../Component/Footer/Footer";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +45,14 @@ export const globalRoute = createBrowserRouter([
             element:<MyCart/>
           },
           {
+            path:"/homePage/cardpage",
+            element:<CardPage/>
+          },
+          {
+            path:"/homePage/footer",
+            element:<Footer/>
+          },
+           {
             path:"/homePage/about",
             element:<About/>
           },

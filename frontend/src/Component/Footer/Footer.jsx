@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Import Link for navigation
 import styles from './Footer.module.css';
-import Image1 from '../asset/img1.webp';
-import Image2 from '../asset/img2.webp';
-import Image3 from '../asset/facebooklogo.jpg';
-import Image4 from '../asset/Twitterlogo.png';
-import Image5 from '../asset/inslogo.png';
-import Image6 from '../asset/linkedinlogo.png';
-import Image7 from '../asset/Threadlogo.jpg';
+import Image1 from '../../asset/img1.webp';
+import Image2 from '../../asset/img2.webp';
+import Image3 from '../../asset/facebooklogo.jpg';
+import Image4 from '../../asset/Twitterlogo.png';
+import Image5 from '../../asset/inslogo.png';
+import Image6 from '../../asset/linkedinlogo.png';
+import Image7 from '../../asset/Threadlogo.jpg';
 
 const Footer = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -40,7 +40,7 @@ const Footer = () => {
       <div className={styles.divOne}>
         <div className={styles.usefulLink}>
           <div className={styles.heading}>
-            <h1>Useful Links</h1>
+            <h2>Useful Links</h2>
           </div>
           <div className={styles.list}>
             <div className={styles.listItem}>
@@ -80,7 +80,7 @@ const Footer = () => {
         </div>
         <div className={styles.categories}>
           <div className={styles.heading}>
-            <h1>Categories</h1>
+            <h2>Categories</h2>
             <p>See all</p>
           </div>
           <div className={styles.list}>
@@ -131,7 +131,7 @@ const Footer = () => {
       </div>
       <div className={styles.divTwo}>
         <div className={styles.text}>
-          <p>© Blink Commerce Private Limited, 2016-2024</p>
+          <p>© SmartMart Commerce Private Limited, 2016-2024</p>
         </div>
         <div className={styles.download}>
           <span>Download App</span>
@@ -148,7 +148,7 @@ const Footer = () => {
       </div>
       <div className={styles.divThree}>
         <p>
-          “Blinkit” is owned & managed by "Blink Commerce Private Limited" and is
+          “SmartMart” is owned & managed by "SM Commerce Private Limited" and is
           not related, linked, or interconnected in whatsoever manner or nature, to
           “GROFFR.COM” which is a real estate services business operated by
           “Redstone Consultancy Services Private Limited”.

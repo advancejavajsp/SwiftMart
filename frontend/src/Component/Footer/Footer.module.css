@@ -1,43 +1,46 @@
-/* Global Reset */
 * {
   padding: 0;
   margin-left: 3px;
   box-sizing: border-box;
 }
 
-/* Container for the entire footer */
+
 .futtor {
   width: 100%;
 }
 
-/* Styling for the first main div */
 .divOne {
   height: 60vh;
   width: 100%;
   display: flex;
   flex-direction: row;
+  padding: 2px;
 }
 
-/* Styling for the categories section */
+
 .divTwo {
   height: 15vh;
   width: 100%;
   display: flex;
   flex-direction: row;
 }
+.heading h2{
+  margin-top: 20px;
+}
 
-/* Styling for the footer text */
+
 .divTwo .text p {
   height: 10vh;
   width: 60vh;
   display: flex;
   justify-content: right;
   align-items: center;
+  margin: 17px;
   font-size: medium;
   color: gray;
 }
 
-/* Styling for the download section */
+
 .divTwo .download {
   height: 15vh;
   width: 70vh;
@@ -52,7 +55,7 @@
   height: 30px;
 }
 
-/* Social media icons */
+
 .divTwo .icon {
   height: 15vh;
   width: 70vh;
@@ -65,19 +68,19 @@
   height: 55px;
 }
 
-/* Styling for the useful links section */
+
 .divOne .usefulLink {
   height: 80vh;
   width: 40%;
 }
 
-/* Styling for the categories section */
+
 .divOne .categories {
   height: 130vh;
   width: 60%;
 }
 
-/* Heading styling for various sections */
+
 .heading {
   height: 10%;
 }
@@ -102,7 +105,7 @@
   justify-content: space-between;
 }
 
-/* Styling for the categories */
+
 .categories .heading {
   list-style-type: none;
   display: flex;
@@ -116,7 +119,7 @@
   color: green;
 }
 
-/* Additional footer text */
+
 .divThree {
   height: 10vh;
   width: 100%;
@@ -127,7 +130,7 @@
   color: gray;
 }
 
-/* Responsive Styles for Smaller Screens */
+
 @media (max-width: 1000px) {
   .futtor {
       display: none; /* Hides the footer on smaller screens */
