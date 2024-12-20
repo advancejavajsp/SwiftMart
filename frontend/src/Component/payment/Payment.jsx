@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./payment.module.css";
+import paytm from '../asset/paytm.webp'
+import mobikwik from '../asset/mobikwik.webp'
 
 const Payment = () => {
+
+  const [selectedUpi, setSelectedUpi]= useState(null);
+  const [upiId, setUpiId] = useState('');
+
+  const handlePayment = (method)=>{
+    setSelectedUpi(method)
+  }
+
+  const handleUpiChange=(event)=>{
+    setUpiId(event.target.value)
+  }
   return (
     <div>
       <div className={style["paymentcheckout"]}>
@@ -24,7 +37,6 @@ const Payment = () => {
           </div>
           <div className={style["payment"]}>
             <div className={style["check3"]}>
-              <span className={style["checkout-step__number3"]}>3</span>
               <span>payment</span>
             </div>
             <div className={style["payment-step"]}>
@@ -58,16 +70,28 @@ const Payment = () => {
                 <div className={style["payment-table"]}>
                   <ul>
                     <li>Wallet</li>
-                    <li>UPI</li>
+                    <li onClick={()=> handlePayment('UPI')}>UPI</li>
                     <li>Card</li>
                     <li>Cash</li>
                     <li>NetBanking</li>
                   </ul>
+                  {selectedUpi === 'UPI' && (
+        <div className={style["upi-dropdown"]}>
+          <label htmlFor="upi">Enter UPI ID:</label>
+          <input
+            type="text"
+            id="upi"
+            value={upiId}
+            onChange={handleUpiChange}
+            placeholder="Enter UPI ID"
+          />
+        </div>
+      )}
                 </div>
-                <div className={style["soft-btn"]}>
+                <div className={style["wallets"]}>
                   <div className={style["payment-wallets"]}>
-                    <ul>
-                      <li>
+                    <ul className={style["lia"]}>
+                      <li >
                         <label className={style["cards_list"]}>
                           <div className={style["wallet-type"]}>
                             <input
@@ -76,15 +100,15 @@ const Payment = () => {
                               className={style["radiocheck"]}
                             />
                             <img
-                              src="https://cdn.grofers.com/app/uploads/payments/paytm.png"
+                              src={paytm}
                               alt=""
                             />
                             <div>
                               <span>paytm</span>
                               <span>
                                 up to ₹100 Paytm cb | min txn ₹750 | no code
-                                needed | valid thrice per user b/w 1-31 Mar '22
-                                | t&c apply
+                                needed | valid thrice per user
+                                
                               </span>
                             </div>
                           </div>
@@ -99,7 +123,7 @@ const Payment = () => {
                               className={style["radiocheck"]}
                             />
                             <img
-                              src="https://cdn.grofers.com/app/uploads/payments/mobikwik.png"
+                              src={mobikwik}
                               alt=""
                             />
                             <div>

@@ -137,7 +137,7 @@ h1 {
     position: absolute;
     top: 50%;
     width: 90%;
-    height: 3px; /* Line thickness */
+    height: 3px; 
     background-color: #4CAF50;
     left: 90%;
     margin-left: 20px;
@@ -218,12 +218,89 @@ h1 {
 }
 
 @media (max-width: 600px) {
-    .status {
+    
+    body {
+        font-size: 14px;
+    }
+
+    
+    .container {
+        width: 90%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+   
+    h1 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+
+    .step {
+        margin-bottom: 20px;
+    }
+
+    .step p {
+        font-size: 12px;
+        margin-top: 8px;
+    }
+
+    
+    .circle {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+
+    .activity {
         flex-direction: column;
         align-items: center;
-        display: none;
     }
-    .delivery-details {
-        margin-top: 20px;
+
+    .activity .step {
+        margin-bottom: 10px;
+    }
+
+    .active::after, .step::before {
+        width: 70%;
+        left: 50%;
+        margin-left: -35%;
+    }
+
+   
+    .details {
+        padding: 15px;
+    }
+
+    .details h2 {
+        font-size: 1.5rem;
+    }
+
+    .details p {
+        font-size: 14px;
+    }
+
+  
+    .Exclusive {
+        padding: 15px;
+    }
+
+    .Exclusive h2 {
+        font-size: 1.6rem;
+    }
+
+    .Exclusive p {
+        font-size: 1rem;
+    }
+
+    .offer-code {
+        font-size: 1.2rem;
+    }
+
+    .offered {
+        font-size: 0.9rem;
+        padding: 8px 18px;
     }
 }
