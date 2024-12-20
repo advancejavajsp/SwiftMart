@@ -2,7 +2,7 @@
   height: 10vh;
   width: 100%;
   background-color: #3a6f42;
-  border: none;
+  border: 1px solid black;
   display: flex;
   justify-content: space-between;
   font-size: 20px;
@@ -12,7 +12,7 @@
 }
 
 .adminNav .adminNav1 {
-  width: 90%;
+  width: 85%;
   height: 100%;
   display: flex;
   justify-content: space-around;
@@ -29,9 +29,9 @@
   height: 100%;
   width: 7%;
   background-color: white;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
 .adminNav .logo img {
@@ -86,7 +86,8 @@
 
 .hamburger {
   display: none;
-  flex-direction: column;
+  border: 1px solid black !important;
+  /* flex-direction: column; */
   cursor: pointer;
 }
 

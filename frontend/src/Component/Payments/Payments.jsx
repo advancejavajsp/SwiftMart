@@ -1,9 +1,9 @@
 import React from 'react'
 import style from './payments.module.css'
-import icon from '../assest/order_icon.webp'
+import icon from '../../asset/order_icon.webp'
 
 
-const Order = () => {
+const Payments = () => {
   return (
     <div className={style['mainbody']}>
       <div className={style['payments']}>
@@ -29,4 +29,4 @@ const Order = () => {
   )
 }
 
-export default Order
+export default Payments

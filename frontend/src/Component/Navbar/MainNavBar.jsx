@@ -2,7 +2,7 @@ import React from 'react'
 import style from "../navbar/MainNavbar.module.css"
 import { IoCartOutline } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
-import logo from "../asset/logo2.jpg";
+import logo from "../../asset/logo.jpg";
 
 
 const NavBar = () => {
