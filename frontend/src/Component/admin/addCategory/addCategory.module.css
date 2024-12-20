@@ -1,0 +1,99 @@
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popupOverlay .popupContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.popupOverlay .popupContent h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.popupOverlay .popupContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.popupOverlay .popupContent form input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.popupOverlay .popupContent form input:focus {
+  border-color: #007bff;
+}
+
+.popupOverlay .popupContent form .btn {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.popupOverlay .popupContent form .btn button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 48%;
+}
+
+.popupOverlay .popupContent form .btn button[type="submit"] {
+  background-color: #135d08;
+  color: white;
+}
+
+.popupOverlay .popupContent form .btn button[type="submit"]:hover {
+  background-color: #3e1508;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.popupOverlay .popupContent form .btn button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+.popupOverlay .popupContent form .btn button[type="button"]:hover {
+  background-color: #f80808;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.popupOverlay .popupContent form .btn button:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 600px) {
+  .popupOverlay .popupContent {
+    padding: 15px;
+    width: 90%;
+  }
+
+  .popupOverlay .popupContent form .btn button {
+    font-size: 0.9rem;
+    padding: 10px 18px;
+  }
+}

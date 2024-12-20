@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './OrderDetails.module.css'
-import product1 from '../assest/product1.avif'
+import product1 from '../../asset/product1.avif'
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { MdArrowBack } from "react-icons/md";
 import { SlLocationPin } from "react-icons/sl";
@@ -90,7 +90,6 @@ const OrderDetails = () => {
         <IoChatboxEllipsesOutline />
         <div className={style["text"]}>
         <h4>Chat with us</h4>
-        <p>About any issues related to your order</p>
         </div>
         </div>
       </div>

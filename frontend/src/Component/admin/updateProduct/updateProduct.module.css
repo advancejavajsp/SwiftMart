@@ -1,0 +1,125 @@
+
+.addProduct{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+
+}
+
+.addProduct .addProduct1{
+
+    width: 25%;
+    padding-top: 20px;
+    height: 80%;
+
+    box-shadow: 0 2px 10px gray ;
+    
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+}
+.addProduct .addProduct1 form{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 700;
+    
+    padding-left: 20px;
+   
+}
+
+.addProduct .addProduct1 form h1{
+    width: 100%;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.addProduct .addProduct1 form .productDetails{
+    width: 90%;
+    /* border: 1px solid; */
+    height: 12%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    /* margin-left: 10px; */
+}
+.addProduct .addProduct1 form .productDetails label{
+    height: 40%;
+    font-size: 20px;
+
+}
+.addProduct .addProduct1 form .productDetails .btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.addProduct .addProduct1 form .productDetails .btn button{
+    background-color: #4CAF50;
+    color: white;
+}
+
+.addProduct .addProduct1 form .productDetails input{
+    padding-left: 5%;
+    height: 4vh;
+    width: 100%;
+    border: 1px solid #4CAF50;
+    
+    /* color: rgb(20, 20, 20);    */
+}
+.addProduct .addProduct1 form .productDetails textarea{
+    padding-left: 5%;
+    height: 6vh;
+    width: 100%;
+    border: 1px solid #4CAF50;
+    
+}
+.addProduct .addProduct1 form .productDetails textarea::placeholder{
+    font-size: 18px;
+    color: rgb(6, 6, 21);
+    
+}
+.addProduct .addProduct1 form .productDetails input::placeholder{
+    color: rgb(19, 19, 19);
+}
+
+.addProduct .addProduct1 form .productDetails label{
+    width: 90%;
+}
+
+.addProduct .addProduct1 form .productDetails select{
+    height: 4vh;
+    width: 100%;
+    font-size: 15px;
+    
+    padding-left: 5%;
+    border: 1px solid #4CAF50;
+    color: rgb(14, 14, 14);
+    
+}
+
+@media (max-width: 768px) {
+    .addProduct .addProduct1 {
+        width: 80%;
+    }
+
+    .addProduct .addProduct1 form {
+        padding-left: 10px; /* Reduced padding on smaller screens */
+    }
+
+    .addProduct .addProduct1 form .productDetails input,
+    .addProduct .addProduct1 form .productDetails select {
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+}
+.productDetails input[readonly] {
+    cursor: not-allowed; /* Change cursor to pointer */
+}
+
+
+  
+  

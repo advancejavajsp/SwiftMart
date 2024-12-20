@@ -1,3 +1,7 @@
+*{
+    font-family: sans-serif;
+}
+
 .pbody{
 width: 98vw;
 height: 96vh;
@@ -72,4 +76,62 @@ transform: translate(-30%);
     background-color: green;
     color: #fff;
     border: none;
+}
+
+@media (max-width: 768px) {
+    
+    .pbody {
+        width: 100vw;
+        height: 100vh;
+        background-position-y: -50px;
+    }
+
+    
+    .link-body {
+        padding: 0 10px;
+        text-align: center;
+    }
+
+   
+    .card-paytm {
+        width: 90%; 
+        height: auto; 
+        margin-left: 5%;
+        margin-top: 10%;
+    }
+
+ 
+    .main-card {
+        background-color: rgba(0, 0, 0, .8); 
+    }
+
+    .card-div {
+        width: 90%;
+        height: auto;
+        transform: translate(-50%);
+        margin-top: 20px; 
+    }
+
+   
+    .fontsize > img {
+        width: 150px; 
+        height: 150px;
+    }
+
+    .fontsize {
+        padding: 10px;
+    }
+
+   
+    #backtohome {
+        width: 80%; 
+        height: 40px;
+        margin-top: 20px; 
+    }
+
+    #backtohome:hover {
+        background-color: green;
+        color: #fff;
+        border: none;
+    }
 }

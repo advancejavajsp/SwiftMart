@@ -1,0 +1,113 @@
+.cardContainer {
+    width: 200px;
+    height: 230px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .cardContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .productImage {
+    width: 110px;
+    height: 110px;
+    object-position: center;
+    border-radius: 8px;
+    display: block;
+    margin: 10px auto;
+    margin-top: 1px;
+  }
+  
+  .productDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin-top: -7px;
+  }
+  
+  .productTitle {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin: 1px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: -10px;
+  }
+  
+  .productSize {
+    font-size: 12px;
+    color: #777;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin: 3px 0;
+    
+  }
+  
+  .productPrice {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    margin: 3px 0;
+  }
+  
+  .buttonGroup {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+  }
+  
+  .addButton,
+  .updateButton,
+  .deleteButton {
+    height: 35px;
+    width: 60px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid #4caf50;
+    background-color: transparent;
+    color: #333;
+    transition: all 0.3s ease;
+  }
+  
+  .addButton:hover {
+    color: white;
+    background-color: #4caf50;
+    transform: translateY(-2px);
+  }
+  
+  .updateButton {
+    border-color: #4caf50;
+  }
+  
+  .updateButton:hover {
+    color: white;
+    background-color: #007bff;
+    transform: translateY(-2px);
+  }
+  
+  .deleteButton {
+    border-color: #4caf50;
+  }
+  
+  .deleteButton:hover {
+    color: white;
+    background-color: #e63946;
+    transform: translateY(-2px);
+  }
+  
