@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import Layout from "../Component/Layout";
 import HomePage from "../Component/HomePage/HomePage";
 import ErrorPage from "../Component/PageNotFound/ErrorPage";
-<<<<<<< HEAD
 import Navbar from "../Component/Navbar/Navbar.jsx";
 
 export const globalRoute=createBrowserRouter([
