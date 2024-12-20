@@ -1,10 +1,12 @@
+
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../Component/Layout";
-import HomePage from "../Component/HomePage/HomePage";
-import ErrorPage from "../Component/PageNotFound/ErrorPage";
+import About from "../Component/about/About";
 import Status from "../Component/Delivery/Status";
+import HomePage from "../Component/HomePage/HomePage";
+import Layout from "../Component/Layout";
 import Payment from "../Component/payment/Payment";
 import PaymentSucessful from "../Component/paymentSuccessful/PaymentSucessful";
+import ErrorPage from "../Component/PageNotFound/ErrorPage";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",
@@ -15,17 +17,21 @@ export const globalRoute = createBrowserRouter([
         element: <HomePage />,
         children: [
           {
-            path: "/Status",
+            path: "/homePage/Status",
             element: <Status />,
           },
           {
-            path: "/Payment",
+            path: "/homePage/Payment",
             element: <Payment />,
           },
           {
-            path: "/PaymentSucessful",
+            path: "/homePage/PaymentSucessful",
             element: <PaymentSucessful />,
           },
+          {
+            path:"/homePage/about",
+            element:<About/>
+          }
         ],
       },
     ],

@@ -1,0 +1,36 @@
+h4 {
+    padding: 25px;
+    font-family: sans-serif;
+    font-weight: 18px;
+    width: 65%;
+  }
+
+  .style{
+    color: green;
+  }
+  
+  section {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+  }
+  
+  .dropdown {
+    display: flex;
+    width:500%;
+    justify-content: space-around;
+  }
+  
+  .select {
+    width: 200px; 
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  label {
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  
