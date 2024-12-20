@@ -28,7 +28,7 @@ function UserProfile() {
 
       <div className={style['qr-section']}>
         <h4>Scan the QR Code for Profile Info</h4>
-        <QRCode value={qrData} size={256} />
+        <QRCode value={qrData} size={150} />
       </div>
 
       <div className={style['user-details']}>

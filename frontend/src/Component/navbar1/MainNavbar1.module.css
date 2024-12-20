@@ -1,0 +1,119 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.navbar1 {
+    border: 1px solid rgba(0, 0, 0, 0.151);
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+.nav-links {
+    /* border: 1px solid green; */
+    /* margin-right: 20px; */
+    justify-content: center;
+    display: flex;
+    width: 100vw;
+    gap: 17px;
+    align-items: center;
+}
+
+.nav-links a {
+    /* border:1px solid blue; */
+   font-size: 16px;
+   font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    color: rgba(0, 0, 0, 0.575);
+}
+
+.nav-links a:hover {
+    /* border: 1px solid rgba(199, 195, 195, 0.527); */
+    background-color: rgba(199, 195, 195, 0.527);
+
+}
+select{
+    /* border: 1px solid red; */
+    border: none;
+    height: 40px;
+    width: 100px;
+    background-color: #ffffff; 
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif; 
+    color:  rgba(0, 0, 0, 0.575);
+    padding: 8px 12px; 
+    cursor: pointer; 
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  */
+    /* border-radius: 4px;     */
+}
+select .more{
+    border: 1px solid blue;
+    height: 40px;
+    width: 100px;
+}
+.more :focus{
+    min-width:12px;
+    width: auto;
+}
+
+#more option {
+    font-size: 1rem;
+    color:rgba(0, 0, 0, 0.575); 
+    background-color:white;
+}
+#more:hover {
+    color: #0C831F; 
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar1 {
+        padding: 10px 15px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 10px; 
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    select {
+        width: 90px;
+        font-size: 14px;
+    }
+
+    .navbar1 img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .navbar1 {
+        padding: 10px 10px; 
+    }
+
+    .nav-links {
+        gap: 8px; 
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    select {
+        width: 80px;
+        font-size: 12px;
+    }
+}

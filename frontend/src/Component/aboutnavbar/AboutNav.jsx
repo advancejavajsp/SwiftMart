@@ -31,14 +31,14 @@ const AboutNav = () => {
         </nav>
       </div>
 
-      <div className={styles["first"]}>
+      {/* <div className={styles["first"]}>
         <img src={image} alt="Main" />
       </div>
 
       <div className={styles["heading"]}>
         <h1>What is the Blinkit Franchise Program?</h1>
         <p>As a Blinkit Franchise owner, you can operate a dark store in your neighborhood, delivering essentials to doorsteps within minutes. Our model enables local individuals and business owners to join the fast-growing 10-minute delivery space, earning a percentage of sales while serving the community.</p>
-      </div>
+      </div> */}
     </section>
   );
 };

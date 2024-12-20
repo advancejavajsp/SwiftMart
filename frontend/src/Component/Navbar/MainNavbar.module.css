@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    border: 1px solid rgba(0, 0, 0, 0.151);
+    display: flex;
+    height: 14vh;
+    width: 98.9vw;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    border: 1px solid rgba(0, 0, 0, 0.151);
+    height: 14vh;
+    width: 16vw;
+    position: absolute;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo img {
+    /* border: 1px solid rgba(0, 0, 0, 0.151); */
+    border-radius: 10px;
+    width: 190px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.delivery-info {
+    /* border: 1px solid rgb(49, 230, 64); */
+    height: 70px;
+    width: 250px;
+    position: relative;
+    left: 153px;
+    margin-left: 60px;
+}
+
+.delivery-info b {
+    color: black;
+    font-size: 18px;
+    flex: auto;
+    font-weight: bold;
+}
+
+.delivery-info p {
+    height: 30px;
+    width: 280px;
+    text-align: left;
+    position: absolute;
+    left: 0;
+    font-size: 14px;
+}
+
+.search-bar {
+    border: 1px solid rgba(0, 0, 0, 0.151);
+    /* border: 1px solid black; */
+    display: flex;
+    align-items: center;
+    width: 50vw;
+    height: 8vh;
+    background-color: #99999928;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15%;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    background-color: transparent;
+    color: #333;
+}
+
+.search {
+    font-size: 2rem;
+    color: black;
+    position: relative;
+    left: 16px;
+}
+
+.search-text {
+    border: 1px solid red;
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.btn {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.login-btn {
+    border:none;
+    border-radius: 2px;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    font-size: 14px;
+    width: 140px;
+    height: 50px;
+}
+
+.cart-btn {
+    border: none;
+    background-color: #0C831F;
+    width: 130px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    justify-content: space-around;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    
+}
+
+.mycart {
+    /* border: 1px solid black; */
+    font-size: 26px;
+    align-items: center;
+        color:white;
+        left: 1px;
+
+}
+@media only screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px;
+    }
+
+    .logo {
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo img {
+        width: 150px;
+        height: 60px;
+    }
+
+    .delivery-info {
+        width: 100%;
+        margin-left: 0;
+        position: relative;
+        left: 0;
+        text-align: center;
+    }
+
+    .delivery-info b {
+        font-size: 16px;
+    }
+
+    .delivery-info p {
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .search-bar {
+        width: 80%;
+        margin-left: 10%;
+        height: 6vh;
+        margin-bottom: 15px;
+    }
+
+    .search-bar input {
+        font-size: 1rem;
+    }
+
+    .btn {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .login-btn,
+    .cart-btn {
+        width: 100%;
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .mycart {
+        font-size: 22px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .navbar {
+        padding: 10px 5px;
+    }
+
+    .logo {
+        width: 100%;
+        height: auto;
+    }
+
+    .logo img {
+        width: 120px;
+        height: 50px;
+    }
+
+    .delivery-info {
+        width: 100%;
+        margin-left: 0;
+        position: relative;
+        left: 0;
+        text-align: center;
+    }
+
+    .delivery-info b {
+        font-size: 14px;
+    }
+
+    .delivery-info p {
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .search-bar {
+        width: 85%;
+        margin-left: 7.5%;
+        height: 5vh;
+    }
+
+    .search-bar input {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .login-btn,
+    .cart-btn {
+        width: 100%;
+        font-size: 12px;
+        height: 35px;
+    }
+
+    .mycart {
+        font-size: 20px;
+    }
+}
