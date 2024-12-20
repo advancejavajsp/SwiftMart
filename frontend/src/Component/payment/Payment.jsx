@@ -4,7 +4,6 @@ import mobikwik from "../../asset/mobikwik.webp"
 import paytm from "../../asset/paytm.webp"
 
 
-
 const Payment = () => {
 
   const [selectedUpi, setSelectedUpi]= useState(null);

@@ -1,40 +1,37 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-    
 }
-h3 , h4{
-   font-size: 18px;
-}
-p{
-    font-size: 14px;
-}
-.mainbody{
+
+.mainbody {
     margin: 50px auto;
-    height: 140vh;
-    width: 60vw ;
+    height: 130vh; 
+    width: 60vw;
     box-shadow: 0 2px 10px gray;
     border-radius: 12px;
     display: flex;
     flex-wrap: wrap;
-    overflow-wrap: ;
-}
-.orderdetailss{
-    width: 60%;
-    margin-top: 15px;
+    /* overflow-wrap: ; */
 }
 
-.mainbody .side{
+
+.mainbody .orderdetailss {
+    width: 70%;
+    margin-top: 5px;
+    border-left: 1px solid rgb(141, 136, 136);
+    border-bottom: 1px solid gray;
+}
+
+.mainbody .side {
     height: 100%;
     width: 30%;
-    border-right: 1px solid rgb(141, 136, 136);
     display: flex;
     justify-content: start;
 }
 
-.mainbody .side ul{
+.mainbody .side ul {
     margin-top: 90px;
     height: 70%;
     width: 100%;
@@ -42,121 +39,174 @@ p{
     font-size: 13px;
 }
 
-.mainbody .side ul li{
-   
+.mainbody .side ul li {
     height: 50px;
     width: 100%;
     border-top: 1px solid rgb(150, 144, 144);
-    border-bottom: 1px solid gray;
     display: flex;
     justify-content: start;
     align-items: center;
     color: rgb(48, 43, 43);
 }
 
-.mainbody .side ul li .icon{
+.mainbody .side ul li .icon {
     margin-right: 10px;
     margin-left: 20px;
 }
 
-.mainbody .summary{
+.mainbody .summary {
     width: 100%;
-    margin-top: 25px;
-    margin-left: 30px;
+    margin-top: 15px;
+    /* margin-left: 30px; */
     border-bottom: 1px solid gray;
     padding-bottom: 15px;
-
+    padding-left: 30px;
 }
-.mainbody .arrow{
+
+.mainbody .arrow {
     height: 50px;
     width: 55px;
     border: none;
     margin-top: 20px;
     margin-left: 25px;
     background-color: white;
-  
 }
-.mainbody .arrow .icon{
+
+.mainbody .arrow .icon {
     height: 35px;
     width: 50px;
     border-radius: 10px;
-    border:1px solid rgb(160, 154, 154);
+    border: 1px solid rgb(160, 154, 154);
 }
 
-.mainbody .summary .p2{
+.mainbody .summary .p2 {
     margin-top: 20px;
     margin-left: 40px;
 }
-.mainbody .summary .details{
-    display: flex;
-    /* flex-direction: column; */
-    margin-top: 15px;
 
+.mainbody .summary .details {
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-around;
 }
-.mainbody .summary .cards{
+
+.mainbody .summary .cards {
     display: flex;
     flex-direction: column;
 }
-.mainbody .summary .details img{
+
+.mainbody .summary .details img {
     border-radius: 12px;
     height: 70px;
 }
-.mainbody .summary .details .text{
-    margin-left: 25px;
-    margin-top: 10px;
-}
-.mainbody .summary .details .price{
-    margin-left: 200px;
-    margin-top: 10px;
-}
-.mainbody .detailshead{
-    margin-top: 10px;
+
+.mainbody .detailshead {
+    margin-top: 15px;
     margin-left: 35px;
- 
+  
 }
-.mainbody .details1{
-    width: 100%; 
-   margin-top: 15px;
-   margin-left: 20px;
-   margin-right: 20px;
-   display: flex;
-   justify-content: space-between;
-   border-bottom: 1px solid gray;
-   padding-bottom: 15px;
+
+.mainbody .details1 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+    padding: 15px 30px;
 }
-.mainbody .details1 ul{
+
+.mainbody .details1 ul {
     list-style-type: none;
 }
-.mainbody .address{
-    margin-left: 20px;
-    height: 250px;
+
+.mainbody .address {
+    padding-top: 10px;
+    padding-left: 20px;
+    /* margin-left: 20px; */
+    height: 30%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     border-bottom: 1px solid gray;
-    width: 100%; 
+    width: 100%;
 }
-.mainbody .chat{
+
+.mainbody .chat {
     margin-top: 15px;
     margin-left: 20px;
 }
-.mainbody .chat .content{
-    margin-top: 20px;
+
+.mainbody .chat .content {
+    margin-top: 10px;
     margin-left: 20px;
     display: flex;
     font-size: 18px;
 }
-.mainbody .chat .content .text{
+
+.mainbody .chat .content .text {
     margin-left: 10px;
 }
+.address h2{
+    font-size: 18px;
+}
 
-@media(max-width : 1220px){
-  .mainbody .side{
-    display: none;
+@media (max-width: 1220px) {
+    .mainbody .side {
+        display: none; 
+    }
 
-  }
-  .mainbody .orderdetailss{
-    width: 100%;
-   
-  }
+    .mainbody .orderdetailss {
+        width: 100%; 
+    }
+}
+
+@media (max-width: 768px) {
+    .mainbody {
+        width: 90vw;
+    }
+
+    .mainbody .summary .details .price {
+        margin-left: 10px; 
+        margin-top: 5px;
+    }
+
+    .mainbody .summary .details {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+
+    .mainbody .summary .details img {
+        height: 50px; 
+    }
+
+    .mainbody .summary {
+        margin-left: 10px;
+    }
+}
+@media (max-width: 480px) {
+    .mainbody {
+        width: 95vw; 
+        margin: 20px auto;
+    }
+
+    .orderdetailss {
+        margin-top: 10px;
+    }
+
+    .mainbody .summary .p2 {
+        margin-left: 10px;
+    }
+
+    .mainbody .summary .details .text {
+        margin-left: 5px;
+    }
+
+    .mainbody .details1 {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+
+    .mainbody .chat .content {
+        flex-direction: column;
+        font-size: 14px;
+    }
 }
