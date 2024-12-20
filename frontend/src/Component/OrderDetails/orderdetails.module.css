@@ -19,7 +19,7 @@ p{
     border-radius: 12px;
     display: flex;
     flex-wrap: wrap;
-    overflow-wrap: ;
+    /* overflow-wrap: ; */
 }
 .orderdetailss{
     width: 60%;
