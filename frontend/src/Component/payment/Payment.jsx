@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import style from "./payment.module.css";
-import paytm from '../asset/paytm.webp'
-import mobikwik from '../asset/mobikwik.webp'
+import mobikwik from "../../asset/mobikwik.webp"
+import paytm from "../../asset/paytm.webp"
+
+
 
 const Payment = () => {
 
