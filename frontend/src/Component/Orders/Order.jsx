@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './order.module.css'
-import icon from '../assest/order_icon.webp'
+import icon from '../../asset/order_icon.webp'
 import { SlLocationPin } from "react-icons/sl";
 import { GrDocumentTime } from "react-icons/gr";
 import { HiOutlineGiftTop } from "react-icons/hi2";

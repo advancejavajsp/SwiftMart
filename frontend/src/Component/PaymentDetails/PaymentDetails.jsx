@@ -1,10 +1,10 @@
 import React from 'react'
 import style from './paymentdetails.module.css'
-import product1 from '../assest/product1.avif'
+import product1 from '../../asset/product1.avif'
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { MdArrowBack } from "react-icons/md";
 
-const OrderDetails = () => {
+const PaymentDetails = () => {
   return (
     <div className={style['mainbody']}>
       <button className={style['arrow']}><MdArrowBack className={style['icon']}/></button>
@@ -69,4 +69,4 @@ const OrderDetails = () => {
   )
 }
 
-export default OrderDetails
+export default PaymentDetails

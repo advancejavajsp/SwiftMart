@@ -1,42 +1,104 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
-   }
-   
-   .mainbody{
-       height: 80vh;
-       width: 40vw ;
-       box-shadow: 0 2px 10px gray;
-       margin: 0 auto;
-       margin-top: 80px;
-       display: flex;
-       border-radius: 10px;
-      
-   }
-   
-   .mainbody .payments{
-       margin-top: 45px;
-   }
-   .mainbody .payments .paymentscards{
-       margin-top: 20px;
-       margin-left: 10px;
-       display: flex; 
-       padding-bottom: 20px;
-       border-bottom: 1px solid black;
-   }
-   .mainbody .payments .paymentscards .text{
-       margin-left: 15px;
-       font-size: 13px;
-       
-   }
-   .mainbody .payments .paymentscards button{
-    margin-left: 150px;
+}
+
+.mainbody {
+    height: 80vh; 
+    width: 40vw;
+    box-shadow: 0 2px 10px gray;
+    margin: 0 auto;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column; 
+    border-radius: 10px;
+    padding-right: 15px;
+    flex-wrap: wrap;
+}
+
+.mainbody .payments {
+    margin-top: 45px;
+}
+
+.mainbody .payments .paymentscards {
+    margin-top: 20px;
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap; 
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+}
+
+.mainbody .payments .paymentscards .text {
+    margin-left: 15px;
+    font-size: 13px;
+    flex: 1; 
+}
+
+.mainbody .payments .paymentscards button {
+    margin-left: auto;
     color: green;
     background-color: white;
     border: 1px solid gray;
     height: 40px;
     width: 100px;
     border-radius: 10px;
-   }
+}
+
+
+@media (min-width: 1200px) {
+    .mainbody {
+        width: 35vw; 
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .mainbody {
+        width: 60vw;
+    }
+}
+@media (max-width : 1150px) {
+    .mainbody .side{
+       display: none;
+    }
+    .mainbody .orders{
+        width: 100%;
+    }
+    .mainbody .orders .ordercards{
+        width: 90%;
+    }
+}
+
+
+@media (max-width: 650px) {
+    .mainbody {
+        width: 90vw; 
+        margin-top: 20px;
+    }
+
+    .mainbody .payments {
+        margin-top: 20px;
+    }
+    .mainbody .payments .paymentscards img{
+       display: none;
+    }
+
+    .mainbody .payments .paymentscards {
+        padding-bottom: 15px;
+    }
+
+    .mainbody .payments .paymentscards .text {
+        font-size: 12px;
+        margin-left: 0;
+    }
+
+    .mainbody .payments .paymentscards button {
+        margin-left: 0;
+        margin-top: 10px; 
+        width: 70px; 
+        font-size: 10px; 
+    }
+} 
