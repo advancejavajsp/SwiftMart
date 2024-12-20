@@ -2,6 +2,7 @@ import {createBrowserRouter} from "react-router-dom";
 import Layout from "../Component/Layout";
 import HomePage from "../Component/HomePage/HomePage";
 import ErrorPage from "../Component/PageNotFound/ErrorPage";
+import About from "../Component/about/About";
 export const globalRoute=createBrowserRouter([
     {
       path:"/",
@@ -11,7 +12,10 @@ export const globalRoute=createBrowserRouter([
             path:"/homePage",
             element:<HomePage/>,
             children:[
-             
+             {
+              path:"/about",
+              element:<About />
+             }
             ]
         }
       ]
