@@ -11,11 +11,13 @@ import lombok.Builder;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.jspvel.swift_kart.util.PaymentMode;
 import com.jspvel.swift_kart.util.PaymentStatus;
 
 @Entity
-@Table(name = "payments")
+@Table(name = "Payments")
 @Data
 @Getter
 @Setter
@@ -29,21 +31,22 @@ public class Payment {
     @Column(name = "payment_id")
     private Long paymentId;
 
-    @Column(name = "order_id", nullable = false)
+    @Column(name = "order_id")
     private Long orderId;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "payment_status", nullable = false)
+    @Column(name = "payment_status")
     private PaymentStatus paymentStatus;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "payment_mode", nullable = false)
+    @Column(name = "payment_mode")
     private PaymentMode paymentMode;
 
-    @Column(name = "transaction_id", unique = true, nullable = false)
+    @Column(name = "transaction_id")
     private String transactionId;
 
-    @Column(name = "payment_date", nullable = false)
+    @CreationTimestamp
+    @Column(name = "payment_date")
     private LocalDateTime paymentDate;
 }
 

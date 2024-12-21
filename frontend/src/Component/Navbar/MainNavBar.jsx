@@ -2,7 +2,7 @@ import React from 'react'
 import style from "../navbar/MainNavbar.module.css"
 import { IoCartOutline } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
-import logo from "../asset/logo2.jpg";
+import logo from "../../asset/logo.jpg";
 
 
 const MainNavBar = () => {
@@ -19,7 +19,7 @@ const MainNavBar = () => {
 
            <div className={style["search-bar"]}>
                 <CiSearch className={style['search']} /> 
-                <input className={style['search-text']}
+                <input
                     type="text"
                     placeholder="Search 'egg'"
                 />

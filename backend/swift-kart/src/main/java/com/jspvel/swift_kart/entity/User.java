@@ -35,7 +35,7 @@ public class User implements UserDetails{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private String id;
 
 	@Size(min = 4,message = "name should be more than 4 character")
 	private String name;
