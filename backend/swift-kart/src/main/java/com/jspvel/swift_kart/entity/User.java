@@ -3,6 +3,7 @@ package com.jspvel.swift_kart.entity;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
