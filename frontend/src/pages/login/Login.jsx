@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import style from '../Login/Login.module.css';  // Ensure you have the correct path for the CSS
+import style from '../Login/Login.module.css';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -10,7 +10,6 @@ const Login = () => {
   const [rememberMe, setRememberMe] = useState(false);
 
   useEffect(() => {
-    // Load saved credentials from sessionStorage if available
     const storedUserData = JSON.parse(sessionStorage.getItem('userData'));
     if (storedUserData) {
       setCredentials({
@@ -20,7 +19,6 @@ const Login = () => {
     }
   }, []);
 
-  // Handle input change for username and password
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCredentials(prevState => ({
@@ -29,30 +27,24 @@ const Login = () => {
     }));
   };
 
-  // Handle the 'Remember Me' checkbox change
   const handleCheckboxChange = (e) => {
     setRememberMe(e.target.checked);
   };
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Check if both username and password are filled out
+
     if (credentials.username && credentials.password) {
       const storedData = JSON.parse(sessionStorage.getItem('userData'));
 
-      // Check if the entered username and password match the stored data
       if (storedData && storedData.username === credentials.username && storedData.password === credentials.password) {
         alert('Login successful!');
 
-        // Optionally store credentials in sessionStorage if 'remember me' is checked
         if (rememberMe) {
           sessionStorage.setItem('username', credentials.username);
           sessionStorage.setItem('password', credentials.password);
           sessionStorage.setItem('rememberMe', 'true');
         } else {
-          // If 'remember me' is unchecked, remove the credentials from sessionStorage
           sessionStorage.removeItem('username');
           sessionStorage.removeItem('password');
           sessionStorage.removeItem('rememberMe');
@@ -66,11 +58,12 @@ const Login = () => {
   };
 
   return (
-    <div className={style.login}>
+    <div className={style['login']}>
       <fieldset>
         <legend>Login</legend>
         <form onSubmit={handleSubmit}>
-          <div>
+
+          <div className={style['username']}>
             <label>Username</label>
             <input
               type="text"
@@ -82,7 +75,7 @@ const Login = () => {
             />
           </div>
 
-          <div>
+          <div className={style['password']}>
             <label>Password</label>
             <input
               type="password"
@@ -94,7 +87,7 @@ const Login = () => {
             />
           </div>
 
-          <div>
+          <div className={style['checkbox']}>
             <label>
               <input
                 type="checkbox"
@@ -107,7 +100,7 @@ const Login = () => {
 
           <button type="submit">Login</button>
 
-          <div className='register-link'>
+          <div className={style['register-link']}>
             <p>Don't have an account? <a href="#">SignUp</a></p>
           </div>
         </form>

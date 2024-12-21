@@ -5,7 +5,7 @@ import { CiSearch } from "react-icons/ci";
 import logo from "../asset/logo2.jpg";
 
 
-const NavBar = () => {
+const MainNavBar = () => {
     return (
         <nav className={style['navbar']}>
             <div className={style['logo']}>
@@ -37,4 +37,4 @@ const NavBar = () => {
     )
 }
 
-export default NavBar
+export default MainNavBar

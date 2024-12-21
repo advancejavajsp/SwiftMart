@@ -39,7 +39,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className={style.signup}>
+    <div className={style['signup']}>
       <fieldset>
         <legend>SignUp</legend>
         <form onSubmit={handleSubmit}>
@@ -102,7 +102,7 @@ const SignUp = () => {
             />
           </div>
 
-          <div className='role-dropdown'>
+          <div className={style['role-dropdown']}>
             <label>Role</label>
             <select className="role"
               value={formData.role}
