@@ -154,18 +154,7 @@ export const globalRoute = createBrowserRouter([
             path: "/homePage/aboutnav",
             element: <AboutNav />
           },
-          {
-            path: "/homePage/login",
-            element: <Login />
-          },
-          {
-            path: "/homePage/signup",
-            element: <Signup />
-          },
-          {
-            path: "/homePage/navbar",
-            element: <NavBar />
-          }
+
         ],
       },
     ],
