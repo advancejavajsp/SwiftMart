@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import style from '../Signup/SignUp.module.css';
+import { globalvar } from '../../GlobalContext/GlobalContext';
+
 
 const SignUp = () => {
+  let {signupPanel,setSignuPanel}=useContext(globalvar)
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -115,7 +118,7 @@ const SignUp = () => {
             </select>
           </div>
 
-          <button type="submit">Sign Up</button>
+          <button type="submit" className={style['signupButton']}>Sign Up</button>
         </form>
       </fieldset>
     </div>

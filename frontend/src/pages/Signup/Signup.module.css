@@ -1,23 +1,25 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 
 .signup {
-  width: 150vw;
-  max-width: 500px;
+  width: 100%;
+
   padding: 20px;
-  height: 90vh;
+  height: 100vh;
+  position: fixed;
   border-radius: 10px;
   align-items: stretch;
   flex-direction: column;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  background-color:white;
 
 }
 
 
 .signup fieldset {
+    min-width: 400px;
   border: 2px solid #4CAF50;
   border-radius: 10px;
   padding: 20px;
@@ -113,19 +115,23 @@
 
 }
 
-button {
+.signButton {
   width: 100%;
   padding: 12px 15px;
   font-size: 1.2rem;
   font-weight: bold;
   color: #fff;
-  background-color: #4CAF50;
+  background-color: #4CAF50 !important;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   text-transform: uppercase;
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
+}
+  
+.signButton :hover{
+  background-color: #4CAF50 !important;
 }
 
 

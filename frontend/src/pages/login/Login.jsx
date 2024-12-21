@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import style from '../Login/Login.module.css';  // Ensure you have the correct path for the CSS
+import { globalvar } from '../../GlobalContext/GlobalContext';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
+  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel}=useContext(globalvar)
   const [credentials, setCredentials] = useState({
     username: '',
     password: ''
@@ -64,6 +67,7 @@ const Login = () => {
       alert('Please enter both username and password');
     }
   };
+  
 
   return (
     <div className={style.login}>
@@ -108,7 +112,7 @@ const Login = () => {
           <button type="submit">Login</button>
 
           <div className='register-link'>
-            <p>Don't have an account? <a href="#">SignUp</a></p>
+            <p onClick={()=>{setLoginPanel( loginPanel=false),setSignuPanel(signupPanel =true)}}> Don't have an account? SignUp </p>
           </div>
         </form>
       </fieldset>

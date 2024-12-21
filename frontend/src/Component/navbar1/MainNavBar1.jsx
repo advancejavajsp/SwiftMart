@@ -18,49 +18,49 @@ const NavBar1 = () => {
                 <select>
                     <option value="" className="more" disabled hidden>More</option>
                     <option>
-                        <Link to="">Sweet tooth</Link>
+                        {/* <Link to=""></Link>  */} Sweet tooth
                     </option>
                     <option>
-                        <Link to="">Atta, Rice & Dal</Link>
+                        {/* <Link to=""></Link> */} Atta, Rice & Dal
                     </option>
                     <option>
-                        <Link to="">Dry Fruit, Masala & Oil</Link>
+                        {/* <Link to=""></Link> */}Dry Fruit, Masala & Oil
                     </option>
                     <option>
-                        <Link to="">Sauces & Spread</Link>
+                        {/* <Link to=""></Link> */}Sauces & Spread
                     </option>
                     <option>
-                        <Link to="">Chicken, Meat & Fish</Link>
+                        {/* <Link to=""></Link> */} Chicken, Meat & Fish
                     </option>
                     <option>
-                        <Link to="">Paan Corne</Link>
+                        {/* <Link to=""></Link> */} Paan Corne
                     </option>
                     <option>
-                        <Link to="">Organic & Premium</Link>
+                        {/* <Link to=""></Link> */} Organic & Premium
                     </option>
                     <option>
-                        <Link to="">Baby Care</Link>
+                        {/* <Link to=""></Link> */} Baby Care
                     </option>
                     <option>
-                        <Link to="">Pharma & Wellness</Link>
+                        {/* <Link to=""></Link> */} Pharma & Wellness
                     </option>
                     <option>
-                        <Link to="">Cleaning Essentials</Link>
+                        {/* <Link to=""></Link> */} Cleaning Essentials
                     </option>
                     <option>
-                        <Link to="">Home & Office</Link>
+                        {/* <Link to=""></Link> */} Home & Office
                     </option>
                     <option>
-                        <Link to="">Personal Care</Link>
+                        {/* <Link to=""></Link> */} Personal Care
                     </option>
                     <option>
-                        <Link to="">Beauty & Cosmetics</Link>
+                        {/* <Link to=""></Link> */} Beauty & Cosmetics
                     </option>
                     <option>
-                        <Link to="">Magazines</Link>
+                        {/* <Link to=""></Link> */} Magazines
                     </option>
                     <option>
-                        <Link to="">Electronics & Electrical</Link>
+                        {/* <Link to=""></Link> */} Electronics & Electrical
                     </option>
                 </select>
 
