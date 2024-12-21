@@ -2,7 +2,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import About from "../Component/about/About";
 import Status from "../Component/Delivery/Status";
-import HomePage from "../Component/homePage/homePage";
 import Layout from "../Component/Layout";
 import Payment from "../Component/payment/Payment";
 import PaymentSucessful from "../Component/paymentSuccessful/PaymentSucessful";
@@ -10,7 +9,6 @@ import ErrorPage from "../Component/PageNotFound/ErrorPage";
 import Card from "../Component/Card/Card";
 import MyCart from "../Component/MyCart/MyCart";
 import CardPage from "../Component/CardPage/CardPage";
-import Footer from "../Component/Footer/Footer";
 import Pending from "../Component/DeliveryAgent/Pending";
 import Active from "../Component/DeliveryAgent/Active";
 import Completed from "../Component/DeliveryAgent/Completed";
@@ -33,6 +31,7 @@ import AboutNav from "../Component/aboutnavbar/AboutNav";
 import Signup from "../pages/Signup/SignUp";
 import Login from "../pages/login/Login";
 import NavBar from "../Component/Navbar/MainNavBar";
+import HomePage from "../Component/HomePage/HomePage";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",
@@ -69,10 +68,6 @@ export const globalRoute = createBrowserRouter([
           {
             path:"/homePage/cardpage",
             element:<CardPage/>
-          },
-          {
-            path:"/homePage/footer",
-            element:<Footer/>
           },
            {
             path:"/homePage/about",

@@ -10,11 +10,11 @@ section .style {
   color: green;
 }
 
-section {
+/* section {
   display: flex;
   align-items: center; 
   justify-content: space-between; 
-}
+} */
 
 section .dropdown {
   display: flex;

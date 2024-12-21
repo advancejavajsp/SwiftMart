@@ -47,33 +47,65 @@ const Footer = () => {
               <ul>
                 {/* Adding the Link for About */}
                 <li>
-                  <Link to="/about">About</Link>
+                  <Link >About</Link>
                 </li>
-                <li>Careers</li>
-                <li>Blog</li>
-                <li>Press</li>
-                <li>Lead</li>
-                <li>Value</li>
+                <li>
+                  <Link >Career</Link>
+                </li>
+                <li>
+                  <Link>Blog</Link>
+                </li>
+                <li>
+                  <Link>Press</Link>
+                </li>
+                <li>
+                  <Link>Lead</Link>
+                </li>
+                <li>
+                  <Link>Value</Link>
+                </li>
               </ul>
             </div>
             <div className={styles.listItem}>
               <ul>
-                <li>Privacy</li>
-                <li>Teams</li>
-                <li>FAQs</li>
-                <li>Security</li>
-                <li>Mobile</li>
-                <li>Contact</li>
+                <li>
+                  <Link>Privacy</Link>
+                </li>
+                <li>
+                  <Link>Teams</Link>
+                </li>
+                <li>
+                  <Link>FAQs</Link>
+                </li>
+                <li>
+                  <Link>Security</Link>
+                </li>
+                <li>
+                  <Link>Mobile</Link>
+                </li>
+                <li>
+                  <Link>Contact</Link>
+                </li>
               </ul>
             </div>
             <div className={styles.listItem}>
               <ul>
-                <li>Partner</li>
-                <li>Franchise</li>
-                <li>Seller</li>
-                <li>Warehouse</li>
-                <li>Deliver</li>
-                <li>Resources</li>
+                <li>
+                  <Link>Partner</Link>
+                </li>
+                <li>
+                  <Link>Franchise</Link>
+                </li>
+                <li>
+                  <Link>Seller</Link>
+                </li>
+                <li>
+                  <Link>Warehouse</Link>
+                </li>
+                <li>
+                  <Link>Deliver</Link>
+                </li>
+                <li><Link>Resources</Link></li>
               </ul>
             </div>
           </div>
@@ -83,47 +115,63 @@ const Footer = () => {
             <h2>Categories</h2>
             <p>See all</p>
           </div>
-          <div className={styles.list}>
-            <div className={styles.listItem}>
+          <div className={styles.list1}>
+            <div className={styles.listItem1}>
               <ul>
-                <li>Vegetables and Fruits</li>
-                <li>Cold Drinks and Juices</li>
-                <li>Bakery & Biscuits</li>
-                <li>Dry Fruits, Masala & Oil</li>
-                <li>Paan Corner</li>
-                <li>Pharma & Wellness</li>
-                <li>Ice Creams & Frozen Desserts</li>
-                <li>Beauty & Cosmetics</li>
-                <li>Electronics and Electricals</li>
+                <li>
+                  <Link>Vegetables and Fruits</Link>
+                </li>
+                <li>
+                  <Link>Cold Drinks and Juices</Link>
+                </li>
+                <li>
+                  <Link>Bakery & Biscuits</Link>
+                </li>
+                <li><Link>Dry Fruits, Masala & Oil</Link></li>
+                <li>
+                  <Link>Paan Corner</Link>
+                </li>
+                <li>
+                  <Link>Pharma & Wellness</Link>
+                </li>
+                <li>
+                  <Link>Ice Creams & Frozen Desserts</Link>
+                </li>
+                <li>
+                  <Link>Beauty & Cosmetics</Link>
+                </li>
+                <li>
+                  <Link>Electronics and Electricals</Link>
+                </li>
                 <li>Toys & Games</li>
               </ul>
             </div>
             <div className={styles.listItem}>
               <ul>
-                <li>Dairy & Breakfast</li>
-                <li>Instant & Frozen Food</li>
-                <li>Sweet Tooth</li>
-                <li>Sauces & Spreads</li>
-                <li>Organic & Premium</li>
-                <li>Cleaning Essentials</li>
-                <li>Personal Care</li>
-                <li>Magazines</li>
-                <li>Stationery Needs</li>
-                <li>Print Store</li>
+                <li><Link>Dairy & Breakfast</Link></li>
+                <li><Link>Instant & Frozen Food</Link></li>
+                <li><Link>Sweet Tooth</Link></li>
+                <li><Link>Sauces & Spreads</Link></li>
+                <li><Link>Organic & Premium</Link></li>
+                <li><Link>Cleaning Essentials</Link></li>
+                <li><Link>Personal Care</Link></li>
+                <li><Link>Magazines</Link></li>
+                <li><Link>Stationery Needs</Link></li>
+                <li><Link>Print Store</Link></li>
               </ul>
             </div>
             <div className={styles.listItem}>
               <ul>
-                <li>Munchies</li>
-                <li>Tea, Coffee & Health Drinks</li>
-                <li>Atta, Rice & Dal</li>
-                <li>Chicken, Meat & Fish</li>
-                <li>Baby Care</li>
-                <li>Home & Office</li>
-                <li>Pet Care</li>
-                <li>Fashion & Accessories</li>
-                <li>Books</li>
-                <li>Navratri Specials</li>
+                <li><Link>Munchies</Link></li>
+                <li><Link>Tea, Coffee & Health Drinks</Link></li>
+                <li><Link>Atta, Rice & Dal</Link></li>
+                <li><Link>Chicken, Meat & Fish</Link></li>
+                <li><Link>Baby Care</Link></li>
+                <li><Link>Home & Office</Link></li>
+                <li><Link>Pet Care</Link></li>
+                <li><Link>Fashion & Accessories</Link></li>
+                <li><Link>Books</Link></li>
+                <li><Link>Navratri Specials</Link></li>
               </ul>
             </div>
           </div>

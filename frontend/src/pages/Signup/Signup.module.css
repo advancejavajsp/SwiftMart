@@ -1,4 +1,4 @@
-* {
+/* * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -55,7 +55,7 @@
 .signup input[type="password"],
 .signup input[type="tel"] {
   /* border: 1px solid #ccc;  */
-  width: 100%;
+  /* width: 100%;
   padding: 10px;
   border-radius: 5px;
   font-size: 1.1rem;
@@ -167,4 +167,4 @@ button {
     padding: 10px 12px;
 
   }
-}
+} */ 

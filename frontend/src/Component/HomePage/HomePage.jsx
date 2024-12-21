@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { Outlet } from 'react-router-dom'
+import Footer from '../../Component/Footer/Footer'
 
 const HomePage = () => {
   return (
-      
+    <>
       <Outlet/>
+      
+      <Footer/>
+      </>
   )
 }
 
