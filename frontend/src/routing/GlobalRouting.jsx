@@ -2,7 +2,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import About from "../Component/about/About";
 import Status from "../Component/Delivery/Status";
-import HomePage from "../Component/homePage/homePage";
+// import HomePage from "../Component/homePage/homePage";
 import Layout from "../Component/Layout";
 import Payment from "../Component/payment/Payment";
 import PaymentSucessful from "../Component/paymentSuccessful/PaymentSucessful";
@@ -29,6 +29,7 @@ import AboutNav from "../Component/aboutnavbar/AboutNav";
 import Signup from "../pages/Signup/SignUp";
 import Login from "../pages/login/Login";
 import NavBar from "../Component/Navbar/MainNavBar";
+import HomePage from "../Component/HomePage/HomePage";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",

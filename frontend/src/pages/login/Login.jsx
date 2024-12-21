@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import style from '../Login/Login.module.css';  // Ensure you have the correct path for the CSS
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    username: '',
+    name: '',
     password: ''
   });
 
@@ -14,13 +16,13 @@ const Login = () => {
     const storedUserData = JSON.parse(sessionStorage.getItem('userData'));
     if (storedUserData) {
       setCredentials({
-        username: storedUserData.username || '',
+        name: storedUserData.name || '',
         password: storedUserData.password || ''
       });
     }
   }, []);
 
-  // Handle input change for username and password
+  // Handle input change for name and password
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCredentials(prevState => ({
@@ -35,33 +37,19 @@ const Login = () => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     
-    // Check if both username and password are filled out
-    if (credentials.username && credentials.password) {
-      const storedData = JSON.parse(sessionStorage.getItem('userData'));
 
-      // Check if the entered username and password match the stored data
-      if (storedData && storedData.username === credentials.username && storedData.password === credentials.password) {
-        alert('Login successful!');
+    // Check if both name and password are filled out
+    if (credentials.name && credentials.password) {
 
-        // Optionally store credentials in sessionStorage if 'remember me' is checked
-        if (rememberMe) {
-          sessionStorage.setItem('username', credentials.username);
-          sessionStorage.setItem('password', credentials.password);
-          sessionStorage.setItem('rememberMe', 'true');
-        } else {
-          // If 'remember me' is unchecked, remove the credentials from sessionStorage
-          sessionStorage.removeItem('username');
-          sessionStorage.removeItem('password');
-          sessionStorage.removeItem('rememberMe');
-        }
-      } else {
-        alert('Incorrect username or password');
-      }
+        let respone = await axios.post(`http://localhost:8080/auth/login?email=${credentials.name}&password=${credentials.password}`)
+      localStorage.setItem('token',respone.data.token)
+        console.log(respone.data)
+        toast.success('Login successful!');
     } else {
-      alert('Please enter both username and password');
+      toast.error('Please enter both name and password');
     }
   };
 
@@ -71,13 +59,13 @@ const Login = () => {
         <legend>Login</legend>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Username</label>
+            <label>name</label>
             <input
               type="text"
-              name="username"
-              value={credentials.username}
+              name="name"
+              value={credentials.name}
               onChange={handleInputChange}
-              placeholder="Enter your username"
+              placeholder="Enter your name"
               required
             />
           </div>
