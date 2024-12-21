@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
-//import style from '../Signup/SignUp.module.css';
+import React, { useContext, useState } from 'react';
+import style from '../Signup/SignUp.module.css';
+import { globalvar } from '../../GlobalContext/GlobalContext';
+
 
 const SignUp = () => {
+  let {signupPanel,setSignuPanel}=useContext(globalvar)
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -39,7 +42,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className={style.signup}>
+    <div className={style['signup']}>
       <fieldset>
         <legend>SignUp</legend>
         <form onSubmit={handleSubmit}>
@@ -102,9 +105,9 @@ const SignUp = () => {
             />
           </div>
 
-          <div className='role-dropdown'>
+          <div className={style['role-dropdown']}>
             <label>Role</label>
-            <select className="role"
+            <select className={style["role"]}
               value={formData.role}
               onChange={handleInputChange}
               required
@@ -115,7 +118,7 @@ const SignUp = () => {
             </select>
           </div>
 
-          <button type="submit">Sign Up</button>
+          <button type="submit" className={style['signButton']}>Sign Up</button>
         </form>
       </fieldset>
     </div>

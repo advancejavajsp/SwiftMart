@@ -3,6 +3,7 @@ package com.jspvel.swift_kart.entity;
 import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
@@ -35,7 +36,7 @@ public class User implements UserDetails{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private String id;
 
 	@Size(min = 4,message = "name should be more than 4 character")
 	private String name;

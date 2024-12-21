@@ -158,6 +158,165 @@ Open your browser and navigate to `http://localhost:3000`.
 - **GET** `/api/deliveries/order/{orderId}`: Track order delivery.
 
 ---
+1. UserService
+Handles user-related operations.
+Methods:
+registerUser(UserDTO userDto) – Registers a new user.
+login(String email, String password) – Authenticates user and issues a token.
+getUserProfile(Long userId) – Fetches user profile details.
+updateUserProfile(Long userId, UserDTO userDto) – Updates user details.
+Endpoints:
+HTTP Method
+Endpoint
+Description
+POST
+/api/users/register
+Register a new user.
+POST
+/api/users/login
+Log in and get a token.
+GET
+/api/users/{userId}
+Fetch user profile.
+PUT
+/api/users/{userId}
+Update user profile.
+
+
+2. ProductService
+Manages products and categories.
+Methods:
+getAllProducts() – Returns a list of all products.
+getProductById(Long productId) – Fetches product details.
+addProduct(ProductDTO productDto) – Adds a new product (Admin only).
+updateProduct(Long productId, ProductDTO productDto) – Updates product details (Admin only).
+deleteProduct(Long productId) – Deletes a product (Admin only).
+Endpoints:
+HTTP Method
+Endpoint
+Description
+GET
+/api/products
+Get all products.
+GET
+/api/products/{productId}
+Get details of a specific product.
+POST
+/api/products
+Add a new product (Admin only).
+PUT
+/api/products/{productId}
+Update product details (Admin).
+DELETE
+/api/products/{productId}
+Delete a product (Admin only).
+
+
+3. CategoryService
+Handles product categories.
+Methods:
+getAllCategories() – Fetches all categories.
+addCategory(CategoryDTO categoryDto) – Adds a new category (Admin only).
+updateCategory(Long categoryId, CategoryDTO categoryDto) – Updates category (Admin only).
+deleteCategory(Long categoryId) – Deletes a category (Admin only).
+Endpoints:
+HTTP Method
+Endpoint
+Description
+GET
+/api/categories
+Get all categories.
+POST
+/api/categories
+Add a new category (Admin only).
+PUT
+/api/categories/{categoryId}
+Update a category (Admin only).
+DELETE
+/api/categories/{categoryId}
+Delete a category (Admin only).
+
+
+4. OrderService
+Handles customer orders and their details.
+Methods:
+placeOrder(OrderDTO orderDto) – Places a new order.
+getOrderById(Long orderId) – Fetches order details.
+getOrdersByUserId(Long userId) – Fetches all orders for a user.
+cancelOrder(Long orderId) – Cancels an order.
+Endpoints:
+HTTP Method
+Endpoint
+Description
+POST
+/api/orders
+Place a new order.
+GET
+/api/orders/{orderId}
+Get details of a specific order.
+GET
+/api/orders/user/{userId}
+Get all orders for a user.
+DELETE
+/api/orders/{orderId}
+Cancel an order.
+
+
+5. DeliveryService
+Handles delivery tracking and assignment.
+Methods:
+assignDelivery(Long orderId, Long deliveryPersonId) – Assigns a delivery person to an order.
+updateDeliveryStatus(Long deliveryId, DeliveryStatus status) – Updates the delivery status.
+getDeliveryByOrderId(Long orderId) – Fetches delivery details for an order.
+Endpoints:
+HTTP Method
+Endpoint
+Description
+POST
+/api/deliveries/assign
+Assign delivery to a person (Admin).
+PUT
+/api/deliveries/{deliveryId}
+Update delivery status.
+GET
+/api/deliveries/order/{orderId}
+Get delivery details for an order.
+
+
+6. PaymentService
+Handles payments and transactions.
+Methods:
+processPayment(PaymentDTO paymentDto) – Processes a payment for an order.
+getPaymentByOrderId(Long orderId) – Fetches payment details for an order.
+Endpoints:
+HTTP Method
+Endpoint
+Description
+POST
+/api/payments
+Process a payment.
+GET
+/api/payments/order/{orderId}
+Get payment details for an order.
+
+
+7. AuthenticationService
+Handles authentication and token management.
+Methods:
+authenticate(String email, String password) – Authenticates user and generates JWT token.
+validateToken(String token) – Validates the token for secured endpoints.
+Endpoints:
+HTTP Method
+Endpoint
+Description
+POST
+/api/auth/login
+Login and get a JWT token.
+POST
+/api/auth/validate
+Validate a JWT token.
+
+
 
 ## Contributing
 
