@@ -21,7 +21,7 @@ const MainNavBar = () => {
 
            <div className={style["search-bar"]}>
                 <CiSearch className={style['search']} /> 
-                <input className={style['search-text']}
+                <input
                     type="text"
                     placeholder="Search 'egg'"
                 />

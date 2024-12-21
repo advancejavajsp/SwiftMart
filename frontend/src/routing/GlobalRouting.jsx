@@ -154,7 +154,7 @@ export const globalRoute = createBrowserRouter([
             path: "/homePage/aboutnav",
             element: <AboutNav />
           },
-  
+
         ],
       },
     ],

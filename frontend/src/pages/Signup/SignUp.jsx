@@ -42,7 +42,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className={style.signup}>
+    <div className={style['signup']}>
       <fieldset>
         <legend>SignUp</legend>
         <form onSubmit={handleSubmit}>
@@ -105,9 +105,9 @@ const SignUp = () => {
             />
           </div>
 
-          <div className='role-dropdown'>
+          <div className={style['role-dropdown']}>
             <label>Role</label>
-            <select className="role"
+            <select className={style["role"]}
               value={formData.role}
               onChange={handleInputChange}
               required
@@ -118,7 +118,7 @@ const SignUp = () => {
             </select>
           </div>
 
-          <button type="submit" className={style['signupButton']}>Sign Up</button>
+          <button type="submit" className={style['signButton']}>Sign Up</button>
         </form>
       </fieldset>
     </div>

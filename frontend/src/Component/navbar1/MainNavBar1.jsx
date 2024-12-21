@@ -3,7 +3,7 @@ import style from "../navbar1/MainNavbar1.module.css"
 import { Link } from "react-router-dom"
 
 
-const NavBar1 = () => {
+const MainNavBar1 = () => {
     return (
         <nav className={style['navbar1']}>
             <div className={style["nav-links"]}>
@@ -15,7 +15,7 @@ const NavBar1 = () => {
                 <Link to="">Tea, Coffee & Health Drinks</Link>
                 <Link to="">Bakery & Biscuits</Link>
 
-                <select>
+                <select className={style['drop-down']}>
                     <option value="" className="more" disabled hidden>More</option>
                     <option>
                         {/* <Link to=""></Link>  */} Sweet tooth
@@ -69,4 +69,4 @@ const NavBar1 = () => {
     )
 }
 
-export default NavBar1
+export default MainNavBar1
