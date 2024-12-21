@@ -36,6 +36,21 @@ public class AuthenticationController {
         return ResponseEntity.ok(registeredUser);
     }
 
+    @PostMapping("/signup/deleviryAgent")
+    public ResponseEntity<User> registerDeliveryAgent(@RequestBody @Valid User registerUserDto) {
+        User registeredUser = authenticationService.signupDeliveryAgent(registerUserDto);
+
+        return ResponseEntity.ok(registeredUser);
+    }
+    
+    @PostMapping("/signup/admin")
+    public ResponseEntity<User> registerAdmin(@RequestBody @Valid User registerUserDto) {
+        User registeredUser = authenticationService.signupAdmin(registerUserDto);
+
+        return ResponseEntity.ok(registeredUser);
+    }
+    
+    
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestParam String email,@RequestParam String password) {
         User authenticatedUser = authenticationService.authenticate(email,password);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import style from '../Login/Login.module.css';  // Ensure you have the correct path for the CSS
+// import style from '../Login/Login.module.css';  // Ensure you have the correct path for the CSS
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
