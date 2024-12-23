@@ -38,18 +38,22 @@ public class AuthenticationController {
 
     @PostMapping("/signup")
     public ResponseEntity<User> register(@RequestBody @Valid User registerUserDto) {
-//    	if(registerUserDto.getPhoto() == null) {
+    	if(registerUserDto.getPhoto() == null) {
         User registeredUser = authenticationService.signup(registerUserDto);
-//        return ResponseEntity.ok(registeredUser);
-//    	}
-//    	else {
-    		
-//    		Map data = this.cloudinaryImageService.upload(registerUserDto.getPhoto());
-//    		User registeredUser = authenticationService.signup(registerUserDto);
+        return ResponseEntity.ok(registeredUser);
+    	}
+    	else {
+//    		
+    		Map data = this.cloudinaryImageService.upload(registerUserDto.getPhoto());
+//    		String data = this.cloudinaryImageService.upload(registerUserDto.getPhoto()).get("secure_url");
+    		String userImg = (String)data.get("secure_url");
+//    		data.get(0);
+    		registerUserDto.setImage(userImg);
+    		User registeredUser = authenticationService.signup(registerUserDto);
     		return ResponseEntity.ok(registeredUser);
-    		
-    		
-//		}
+//    		
+//    		
+		}
 
 //        return ResponseEntity.ok(registeredUser);
     }
