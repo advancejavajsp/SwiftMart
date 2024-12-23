@@ -1,0 +1,7 @@
+package com.jspvel.swift_kart.exception;
+
+public class InvalidAddressException {
+    public String InvalidAddressException() {
+        return "Address is Invalid.";
+    }
+}

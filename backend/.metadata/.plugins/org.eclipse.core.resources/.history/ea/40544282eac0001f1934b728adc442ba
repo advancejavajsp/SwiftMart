@@ -1,0 +1,8 @@
+package com.jspvel.swift_kart.exception;
+
+public class ItemNotInCartException extends RuntimeException {
+	 @Override
+	    public String getMessage() {
+	        return "Item is not available in cart"; 
+	    }
+}

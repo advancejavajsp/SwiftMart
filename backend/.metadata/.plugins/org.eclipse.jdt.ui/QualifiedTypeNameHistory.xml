@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.exception.InvalidAddressException"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.exception.InvalidPaymentDetailsException"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.exception.ItemNotInCartException"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.exception.OutOfStockException"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.exception.PaymentFailedException"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.exception.ProductNotFoundException"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.exception.ServiceUnavailableException"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.exception.UserNotFoundException"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.exception.InvalidCredentialsException"/>
+</qualifiedTypeNameHistroy>

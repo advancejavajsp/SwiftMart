@@ -1,0 +1,5 @@
+package com.jspvel.swift_kart.exception;
+
+public class InvalidCredentialsException {
+
+}

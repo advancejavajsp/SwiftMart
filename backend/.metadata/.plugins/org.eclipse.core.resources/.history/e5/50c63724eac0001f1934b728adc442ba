@@ -1,0 +1,9 @@
+package com.jspvel.swift_kart.exception;
+
+
+public class EmailAlreadyExistsException extends RuntimeException {
+	   @Override
+	    public String getMessage() {
+	        return "Email is already registered. "; 
+	    }
+	}

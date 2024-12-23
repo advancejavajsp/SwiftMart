@@ -1,0 +1,8 @@
+package com.jspvel.swift_kart.exception;
+
+public class PaymentFailedException extends RuntimeException {
+	 @Override
+	    public String getMessage() {
+	        return "Payment Failed"; 
+	    }
+}

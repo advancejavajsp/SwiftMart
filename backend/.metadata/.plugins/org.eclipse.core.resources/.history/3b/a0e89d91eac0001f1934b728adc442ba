@@ -1,0 +1,8 @@
+package com.jspvel.swift_kart.exception;
+
+public class OutOfStockException extends RuntimeException{
+	 @Override
+	    public String getMessage() {
+	        return "Product is out of stock"; 
+	    }
+}
