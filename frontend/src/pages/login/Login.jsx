@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import style from '../Login/Login.module.css';  // Ensure you have the correct path for the CSS
+import style from '../Login/Login.module.css';  
 import { globalvar } from '../../GlobalContext/GlobalContext';
 import { Link } from 'react-router-dom';
 
@@ -43,6 +43,8 @@ const Login = () => {
       if (storedData && storedData.username === credentials.username && storedData.password === credentials.password) {
         alert('Login successful!');
 
+        setLoginPanel(true);
+
         if (rememberMe) {
           sessionStorage.setItem('username', credentials.username);
           sessionStorage.setItem('password', credentials.password);
@@ -77,6 +79,7 @@ const Login = () => {
               placeholder="Enter your username"
               required
             />
+
           </div>
 
           <div className={style['password']}>
