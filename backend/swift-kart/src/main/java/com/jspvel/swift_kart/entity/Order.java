@@ -23,6 +23,7 @@ public class Order {
 
     @Id
   
+
     @Column(name = "order_id")
     private String orderId;
 

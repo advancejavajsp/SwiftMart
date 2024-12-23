@@ -3,7 +3,6 @@ package com.jspvel.swift_kart.entity;
 import java.util.Collection;
 import java.util.List;
 
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
@@ -15,8 +14,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
@@ -34,7 +31,8 @@ import lombok.Setter;
 @Validated
 public class User implements UserDetails{
 	
-	@Id 
+
+	@Id
 	private String id;
 
 	@Size(min = 4,message = "name should be more than 4 character")
