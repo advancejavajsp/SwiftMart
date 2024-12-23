@@ -23,6 +23,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -31,6 +32,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Validated
+@Builder
 public class User implements UserDetails{
 	
 	@Id
@@ -46,6 +48,8 @@ public class User implements UserDetails{
 	@Max(9999999999l)
 	@Min(6000000000l)
 	private long phone;
+
+    private String otp;
    
 	private String password;
 	@Enumerated(EnumType.STRING)
@@ -55,6 +59,8 @@ public class User implements UserDetails{
 
 	@Transient
 	private MultipartFile photo;
+
+    private boolean verified;
 
 	
 	@Override

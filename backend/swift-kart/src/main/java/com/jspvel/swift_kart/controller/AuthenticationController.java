@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.jspvel.swift_kart.entity.User;
 import com.jspvel.swift_kart.security.AuthenticationService;
 import com.jspvel.swift_kart.security.JwtService;
+import com.jspvel.swift_kart.service.UserService;
 import com.jspvel.swift_kart.util.LoginResponse;
 
 import jakarta.validation.Valid;
@@ -21,7 +22,7 @@ import jakarta.validation.Valid;
 public class AuthenticationController {
     private final JwtService jwtService;
     
-    
+    private final UserService userService;
     private final AuthenticationService authenticationService;
 
     public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService) {

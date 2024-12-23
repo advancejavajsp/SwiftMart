@@ -2,6 +2,10 @@ package com.jspvel.swift_kart.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface DeliveryRepository extends JpaRepository<Delivery, Long> {
+import com.jspvel.swift_kart.util.DeliveryStatus;
+
+
+
+public interface DeliveryRepository extends JpaRepository<DeliveryStatus, Long> {
 
 }
