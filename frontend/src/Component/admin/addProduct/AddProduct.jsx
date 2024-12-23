@@ -12,8 +12,6 @@ const AddProduct = () => {
     quantityAvailable: "",
     imageUrl:"",
     description: "",
-    
-
 
    })
 
@@ -30,10 +28,10 @@ e.preventDefault();
         <div className={style["addProduct1"]}>
         <form action="">
         <h1>Add Product</h1>
-          <div className={style["productDetails"]}>
+          {/* <div className={style["productDetails"]}>
             <label htmlFor="">Id</label>
             <input type="text" name='productId' placeholder='ProductId'  />
-          </div>
+          </div> */}
           <div className={style["productDetails"]}>
             <label htmlFor="">Name</label>
             <input type="text" placeholder='Enter Name' name='name' onChange={handleData} />
