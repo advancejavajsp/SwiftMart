@@ -1,15 +1,18 @@
 import React, { useContext, useState } from 'react';
 import style from '../Signup/SignUp.module.css';
+<<<<<<< HEAD
 import { globalvar } from '../../GlobalContext/GlobalContext';
+=======
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
 
 const SignUp = () => {
   let { signupPanel, setSignuPanel } = useContext(globalvar);
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
-    contact: '',
-    address: '',
+    image: '',
+    phone: '',
     role: ''
   });
   const handleInputChange = (e) => {
@@ -20,21 +23,32 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+<<<<<<< HEAD
     if (formData.username && formData.email && formData.password && formData.contact && formData.address && formData.role) {
       sessionStorage.setItem('userData', JSON.stringify(formData));
       alert('SignUp successful!');
+=======
+    if (formData.name && formData.email && formData.password && formData.phone && formData.role) {
+  
+      let response= await axios.post("http://localhost:8080/auth/signup",formData)
+      console.log(response.data)
+      
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
       setFormData({
-        username: '',
+        name: '',
         email: '',
         password: '',
-        contact: '',
-        address: '',
+        phone: '',
+        image: '',
         role: ''
-      });
+      }
+    )
+
+    ;
     } else {
-      alert('Please fill out all fields');
+      toast.error('error');
     }
   };
 
@@ -48,9 +62,15 @@ const SignUp = () => {
             <input
               className={style['username']}
               type="text"
+<<<<<<< HEAD
               name="username" 
               value={formData.username}
               onChange={handleInputChange} 
+=======
+              name='name'
+              value={formData.name}
+              onChange={handleInputChange}
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
               placeholder="Enter your username"
               required
             />
@@ -61,7 +81,7 @@ const SignUp = () => {
             <input
               type="email"
               name="email"
-              value={formData.email}
+              // value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter your email"
               required
@@ -73,7 +93,7 @@ const SignUp = () => {
             <input
               type="password"
               name="password"
-              value={formData.password}
+              // value={formData.password}
               onChange={handleInputChange}
               placeholder="Enter your password"
               required
@@ -84,8 +104,8 @@ const SignUp = () => {
             <label>Contact</label>
             <input
               type="tel"
-              name="contact"
-              value={formData.contact}
+              name="phone"
+              value={formData.phone}
               onChange={handleInputChange}
               placeholder="Enter your contact number"
               required
@@ -93,35 +113,47 @@ const SignUp = () => {
           </div>
 
           <div>
-            <label>Address</label>
+            <label>Image</label>
             <input
-              type="text"
-              name="address"
-              value={formData.address}
+              type="file"
+              name="image"
+              value={formData.image}
               onChange={handleInputChange}
               placeholder="Enter your address"
-              required
+             
             />
           </div>
 
-          <div className={style['role-dropdown']}>
+          <div className='role-dropdown'>
             <label>Role</label>
+<<<<<<< HEAD
             <select
               className={style['role']}
               name="role"
               value={formData.role}
+=======
+            <select className={style["role"]}
+              // value={formData.role}
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
               onChange={handleInputChange}
               required
+              name='role'
             >
               <option value="" disabled hidden>Select role</option>
-              <option value="customer">Customer</option>
-              <option value="delivery">Delivery Person</option>
+              <option value="USER">USER</option>
+              {/* <option value="delivery">Delivery Person</option> */}
             </select>
           </div>
 
+<<<<<<< HEAD
           <button type="submit" className={style['signButton']}>
             Sign Up
           </button>
+=======
+        <div className={style['signButton']}>
+        <button type="submit" >Sign Up</button>
+        </div>
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
         </form>
       </fieldset>
     </div>

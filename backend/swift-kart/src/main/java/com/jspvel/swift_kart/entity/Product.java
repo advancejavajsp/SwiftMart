@@ -1,10 +1,13 @@
 package com.jspvel.swift_kart.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,9 +23,8 @@ import lombok.NoArgsConstructor;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-    private Long productId;
+    private String productId;
 
     @Column(name = "name")
     private String name;
@@ -41,4 +43,7 @@ public class Product {
 
     @Column(name = "description")
     private String description;
+    
+    @OneToOne
+    private List<Category> category;
 }

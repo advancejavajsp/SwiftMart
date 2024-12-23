@@ -27,6 +27,8 @@ public class AuthenticationController {
     
     private final UserService userService;
     private final AuthenticationService authenticationService;
+    
+    public static int counter = 1000;
 
     public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService) {
         this.jwtService = jwtService;
@@ -53,20 +55,28 @@ public class AuthenticationController {
 
     @PostMapping("/signup")
     public ResponseEntity<User> register(@RequestBody @Valid User registerUserDto) {
+    	
+    
         User registeredUser = authenticationService.signup(registerUserDto);
 
         return ResponseEntity.ok(registeredUser);
     }
 
-    @PostMapping("/login")
+	@PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestParam String email,@RequestParam String password) {
         User authenticatedUser = authenticationService.authenticate(email,password);
 
         String jwtToken = jwtService.generateToken(authenticatedUser);
        System.out.println(email);
+       
         LoginResponse loginResponse = new LoginResponse();
-  loginResponse.setToken(jwtToken);
-  loginResponse.setExpiresIn(jwtService.getExpirationTime());
+        loginResponse.setToken(jwtToken);
+        loginResponse.setExpiresIn(jwtService.getExpirationTime());
         return ResponseEntity.ok(loginResponse);
     }
+	
+	
+	
+    
+   
 }

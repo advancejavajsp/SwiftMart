@@ -1,5 +1,6 @@
 package com.jspvel.swift_kart.service.imp;
 
+<<<<<<< HEAD
 import java.util.Random;
 import java.util.Optional;
 
@@ -9,12 +10,19 @@ import org.springframework.stereotype.Service;
 import com.jspvel.swift_kart.dao.UserRepository;
 import com.jspvel.swift_kart.email_verification.requests.RegisterRequest;
 import com.jspvel.swift_kart.email_verification.responses.RegisterResponse;
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jspvel.swift_kart.dao.UserRepository;
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
 import com.jspvel.swift_kart.entity.User;
 import com.jspvel.swift_kart.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
 @Service
+<<<<<<< HEAD
 @RequiredArgsConstructor
 public class UserServiceImp implements UserService {
   
@@ -85,3 +93,49 @@ public class UserServiceImp implements UserService {
   }
 
 
+=======
+public class UserServiceImp implements UserService {
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Autowired
+	public UserServiceImp(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
+	@Override
+	public User findByUserEmail(String email) {
+
+		return userRepository.findByEmail(email).orElseThrow();
+	}
+
+	@Override
+	public String deleteUserByEmail(String email) {
+
+		User byEmail = userRepository.findByEmail(email).orElseThrow();
+		userRepository.delete(byEmail);
+		;
+
+		return "User is deleted";
+
+	}
+
+	@Override
+	public String updateUserDetails(Long id, String newEmail, String newName, long newPhone) {
+		User user = userRepository.findById(id).orElse(null);
+		if (user != null) {
+			user.setEmail(newEmail);
+			user.setName(newName);
+			user.setPhone(newPhone);
+
+			userRepository.save(user);
+
+			return "User Updated";
+		} else {
+			return "User not Found";
+		}
+	}
+
+}
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697

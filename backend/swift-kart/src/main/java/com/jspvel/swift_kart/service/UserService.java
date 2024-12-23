@@ -6,11 +6,21 @@ import com.jspvel.swift_kart.email_verification.requests.RegisterRequest;
 import com.jspvel.swift_kart.email_verification.responses.RegisterResponse;
 
 
-public interface UserService {
 
-	 RegisterResponse register(RegisterRequest registerRequest);
-
-     void verify(String email,String otp);
+    
      
+import com.jspvel.swift_kart.entity.User;
 
+@Service
+public interface UserService {
+	void verify(String email,String otp);
+
+	User findByUserEmail(String email);
+	
+	public String deleteUserByEmail(String email);
+	
+	public String updateUserDetails(Long id, String newEmail, String newName, long newPhone);
+	
+    
+  
 }
