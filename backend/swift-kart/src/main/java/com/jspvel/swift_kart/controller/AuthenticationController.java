@@ -1,5 +1,8 @@
 package com.jspvel.swift_kart.controller;
 
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jspvel.swift_kart.entity.User;
+import com.jspvel.swift_kart.image_uploade.CloudinaryImageService;
 import com.jspvel.swift_kart.security.AuthenticationService;
 import com.jspvel.swift_kart.security.JwtService;
 import com.jspvel.swift_kart.util.LoginResponse;
@@ -21,7 +25,10 @@ import jakarta.validation.Valid;
 public class AuthenticationController {
     private final JwtService jwtService;
     
-    
+    @Autowired
+	private CloudinaryImageService cloudinaryImageService;
+	
+    @Autowired
     private final AuthenticationService authenticationService;
 
     public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService) {
@@ -31,9 +38,20 @@ public class AuthenticationController {
 
     @PostMapping("/signup")
     public ResponseEntity<User> register(@RequestBody @Valid User registerUserDto) {
+//    	if(registerUserDto.getPhoto() == null) {
         User registeredUser = authenticationService.signup(registerUserDto);
+//        return ResponseEntity.ok(registeredUser);
+//    	}
+//    	else {
+    		
+//    		Map data = this.cloudinaryImageService.upload(registerUserDto.getPhoto());
+//    		User registeredUser = authenticationService.signup(registerUserDto);
+    		return ResponseEntity.ok(registeredUser);
+    		
+    		
+//		}
 
-        return ResponseEntity.ok(registeredUser);
+//        return ResponseEntity.ok(registeredUser);
     }
 
     @PostMapping("/login")
