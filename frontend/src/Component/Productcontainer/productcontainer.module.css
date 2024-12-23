@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+/* h4 {
+    padding: 25px;
+    font-family: sans-serif;
+    font-weight: 18px;
+    width: 65%;
+  } */
+=======
 
 .section {
   display: flex;
@@ -56,6 +64,7 @@
     width: 100%;
     padding: 10px;
   }
+>>>>>>> d30240eab78c17ab3d99372fdad55f23f537b617
 
   .section h4 {
     font-size: 18px;
@@ -63,6 +72,26 @@
     padding: 10px;
     text-align: center;
   }
+<<<<<<< HEAD
+  
+  /* section {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+  } */
+  
+  .dropdown {
+    display: flex;
+    width:500%;
+    justify-content: space-around;
+  }
+  
+  .select {
+    width: 200px; 
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+=======
 
   .section .dropdown {
     width: 100%;
@@ -73,6 +102,7 @@
   }
 
   .section .dropdown label {
+>>>>>>> d30240eab78c17ab3d99372fdad55f23f537b617
     font-size: 14px;
     margin-bottom: 5px;
   }
