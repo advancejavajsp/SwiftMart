@@ -35,7 +35,7 @@ import lombok.Setter;
 public class User implements UserDetails{
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 
 	@Size(min = 4,message = "name should be more than 4 character")

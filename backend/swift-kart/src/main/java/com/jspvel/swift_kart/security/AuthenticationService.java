@@ -10,37 +10,29 @@ import com.jspvel.swift_kart.entity.User;
 
 @Service
 public class AuthenticationService {
-    private final UserRepository userRepository;
-    
-    private final PasswordEncoder passwordEncoder;
-    
-    private final AuthenticationManager authenticationManager;
+	private final UserRepository userRepository;
 
-    public AuthenticationService(
-        UserRepository userRepository,
-        AuthenticationManager authenticationManager,
-        PasswordEncoder passwordEncoder
-    ) {
-        this.authenticationManager = authenticationManager;
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+	private final PasswordEncoder passwordEncoder;
 
-    public User signup(User user) {
-      
-              user.setPassword(passwordEncoder.encode(user.getPassword()));
+	private final AuthenticationManager authenticationManager;
 
-        return userRepository.save(user);
-    }
+	public AuthenticationService(UserRepository userRepository, AuthenticationManager authenticationManager,
+			PasswordEncoder passwordEncoder) {
+		this.authenticationManager = authenticationManager;
+		this.userRepository = userRepository;
+		this.passwordEncoder = passwordEncoder;
+	}
 
-    public User authenticate(String email,String password) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        email,password
-                )
-        );
+	public User signup(User user) {
 
-        return userRepository.findByEmail(email)
-                .orElseThrow();
-    }
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+		return userRepository.save(user);
+	}
+
+	public User authenticate(String email, String password) {
+		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
+
+		return userRepository.findByEmail(email).orElseThrow();
+	}
 }
