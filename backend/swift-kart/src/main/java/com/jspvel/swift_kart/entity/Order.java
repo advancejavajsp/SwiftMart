@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.jspvel.swift_kart.util.OrderStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -29,7 +31,7 @@ public class Order {
 
     @Enumerated(EnumType.STRING) 
     @Column(name = "order_status")
-    private Order orderStatus;
+    private OrderStatus orderStatus;
 
     @Column(name = "total_amount")
     private Double totalAmount; 

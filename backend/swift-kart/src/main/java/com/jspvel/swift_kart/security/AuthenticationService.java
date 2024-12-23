@@ -18,7 +18,7 @@ public class AuthenticationService {
 
     public AuthenticationService(
         UserRepository userRepository,
-        AuthenticationManager authenticationManager,
+        AuthenticationManager authenticationManager, 
         PasswordEncoder passwordEncoder
     ) {
         this.authenticationManager = authenticationManager;

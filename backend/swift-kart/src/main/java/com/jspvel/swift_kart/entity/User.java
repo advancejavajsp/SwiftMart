@@ -27,7 +27,7 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "userss")
+@Table(name = "users")
 @Entity
 @Getter
 @Setter
@@ -62,7 +62,7 @@ public class User implements UserDetails{
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of();
     }
-
+	 @Override	
     public String getPassword() {
         return password;
     }

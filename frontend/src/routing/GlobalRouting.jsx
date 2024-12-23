@@ -19,6 +19,7 @@ import PaymentDetails from "../Component/PaymentDetails/PaymentDetails";
 import Payments from "../Component/Payments/Payments";
 import UserProfile from "../Component/UserProfile/UserProfile";
 import Sidebar from "../Component/sidebar/SideBar";
+import Footer from "../Component/Footer/Footer";
 import Search from "../Component/search/Search";
 import ProductContainer from "../Component/Productcontainer/ProductContainer";
 import Navbar1 from "../Component/navbar1/MainNavBar1";
@@ -148,6 +149,10 @@ export const globalRoute = createBrowserRouter([
           {
             path: "/homePage/aboutnav",
             element: <AboutNav />
+          },
+          {
+            path: "/homePage/footer",
+            element: <Footer/>
           },
 
         ],
