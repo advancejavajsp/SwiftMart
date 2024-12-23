@@ -1,8 +1,12 @@
 import React, { useContext, useState } from 'react';
 import style from '../Signup/SignUp.module.css';
+<<<<<<< HEAD
+import { globalvar } from '../../GlobalContext/GlobalContext';
+=======
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
 
 const SignUp = () => {
-  let {signupPanel,setSignuPanel}=useContext(globalvar)
+  let { signupPanel, setSignuPanel } = useContext(globalvar);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,22 +15,27 @@ const SignUp = () => {
     phone: '',
     role: ''
   });
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value, 
     }));
   };
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+<<<<<<< HEAD
+    if (formData.username && formData.email && formData.password && formData.contact && formData.address && formData.role) {
+      sessionStorage.setItem('userData', JSON.stringify(formData));
+      alert('SignUp successful!');
+=======
     if (formData.name && formData.email && formData.password && formData.phone && formData.role) {
   
       let response= await axios.post("http://localhost:8080/auth/signup",formData)
       console.log(response.data)
       
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
       setFormData({
         name: '',
         email: '',
@@ -50,11 +59,18 @@ const SignUp = () => {
         <form onSubmit={handleSubmit}>
           <div>
             <label>Username</label>
-            <input className={style["username"]}
+            <input
+              className={style['username']}
               type="text"
+<<<<<<< HEAD
+              name="username" 
+              value={formData.username}
+              onChange={handleInputChange} 
+=======
               name='name'
               value={formData.name}
               onChange={handleInputChange}
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
               placeholder="Enter your username"
               required
             />
@@ -110,8 +126,15 @@ const SignUp = () => {
 
           <div className='role-dropdown'>
             <label>Role</label>
+<<<<<<< HEAD
+            <select
+              className={style['role']}
+              name="role"
+              value={formData.role}
+=======
             <select className={style["role"]}
               // value={formData.role}
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
               onChange={handleInputChange}
               required
               name='role'
@@ -122,9 +145,15 @@ const SignUp = () => {
             </select>
           </div>
 
+<<<<<<< HEAD
+          <button type="submit" className={style['signButton']}>
+            Sign Up
+          </button>
+=======
         <div className={style['signButton']}>
         <button type="submit" >Sign Up</button>
         </div>
+>>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
         </form>
       </fieldset>
     </div>
