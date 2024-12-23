@@ -52,8 +52,12 @@ const SignUp = () => {
             <label>Username</label>
             <input className={style["username"]}
               type="text"
+<<<<<<< HEAD
               name='name'
               value={formData.name}
+=======
+              // value={formData.username}
+>>>>>>> riya
               onChange={handleInputChange}
               placeholder="Enter your username"
               required
@@ -65,7 +69,7 @@ const SignUp = () => {
             <input
               type="email"
               name="email"
-              value={formData.email}
+              // value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter your email"
               required
@@ -77,7 +81,7 @@ const SignUp = () => {
             <input
               type="password"
               name="password"
-              value={formData.password}
+              // value={formData.password}
               onChange={handleInputChange}
               placeholder="Enter your password"
               required
@@ -88,8 +92,13 @@ const SignUp = () => {
             <label>Contact</label>
             <input
               type="tel"
+<<<<<<< HEAD
               name="phone"
               value={formData.phone}
+=======
+              name="contact"
+              // value={formData.contact}
+>>>>>>> riya
               onChange={handleInputChange}
               placeholder="Enter your contact number"
               required
@@ -99,9 +108,15 @@ const SignUp = () => {
           <div>
             <label>Image</label>
             <input
+<<<<<<< HEAD
               type="file"
               name="image"
               value={formData.image}
+=======
+              type="text"
+              name="address"
+              // value={formData.address}
+>>>>>>> riya
               onChange={handleInputChange}
               placeholder="Enter your address"
              
@@ -111,18 +126,26 @@ const SignUp = () => {
           <div className='role-dropdown'>
             <label>Role</label>
             <select className={style["role"]}
-              value={formData.role}
+              // value={formData.role}
               onChange={handleInputChange}
               required
               name='role'
             >
+<<<<<<< HEAD
               <option value="" disabled hidden>Select role</option>
               <option value="USER">USER</option>
               {/* <option value="delivery">Delivery Person</option> */}
+=======
+              <option value="">Select role</option>
+              <option value="customer">Customer</option>
+              <option value="delivery">Delivery Person</option>
+>>>>>>> riya
             </select>
           </div>
 
-          <button type="submit" className={style['signButton']}>Sign Up</button>
+        <div className={style['signButton']}>
+        <button type="submit" >Sign Up</button>
+        </div>
         </form>
       </fieldset>
     </div>

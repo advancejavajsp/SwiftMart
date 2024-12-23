@@ -16,7 +16,9 @@ const MainNavBar1 = () => {
                 <Link to="">Bakery & Biscuits</Link>
 
                 <select className={style['drop-down']}>
-                    <option value="" className="more" disabled hidden>More</option>
+                    <option selected>
+                         More
+                    </option>
                     <option>
                         {/* <Link to=""></Link>  */} Sweet tooth
                     </option>

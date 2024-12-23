@@ -7,7 +7,7 @@ import com.jspvel.swift_kart.entity.User;
 @Service
 public interface UserService {
 
-	 
+
 	User findByUserEmail(String email);
 	
 	public String deleteUserByEmail(String email);
@@ -15,6 +15,5 @@ public interface UserService {
 	public String updateUserDetails(Long id, String newEmail, String newName, long newPhone);
 	
     
-    
-	
+  
 }

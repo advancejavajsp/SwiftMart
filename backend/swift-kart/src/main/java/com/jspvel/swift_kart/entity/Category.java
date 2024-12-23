@@ -15,11 +15,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+
 public class Category {
 
     @Id
-
     @Column(name = "category_id")
+    
     private String categoryId;
 
     @Column(name = "name")
@@ -27,4 +28,5 @@ public class Category {
 
     @Column(name = "description")
     private String description;
+    
 }

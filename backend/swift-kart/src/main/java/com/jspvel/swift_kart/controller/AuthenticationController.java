@@ -60,9 +60,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(loginResponse);
     }
 	
-	@PostMapping("/create")
-	public ResponseEntity<String>
-	createUser(@Valid@RequestBody User user){
-		return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully:"+user.getId());
-	}
+	
+    
+   
 }
