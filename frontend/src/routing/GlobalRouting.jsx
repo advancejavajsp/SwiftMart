@@ -29,10 +29,10 @@ import AddCategory from "../Component/admin/addCategory/AddCategory";
 import AddProduct from "../Component/admin/addProduct/AddProduct";
 import UpdateProduct from "../Component/admin/updateProduct/UpdateProduct";
 import AboutNav from "../Component/aboutnavbar/AboutNav";
-import Signup from "../pages/Signup/SignUp";
 import Login from "../pages/login/Login";
 import NavBar from "../Component/Navbar/MainNavBar";
 import HomePage from "../Component/HomePage/HomePage";
+import SignUp from "../pages/Signup/SignUp";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",
@@ -150,7 +150,7 @@ export const globalRoute = createBrowserRouter([
             path: "/homePage/aboutnav",
             element: <AboutNav />
           },
-
+          
         ],
       },
     ],

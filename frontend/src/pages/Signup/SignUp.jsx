@@ -65,7 +65,7 @@ const SignUp = () => {
             <input
               type="email"
               name="email"
-              value={formData.email}
+              // value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter your email"
               required
@@ -77,7 +77,7 @@ const SignUp = () => {
             <input
               type="password"
               name="password"
-              value={formData.password}
+              // value={formData.password}
               onChange={handleInputChange}
               placeholder="Enter your password"
               required
@@ -111,7 +111,7 @@ const SignUp = () => {
           <div className='role-dropdown'>
             <label>Role</label>
             <select className={style["role"]}
-              value={formData.role}
+              // value={formData.role}
               onChange={handleInputChange}
               required
               name='role'
@@ -122,7 +122,9 @@ const SignUp = () => {
             </select>
           </div>
 
-          <button type="submit" className={style['signButton']}>Sign Up</button>
+        <div className={style['signButton']}>
+        <button type="submit" >Sign Up</button>
+        </div>
         </form>
       </fieldset>
     </div>

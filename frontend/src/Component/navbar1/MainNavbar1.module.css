@@ -1,9 +1,3 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 .navbar1 {
     border: 1px solid rgba(0, 0, 0, 0.151);
     height: 56px;
@@ -14,6 +8,7 @@
     padding: 10px 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
+    position: fixed;
 }
 
 .navbar1 .nav-links {
@@ -35,40 +30,35 @@
 
 .nav-links a:hover {
     /* border: 1px solid rgba(199, 195, 195, 0.527); */
-    background-color: rgba(199, 195, 195, 0.527);
+    background-color: #f1f1f1;
 
 }
-.drop-down{
-    /* border: 1px solid red; */
-    border: none;
+.drop-down {
+        /* border: 1px solid #ccc; */
+    width: 70px;
     height: 40px;
-    width: 100px;
-    background-color: #ffffff; 
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif; 
     color:  rgba(0, 0, 0, 0.575);
-    padding: 8px 12px; 
-    cursor: pointer; 
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  */
-    /* border-radius: 4px;     */
-}
-.drop-down .more{
-    border: 1px solid blue;
-    height: 40px;
-    width: 100px;
-}
-.more :focus{
-    min-width:12px;
-    width: auto;
+    /* background-color: #f9f9f9; */
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    outline: none;
 }
 
-#more option {
-    font-size: 1rem;
-    color:rgba(0, 0, 0, 0.575); 
-    background-color:white;
+.drop-down:hover {
+    background-color: #f1f1f1;
 }
-#more:hover {
-    color: #0C831F; 
+
+.drop-down option {
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+}
+
+.drop-down option:hover {
+    background-color: #e6e6e6;
 }
 
 @media (max-width: 768px) {

@@ -1,6 +1,5 @@
 package com.jspvel.swift_kart.entity;
 
-
 import java.time.LocalDateTime;
 
 import com.jspvel.swift_kart.util.DeliveryStatus;
@@ -38,7 +37,7 @@ public class Delivery {
     private String deliveryAddress;
 
     @Column(name = "assigned_delivery_person_id")
-    private Long assignedDeliveryPersonId;
+    private String assignedDeliveryPersonId;
 
     @Column(name = "estimated_time")
     private LocalDateTime estimatedTime;

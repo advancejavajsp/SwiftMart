@@ -1,7 +1,5 @@
 package com.jspvel.swift_kart.controller;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,12 +39,6 @@ public class AuthenticationController {
         return ResponseEntity.ok(registeredUser);
     }
 
-//    private String idGenrator() {
-//		// TODO Auto-generated method stub
-//    	String prefix="ORD";
-//		return prefix + (counter++);
-//	}
-
 	@PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestParam String email,@RequestParam String password) {
         User authenticatedUser = authenticationService.authenticate(email,password);
@@ -60,9 +52,8 @@ public class AuthenticationController {
         return ResponseEntity.ok(loginResponse);
     }
 	
-	@PostMapping("/create")
-	public ResponseEntity<String>
-	createUser(@Valid@RequestBody User user){
-		return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully:"+user.getId());
-	}
+	
+	
+    
+   
 }
