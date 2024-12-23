@@ -1,5 +1,7 @@
 package com.jspvel.swift_kart.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +23,9 @@ import jakarta.validation.Valid;
 public class AuthenticationController {
     private final JwtService jwtService;
     
-    
     private final AuthenticationService authenticationService;
+    
+    public static int counter = 1000;
 
     public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService) {
         this.jwtService = jwtService;
@@ -31,20 +34,35 @@ public class AuthenticationController {
 
     @PostMapping("/signup")
     public ResponseEntity<User> register(@RequestBody @Valid User registerUserDto) {
+    	
+    
         User registeredUser = authenticationService.signup(registerUserDto);
 
         return ResponseEntity.ok(registeredUser);
     }
 
-    @PostMapping("/login")
+//    private String idGenrator() {
+//		// TODO Auto-generated method stub
+//    	String prefix="ORD";
+//		return prefix + (counter++);
+//	}
+
+	@PostMapping("/login")
     public ResponseEntity<LoginResponse> authenticate(@RequestParam String email,@RequestParam String password) {
         User authenticatedUser = authenticationService.authenticate(email,password);
 
         String jwtToken = jwtService.generateToken(authenticatedUser);
        System.out.println(email);
+       
         LoginResponse loginResponse = new LoginResponse();
-  loginResponse.setToken(jwtToken);
-  loginResponse.setExpiresIn(jwtService.getExpirationTime());
+        loginResponse.setToken(jwtToken);
+        loginResponse.setExpiresIn(jwtService.getExpirationTime());
         return ResponseEntity.ok(loginResponse);
     }
+	
+	@PostMapping("/create")
+	public ResponseEntity<String>
+	createUser(@Valid@RequestBody User user){
+		return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully:"+user.getId());
+	}
 }

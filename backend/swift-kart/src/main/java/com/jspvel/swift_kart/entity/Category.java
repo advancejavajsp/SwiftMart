@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 public class Category {
 
     @Id
+
     @Column(name = "category_id")
     private String categoryId;
 

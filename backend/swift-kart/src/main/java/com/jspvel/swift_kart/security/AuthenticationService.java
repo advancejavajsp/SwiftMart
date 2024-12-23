@@ -9,8 +9,6 @@ import com.jspvel.swift_kart.dao.UserRepository;
 import com.jspvel.swift_kart.entity.User;
 import com.jspvel.swift_kart.util.Role;
 
-import jakarta.validation.Valid;
-
 @Service
 public class AuthenticationService {
 	private final UserRepository userRepository;
@@ -28,13 +26,16 @@ public class AuthenticationService {
 
 	public User signup(User user) {
 
+
 		user.setRole(Role.USER);
 
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		
         user.setImage(null);
-		return userRepository.save(user);
 
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+		return userRepository.save(user);
 	}
 
 	public User authenticate(String email, String password) {
@@ -42,6 +43,7 @@ public class AuthenticationService {
 
 		return userRepository.findByEmail(email).orElseThrow();
 	}
+
 
 	public User signupDeliveryAgent(User user) {
 		// TODO Auto-generated method stub
