@@ -39,15 +39,7 @@ public class AuthenticationService {
         user.setImage(null);
         return userRepository.save(user);
 	}
-
-
 	
-
-	
-
-
-
-		
 	public User authenticate(String email, String password) {
 		authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
 

@@ -52,12 +52,8 @@ const SignUp = () => {
             <label>Username</label>
             <input className={style["username"]}
               type="text"
-<<<<<<< HEAD
               name='name'
               value={formData.name}
-=======
-              // value={formData.username}
->>>>>>> riya
               onChange={handleInputChange}
               placeholder="Enter your username"
               required
@@ -92,13 +88,8 @@ const SignUp = () => {
             <label>Contact</label>
             <input
               type="tel"
-<<<<<<< HEAD
               name="phone"
               value={formData.phone}
-=======
-              name="contact"
-              // value={formData.contact}
->>>>>>> riya
               onChange={handleInputChange}
               placeholder="Enter your contact number"
               required
@@ -108,15 +99,9 @@ const SignUp = () => {
           <div>
             <label>Image</label>
             <input
-<<<<<<< HEAD
               type="file"
               name="image"
               value={formData.image}
-=======
-              type="text"
-              name="address"
-              // value={formData.address}
->>>>>>> riya
               onChange={handleInputChange}
               placeholder="Enter your address"
              
@@ -131,15 +116,9 @@ const SignUp = () => {
               required
               name='role'
             >
-<<<<<<< HEAD
               <option value="" disabled hidden>Select role</option>
               <option value="USER">USER</option>
               {/* <option value="delivery">Delivery Person</option> */}
-=======
-              <option value="">Select role</option>
-              <option value="customer">Customer</option>
-              <option value="delivery">Delivery Person</option>
->>>>>>> riya
             </select>
           </div>
 
