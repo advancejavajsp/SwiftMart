@@ -45,5 +45,5 @@ public class Product {
     private String description;
     
     @OneToOne
-    private List<Category> category;
+    private Category category;
 }

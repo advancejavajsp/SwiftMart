@@ -37,5 +37,5 @@ public class OrderItem {
     private double price;
     
     @OneToOne
-    private List<Product> product;
+    private Product product;
 }

@@ -24,7 +24,6 @@ import lombok.Data;
 public class Order {
 
     @Id
-
     @Column(name = "order_id")
     private String orderId;
 
@@ -50,7 +49,7 @@ public class Order {
     private List<Delivery> delivery;
     
     @OneToOne
-    private List <Payment> payment;
+    private Payment payment;
     
     @OneToMany
     private List<OrderItem> orderItem;
