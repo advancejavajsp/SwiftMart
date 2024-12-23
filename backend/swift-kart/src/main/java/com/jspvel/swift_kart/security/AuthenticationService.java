@@ -32,6 +32,7 @@ public class AuthenticationService {
 
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 
+        user.setImage(null);
 		return userRepository.save(user);
 
 	}
