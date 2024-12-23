@@ -13,7 +13,9 @@
     border-radius: 12px;
     display: flex;
     flex-wrap: wrap;
+    /* overflow-wrap: ; */
 }
+
 
 .mainbody .orderdetailss {
     width: 70%;
