@@ -36,7 +36,7 @@ public class UserServiceImp  implements UserService{
 
 
 	@Override
-	public String updateUserDetails(Long id, String newEmail, String newName, long newPhone) {
+	public String updateUserDetails(String id, String newEmail, String newName, long newPhone) {
 		User user = userRepository.findById(id).orElse(null);
 		if(user != null) {
 			user.setEmail(newEmail);

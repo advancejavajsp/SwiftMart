@@ -39,7 +39,7 @@ public class UserController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public String updateUserDetails(@PathVariable Long id, @RequestBody User userDetails) {
+	public String updateUserDetails(@PathVariable String id, @RequestBody User userDetails) {
 		return userServiceImp.updateUserDetails(id,userDetails.getEmail(), userDetails.getName(), userDetails.getPhone());
 		
 	}

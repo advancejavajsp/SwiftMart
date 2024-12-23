@@ -12,9 +12,9 @@ public interface UserService {
 	
 	public String deleteUserByEmail(String email);
 	
-	public String updateUserDetails(Long id, String newEmail, String newName, long newPhone);
+	public String updateUserDetails(String id, String newEmail, String newName, long newPhone);
 	
-    
+	boolean validateUserId(String userId);
     
 	
 }

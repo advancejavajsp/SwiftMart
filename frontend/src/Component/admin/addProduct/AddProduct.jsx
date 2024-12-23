@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import style from './addProduct.module.css'
+import axios from 'axios'
 
 const AddProduct = () => {
 
 
   let {addProduct, setAddProduct} =  useState({
-    productId: "",
     name: "",
-    category: "",
+    categoryId: "",
     price: "",
-    quantity: "",
+    quantityAvailable: "",
     imageUrl:"",
     description: "",
     
@@ -17,7 +17,11 @@ const AddProduct = () => {
 
    })
 
-   let handleData = (e)=>{
+   let handleData = async(e)=>{
+e.preventDefault();
+    let response = await axios.post("http://localhost:8080/products",addProduct)
+    console.log(response.data)
+
     setAddProduct({...addProduct, [e.target.name]: e.target.value})
    }
   return (
@@ -36,10 +40,10 @@ const AddProduct = () => {
           </div>
           <div className={style["productDetails"]}>
           <label for="myDropdown">Choose an option:</label>
-            <select id="myDropdown" name="category" onChange={handleData} >
-            <option value="option1">Category 1</option>
-            <option value="option2">Category 2</option>
-            <option value="option3" selected>Category 3</option> 
+            <select id="myDropdown" name="categoryId" onChange={handleData} >
+            <option value="option1">categoryId 1</option>
+            <option value="option2">categoryId 2</option>
+            <option value="option3" >categoryId 3</option> 
             </select>
               
             
@@ -49,8 +53,8 @@ const AddProduct = () => {
             <input type="text" placeholder='Enter Price' name='price' onChange={handleData} />
           </div>
           <div className={style["productDetails"]}>
-            <label htmlFor="">Quantity</label>
-            <input type="text" placeholder='Enter Quantity' name='quantity' onChange={handleData} />
+            <label htmlFor="">quantityAvailable</label>
+            <input type="text" placeholder='Enter quantityAvailable' name='quantityAvailable' onChange={handleData} />
           </div>
           <div className={style["productDetails"]}>
             <label htmlFor="">Enter Image url</label>
