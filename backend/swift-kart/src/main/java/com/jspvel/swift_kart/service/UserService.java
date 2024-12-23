@@ -10,6 +10,7 @@ public interface UserService {
 
 	 RegisterResponse register(RegisterRequest registerRequest);
 
+     void verify(String email,String otp);
      
 
 }
