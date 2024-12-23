@@ -2,7 +2,9 @@ package com.jspvel.swift_kart.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+import com.jspvel.swift_kart.entity.Product;
+
+public interface ProductRepository extends JpaRepository<Product, String> {
 	
 
 }

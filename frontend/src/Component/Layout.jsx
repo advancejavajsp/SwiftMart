@@ -1,20 +1,13 @@
 import { useContext } from "react"
 import {Outlet} from "react-router-dom"
 import { globalvar } from "../GlobalContext/GlobalContext"
-import Login from "../pages/login/Login"
-import SignUp from "../pages/Signup/SignUp"
+import { Toaster } from "react-hot-toast"
 const Layout = () => {
   let {loginPanel,setLoginPanel,signupPanel,setSignuPanel }=useContext(globalvar)
 
-
   return (
-<>
-    {loginPanel && <Login/>}
-
-    {signupPanel && <SignUp/>}
-
+   
     <Outlet></Outlet>
-    </>
   )
 }
 

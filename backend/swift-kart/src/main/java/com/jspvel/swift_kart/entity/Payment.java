@@ -27,7 +27,6 @@ import com.jspvel.swift_kart.util.PaymentStatus;
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
     private Long paymentId;
 

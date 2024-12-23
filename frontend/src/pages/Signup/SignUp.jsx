@@ -1,16 +1,14 @@
 import React, { useContext, useState } from 'react';
 import style from '../Signup/SignUp.module.css';
-import { globalvar } from '../../GlobalContext/GlobalContext';
-
 
 const SignUp = () => {
   let {signupPanel,setSignuPanel}=useContext(globalvar)
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
-    contact: '',
-    address: '',
+    image: '',
+    phone: '',
     role: ''
   });
 
@@ -22,22 +20,26 @@ const SignUp = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    if (formData.username && formData.email && formData.password && formData.contact && formData.address && formData.role) {
-
-      sessionStorage.setItem('userData', JSON.stringify(formData));
-      alert('SignUp successful!');
+    if (formData.name && formData.email && formData.password && formData.phone && formData.role) {
+  
+      let response= await axios.post("http://localhost:8080/auth/signup",formData)
+      console.log(response.data)
+      
       setFormData({
-        username: '',
+        name: '',
         email: '',
         password: '',
-        contact: '',
-        address: '',
+        phone: '',
+        image: '',
         role: ''
-      });
+      }
+    )
+
+    ;
     } else {
-      alert('Please fill out all fields');
+      toast.error('error');
     }
   };
 
@@ -50,7 +52,8 @@ const SignUp = () => {
             <label>Username</label>
             <input className={style["username"]}
               type="text"
-              value={formData.username}
+              name='name'
+              value={formData.name}
               onChange={handleInputChange}
               placeholder="Enter your username"
               required
@@ -85,8 +88,8 @@ const SignUp = () => {
             <label>Contact</label>
             <input
               type="tel"
-              name="contact"
-              value={formData.contact}
+              name="phone"
+              value={formData.phone}
               onChange={handleInputChange}
               placeholder="Enter your contact number"
               required
@@ -94,27 +97,28 @@ const SignUp = () => {
           </div>
 
           <div>
-            <label>Address</label>
+            <label>Image</label>
             <input
-              type="text"
-              name="address"
-              value={formData.address}
+              type="file"
+              name="image"
+              value={formData.image}
               onChange={handleInputChange}
               placeholder="Enter your address"
-              required
+             
             />
           </div>
 
-          <div className={style['role-dropdown']}>
+          <div className='role-dropdown'>
             <label>Role</label>
             <select className={style["role"]}
               value={formData.role}
               onChange={handleInputChange}
               required
+              name='role'
             >
               <option value="" disabled hidden>Select role</option>
-              <option value="customer">Customer</option>
-              <option value="delivery">Delivery Person</option>
+              <option value="USER">USER</option>
+              {/* <option value="delivery">Delivery Person</option> */}
             </select>
           </div>
 
