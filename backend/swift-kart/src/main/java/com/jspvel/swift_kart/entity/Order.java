@@ -2,25 +2,25 @@ package com.jspvel.swift_kart.entity;
 
 
 import java.time.LocalDateTime;
-
+import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
-
+import com.jspvel.swift_kart.util.OrderStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+
 @Data
 @Entity
-@Table(name = "Orders") 
+@Table(name = "Order") 
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private String orderId;
 
@@ -29,7 +29,7 @@ public class Order {
 
     @Enumerated(EnumType.STRING) 
     @Column(name = "order_status")
-    private Order orderStatus;
+    private OrderStatus orderStatus;
 
     @Column(name = "total_amount")
     private Double totalAmount; 
@@ -40,7 +40,16 @@ public class Order {
 
     @Column(name = "delivered_at")
     private LocalDateTime deliveredAt;
-
+    
+    
+    @OneToMany
+    private List<Delivery> delivery;
+    
+    @OneToOne
+    private List <Payment> payment;
+    
+    @OneToMany
+    private List<OrderItem> orderItem;
     
 }
 

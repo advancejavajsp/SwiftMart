@@ -50,7 +50,7 @@ const SignUp = () => {
             <label>Username</label>
             <input className={style["username"]}
               type="text"
-              value={formData.username}
+              // value={formData.username}
               onChange={handleInputChange}
               placeholder="Enter your username"
               required
@@ -62,7 +62,7 @@ const SignUp = () => {
             <input
               type="email"
               name="email"
-              value={formData.email}
+              // value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter your email"
               required
@@ -74,7 +74,7 @@ const SignUp = () => {
             <input
               type="password"
               name="password"
-              value={formData.password}
+              // value={formData.password}
               onChange={handleInputChange}
               placeholder="Enter your password"
               required
@@ -86,7 +86,7 @@ const SignUp = () => {
             <input
               type="tel"
               name="contact"
-              value={formData.contact}
+              // value={formData.contact}
               onChange={handleInputChange}
               placeholder="Enter your contact number"
               required
@@ -98,7 +98,7 @@ const SignUp = () => {
             <input
               type="text"
               name="address"
-              value={formData.address}
+              // value={formData.address}
               onChange={handleInputChange}
               placeholder="Enter your address"
               required
@@ -108,17 +108,19 @@ const SignUp = () => {
           <div className={style['role-dropdown']}>
             <label>Role</label>
             <select className={style["role"]}
-              value={formData.role}
+              // value={formData.role}
               onChange={handleInputChange}
               required
             >
-              <option value="" disabled hidden>Select role</option>
+              <option value="">Select role</option>
               <option value="customer">Customer</option>
               <option value="delivery">Delivery Person</option>
             </select>
           </div>
 
-          <button type="submit" className={style['signButton']}>Sign Up</button>
+        <div className={style['signButton']}>
+        <button type="submit" >Sign Up</button>
+        </div>
         </form>
       </fieldset>
     </div>

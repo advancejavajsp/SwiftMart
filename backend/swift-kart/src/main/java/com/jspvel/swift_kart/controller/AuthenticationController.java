@@ -1,5 +1,6 @@
 package com.jspvel.swift_kart.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +21,6 @@ import jakarta.validation.Valid;
 @CrossOrigin
 public class AuthenticationController {
     private final JwtService jwtService;
-    
     
     private final AuthenticationService authenticationService;
 
@@ -46,5 +46,10 @@ public class AuthenticationController {
   loginResponse.setToken(jwtToken);
   loginResponse.setExpiresIn(jwtService.getExpirationTime());
         return ResponseEntity.ok(loginResponse);
+    }
+    
+    @PostMapping("/create")
+    public ResponseEntity<String> createUser(@Valid @RequestBody User user) {
+        return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully: " + user.getId());
     }
 }

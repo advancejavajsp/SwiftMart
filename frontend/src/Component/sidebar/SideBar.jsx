@@ -14,12 +14,12 @@ const SideBar = () => {
     <aside className={style["sidebar"]}>
       <nav className={style["sidebar-nav"]}>
         <ul>
-          <li> <Link to="/milk"><img src={img1} alt="Milk carton" />Milk</Link></li>
-          <li><Link to="/bread"><img src={img2} alt="Bread" />Bread & Pav</Link></li>
-          <li><Link to="/egg"><img src={img3} alt="Eggs" />Egg</Link></li>
-          <li><Link to="/flakes"><img src={img4} alt="Cereal flakes" />Flakes & Kids Cereals</Link></li>
-          <li><Link to="/muesli"><img src={img5} alt="Muesli and Granola" />Muesli & Granola</Link></li>
-          <li><Link to="/oats"><img src={img6} alt="Oats pack" />Oats</Link></li>
+          <li> <Link to="/milk"><img src={img1} alt="Milk carton" /><p>Milk</p></Link></li>
+          <li><Link to="/bread"><img src={img2} alt="Bread" /><p>Bread & Pav</p></Link></li>
+          <li><Link to="/egg"><img src={img3} alt="Eggs" /><p>Egg</p></Link></li>
+          <li><Link to="/flakes"><img src={img4} alt="Cereal flakes" /><p>Flakes & Kids Cereals</p></Link></li>
+          <li><Link to="/muesli"><img src={img5} alt="Muesli and Granola" /><p>Muesli & Granola</p></Link></li>
+          <li><Link to="/oats"><img src={img6} alt="Oats pack" /><p>Oats</p></Link></li>
         </ul>
       </nav>
     </aside>
