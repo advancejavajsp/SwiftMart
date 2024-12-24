@@ -3,8 +3,8 @@ import { Outlet } from "react-router-dom";
 import MainNavBar from "../Navbar/MainNavBar";
 import NavBar1 from "../navbar1/MainNavBar1";
 import SideBar from "../sidebar/SideBar";
-import { globalvar } from "../../GlobalContext/GlobalContext";
-import Login from "../../pages/login/Login";
+import ProductContainer from "../Productcontainer/ProductContainer";
+import style from "../HomePage/HomePage.module.css"
 
 const HomePage = () => {
   return (
@@ -12,11 +12,10 @@ const HomePage = () => {
 
       <MainNavBar />
       <NavBar1/>
-      <section>
+      <section className={style["homechilds"]}>
         <SideBar/>
-        <div className="homeChilds">
-        <Outlet />
-        </div>
+       <ProductContainer/>
+  
       </section>
       
     </>
