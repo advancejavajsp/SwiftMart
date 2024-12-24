@@ -7,12 +7,12 @@ import toast from 'react-hot-toast';
 
 const SignUp = () => {
   let { signupPanel, setSignuPanel } = useContext(globalvar);
-  let {photo,setImage}=useState();
+  // let {photo,setImage}=useState();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-    photo: '',
+ 
     phone: '',
     role: ''
   });
@@ -26,26 +26,17 @@ const SignUp = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    console.log(formData)
     if (formData.name && formData.email && formData.password && formData.phone && formData.role) {
-  
-      let response= await axios.post("http://localhost:8080/auth/signup",formData)
+      console.log(e.name);
+      let response =await axios.post("http://localhost:8080/auth/signup",formData)
       console.log(response.data)
-      
-+
-      setFormData({
-        // name: '',
-        // email: '',
-        // password: '',
-        // phone: '',
-        // photo: '',
-        // role: ''
-      }
-    )
-
-    ;
+         
     } else {
       toast.error('error');
     }
+
+
   };
 
   return (
@@ -130,9 +121,9 @@ const SignUp = () => {
             </select>
           </div>
 
-        <div className={style['signButton']}>
-        <button type="submit" >Sign Up</button>
-        </div>
+        
+        <button type="submit" className={style["signupButton"]}>Sign Up</button>
+     
 
         </form>
       </fieldset>
