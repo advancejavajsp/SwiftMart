@@ -25,13 +25,13 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "users")
+@Table(name = "userss")
 @Entity
 @Getter
 @Setter
 @Validated
 public class User implements UserDetails {
-
+	
 	@Id
 	private String id;
 

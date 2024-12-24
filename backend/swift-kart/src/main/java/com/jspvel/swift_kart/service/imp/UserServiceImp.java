@@ -113,7 +113,7 @@ public class UserServiceImp implements UserService {
 
 		User byEmail = userRepository.findByEmail(email).orElseThrow();
 		userRepository.delete(byEmail);
-		;
+		
 
 		return "User is deleted";
 

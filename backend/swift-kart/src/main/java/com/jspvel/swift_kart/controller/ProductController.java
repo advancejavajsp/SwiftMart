@@ -34,7 +34,7 @@ public class ProductController {
 	
 	@GetMapping("/products/{productId}")
 	public ResponseEntity<Product> getProductById(@PathVariable String  productId){
-		Product product = productServiceImp.getProductById(productId);
+		Product product = productServiceImp.findProductById(productId);
 		if (product != null) {
             return ResponseEntity.ok(product);
         } else {
@@ -43,18 +43,18 @@ public class ProductController {
 	}
 	
 	@PostMapping("/products")
-	public ResponseEntity<Product> addProduct(@RequestBody Product product){
+	public ResponseEntity<Product> addProduct(@RequestBody String product){
 		Product product2 = productServiceImp.addProduct(product);
 		return new ResponseEntity<>(product2, HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/products/{productId}")
 	public ResponseEntity<Void> deleteProduct(@PathVariable String productId){
-		boolean deleted = productServiceImp.deleteProduct(productId);
-        if (deleted) {
-            return ResponseEntity.noContent().build(); // 204 No Content, means deleted successfully
+		Product deleted = productServiceImp.addProduct(productId);
+        if (deleted != null) {
+            return ResponseEntity.noContent().build(); 
         } else {
-            return ResponseEntity.notFound().build(); // 404 Not Found, if product not found
+            return ResponseEntity.notFound().build(); 
         }
 	}
 	
