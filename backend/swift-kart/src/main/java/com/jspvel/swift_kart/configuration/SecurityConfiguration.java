@@ -34,16 +34,16 @@ public class SecurityConfiguration {
         http.csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/auth/**","/open/**")
-                .permitAll()
+                .requestMatchers("/auth/**", "/open/**", "/v2/api-docs", "/swagger-ui.html", "/swagger-ui/**", "/swagger-resources/**", "/webjars/**", "/configuration/**")
+                .permitAll()  // Allow Swagger and OpenAPI paths
                 .anyRequest()
-                .authenticated()
+                .authenticated()  // Secure all other requests
                 .and()
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)  // Stateless session management for JWT
                 .and()
-                .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .authenticationProvider(authenticationProvider)  // Use custom authentication provider
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);  // Add JWT filter
 
         return http.build();
     }

@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-import React, { useState, useEffect, useContext } from 'react';
-import style from '../Login/Login.module.css';  
-import { globalvar } from '../../GlobalContext/GlobalContext';
-import { Link } from 'react-router-dom';
-=======
+
 import React, { useState, useEffect } from 'react';
 import style from '../Login/Login.module.css';  // Ensure you have the correct path for the CSS
 import axios from 'axios';
 import toast from 'react-hot-toast';
->>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
+
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -51,30 +46,11 @@ const Login = () => {
     // Check if both name and password are filled out
     if (credentials.name && credentials.password) {
 
-<<<<<<< HEAD
-      if (storedData && storedData.username === credentials.username && storedData.password === credentials.password) {
-        alert('Login successful!');
 
-        setLoginPanel(true);
-
-        if (rememberMe) {
-          sessionStorage.setItem('username', credentials.username);
-          sessionStorage.setItem('password', credentials.password);
-          sessionStorage.setItem('rememberMe', 'true');
-        } else {
-          sessionStorage.removeItem('username');
-          sessionStorage.removeItem('password');
-          sessionStorage.removeItem('rememberMe');
-        }
-      } else {
-        alert('Incorrect username or password');
-      }
-=======
         let respone = await axios.post(`http://localhost:8080/auth/login?email=${credentials.name}&password=${credentials.password}`)
       localStorage.setItem('token',respone.data.token)
         console.log(respone.data)
         toast.success('Login successful!');
->>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
     } else {
       toast.error('Please enter both name and password');
     }

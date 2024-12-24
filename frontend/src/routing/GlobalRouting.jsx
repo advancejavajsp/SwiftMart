@@ -135,6 +135,14 @@ export const globalRoute = createBrowserRouter([
             element: <AdminNav />
           },
           {
+            path: "/homePage/signup",
+            element: <SignUp/>
+          },
+          {
+            path: "/homePage/login",
+            element: <Login/>
+          },
+          {
             path: "/homePage/addProduct",
             element: <AddProduct />
           },

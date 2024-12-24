@@ -3,6 +3,7 @@ package com.jspvel.swift_kart.entity;
 import java.util.Collection;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
@@ -44,7 +45,7 @@ public class User implements UserDetails {
 	@Min(6000000000l)
 	private long phone;
 
-    private String otp;
+//    private String otp;
    
 	private String password;
 	@Enumerated(EnumType.STRING)
@@ -55,7 +56,7 @@ public class User implements UserDetails {
 	@Transient
 	private MultipartFile photo;
 
-    private boolean verified;
+//    private boolean verified;
 
 	
 	@OneToMany

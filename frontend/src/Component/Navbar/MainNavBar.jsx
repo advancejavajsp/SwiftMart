@@ -55,7 +55,6 @@ const MainNavBar = () => {
             </div>
 
             <div className={style['btn']}>
-<<<<<<< HEAD
                 {isLoggedIn ? (
                     <>
                         <div className={style["account-section"]}>
@@ -107,10 +106,6 @@ const MainNavBar = () => {
                 <button className={style['cart-btn']}>
                     <IoCartOutline className={style['mycart']} /> My Cart
                 </button>
-=======
-                <button className={style['login-btn']} onClick={()=>{setLoginPanel(!loginPanel)}}><h2>Login</h2></button>
-                <button className={style['cart-btn']}><IoCartOutline className={style['mycart']}/><h3>My Cart</h3></button>
->>>>>>> c4153b1224ed4df85c7ffb962952d25719739697
             </div>
         </nav>
     );

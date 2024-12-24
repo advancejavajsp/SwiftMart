@@ -13,7 +13,7 @@ import com.jspvel.swift_kart.entity.User;
 
 @Service
 public interface UserService {
-	void verify(String email,String otp);
+//	void verify(String email,String otp);
 
 	User findByUserEmail(String email);
 	
