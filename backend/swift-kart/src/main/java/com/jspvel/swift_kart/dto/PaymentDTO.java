@@ -1,5 +1,4 @@
-package com.jspvel.swift_kart.entity;
-
+package com.jspvel.swift_kart.dto;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -24,14 +23,16 @@ import com.jspvel.swift_kart.util.PaymentStatus;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Payment {
+public class PaymentDTO {
+
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
-    private String paymentId;
+    private Long paymentId;
 
     @Column(name = "order_id")
-    private String orderId;
+    private Long orderId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_status")

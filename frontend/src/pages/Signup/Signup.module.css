@@ -16,7 +16,7 @@
 
 .signup fieldset {
   min-width: 400px;
-  height: 90vh;
+  height: 70vh;
   border: 2px solid #4CAF50;
   border-radius: 10px;
   padding: 20px;
@@ -67,50 +67,9 @@
   box-shadow: #4CAF50;
 }
 
-
-.role-dropdown {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.role-dropdown label {
-  font-size: 14px !important;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.role-dropdown .role {
-  width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: 2px solid #ddd;
-  background-color: #f9f9f9;
-  box-sizing: border-box;
-}
-
-.role-dropdown .role:focus {
-  border-color: #4CAF50;
-  outline: none;
-  box-shadow: 0 0 5px #4CAF50;
-}
-
-.role-dropdown .role option:disabled {
-  color: #ccc;
-}
-
-.role-dropdown .role option {
-  padding: 10px;
-  background-color: #fff;
-
-}
-
-.signButton button{
+.signupButton {
   border:1px solid red ;
-  width: 10vw;
+  width: 100%;
   padding: 12px 15px;
   font-size: 14px;
   font-weight: bold;
@@ -123,7 +82,7 @@
 
 }
 
-.signButton :hover {
+.signupButton :hover {
   background-color: #4CAF50 !important;
 }
 
