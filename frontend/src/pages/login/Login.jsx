@@ -29,7 +29,7 @@ const Login = () => {
   }
 
   return (
-    <div className={style['login']} onClick={()=>}>
+    <div className={style['login']} onClick={()=>{}}>
       <fieldset>
         <legend>Login</legend>
         <form onSubmit={handleSubmit}>

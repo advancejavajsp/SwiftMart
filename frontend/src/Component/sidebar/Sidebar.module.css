@@ -1,8 +1,9 @@
 .sidebar {
   /* border:1px solid red; */
-  border: 1px solid rgba(0, 0, 0, 0.171);
-  width: 300px;
+  border-right: 10px solid white;
+  /* width: 300px; */
   background-color: white;
+  box-shadow: 1px 0px 5px gray ;
   color: black;
   display: flex;
   flex-direction: column;

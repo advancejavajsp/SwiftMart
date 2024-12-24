@@ -22,7 +22,7 @@ let fetchdataByCategory=(id)=>{
 }
 
 useEffect(()=>{
-let user=localStorage.get("token");
+let user=localStorage.getItem("token");
 //here decode the token and then store the role inmside user state
 //  console.log(user);
 //  setUser()

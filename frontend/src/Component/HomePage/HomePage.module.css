@@ -5,6 +5,7 @@
     width: 100%;
     border: 1px solid;
     display: flex;
+    padding: 5px;
     /* justify-content: space-between; */
 
 }
