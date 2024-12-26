@@ -11,6 +11,7 @@ const Layout = () => {
 
   return (
     <>
+    <Toaster/>
     {loginPanel && <Login />}
     {signupPanel && <SignUp/>}
     {mycartPanel && <MyCart/>}

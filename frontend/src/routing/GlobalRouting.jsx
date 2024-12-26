@@ -39,7 +39,7 @@ export const globalRoute = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/homePage",
+        path: "/",
         element: <HomePage />,
         children: [
           {

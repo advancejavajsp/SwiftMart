@@ -52,7 +52,7 @@
 
 .login .username input:focus,
 .login .password input:focus {
-  border-color: #007bff;
+  border-color: green;
 }
 
 .login .checkbox {
@@ -65,11 +65,12 @@
 
 .login .checkbox input {
   margin: 0;
+  width: 100px;
 }
 
 .login button {
   padding: 12px;
-  background-color: #007bff !important; 
+  background-color: green !important; 
   color: white;
   font-size: 1rem;
   border: none;
@@ -78,7 +79,7 @@
   transition: background-color 0.3s ease;
 }
  button:hover {
-  background-color: #0056b3;
+  background-color: green;
 }
 
 .register-link {
@@ -89,7 +90,7 @@
 }
 
 .register-link p {
-  color: #007bff;
+  color: green;
   cursor: pointer !important;
   margin: 0;
 }

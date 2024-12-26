@@ -34,7 +34,13 @@
     width: 300px;
     justify-content: space-around;
   }
-  
+  .dropdown label{
+    width: 80px;
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .select {
     width: 200px; 
     padding: 5px;
@@ -48,3 +54,7 @@
     width: 100%;
   }
 
+
+  .section .dropdown .select option:hover{
+        background-color: green;
+  }

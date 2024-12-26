@@ -38,9 +38,9 @@ const useTypewriter = (texts, speed = 100, pause = 1000) => {
 };
 
 const MainNavBar = () => {
-  const { loginPanel, setLoginPanel, mycartPanel, setMycartPanel, user } = useContext(globalvar);
+  const { loginPanel, setLoginPanel, mycartPanel, setMycartPanel, user,setUser } = useContext(globalvar);
 
-  console.log(user)
+//   console.log(user)
   const searchBarRef = useRef();
   const [isPopupVisible, setPopupVisible] = useState(false);
 
@@ -49,7 +49,9 @@ const MainNavBar = () => {
   };
 
   const handleLogout = () => {
-    // Add logout logic here
+     localStorage.removeItem("token");
+     setPopupVisible(false);
+     setUser("")
   };
 
   const getNavbarQRData = (userData) => {

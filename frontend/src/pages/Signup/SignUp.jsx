@@ -30,7 +30,7 @@ const SignUp = () => {
     if (formData.name && formData.email && formData.password && formData.phone && formData.role) {
       console.log(e.name);
       let response =await axios.post("http://localhost:8080/auth/signup",formData)
-      console.log(response.data)
+      console.log(response)
          
     } else {
       toast.error('error');
@@ -43,7 +43,7 @@ const SignUp = () => {
     <div className={style['signup']} onClick={(e)=>{e.stopPropagation(),setSignuPanel(false)}}>
       <fieldset>
         <legend>SignUp</legend>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(),setSignuPanel(true)}}>
           <div>
             <label>Username</label>
             <input
