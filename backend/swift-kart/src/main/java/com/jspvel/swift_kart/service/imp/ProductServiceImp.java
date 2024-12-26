@@ -65,14 +65,12 @@ public class ProductServiceImp implements ProductService {
 		return null;
 	}
 
-	public Product addProduct(String productId) {
+	public Product addProduct(Product product) {
 		
-		return null;
+		
+		return productRepository.save(product);
 	}
 
 
-	public Product updateProduct(String productId, Product updatedProduct) {
-		
-		return null;
-	}
+	
 }

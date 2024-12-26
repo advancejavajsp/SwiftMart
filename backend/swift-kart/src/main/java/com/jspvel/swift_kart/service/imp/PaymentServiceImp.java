@@ -58,4 +58,9 @@ public class PaymentServiceImp implements PaymentService {
 		}
 		return false;
 	}
+
+	public List<Payment> getAllPayment1() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

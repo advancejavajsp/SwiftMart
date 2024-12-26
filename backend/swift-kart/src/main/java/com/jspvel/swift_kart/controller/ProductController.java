@@ -43,31 +43,31 @@ public class ProductController {
 	}
 	
 	@PostMapping("/products")
-	public ResponseEntity<Product> addProduct(@RequestBody String product){
+	public ResponseEntity<Product> addProduct(@RequestBody Product product){
 		Product product2 = productServiceImp.addProduct(product);
 		return new ResponseEntity<>(product2, HttpStatus.CREATED);
 	}
 	
-	@DeleteMapping("/products/{productId}")
-	public ResponseEntity<Void> deleteProduct(@PathVariable String productId){
-		Product deleted = productServiceImp.addProduct(productId);
-        if (deleted != null) {
-            return ResponseEntity.noContent().build(); 
-        } else {
-            return ResponseEntity.notFound().build(); 
-        }
-	}
+//	@DeleteMapping("/products/{productId}")
+//	public ResponseEntity<Void> deleteProduct(@PathVariable String productId){
+//		Product deleted = productServiceImp.addProduct(productId);
+//        if (deleted != null) {
+//            return ResponseEntity.noContent().build(); 
+//        } else {
+//            return ResponseEntity.notFound().build(); 
+//        }
+//	}
 	
-	@PutMapping("/products/{productId}")
-	public ResponseEntity<Product> updateProduct(@PathVariable ("productId") String productId, @RequestBody Product updatedProduct){
-		Product updated = productServiceImp.updateProduct(productId, updatedProduct);
-		
-		if(updated != null) {
-			return ResponseEntity.ok(updated);
-		}else {
-			return ResponseEntity.notFound().build();
-		}
-	}
+//	@PutMapping("/products/{productId}")
+//	public ResponseEntity<Product> updateProduct(@PathVariable ("productId") String productId, @RequestBody Product updatedProduct){
+//		Product updated = productServiceImp.updateProductDetails(productId, updatedProduct);
+//		
+//		if(updated != null) {
+//			return ResponseEntity.ok(updated);
+//		}else {
+//			return ResponseEntity.notFound().build();
+////		}
+//	}
 	
 }
    

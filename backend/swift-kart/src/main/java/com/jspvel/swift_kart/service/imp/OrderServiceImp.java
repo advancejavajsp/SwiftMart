@@ -35,7 +35,7 @@ public class OrderServiceImp implements OrderService {
 	public Order placeOrder(Order orderRequest) {
        
         Payment payment = paymentRepository.findById(orderRequest.getUserId())
-                .orElseThrow(() -> new RuntimeException("Payment not found"));
+        		.orElseThrow(() -> new RuntimeException("Payment not found"));
 
        
         List<OrderItem> orderItems = orderItemRepository.findAllById(null);

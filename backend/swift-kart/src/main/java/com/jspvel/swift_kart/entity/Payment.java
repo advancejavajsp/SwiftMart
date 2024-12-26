@@ -1,6 +1,5 @@
 package com.jspvel.swift_kart.entity;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -10,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -21,7 +21,6 @@ import com.jspvel.swift_kart.util.PaymentStatus;
 @Data
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class Payment {
@@ -47,6 +46,9 @@ public class Payment {
     @CreationTimestamp
     @Column(name = "payment_date")
     private LocalDateTime paymentDate;
+
+    // Constructor that automatically generates paymentId
+    public Payment() {
+        this.paymentId = UUID.randomUUID().toString();  // Automatically generate a unique payment ID
+    }
 }
-
-

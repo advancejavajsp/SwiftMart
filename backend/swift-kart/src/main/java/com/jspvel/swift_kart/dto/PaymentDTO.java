@@ -27,12 +27,12 @@ public class PaymentDTO {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     @Column(name = "payment_id")
-    private Long paymentId;
+    private String paymentId;
 
     @Column(name = "order_id")
-    private Long orderId;
+    private String orderId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_status")

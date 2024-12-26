@@ -25,10 +25,10 @@ public class OrderItem {
     private String orderItemId;
 
     @Column(name = "order_id")
-    private Long orderId;
+    private String orderId;
 
     @Column(name = "product_id")
-    private Long productId;
+    private String productId;
 
     @Column(name = "quantity")
     private int quantity;
