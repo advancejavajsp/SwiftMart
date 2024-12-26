@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState,useContext  } from 'react';
 import styles from "./Card.module.css";
 import Milk from "../../asset/Milk.avif";
+import { globalvar } from "../../GlobalContext/GlobalContext";
 
-const Card = ({ product }) => {
+const Card = () => {
+  let { user } = useContext(globalvar);
+  console.log(user)
+
   const [quantity, setQuantity] = useState(0);
 
   // Increment Quantity
@@ -16,11 +20,10 @@ const Card = ({ product }) => {
       setQuantity(quantity - 1);
     }
   };
+  const productTitle = "Mother Dairy Cow Fresh Milk";
 
-  // Truncate Title if too long
-  const productTitle = product?.name || "Mother Dairy Cow Fresh Milk";
-  const truncatedTitle =
-    productTitle.length > 50 ? productTitle.slice(0, 50) + "..." : productTitle;
+
+  const truncatedTitle = productTitle.length > 50 ? productTitle.slice(0, 50) + "..." : productTitle;
 
   return (
     <div className={styles.cardContainer}>
@@ -31,13 +34,11 @@ const Card = ({ product }) => {
       />
       <div className={styles.productDetails}>
         <h3 className={styles.productTitle}>{truncatedTitle}</h3>
-        <p className={styles.productSize}>{product?.size || "500 ml"}</p>
-        <p className={styles.productPrice}>₹{product?.price || "56"}</p>
-        <div>
-        <button className={styles.updateButton}>UPDATE</button>
-        <button className={styles.deleteButton}>DELETE</button>
-
-          {/* {quantity === 0 ? (
+        <p className={styles.productSize}>500 ml</p>
+        <p className={styles.productPrice}>₹56</p>
+        <div className={styles.buttonGroup}>
+          {user?.role == "admin" ? <>   <button className={styles.updateButton}>UPDATE</button>
+            <button className={styles.deleteButton}>DELETE</button></> :         ( quantity === 0 ? (
             <button className={styles.addButton} onClick={handleIncrement}>
               ADD
             </button>
@@ -51,8 +52,9 @@ const Card = ({ product }) => {
                 +
               </button>
             </div>
-          )} */}
-          </div>
+          ))
+}
+        </div>
       </div>
     </div>
   );

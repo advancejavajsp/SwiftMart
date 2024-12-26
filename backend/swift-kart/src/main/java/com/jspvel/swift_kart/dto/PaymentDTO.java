@@ -15,8 +15,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.jspvel.swift_kart.util.PaymentMode;
 import com.jspvel.swift_kart.util.PaymentStatus;
 
-@Entity
-@Table(name = "Payments")
+
 @Data
 @Getter
 @Setter
@@ -27,26 +26,16 @@ public class PaymentDTO {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "payment_id")
     private Long paymentId;
 
-    @Column(name = "order_id")
     private Long orderId;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "payment_status")
     private PaymentStatus paymentStatus;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "payment_mode")
     private PaymentMode paymentMode;
 
-    @Column(name = "transaction_id")
     private String transactionId;
 
-    @CreationTimestamp
-    @Column(name = "payment_date")
     private LocalDateTime paymentDate;
 }
 

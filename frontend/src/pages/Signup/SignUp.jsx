@@ -23,31 +23,20 @@ const SignUp = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     if (formData.name && formData.email && formData.password && formData.phone && formData.role) {
-  
-      let response= await axios.post("http://localhost:8080/auth/signup",formData)
-      console.log(response.data)
-      
-      setFormData({
-        name: '',
-        email: '',
-        password: '',
-        phone: '',
-        image: '',
-        role: ''
-      }
-    )
-
-    ;
+      console.log(e.name);
+      let response =await axios.post("http://localhost:8080/auth/signup",formData)
+      console.log(response)
+         
     } else {
       toast.error('error');
     }
   };
 
   return (
-    <div className={style['signup']}>
+    <div className={style['signup']} onClick={(e)=>{e.stopPropagation(),setSignuPanel(false)}}>
       <fieldset>
         <legend>SignUp</legend>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(),setSignuPanel(true)}}>
           <div>
             <label>Username</label>
             <input className={style["username"]}
@@ -65,7 +54,7 @@ const SignUp = () => {
             <input
               type="email"
               name="email"
-              // value={formData.email}
+              value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter your email"
               required
@@ -77,7 +66,7 @@ const SignUp = () => {
             <input
               type="password"
               name="password"
-              // value={formData.password}
+              value={formData.password}
               onChange={handleInputChange}
               placeholder="Enter your password"
               required

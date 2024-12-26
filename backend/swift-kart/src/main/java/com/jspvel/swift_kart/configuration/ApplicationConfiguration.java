@@ -2,6 +2,7 @@ package com.jspvel.swift_kart.configuration;
 
 import java.util.List;
 
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -59,7 +60,7 @@ public class ApplicationConfiguration {
 	public OpenAPI usersMicroserviceOpenAPI() {
 
 		Server localhost = new Server();
-		localhost.setUrl("http://hostname:8080");
+		localhost.setUrl("http://localhost:8080");
 		localhost.setDescription("Development environment");
 
 		Contact contact = new Contact();
@@ -75,5 +76,7 @@ public class ApplicationConfiguration {
 
 		return new OpenAPI().info(info).servers(List.of(localhost));
 	}
+    
+    
 
 }

@@ -1,14 +1,5 @@
 package com.jspvel.swift_kart.entity;
 
-
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -16,37 +7,42 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.jspvel.swift_kart.util.PaymentMode;
 import com.jspvel.swift_kart.util.PaymentStatus;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
-@Table(name = "Payments")
-@Data
+@Table(name = "payments")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class Payment {
 
-    @Id
-    @Column(name = "payment_id")
-    private String paymentId;
+	@Id
+	@Column(name = "payment_id")
+	private String paymentId;
 
-    @Column(name = "order_id")
-    private String orderId;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "payment_status")
+	private PaymentStatus paymentStatus;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "payment_status")
-    private PaymentStatus paymentStatus;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "payment_mode")
+	private PaymentMode paymentMode;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "payment_mode")
-    private PaymentMode paymentMode;
+	@Column(name = "transaction_id")
+	private String transactionId;
 
-    @Column(name = "transaction_id")
-    private String transactionId;
+	@CreationTimestamp
+	@Column(name = "payment_date")
+	private LocalDateTime paymentDate;
 
-    @CreationTimestamp
-    @Column(name = "payment_date")
-    private LocalDateTime paymentDate;
+	@OneToOne
+	private Order order;
 }
-
-

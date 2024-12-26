@@ -7,64 +7,102 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jspvel.swift_kart.dao.ProductRepository;
+import com.jspvel.swift_kart.entity.Category;
 import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.service.ProductService;
 
 @Service
 public class ProductServiceImp implements ProductService {
 
-	@Autowired
-	private ProductRepository productRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
-	@Override
+   
+
+    
+    @Override
+    public Product findProductById(String productId) {
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+    }
+
+    
+    @Override
+    public String deleteProductById(String productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        productRepository.delete(product);
+        return "Product deleted successfully";
+    }
+
+    
+    @Override
+    public String updateProductDetails(String productId, String name, Long categoryId, double price,
+                                       int quantityAvailable, String imageUrl, String description) {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+
+        if (optionalProduct.isPresent()) {
+            Product product = optionalProduct.get();
+
+           
+            product.setName(name);
+            product.setPrice(price);
+            product.setQuantityAvailable(quantityAvailable);
+            product.setImageUrl(imageUrl);
+            product.setDescription(description);
+
+           
+            productRepository.save(product);
+
+            return "Product updated successfully";
+        } else {
+            return "Product not found";
+        }
+    }
+
 	public List<Product> getAllProducts() {
-		return productRepository.findAll();
 		
+		return null;
 	}
 
-	@Override
-	public Product getProductById(String  productId) {
+	public Product addProduct(String productId) {
 		
-		return productRepository.findById(productId).orElse(null);
-	}
-
-	@Override
-	public Product addProduct(Product product) {
-		
-		return productRepository.save(product);
-	}
-
-	@Override
-	public Product updateProduct(String productId, Product updatedProduct) {
-		Product previousProduct = productRepository.findById(productId).orElse(null);
-		
-		if(previousProduct !=null) {
-			
-			previousProduct.setName(updatedProduct.getName());
-			previousProduct.setPrice(updatedProduct.getPrice());
-			previousProduct.setDescription(updatedProduct.getDescription());
-			previousProduct.setQuantityAvailable(updatedProduct.getQuantityAvailable());
-			previousProduct.setImageUrl(updatedProduct.getImageUrl());
-		 
-			return productRepository.save(previousProduct);
-		}
 		return null;
 	}
 	
-	public boolean deleteProduct(String productId) {
-		Product product = productRepository.findById(productId).orElse(null);
+	public List<Product> getProductsByCategory(String categoryId) {
+        Category category = new Category();  
+        category.setCategoryId(categoryId);
+        
+//        return productRepository.findByCategory(categoryId);
+        return null;
+    }
+
+
+	public Product updateProduct(String productId, Product updatedProduct) {
 		
-		if(product != null) {
-			productRepository.deleteById(productId);
-			return true;
-		}
-		return false;
-		
+		return null;
 	}
 
-	
 
-	
-	
-	
+	@Override
+	public Product getProductById(String productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Product addProduct(Product product) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public boolean deleteProduct(String productId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

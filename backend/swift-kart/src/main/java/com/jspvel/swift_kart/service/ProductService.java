@@ -1,14 +1,9 @@
 package com.jspvel.swift_kart.service;
 
 import java.util.List;
-import java.util.Optional;
-
-
-import org.springframework.stereotype.Service;
 
 import com.jspvel.swift_kart.entity.Product;
 
-@Service
 public interface ProductService {
 
 		
@@ -21,4 +16,9 @@ public interface ProductService {
 		public Product updateProduct(String productId, Product updatedProduct);
 		
 		public boolean deleteProduct(String productId);
+		
+		public List<Product> getProductsByCategory(String categoryId);
+    Product findProductById(String productId);
+    String deleteProductById(String productId);
+    String updateProductDetails(String productId, String name, Long categoryId, double price, int quantityAvailable, String imageUrl, String description);
 }

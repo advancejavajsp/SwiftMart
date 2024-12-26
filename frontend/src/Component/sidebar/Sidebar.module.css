@@ -6,6 +6,7 @@
   width: 300px;
   height: 80vh;
   background-color: white;
+  /* box-shadow: 1px 0px 5px gray ; */
   color: black;
   display: flex;
   flex-direction: column;
@@ -26,7 +27,8 @@
 
 .sidebar-nav ul li {
   /* border: 1px solid blue; */
-  border: 1px solid rgba(0, 0, 0, 0.171);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.171);
+  border-left: solid transparent;
   display: flex;
   height: 94px;
   width: 300px;

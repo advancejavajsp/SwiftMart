@@ -17,19 +17,13 @@ public class UserDTO {
     
     private long id;
     
-    @NotBlank(message = "Name cannot be blank")
-    @Size(min = 4, message = "Name should be at least 4 characters long")
     private String name;
     
-    @NotBlank(message = "Email cannot be blank")
-    @Email(message = "Please provide a valid email address")
     private String email;
     
-    @Max(9999999999L)
-    @Min(6000000000L)
     private long phone;
     
-    private Role role; // ENUM (ADMIN, CUSTOMER, SELLER, MANAGER)
+    private Role role; 
     
     private String image;
 }

@@ -8,18 +8,17 @@ import jakarta.transaction.Transactional;
 
 @Component
 public class OrderCustomIdGenerator {
-private static final String PREFIX = "ORD";
-	
-    @PersistenceContext
+	private static final String PREFIX = "ORD";
+
+	@PersistenceContext
 
 	private EntityManager entityManager;
-	
-    @Transactional
-    public String generateCategoryId() {
-    	Long nextVal = ((Number) entityManager
-                .createNativeQuery("SELECT nextval('ord_sequence')")
-                .getSingleResult()).longValue();
 
-        return PREFIX + String.format("%04d", nextVal);
-    }
+	@Transactional
+	public String generateCategoryId() {
+		Long nextVal = ((Number) entityManager.createNativeQuery("SELECT nextval('ord_sequence')").getSingleResult())
+				.longValue();
+
+		return PREFIX + String.format("%04d", nextVal);
+	}
 }

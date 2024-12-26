@@ -21,13 +21,10 @@ public class OrderDTO {
 
     private String orderId;
 
-    @NotNull(message = "User ID cannot be null")
     private Long userId;
 
-    @NotNull(message = "Order status cannot be null")
     private String orderStatus;
 
-    @Positive(message = "Total amount must be positive")
     private Double totalAmount;
 
     private LocalDateTime createdAt;

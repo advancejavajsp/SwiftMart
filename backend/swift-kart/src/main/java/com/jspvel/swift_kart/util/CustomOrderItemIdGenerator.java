@@ -6,7 +6,7 @@ import jakarta.transaction.Transactional;
 
 public class CustomOrderItemIdGenerator {
 
-	private static final String PREFIX ="ITE";
+	private static final String PREFIX ="ORDITM";
    	
    	@PersistenceContext
    	private EntityManager entityManager;

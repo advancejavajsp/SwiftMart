@@ -9,7 +9,7 @@ import jakarta.transaction.Transactional;
 @Component
 public class DeliveryCustomIdGenerator {
 
-private static final String PREFIX = "DELI";
+private static final String PREFIX = "DEL";
 	
     @PersistenceContext
 
