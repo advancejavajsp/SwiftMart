@@ -1,13 +1,15 @@
 package com.jspvel.swift_kart.service.imp;
 
-import com.jspvel.swift_kart.dao.ProductRepository;
-import com.jspvel.swift_kart.entity.Product;
-import com.jspvel.swift_kart.service.ProductService;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import com.jspvel.swift_kart.dao.ProductRepository;
+import com.jspvel.swift_kart.entity.Category;
+import com.jspvel.swift_kart.entity.Product;
+import com.jspvel.swift_kart.service.ProductService;
 
 @Service
 public class ProductServiceImp implements ProductService {
@@ -68,10 +70,38 @@ public class ProductServiceImp implements ProductService {
 		
 		return null;
 	}
+	
+	public List<Product> getProductsByCategory(String categoryId) {
+        Category category = new Category();  
+        category.setCategoryId(categoryId);
+        
+        return productRepository.findByCategory(categoryId);
+    }
 
 
 	public Product updateProduct(String productId, Product updatedProduct) {
 		
 		return null;
+	}
+
+
+	@Override
+	public Product getProductById(String productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Product addProduct(Product product) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public boolean deleteProduct(String productId) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

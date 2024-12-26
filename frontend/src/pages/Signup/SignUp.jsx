@@ -62,7 +62,7 @@ const SignUp = () => {
             <input
               type="email"
               name="email"
-              // value={formData.email}
+              value={formData.email}
               onChange={handleInputChange}
               placeholder="Enter your email"
               required
@@ -74,7 +74,7 @@ const SignUp = () => {
             <input
               type="password"
               name="password"
-              // value={formData.password}
+              value={formData.password}
               onChange={handleInputChange}
               placeholder="Enter your password"
               required
@@ -97,8 +97,8 @@ const SignUp = () => {
             <label>Image</label>
             <input
               type="file"
-              name="photo"
-              value={formData.photo}
+              name="image"
+              value={formData.image}
               onChange={handleInputChange}
               placeholder="Enter your address"
              

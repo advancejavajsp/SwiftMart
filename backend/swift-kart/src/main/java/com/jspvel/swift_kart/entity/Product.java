@@ -11,6 +11,7 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "products")
+
 @Getter
 @Setter
 public class Product {

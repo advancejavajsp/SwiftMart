@@ -144,5 +144,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleUserNotFoundException(UserNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
     }
+    
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<String> OrderNotFoundException(OrderNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
    
 }
