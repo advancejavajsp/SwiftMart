@@ -10,19 +10,16 @@ import jakarta.transaction.Transactional;
 public class CategoryCustomIdGenerator {
 
 	private static final String PREFIX = "CATEG";
-	
-    @PersistenceContext
 
+	@PersistenceContext
 	private EntityManager entityManager;
-	
-    @Transactional
-    public String generateCategoryId() {
-    	Long nextVal = ((Number) entityManager
-                .createNativeQuery("SELECT nextval('categ_sequence')")
-                .getSingleResult()).longValue();
 
-        return PREFIX + String.format("%04d", nextVal);
-    }
-    
-			
+	@Transactional
+	public String generateCategoryId() {
+		Long nextVal = ((Number) entityManager.createNativeQuery("SELECT nextval('categ_sequence')").getSingleResult())
+				.longValue();
+
+		return PREFIX + String.format("%04d", nextVal);
+	}
+
 }

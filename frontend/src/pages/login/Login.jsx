@@ -1,30 +1,19 @@
-
-import React, { useState, useEffect } from 'react';
-import style from '../Login/Login.module.css';  // Ensure you have the correct path for the CSS
-import axios from 'axios';
-import toast from 'react-hot-toast';
-
+import React, { useState, useEffect, useContext } from 'react';
+import style from '../Login/Login.module.css';  
+import { globalvar } from '../../GlobalContext/GlobalContext';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
+  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel}=useContext(globalvar)
   const [credentials, setCredentials] = useState({
-    name: '',
+    email: '',
     password: ''
   });
 
   const [rememberMe, setRememberMe] = useState(false);
 
-  useEffect(() => {
-    // Load saved credentials from sessionStorage if available
-    const storedUserData = JSON.parse(sessionStorage.getItem('userData'));
-    if (storedUserData) {
-      setCredentials({
-        name: storedUserData.name || '',
-        password: storedUserData.password || ''
-      });
-    }
-  }, []);
 
-  // Handle input change for name and password
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCredentials(prevState => ({
@@ -33,16 +22,11 @@ const Login = () => {
     }));
   };
 
-  // Handle the 'Remember Me' checkbox change
-  const handleCheckboxChange = (e) => {
-    setRememberMe(e.target.checked);
-  };
 
-  // Handle form submission
-  const handleSubmit = async(e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    
 
+<<<<<<< HEAD
     
     if (credentials.name && credentials.password) {
 
@@ -55,26 +39,30 @@ const Login = () => {
       toast.error('Please enter both name and password');
     }
   };
+=======
+  }
+>>>>>>> f1e02607d3bfcdd0205e5c2a5e9276424ca886b6
 
   return (
-    <div className={style.login}>
+    <div className={style['login']} onClick={()=>{}}>
       <fieldset>
         <legend>Login</legend>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>name</label>
+
+          <div className={style['username']}>
+            <label>Email</label>
             <input
-              type="text"
-              name="name"
-              value={credentials.name}
+              type="email"
+              name="email"
+              value={credentials.email}
               onChange={handleInputChange}
-              placeholder="Enter your name"
+              placeholder="Enter your email"
               required
             />
 
           </div>
 
-          <div>
+          <div className={style['password']}>
             <label>Password</label>
             <input
               type="password"
@@ -86,7 +74,7 @@ const Login = () => {
             />
           </div>
 
-          <div>
+          <div className={style['checkbox']}>
             <label>
               <input
                 type="checkbox"
@@ -99,8 +87,9 @@ const Login = () => {
 
           <button type="submit">Login</button>
 
-          <div className='register-link'>
-            <p>Don't have an account? <a href="#">SignUp</a></p>
+          <div className={style['register-link']}>
+          <p onClick={()=>{setLoginPanel( !loginPanel),setSignuPanel(!signupPanel)}}> Don't have an account? SignUp </p>
+
           </div>
         </form>
       </fieldset>

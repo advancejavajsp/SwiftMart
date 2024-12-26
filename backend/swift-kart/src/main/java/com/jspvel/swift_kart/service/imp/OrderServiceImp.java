@@ -33,26 +33,11 @@ public class OrderServiceImp implements OrderService {
 	    @Autowired
 	    private PaymentService paymentService;  // Service to fetch payment details
 
-	    public Order placeOrder(Order order) {
-	        
-	        order.setCreatedAt(LocalDateTime.now());
-
-	        
-	        if (order.getPayment() != null) {
-	            Payment payment = paymentService.getPaymentById(order.getPayment().getPaymentId());
-	            order.setPayment(payment);
-	        }
-
-	        
-	        if (order.getOrderItem() != null && !order.getOrderItem().isEmpty()) {
-	            List<OrderItem> orderItems = orderItemService.getOrderItemsById(order.getOrderItem());
-	            order.setOrderItem(orderItems);
-	        }
-
-	        
-	        Order savedOrder = orderRepository.save(order);
-
-	        return savedOrder;  
+	@Transactional
+	public Order placeOrder(Order orderRequest) {
+       
+       
+	        return null;  
 	    }
 	    
 	    public Order getOrderById(String orderId) {
