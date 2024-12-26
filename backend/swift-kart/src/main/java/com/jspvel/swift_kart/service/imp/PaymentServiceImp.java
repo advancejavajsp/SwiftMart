@@ -36,7 +36,6 @@ public class PaymentServiceImp implements PaymentService {
 		
 		if(previousPayment !=null) {
 			
-			previousPayment.setOrderId(updatedPayment.getOrderId());
 			previousPayment.setPaymentDate(updatedPayment.getPaymentDate());
 			previousPayment.setPaymentId(updatedPayment.getPaymentId());
 			previousPayment.setPaymentMode(updatedPayment.getPaymentMode());

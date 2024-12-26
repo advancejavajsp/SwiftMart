@@ -21,16 +21,12 @@ public class ProductDTO {
 
     private Long productId;
 
-    @NotBlank(message = "Product name cannot be blank")
     private String name;
 
-    @NotNull(message = "Category ID cannot be null")
     private Long categoryId;
 
-    @Positive(message = "Price must be a positive value")
     private double price;
 
-    @Min(value = 0, message = "Quantity must be zero or greater")
     private int quantityAvailable;
 
     private String imageUrl;

@@ -1,9 +1,11 @@
 package com.jspvel.swift_kart.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.jspvel.swift_kart.entity.Order;
 import com.jspvel.swift_kart.entity.Payment;
 
 @Service
@@ -18,4 +20,6 @@ public interface PaymentService {
 	public Payment updatePayment(String paymentId, Payment updatedPayment);
 	
 	public boolean deletePayment(String paymentId);
+
+	public Optional<Order> findById(String orderId);
 }

@@ -19,15 +19,11 @@ public class OrderItemDTO {
 
     private String orderItemId;
 
-    @NotNull(message = "Order ID cannot be null")
     private Long orderId;
 
-    @NotNull(message = "Product ID cannot be null")
     private Long productId;
 
-    @Positive(message = "Quantity must be positive")
     private int quantity;
 
-    @Positive(message = "Price must be positive")
     private double price;
 }

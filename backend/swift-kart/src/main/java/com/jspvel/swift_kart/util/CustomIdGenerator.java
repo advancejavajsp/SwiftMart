@@ -9,7 +9,7 @@ import jakarta.transaction.Transactional;
 @Component
 public class CustomIdGenerator  {
 
-	 private static final String PREFIX = "User";
+	 private static final String PREFIX = "USER";
 
 	    @PersistenceContext
 	    private EntityManager entityManager;

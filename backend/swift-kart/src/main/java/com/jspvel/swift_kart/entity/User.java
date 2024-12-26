@@ -3,12 +3,13 @@ package com.jspvel.swift_kart.entity;
 import java.util.Collection;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.jspvel.swift_kart.util.Role;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -21,23 +22,19 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-@Table(name = "userss")
+
+@Table(name = "users_table")
 @Entity
-@Data
 @Getter
 @Setter
 @Validated
-
 public class User implements UserDetails {
-	
+
 	@Id
 	private String id;
-
 	@Size(min = 4, message = "name should be more than 4 character")
 	private String name;
 	@Column(unique = true, nullable = false)
@@ -48,8 +45,8 @@ public class User implements UserDetails {
 	@Min(6000000000l)
 	private long phone;
 
-//    private String otp;
-   
+	private String otp;
+
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
@@ -61,11 +58,10 @@ public class User implements UserDetails {
 
 //    private boolean verified;
 
-	
-	@OneToMany
+	@OneToMany(mappedBy = "customer_id")
 	private List<Order> order;
 
-	@OneToMany
+	@OneToMany(mappedBy = "deliveryAgentId")
 	private List<Delivery> delivery;
 
 	@Override
