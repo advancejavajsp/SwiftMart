@@ -26,22 +26,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-<<<<<<< HEAD
-    
-    if (credentials.name && credentials.password) {
-
-
-        let respone = await axios.post(`http://localhost:8080/auth/login?email=${credentials.name}&password=${credentials.password}`)
-      localStorage.setItem('token',respone.data.token)
-        console.log(respone.data)
-        toast.success('Login successful!');
-    } else {
-      toast.error('Please enter both name and password');
-    }
-  };
-=======
   }
->>>>>>> f1e02607d3bfcdd0205e5c2a5e9276424ca886b6
 
   return (
     <div className={style['login']} onClick={()=>{}}>

@@ -7,19 +7,12 @@ import toast from 'react-hot-toast';
 
 const SignUp = () => {
   let { signupPanel, setSignuPanel } = useContext(globalvar);
-<<<<<<< HEAD
-=======
   // let {photo,setImage}=useState();
->>>>>>> f1e02607d3bfcdd0205e5c2a5e9276424ca886b6
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-<<<<<<< HEAD
-    image: '',
-=======
  
->>>>>>> f1e02607d3bfcdd0205e5c2a5e9276424ca886b6
     phone: '',
     role: ''
   });
@@ -38,23 +31,7 @@ const SignUp = () => {
       console.log(e.name);
       let response =await axios.post("http://localhost:8080/auth/signup",formData)
       console.log(response.data)
-<<<<<<< HEAD
-      
-+
-      setFormData({
-        // name: '',
-        // email: '',
-        // password: '',
-        // phone: '',
-        // image: '',
-        // role: ''
-      }
-    )
-
-    ;
-=======
          
->>>>>>> f1e02607d3bfcdd0205e5c2a5e9276424ca886b6
     } else {
       toast.error('error');
     }
