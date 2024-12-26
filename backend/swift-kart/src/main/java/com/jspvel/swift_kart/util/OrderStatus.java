@@ -1,8 +1,5 @@
 package com.jspvel.swift_kart.util;
 
 public enum OrderStatus {
-	PENDING,
-    SHIPPED,
-    DELIVERED,
-    CANCELLED
+	PENDING, SHIPPED, DELIVERED, CANCELLED
 }

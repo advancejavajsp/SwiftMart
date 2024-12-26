@@ -45,7 +45,6 @@ public class ProductServiceImp implements ProductService {
 
            
             product.setName(name);
-            product.setCategoryId(categoryId);
             product.setPrice(price);
             product.setQuantityAvailable(quantityAvailable);
             product.setImageUrl(imageUrl);

@@ -34,7 +34,7 @@ public class OrderServiceImp implements OrderService {
 	@Transactional
 	public Order placeOrder(Order orderRequest) {
        
-        Payment payment = paymentRepository.findById(orderRequest.getUserId())
+        Payment payment = paymentRepository.findById(orderRequest.getOrderId())
                 .orElseThrow(() -> new RuntimeException("Payment not found"));
 
        
@@ -42,11 +42,11 @@ public class OrderServiceImp implements OrderService {
 
        
         Order order = new Order();
-        order.setUserId(orderRequest.getUserId());
+        order.setOrderId(orderRequest.getOrderId());
         order.setOrderStatus(orderRequest.getOrderStatus());
         order.setTotalAmount(orderRequest.getTotalAmount());
-        order.setPayment(payment);
-        order.setOrderItem(orderItems);
+//        order.setPayment(payment);
+//        order.setOrderItem(orderItems);
         
        
         Order savedOrder = orderRepository.save(order);

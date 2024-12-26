@@ -14,14 +14,13 @@ public class OrderController {
 
 	@Autowired
 	private OrderServiceImp orderServiceImp;
-	
-	 @PostMapping
-	    public ResponseEntity<Order> placeOrder(@RequestBody Order orderRequest) {
-	        
-	        Order savedOrder = orderServiceImp.placeOrder(orderRequest);
 
-	       
-	        return ResponseEntity.ok(savedOrder);
-	    }
-	
+	@PostMapping
+	public ResponseEntity<Order> placeOrder(@RequestBody Order orderRequest) {
+
+		Order savedOrder = orderServiceImp.placeOrder(orderRequest);
+
+		return ResponseEntity.ok(savedOrder);
+	}
+
 }

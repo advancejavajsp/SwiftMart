@@ -6,7 +6,7 @@ import jakarta.transaction.Transactional;
 
 public class CustomProductIdGenrator {
 	
-   	private static final String PREFIX ="PRO";
+   	private static final String PREFIX ="PROD";
    	
    	@PersistenceContext
    	private EntityManager entityManager;

@@ -1,32 +1,35 @@
 package com.jspvel.swift_kart.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Table(name = "category")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-
+@Table(name = "categorys")
+@Getter
+@Setter
 public class Category {
 
-    @Id
-    @Column(name = "category_id")
-    
-    private String categoryId;
+	@Id
+	@Column(name = "category_id")
+	private String categoryId;
 
-    @Column(name = "name")
-    private String name;
+	@Column(name = "name")
+	private String name;
 
-    @Column(name = "description")
-    private String description;
-    
+	@Column(name = "description")
+	private String description;
+	
+	@Column(name="category_image")
+	private String image;
+	
+	@OneToMany(mappedBy = "category")
+	private List<Product> products;
+
 }
