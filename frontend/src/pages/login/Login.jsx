@@ -29,7 +29,7 @@ const Login = () => {
   }
 
   return (
-    <div className={style['login']} onClick={()=>{}}>
+    <div className={style['login']} onClick={(e)=>{e.stopPropagation(), setLoginPanel(false)}}>
       <fieldset>
         <legend>Login</legend>
         <form onSubmit={handleSubmit}>
@@ -64,7 +64,7 @@ const Login = () => {
               <input
                 type="checkbox"
                 checked={rememberMe}
-                onChange={handleCheckboxChange}
+                
               />
               Remember me
             </label>

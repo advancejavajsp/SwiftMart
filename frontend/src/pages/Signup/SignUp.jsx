@@ -40,7 +40,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className={style['signup']}>
+    <div className={style['signup']} onClick={(e)=>{e.stopPropagation(),setSignuPanel(false)}}>
       <fieldset>
         <legend>SignUp</legend>
         <form onSubmit={handleSubmit}>
@@ -49,7 +49,6 @@ const SignUp = () => {
             <input
               className={style['username']}
               type="text"
-
               name='name'
               value={formData.name}
               onChange={handleInputChange}

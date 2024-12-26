@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./MyCart.module.css";
 import milkImage from "../../asset/Milk.avif"; 
+import { globalvar } from "../../GlobalContext/GlobalContext";
+import { useNavigate } from "react-router-dom";
 
 const MyCart = () => {
+  let {mycartPanel,setMycartPanel}=useContext(globalvar);
   const [quantity, setQuantity] = useState(1);
+ 
 
   const increaseQuantity = () => setQuantity(quantity + 1);
   const decreaseQuantity = () => quantity > 1 && setQuantity(quantity - 1);
@@ -13,7 +17,14 @@ const MyCart = () => {
   const handlingCharge = 4;
   const total = itemPrice * quantity + deliveryCharge + handlingCharge;
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/Payment'); 
+  };
+
   return (
+    <div className={styles["container"]} onClick={(e)=>{e.stopPropagation(), setMycartPanel(false)}}>
     <div className={styles.cartContainer}>
       <div className={styles.header}>
         <h3>My Cart</h3>
@@ -73,8 +84,9 @@ const MyCart = () => {
 
       <div className={styles.footer}>
         <div className={styles.totalPrice}>₹{total} TOTAL</div>
-        <button className={styles.loginButton}>Login to Proceed ➤</button>
+       <button className={styles.loginButton} onClick={handleClick}>Proceed to pay ➤</button>
       </div>
+    </div>
     </div>
   );
 };
