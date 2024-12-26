@@ -3,7 +3,7 @@ import styles from "./Card.module.css";
 import Milk from "../../asset/Milk.avif";
 import { globalvar } from "../../GlobalContext/GlobalContext";
 
-const Card = () => {
+const Card = ({product}) => {
   let { user } = useContext(globalvar);
   console.log(user)
 
