@@ -1,6 +1,8 @@
 package com.jspvel.swift_kart.service.imp;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,11 @@ import com.jspvel.swift_kart.dao.PaymentRepository;
 import com.jspvel.swift_kart.entity.Order;
 import com.jspvel.swift_kart.entity.OrderItem;
 import com.jspvel.swift_kart.entity.Payment;
+import com.jspvel.swift_kart.exception.OrderNotFoundException;
+import com.jspvel.swift_kart.service.OrderItemService;
 import com.jspvel.swift_kart.service.OrderService;
+import com.jspvel.swift_kart.service.PaymentService;
+import com.jspvel.swift_kart.util.OrderStatus;
 
 import jakarta.transaction.Transactional;
 
@@ -23,36 +29,58 @@ public class OrderServiceImp implements OrderService {
 	    private OrderRepository orderRepository;
 
 	    @Autowired
-	    private PaymentRepository paymentRepository;
-
+	    private OrderItemService orderItemService;  // Service to fetch order items
 	    @Autowired
-	    private OrderItemRepository orderItemRepository;
+	    private PaymentService paymentService;  // Service to fetch payment details
 
-	    @Autowired
-	    private DeliveryRepository deliveryRepository;
+	    public Order placeOrder(Order order) {
+	        
+	        order.setCreatedAt(LocalDateTime.now());
 
-	@Transactional
-	public Order placeOrder(Order orderRequest) {
-       
-        Payment payment = paymentRepository.findById(orderRequest.getUserId())
-                .orElseThrow(() -> new RuntimeException("Payment not found"));
+	        
+	        if (order.getPayment() != null) {
+	            Payment payment = paymentService.getPaymentById(order.getPayment().getPaymentId());
+	            order.setPayment(payment);
+	        }
 
-       
-        List<OrderItem> orderItems = orderItemRepository.findAllById(null);
+	        
+	        if (order.getOrderItem() != null && !order.getOrderItem().isEmpty()) {
+	            List<OrderItem> orderItems = orderItemService.getOrderItemsById(order.getOrderItem());
+	            order.setOrderItem(orderItems);
+	        }
 
-       
-        Order order = new Order();
-        order.setUserId(orderRequest.getUserId());
-        order.setOrderStatus(orderRequest.getOrderStatus());
-        order.setTotalAmount(orderRequest.getTotalAmount());
-        order.setPayment(payment);
-        order.setOrderItem(orderItems);
-        
-       
-        Order savedOrder = orderRepository.save(order);
+	        
+	        Order savedOrder = orderRepository.save(order);
 
-        
-        return savedOrder;
-    }
+	        return savedOrder;  
+	    }
+	    
+	    public Order getOrderById(String orderId) {
+	        Optional<Order> order = orderRepository.findById(orderId);
+	        if (order.isPresent()) {
+	            return order.get();  
+	        } else {
+	            throw new OrderNotFoundException("Order not found with id " + orderId);
+	        }
+	    }
+	    
+	    public List<Order> getOrdersByUserId(Long userId) {
+	        return orderRepository.findByUserId(userId);
+	    }
+	    
+	    public Order cancelOrder(String orderId) {
+	        Order order = orderRepository.findById(orderId).orElseThrow(() -> new OrderNotFoundException("Order not found with id " + orderId));
+
+	
+	        if (order.getOrderStatus() == OrderStatus.DELIVERED) {
+	            throw new IllegalStateException("Order has already been delivered and cannot be cancelled");
+	        }
+
+	        
+	        order.setOrderStatus(OrderStatus.CANCELLED);
+	        
+	        
+	        return orderRepository.save(order);
+	    }
 
 }

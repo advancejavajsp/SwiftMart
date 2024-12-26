@@ -1,12 +1,14 @@
 package com.jspvel.swift_kart.service.imp;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jspvel.swift_kart.dao.ProductRepository;
+import com.jspvel.swift_kart.entity.Category;
 import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.service.ProductService;
 
@@ -61,6 +63,13 @@ public class ProductServiceImp implements ProductService {
 		return false;
 		
 	}
+	
+	public List<Product> getProductsByCategory(String categoryId) {
+        Category category = new Category();  
+        category.setCategoryId(categoryId);
+        
+        return productRepository.findByCategory(categoryId);
+    }
 
 	
 

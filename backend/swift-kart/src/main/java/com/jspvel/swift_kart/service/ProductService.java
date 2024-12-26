@@ -21,4 +21,6 @@ public interface ProductService {
 		public Product updateProduct(String productId, Product updatedProduct);
 		
 		public boolean deleteProduct(String productId);
+		
+		public List<Product> getProductsByCategory(String categoryId);
 }

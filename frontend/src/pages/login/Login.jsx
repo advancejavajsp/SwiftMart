@@ -43,7 +43,7 @@ const Login = () => {
     e.preventDefault();
     
 
-    // Check if both name and password are filled out
+    
     if (credentials.name && credentials.password) {
 
 
