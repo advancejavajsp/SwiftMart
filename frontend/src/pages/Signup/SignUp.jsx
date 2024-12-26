@@ -1,32 +1,27 @@
 import React, { useContext, useState } from 'react';
 import style from '../Signup/SignUp.module.css';
-import { globalvar } from '../../GlobalContext/GlobalContext';
-import axios from 'axios';
-import toast from 'react-hot-toast';
-
 
 const SignUp = () => {
-  let { signupPanel, setSignuPanel } = useContext(globalvar);
-  // let {photo,setImage}=useState();
+  let {signupPanel,setSignuPanel}=useContext(globalvar)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
- 
+    image: '',
     phone: '',
     role: ''
   });
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
+    setFormData(prevState => ({
       ...prevState,
-      [name]: value, 
+      [name]: value
     }));
   };
 
   const handleSubmit = async(e) => {
     e.preventDefault();
-    console.log(formData)
     if (formData.name && formData.email && formData.password && formData.phone && formData.role) {
       console.log(e.name);
       let response =await axios.post("http://localhost:8080/auth/signup",formData)
@@ -35,8 +30,6 @@ const SignUp = () => {
     } else {
       toast.error('error');
     }
-
-
   };
 
   return (
@@ -46,8 +39,7 @@ const SignUp = () => {
         <form onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(),setSignuPanel(true)}}>
           <div>
             <label>Username</label>
-            <input
-              className={style['username']}
+            <input className={style["username"]}
               type="text"
               name='name'
               value={formData.name}
@@ -108,8 +100,7 @@ const SignUp = () => {
           <div className='role-dropdown'>
             <label>Role</label>
             <select className={style["role"]}
-              value={formData.role}
-
+              // value={formData.role}
               onChange={handleInputChange}
               required
               name='role'
@@ -120,10 +111,9 @@ const SignUp = () => {
             </select>
           </div>
 
-        
-        <button type="submit" className={style["signupButton"]}>Sign Up</button>
-     
-
+        <div className={style['signButton']}>
+        <button type="submit" >Sign Up</button>
+        </div>
         </form>
       </fieldset>
     </div>

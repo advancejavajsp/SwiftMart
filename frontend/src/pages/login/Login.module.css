@@ -11,11 +11,10 @@
 
 .login fieldset {
   border: 1px solid #ccc;
-  padding: 20px 30px;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+  width: 300px;
   background-color: white;
 }
 
@@ -23,30 +22,31 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #333;
-  margin-bottom: 20px;
-  text-align: center;
+  padding: 0 10px;
 }
 
 .login form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
+
 .login .username label,
-.login .password label {
+.login .password label,
+.login .checkbox label {
   font-size: 1rem;
   color: #333;
   margin-bottom: 5px;
 }
 
 .login .username input,
-.login .password input {
+.login .password input,
+.login .checkbox input{
   padding: 10px;
   font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  width: 100%;
   outline: none;
 }
 
@@ -76,7 +76,6 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
  button:hover {
   background-color: green;
@@ -84,9 +83,6 @@
 
 .register-link {
   text-align: center;
-  font-size: 0.9rem;
-  margin-top: 10px;
-  cursor: pointer;
 }
 
 .register-link p {
@@ -95,6 +91,10 @@
   margin: 0;
 }
 
-.register-link p:hover {
+.register-link a:hover {
   text-decoration: underline;
 }
+
+.login input[type="checkbox"] {
+  margin-right: 8px;
+} 

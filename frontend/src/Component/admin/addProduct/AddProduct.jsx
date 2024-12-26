@@ -1,25 +1,23 @@
 import React, { useState } from 'react'
 import style from './addProduct.module.css'
-import axios from 'axios'
 
 const AddProduct = () => {
 
 
   let {addProduct, setAddProduct} =  useState({
+    productId: "",
     name: "",
-    categoryId: "",
+    category: "",
     price: "",
-    quantityAvailable: "",
+    quantity: "",
     imageUrl:"",
     description: "",
+    
+
 
    })
 
-   let handleData = async(e)=>{
-e.preventDefault();
-    let response = await axios.post("http://localhost:8080/products",addProduct)
-    console.log(response.data)
-
+   let handleData = (e)=>{
     setAddProduct({...addProduct, [e.target.name]: e.target.value})
    }
   return (
@@ -28,20 +26,20 @@ e.preventDefault();
         <div className={style["addProduct1"]}>
         <form action="">
         <h1>Add Product</h1>
-          {/* <div className={style["productDetails"]}>
+          <div className={style["productDetails"]}>
             <label htmlFor="">Id</label>
             <input type="text" name='productId' placeholder='ProductId'  />
-          </div> */}
+          </div>
           <div className={style["productDetails"]}>
             <label htmlFor="">Name</label>
             <input type="text" placeholder='Enter Name' name='name' onChange={handleData} />
           </div>
           <div className={style["productDetails"]}>
           <label for="myDropdown">Choose an option:</label>
-            <select id="myDropdown" name="categoryId" onChange={handleData} >
-            <option value="option1">categoryId 1</option>
-            <option value="option2">categoryId 2</option>
-            <option value="option3" >categoryId 3</option> 
+            <select id="myDropdown" name="category" onChange={handleData} >
+            <option value="option1">Category 1</option>
+            <option value="option2">Category 2</option>
+            <option value="option3" selected>Category 3</option> 
             </select>
               
             
@@ -51,8 +49,8 @@ e.preventDefault();
             <input type="text" placeholder='Enter Price' name='price' onChange={handleData} />
           </div>
           <div className={style["productDetails"]}>
-            <label htmlFor="">quantityAvailable</label>
-            <input type="text" placeholder='Enter quantityAvailable' name='quantityAvailable' onChange={handleData} />
+            <label htmlFor="">Quantity</label>
+            <input type="text" placeholder='Enter Quantity' name='quantity' onChange={handleData} />
           </div>
           <div className={style["productDetails"]}>
             <label htmlFor="">Enter Image url</label>

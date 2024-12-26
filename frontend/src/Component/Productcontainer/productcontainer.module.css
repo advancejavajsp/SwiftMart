@@ -5,33 +5,22 @@
     width: 65%;
   } */
 
-  .section .head {
+  .section h4 {
     font-size: 18px;
-    width: 300px !important;
-
-  }
-  .heading{
-    display: flex;
-    padding: 15px 20px;
-    width: 100% !important;
-    
-    justify-content: space-between !important;
-  }
-  .section .cards{
     width: 100%;
+    padding: 10px;
+    text-align: center;
   }
-  .section {
-    width: 100%;
+  
+  /* section {
     display: flex;
     align-items: center; 
-    flex-wrap: wrap;
     justify-content: space-between; 
-  }
+  } */
   
   .dropdown {
     display: flex;
-    min-width:300px;
-    width: 300px;
+    width:500%;
     justify-content: space-around;
   }
   .dropdown label{

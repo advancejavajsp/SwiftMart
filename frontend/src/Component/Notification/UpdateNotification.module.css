@@ -1,0 +1,116 @@
+/* Modal Container */
+.notificationPannel{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+.notification {
+    width: 400px;
+    background-color:#fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    
+  }
+  
+  /* Header */
+  .notificationHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .notificationTitle {
+    /* margin: 0; */
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .notificationClose {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .notificationClose:hover {
+    transform: scale(1.2);
+  }
+  
+  /* Body */
+  .notificationBody {
+    padding: 15px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Footer */
+  .notificationFooter {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+  }
+  
+  .notificationButton {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .notificationButton:hover {
+    background-color: #1a571c;
+  }
+  
+  /* Cancel Button */
+  .cancelButton {
+    background-color: #e63946;
+  }
+  
+  .cancelButton:hover {
+    background-color: red;
+  }
+  
+  /* Fade-In Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -30%);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .notification {
+      width: 90%;
+    }
+  
+    .notificationTitle {
+      font-size: 16px;
+    }
+  
+    .notificationButton {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+  }
