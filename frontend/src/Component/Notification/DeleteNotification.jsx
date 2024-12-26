@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './DeleteNotification.module.css';
+import { globalvar } from '../../GlobalContext/GlobalContext';
 const DeleteNotification = () => {
-    
-    const handleClose = () => {
+     let {setDeleteProductPanel}=useContext(globalvar)
+    const handleClose = (e) => {
+      e.stopPropagation(), setDeleteProductPanel(false)
     };
       
     const handleEdit = () => {
           // Logic for edit action (if any)
     };
       
-    const handleCancel = () => {
-          // Logic for cancel action (if any)
-    };
+ 
       
 
 
   return (
-    <section className={styles.notificationPannel}>
-    <div className={styles.notification}>
+    <section className={styles.notificationPannel} onClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(false)}}>
+    <div className={styles.notification} onClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(true)}}>
       {/* Header */}
       <div className={styles.notificationHeader}>
         <h3 className={styles.notificationTitle}>Delete Card</h3>
@@ -41,7 +41,7 @@ const DeleteNotification = () => {
         </button>
         <button
           className={`${styles.notificationButton} ${styles.cancelButton}`}
-          onClick={handleCancel}
+          onClick={handleClose}
         >
           Cancel
         </button>

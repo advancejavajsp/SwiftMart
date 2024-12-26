@@ -1,23 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './UpdateNotification.module.css';
+import { globalvar } from '../../GlobalContext/GlobalContext';
+import { useNavigate } from 'react-router-dom';
 const UpdateNotification = () => {
-    
-    const handleClose = () => {
+      let {setUpdateProductPanel}=useContext(globalvar);
+      let navigate=useNavigate()
+    const handleClose = (e) => {
+      e.stopPropagation(),
+      setUpdateProductPanel(false)
     };
       
-    const handleEdit = () => {
-          // Logic for edit action (if any)
-    };
-      
-    const handleCancel = () => {
-          // Logic for cancel action (if any)
+    const handleEdit = (product) => {
+      setUpdateProductPanel(false)
+      navigate("/updateProduct", {state:product})
     };
       
 
+      
 
   return (
-    <section className={styles.notificationPannel}>
-    <div className={styles.notification}>
+    <section className={styles.notificationPannel} onClick={(e)=>{e.stopPropagation(), setUpdateProductPanel(false)}}>
+    <div className={styles.notification} onClick={(e)=>{e.stopPropagation(), setUpdateProductPanel(true)}}>
       {/* Header */}
       <div className={styles.notificationHeader}>
         <h3 className={styles.notificationTitle}>Update Card</h3>
@@ -35,13 +38,13 @@ const UpdateNotification = () => {
       <div className={styles.notificationFooter}>
         <button
           className={styles.notificationButton}
-          onClick={handleEdit}
+          onClick={()=>{handleEdit()}}
         >
         Update
         </button>
         <button
           className={`${styles.notificationButton} ${styles.cancelButton}`}
-          onClick={handleCancel}
+          onClick={handleClose}
         >
           Cancel
         </button>

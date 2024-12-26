@@ -142,10 +142,7 @@ export const globalRoute = createBrowserRouter([
             path: "/homePage/addCategory",
             element: <AddCategory />
           },
-          {
-            path: "/homePage/updateProduct",
-            element: <UpdateProduct />
-          },
+
           {
             path: "/homePage/aboutnav",
             element: <AboutNav />
@@ -160,12 +157,8 @@ export const globalRoute = createBrowserRouter([
     ],
   },
   {
-    path: "/updatenotification",
-    element: <UpdateNotification/>
-  },
-  {
-    path: "/deletenotification",
-    element: <DeleteNotification/>
+    path: "/updateProduct",
+    element: <UpdateProduct />
   },
   {
     path: "*",
