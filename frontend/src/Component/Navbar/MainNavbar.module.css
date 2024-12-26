@@ -3,7 +3,7 @@
     border: 1px solid rgba(0, 0, 0, 0.151);
     display: flex;
     height: 14vh;
-    /* width: 100vw; */
+    width: 100vw;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
