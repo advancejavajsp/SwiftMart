@@ -2,6 +2,8 @@ package com.jspvel.swift_kart.controller;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -38,21 +40,21 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
     
-<<<<<<< HEAD
+
 //    @GetMapping("/user/{userId}")
 //    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable Long userId) {
 ////        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
 ////        return ResponseEntity.ok(orders);
 //    	return null;
 //    }
-=======
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable Long userId) {
 //        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
 //        return ResponseEntity.ok(orders);
         return null;
     }
->>>>>>> 36651367c7167e54be882a10476ef5284413adfb
+
     
     @DeleteMapping("/orders/{orderId}")
     public ResponseEntity<Order> cancelOrder(@PathVariable String orderId) {

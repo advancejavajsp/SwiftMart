@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 package com.jspvel.swift_kart.dao;
 
 import java.util.List;

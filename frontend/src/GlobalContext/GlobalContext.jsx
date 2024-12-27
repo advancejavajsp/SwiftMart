@@ -32,35 +32,7 @@ const GlobalContext = ({ children }) => {
     setAllCategory(response.data);
 
 
-<<<<<<< HEAD
-      
-      setAllCategory(allcategory); 
-    }
-  
-
-  
-  let fetchdataByCategory = (id) => {
-    axios.get(``)  
-      .then(response => {
-        setProducts(response.data);  
-      })
-      .catch(error => {
-        console.error("Error fetching products for category:", error);
-      });
-  };
-
-  
-  useEffect(() => {
-    fetchCategories();  
-
-    let user = localStorage.getItem("token"); 
-    
-    // console.log(user);
-    // setUser(decodedUser);
-  }, []); 
-=======
   }
->>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 
   let fetchProductByCategory = (id) => {
     // fetch the data by category and store that data inside product state
@@ -88,6 +60,6 @@ const GlobalContext = ({ children }) => {
       {children}
     </globalvar.Provider>
   );
-
+}
 
 export default GlobalContext;

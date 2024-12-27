@@ -13,7 +13,7 @@ import com.jspvel.swift_kart.exception.OrderNotFoundException;
 
 import com.jspvel.swift_kart.service.OrderService;
 
-import com.jspvel.swift_kart.util.OrderStatus;
+
 
 import jakarta.transaction.Transactional;
 
@@ -23,10 +23,6 @@ public class OrderServiceImp implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-<<<<<<< HEAD
-    @Transactional
-    public Order placeOrder(Order orderRequest) {
-=======
 	@Transactional
 	public Order placeOrder(Order orderRequest) {
        
@@ -34,7 +30,7 @@ public class OrderServiceImp implements OrderService {
 	        return null;  
 	    }
 	    
-	    public Order getOrderById(String orderId) {
+	    public Order getOrderById1(String orderId) {
 	        Optional<Order> order = orderRepository.findById(orderId);
 	        if (order.isPresent()) {
 	            return order.get();  
@@ -50,7 +46,6 @@ public class OrderServiceImp implements OrderService {
 	    
 	    public Order cancelOrder(String orderId) {
 	        Order order = orderRepository.findById(orderId).orElseThrow(() -> new OrderNotFoundException("Order not found with id " + orderId));
->>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 
         return null;
     }
@@ -64,37 +59,10 @@ public class OrderServiceImp implements OrderService {
         }
     }
 
-<<<<<<< HEAD
-    public List<Order> getOrdersByUserId(Long userId) {
-        // return orderRepository.findByUserId(userId);
-        return null;
-    }
-
-    
-
-    public Order cancelOrder(String orderId) {
-        Order order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new OrderNotFoundException("Order not found with id " + orderId));
-
-        if (order.getOrderStatus() == OrderStatus.DELIVERED) {
-            throw new IllegalStateException("Order has already been delivered and cannot be cancelled");
-        }
-
-        order.setOrderStatus(OrderStatus.CANCELLED);
-        return orderRepository.save(order);
-    }
-
-    @Override
-    public List<Order> getOrdersByUserId(String userId) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-=======
 		@Override
 		public List<Order> getOrdersByUserId(String userId) {
 			// TODO Auto-generated method stub
 			return null;
 		}
 
->>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 }

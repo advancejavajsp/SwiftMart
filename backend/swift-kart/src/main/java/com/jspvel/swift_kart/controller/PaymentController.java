@@ -45,10 +45,7 @@ public class PaymentController {
 	
 	@PostMapping("/payments")
 	public ResponseEntity<Payment> addPayment(@RequestBody Payment payment){
-<<<<<<< HEAD
-	
-=======
->>>>>>> 36651367c7167e54be882a10476ef5284413adfb
+
 		return new ResponseEntity<>(paymentServiceImp.addPayment(payment), HttpStatus.CREATED);
 	}
 	

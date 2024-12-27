@@ -25,54 +25,8 @@ public class ProductServiceImp implements ProductService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-<<<<<<< HEAD
-    @Autowired
-    private CustomProductIdGenrator customProductIdGenrator;
-    
-    @Override
-    public Product findProductById(String productId) {
-        return productRepository.findById(productId)
-                .orElseThrow(() -> new RuntimeException("Product not found"));
-    }
-
-    
-    @Override
-    public String deleteProductById(String productId) {
-        Product product = productRepository.findById(productId)
-                .orElseThrow(() -> new RuntimeException("Product not found"));
-
-        productRepository.delete(product);
-        return "Product deleted successfully";
-    }
-
-    
-    @Override
-    public String updateProductDetails(String productId, String name, Long categoryId, double price,
-                                       int quantityAvailable, String imageUrl, String description) {
-        Optional<Product> optionalProduct = productRepository.findById(productId);
-
-        if (optionalProduct.isPresent()) {
-            Product product = optionalProduct.get();
-
-           
-            product.setName(name);
-            product.setPrice(price);
-            product.setQuantityAvailable(quantityAvailable);
-            product.setImageUrl(imageUrl);
-            product.setDescription(description);
-
-           
-            productRepository.save(product);
-
-            return "Product updated successfully";
-        } else {
-            return "Product not found";
-        }
-    }
-=======
 	@Autowired
 	private CustomProductIdGenrator customProductIdGenrator;
->>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 
 	@Override
 	public List<Product> getAllProducts() {
@@ -80,32 +34,6 @@ public class ProductServiceImp implements ProductService {
 
 	}
 
-<<<<<<< HEAD
-	public Product addProduct(Product product) {
-		
-		String customId = customProductIdGenrator.generateCustomId();
-        product.setProductId(customId);
-		
-		return productRepository.save(product);
-	}
-	
-	public List<Product> getProductsByCategory(String categoryId) {
-        Category category = new Category();  
-        category.setCategoryId(categoryId);
-        return null;
-        
-//        return productRepository.findByCategory(categoryId);
-    }
-
-
-	public Product updateProduct(String productId, Product updatedProduct) {
-		
-		return null;
-	}
-
-
-=======
->>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 	@Override
 	public Product getProductById(String productId) {
 
@@ -147,14 +75,6 @@ public class ProductServiceImp implements ProductService {
 		return null;
 	}
 
-<<<<<<< HEAD
-
-	
-
-
-	@Override
-=======
->>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 	public boolean deleteProduct(String productId) {
 		Product product = productRepository.findById(productId).orElse(null);
 
