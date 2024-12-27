@@ -34,9 +34,22 @@ const AddCategory = () => {
       <div ref={popupRef} className={styles["popupContent"]}>
         <h2>Add Category</h2>
         <form>
+          <label htmlFor="">Name</label>
           <input
             type="text"
             placeholder="Enter category name"
+            required
+          />
+           <label htmlFor="">Description</label>
+          <input
+            type="text"
+            placeholder="Enter category description"
+            required
+          />
+           <label htmlFor="">Image</label>
+          <input
+            type="text"
+            placeholder="Enter Image Url"
             required
           />
           <div className={styles["btn"]}>

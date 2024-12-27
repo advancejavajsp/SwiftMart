@@ -1,9 +1,13 @@
 package com.jspvel.swift_kart.util;
 
+
+import org.springframework.stereotype.Component;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 
+@Component
 public class CustomProductIdGenrator {
 	
    	private static final String PREFIX ="PROD";

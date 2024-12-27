@@ -14,12 +14,14 @@ import com.jspvel.swift_kart.entity.User;
 @Service
 public interface UserService {
 
-
+	
+	
 	User findByUserEmail(String email);
 	
 	public String deleteUserByEmail(String email);
 	
 	public String updateUserDetails(String id, String newEmail, String newName, long newPhone);
-	
+
+	String sendOtpToEmail(String email);
 
 }

@@ -21,7 +21,7 @@ public class OrderDTO {
 
     private String orderId;
 
-    private Long userId;
+    private String userId;
 
     private String orderStatus;
 

@@ -10,8 +10,9 @@
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
     position: sticky;
-    top: 0;
-    z-index: 1000;
+    top: 74px;
+    z-index: 999;
+
 }
 
 /* ----- Navbar Links ----- */
@@ -69,7 +70,11 @@
     }
 }
 
-/* Mobile Devices (768px and below) */
+@media (max-width:800px) {
+   .navbar1{
+    display: none;
+   }
+}
 @media (max-width: 768px) {
     .drop-down {
         width: 85px;

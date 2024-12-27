@@ -8,12 +8,16 @@ import org.springframework.stereotype.Service;
 import com.jspvel.swift_kart.dao.PaymentRepository;
 import com.jspvel.swift_kart.entity.Payment;
 import com.jspvel.swift_kart.service.PaymentService;
+import com.jspvel.swift_kart.util.CustomPaymentIdGenerator;
 
 @Service
 public class PaymentServiceImp implements PaymentService {
 	
 	@Autowired
 	private PaymentRepository paymentRepository;
+	
+	@Autowired
+	private CustomPaymentIdGenerator customPaymentIdGenerator;
 
 	@Override
 	public List<Payment> getAllPayment() {
@@ -27,6 +31,8 @@ public class PaymentServiceImp implements PaymentService {
 
 	@Override
 	public Payment addPayment(Payment payment) {
+		String generatedId = customPaymentIdGenerator.generateCustomId();
+        payment.setPaymentId(generatedId);
 		return paymentRepository.save(payment);
 	}
 

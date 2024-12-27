@@ -7,6 +7,7 @@ import ProductContainer from "../Productcontainer/ProductContainer";
 import style from "../HomePage/HomePage.module.css"
 import { globalvar } from "../../GlobalContext/GlobalContext";
 import AdminNav from "../admin/adminNav/AdminNav";
+import Footer from "../Footer/Footer";
 
 const HomePage = () => {
   let {user}=useContext(globalvar)
@@ -14,13 +15,13 @@ const HomePage = () => {
     <>
 
       <MainNavBar />
-      {user?.role == "admin" ? <AdminNav/> :  <NavBar1/>}
+      {user?.role == "ADMIN" ? <AdminNav/> :  <NavBar1/>}
       <section className={style["homechilds"]}>
         <SideBar/>
        <ProductContainer/>
   
       </section>
-      
+      <Footer/>
     </>
   );
 };

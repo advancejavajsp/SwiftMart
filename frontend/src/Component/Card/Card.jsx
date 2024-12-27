@@ -2,6 +2,7 @@ import React, { useState,useContext  } from 'react';
 import styles from "./Card.module.css";
 import Milk from "../../asset/Milk.avif";
 import { globalvar } from "../../GlobalContext/GlobalContext";
+import { Link } from 'react-router-dom';
 
 const Card = ({product}) => {
   let { user,setUpdateProductPanel,setDeleteProductPanel } = useContext(globalvar);
@@ -26,12 +27,13 @@ const Card = ({product}) => {
   const truncatedTitle = productTitle.length > 50 ? productTitle.slice(0, 50) + "..." : productTitle;
 
   return (
-    <div className={styles.cardContainer}>
-      <img
+  
+  <div className={styles.cardContainer}>
+     <Link to='/cardPage'><img
         src={product?.image || Milk}
         alt={productTitle}
         className={styles.productImage}
-      />
+      /></Link>
       <div className={styles.productDetails}>
         <h3 className={styles.productTitle}>{truncatedTitle}</h3>
         <p className={styles.productSize}>500 ml</p>

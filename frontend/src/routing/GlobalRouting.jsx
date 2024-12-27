@@ -66,17 +66,10 @@ export const globalRoute = createBrowserRouter([
             path:"/homePage/cart",
             element:<MyCart/>
           },
-          {
-            path:"/homePage/cardpage",
-            element:<CardPage/>
-          },
+          
            {
             path:"/homePage/about",
             element:<About/>
-          },
-          {
-            path: '/homePage/order',
-            element: <Order />
           },
           {
             path: '/homePage/orderdetails',
@@ -106,10 +99,7 @@ export const globalRoute = createBrowserRouter([
             path: '/homePage/completed',
             element: <Completed />
           },
-          {
-            path: "/homePage/userprofile",
-            element: <UserProfile />
-          },
+
           {
             path: "/homePage/sidebar",
             element: <Sidebar />
@@ -138,10 +128,7 @@ export const globalRoute = createBrowserRouter([
             path: "/homePage/addProduct",
             element: <AddProduct />
           },
-          {
-            path: "/homePage/addCategory",
-            element: <AddCategory />
-          },
+         
 
           {
             path: "/homePage/aboutnav",
@@ -155,6 +142,22 @@ export const globalRoute = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path:"/cardpage",
+    element:<CardPage/>
+  },
+  {
+    path: '/order',
+    element: <Order />
+  },
+  {
+    path: "/user-profile",
+    element: <UserProfile />
+  },
+  {
+    path: "/addCategory",
+    element: <AddCategory />
   },
   {
     path: "/updateProduct",
