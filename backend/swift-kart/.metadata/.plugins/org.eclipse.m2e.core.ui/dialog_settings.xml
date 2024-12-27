@@ -2,6 +2,8 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\LENOVO\Desktop\SwiftMart\SwiftMart\backend"/>
+			<item value="C:\Users\LENOVO\Desktop\SwiftMart\SwiftMart\backend\swift-kart"/>
 			<item value="C:\Users\LENOVO\Desktop\swiftmartpro\backend\swift-kart"/>
 		</list>
 		<list key="projectNameTemplate">

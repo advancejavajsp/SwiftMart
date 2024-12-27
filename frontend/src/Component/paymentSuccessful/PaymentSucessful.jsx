@@ -13,7 +13,7 @@ const PaymentSucessful = () => {
                   src="https://m.media-amazon.com/images/I/41ov7KY-VVL._AC_SS450_.jpg"
                   alt="Banner"
                 />
-                <h2 className={style["textSize"]}>payment Successful</h2>
+                <h2 className={style["textSize"]}>Payment Successful</h2>
 
                 <button id={style["backtohome"]}>Back To Home</button>
               </div>

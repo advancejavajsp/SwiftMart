@@ -1,7 +1,3 @@
-*{
-    font-family: sans-serif;
-}
-
 .pbody{
 width: 98vw;
 height: 96vh;
@@ -9,15 +5,15 @@ background-size: cover;
 background-position-y: -110px;
 }
  
-.link-body{
+/* .link-body{
 box-sizing: border-box;
 padding: 0 20px;
 text-align: center
-}
+} */
 
 .card-paytm{
-width: 400px;
-height: 400px;
+width: 310px;
+height: 370px;
 display: flex;
 flex-direction: column;
 background-color: #fff;
@@ -25,8 +21,9 @@ margin-left: 35%;
 border-radius: 5px;
 margin-top: 3%;
 }
+
 .main-card{
-    background-color: rgba(0,0,0,.7);
+background-color: rgba(0,0,0,.7);
 bottom: 0;
 left: 0;
 position: fixed;
@@ -34,10 +31,14 @@ right: 0;
 top: 0;
 z-index: 9999;
 overflow-y: auto;
-
 }
+.textSize{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
 .card-div{
-    background: #fff;
+background: #fff;
 border-radius: 4px;
 box-shadow: 0 0 14px 0 rgb(0 0 0 / 30%);
 bottom: auto;
@@ -57,6 +58,7 @@ transform: translate(-30%);
 }
 
 .fontsize>img{
+    margin-top: 3px;
     width: 200px;
     height: 200px;
 }
@@ -70,7 +72,10 @@ transform: translate(-30%);
 #backtohome{
     width: 40%;
     height: 40px;
-    margin-top: 35px;
+    margin-top: 30px;
+    border-radius: 4px;
+    box-shadow: 2px rgba(124, 236, 124, 0.301);
+    border: 1px solid rgba(124, 236, 124, 0.301)
 }
 #backtohome:hover{
     background-color: green;

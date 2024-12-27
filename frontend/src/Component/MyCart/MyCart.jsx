@@ -28,7 +28,7 @@ const MyCart = () => {
     <div className={styles.cartContainer} onClick={(e)=>{e.stopPropagation(), setMycartPanel(true)}}>
       <div className={styles.header}>
         <h3>My Cart</h3>
-        <button className={styles.closeButton}>×</button>
+        <button className={styles.closeButton} onClick={(e)=>{e.stopPropagation(), setMycartPanel(false)}}>×</button>
       </div>
 
       <div className={styles.deliveryInfo}>

@@ -55,7 +55,7 @@ const MainNavBar = () => {
   };
 
   const getNavbarQRData = (userData) => {
-    return `Name: ${user.userName}\nEmail: ${userData.email}`;
+    return `Name: ${userData?.userName}\nEmail: ${userData?.email}`;
   };
 
   const qrData = getNavbarQRData(user);
@@ -76,8 +76,12 @@ const MainNavBar = () => {
       </div>
 
       <div className={style["search-bar"]}>
-        <CiSearch className={style["search"]} />
-        <input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} />
+        <ul className={style["search-bar-ul"]}>
+          <li><CiSearch className={style["search"]} /></li>
+          <li><input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} /></li>
+        
+        
+        </ul>
       </div>
 
       <div className={style["btn"]}>

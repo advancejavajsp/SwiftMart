@@ -1,3 +1,4 @@
+/* ----- Navbar Container ----- */
 .navbar1 {
     border: 1px solid rgba(0, 0, 0, 0.151);
     height: 56px;
@@ -8,43 +9,45 @@
     padding: 10px 20px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
-    position: fixed;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
+/* ----- Navbar Links ----- */
 .navbar1 .nav-links {
-    /* border: 1px solid green; */
-    justify-content: center;
     display: flex;
-    width: 100vw;
-    gap: 17px;
+    justify-content: center;
     align-items: center;
+    gap: 17px;
+    width: 100vw;
 }
 
 .navbar1 .nav-links a {
-    /* border:1px solid blue; */
-   font-size: 16px;
-   font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
     text-decoration: none;
     color: rgba(0, 0, 0, 0.575);
+    font-family: Arial, Helvetica, sans-serif;
+    transition: background-color 0.3s ease;
 }
 
-.nav-links a:hover {
-    /* border: 1px solid rgba(199, 195, 195, 0.527); */
+.navbar1 .nav-links a:hover {
     background-color: #f1f1f1;
-
+    border-radius: 4px;
 }
+
+/* ----- Dropdown Menu ----- */
 .drop-down {
-        /* border: 1px solid #ccc; */
     width: 70px;
     height: 40px;
     font-size: 16px;
-    color:  rgba(0, 0, 0, 0.575);
-    /* background-color: #f9f9f9; */
+    color: rgba(0, 0, 0, 0.575);
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     outline: none;
+    transition: background-color 0.3s ease;
 }
 
 .drop-down:hover {
@@ -57,51 +60,30 @@
     background-color: #fff;
 }
 
-.drop-down option:hover {
-    background-color: #e6e6e6;
+/* ----- Responsive Design ----- */
+
+/* Tablet Devices (800px and below) */
+@media (max-width: 800px) {
+    .navbar1 {
+        display: none; /* Entire navbar disappears at 800px */
+    }
 }
 
+/* Mobile Devices (768px and below) */
 @media (max-width: 768px) {
-    .navbar1 {
-        padding: 10px 15px;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 10px; 
-        width: 100%;
-        align-items: flex-start;
-    }
-
-    .nav-links a {
+    .drop-down {
+        width: 85px;
         font-size: 14px;
+    }
+}
+
+/* Small Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+    .navbar1 {
+        padding: 8px;
     }
 
     .drop-down {
-        width: 90px;
-        font-size: 14px;
-    }
-
-    .navbar1 img {
-        width: 30px;
-        height: 30px;
-    }
-}
-
-@media(max-width: 480px) {
-    .navbar1 {
-        padding: 10px 10px; 
-    }
-
-    .nav-links {
-        gap: 8px; 
-    }
-
-    .nav-links a {
-        font-size: 12px;
-    }
-
-   .drop-down {
         width: 80px;
         font-size: 12px;
     }

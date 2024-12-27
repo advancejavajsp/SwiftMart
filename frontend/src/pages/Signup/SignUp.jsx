@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react';
 import style from '../Signup/SignUp.module.css';
+import { globalvar } from '../../GlobalContext/GlobalContext';
 
 const SignUp = () => {
-  let {signupPanel,setSignuPanel}=useContext(globalvar)
+  let {signupPanel,setSignuPanel,setLoginPanel}=useContext(globalvar)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
     image: '',
     phone: '',
-    role: ''
   });
 
   const handleInputChange = (e) => {
@@ -33,7 +33,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className={style['signup']} onClick={(e)=>{e.stopPropagation(),setSignuPanel(false)}}>
+    <div className={style['signup']} onClick={(e)=>{e.stopPropagation(),setSignuPanel(false),setLoginPanel(false)}}>
       <fieldset>
         <legend>SignUp</legend>
         <form onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(),setSignuPanel(true)}}>
@@ -95,20 +95,6 @@ const SignUp = () => {
               placeholder="Enter your address"
              
             />
-          </div>
-
-          <div className='role-dropdown'>
-            <label>Role</label>
-            <select className={style["role"]}
-              // value={formData.role}
-              onChange={handleInputChange}
-              required
-              name='role'
-            >
-              <option value="" disabled hidden>Select role</option>
-              <option value="USER">USER</option>
-              {/* <option value="delivery">Delivery Person</option> */}
-            </select>
           </div>
 
         <div className={style['signButton']}>

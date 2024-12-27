@@ -14,7 +14,7 @@ const HomePage = () => {
     <>
 
       <MainNavBar />
-      {user.role == "admin" ? <AdminNav/> :  <NavBar1/>}
+      {user?.role == "admin" ? <AdminNav/> :  <NavBar1/>}
       <section className={style["homechilds"]}>
         <SideBar/>
        <ProductContainer/>

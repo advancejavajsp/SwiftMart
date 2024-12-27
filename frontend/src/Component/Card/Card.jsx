@@ -4,10 +4,10 @@ import Milk from "../../asset/Milk.avif";
 import { globalvar } from "../../GlobalContext/GlobalContext";
 
 const Card = ({product}) => {
-  let { user } = useContext(globalvar);
+  let { user,setUpdateProductPanel,setDeleteProductPanel } = useContext(globalvar);
   console.log(user)
 
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(user || 0);
 
   // Increment Quantity
   const handleIncrement = () => {
@@ -37,8 +37,8 @@ const Card = ({product}) => {
         <p className={styles.productSize}>500 ml</p>
         <p className={styles.productPrice}>₹56</p>
         <div className={styles.buttonGroup}>
-          {user?.role == "admin" ? <>   <button className={styles.updateButton}>UPDATE</button>
-            <button className={styles.deleteButton}>DELETE</button></> :         ( quantity === 0 ? (
+          {user?.role == "ADMIN" ? <>   <button className={styles.updateButton} onClick={(e)=>{e.stopPropagation(), setUpdateProductPanel(true)}}>UPDATE</button>
+            <button className={styles.deleteButton}  onClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(true)}}>DELETE</button></> :         ( quantity === 0 ? (
             <button className={styles.addButton} onClick={handleIncrement}>
               ADD
             </button>

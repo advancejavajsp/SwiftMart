@@ -8,7 +8,7 @@ import axios from 'axios';
 const Login = () => {
   let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,getUserDataFromToken}=useContext(globalvar)
   const [credentials, setCredentials] = useState({
-    name: '',
+    email: '',
     password: ''
     
   });
@@ -16,18 +16,8 @@ const Login = () => {
 
   const [rememberMe, setRememberMe] = useState(false);
 
-  useEffect(() => {
-    // Load saved credentials from sessionStorage if available
-    const storedUserData = JSON.parse(sessionStorage.getItem('userData'));
-    if (storedUserData) {
-      setCredentials({
-        name: storedUserData.name || '',
-        password: storedUserData.password || ''
-      });
-    }
-  }, []);
 
-  // Handle input change for name and password
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setCredentials(prevState => ({
@@ -36,10 +26,6 @@ const Login = () => {
     }));
   };
 
-  // Handle the 'Remember Me' checkbox change
-  const handleCheckboxChange = (e) => {
-    setRememberMe(e.target.checked);
-  };
 
   const handleSubmit =async (e) => {
     e.preventDefault();
@@ -64,17 +50,7 @@ const Login = () => {
     }
 
 
-    // Check if both name and password are filled out
-    if (credentials.name && credentials.password) {
-
-        let respone = await axios.post(`http://localhost:8080/auth/login?email=${credentials.name}&password=${credentials.password}`)
-      localStorage.setItem('token',respone.data.token)
-        console.log(respone.data)
-        toast.success('Login successful!');
-    } else {
-      toast.error('Please enter both name and password');
-    }
-  };
+  }
 
   return (
     <div className={style['login']} onClick={(e)=>{e.stopPropagation(), setLoginPanel(false)}}>
@@ -85,16 +61,17 @@ const Login = () => {
           <div className={style['username']}>
             <label>Email</label>
             <input
-              type="text"
-              name="name"
-              value={credentials.name}
+              type="email"
+              name="email"
+              value={credentials.email}
               onChange={handleInputChange}
-              placeholder="Enter your name"
+              placeholder="Enter your email"
               required
             />
+
           </div>
 
-          <div>
+          <div className={style['password']}>
             <label>Password</label>
             <input
               type="password"
@@ -117,8 +94,9 @@ const Login = () => {
 
           <button type="submit">Login</button>
 
-          <div className='register-link'>
-            <p>Don't have an account? <a href="#">SignUp</a></p>
+          <div className={style['register-link']}>
+          <p onClick={()=>{setLoginPanel( !loginPanel),setSignuPanel(!signupPanel)}}> Don't have an account? SignUp </p>
+
           </div>
         </form>
       </fieldset>
