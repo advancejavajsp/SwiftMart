@@ -1,11 +1,12 @@
 import React from 'react'
 import style from './order.module.css'
-import icon from '../../asset/order_icon.webp'
+import { FaArrowLeft } from "react-icons/fa";
 import { SlLocationPin } from "react-icons/sl";
 import { GrDocumentTime } from "react-icons/gr";
 import { HiOutlineGiftTop } from "react-icons/hi2";
 import { LuLockKeyhole } from "react-icons/lu";
 import { FaRegUser } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 const Order = () => {
   return (
@@ -20,8 +21,9 @@ const Order = () => {
         </ul>
       </div>
       <div className={style['orders']}>
+      <Link to="/"><FaArrowLeft className={style['arroww']} /></Link>
         <div className={style['ordercards']}>
-            <img src={icon} alt="" />
+            
             <div className={style["text"]}>
             <h3>ORD861487083  ·  ₹234</h3>
             <p>Placed on thu, 31 oct'24, 4:51 pm</p>
@@ -29,7 +31,6 @@ const Order = () => {
             <button>view details</button>
         </div>
         <div className={style['ordercards']}>
-            <img src={icon} alt="" />
             <div className={style["text"]}>
             <h3>ORD861487083  ·  ₹234</h3>
             <p>Placed on thu, 31 oct'24, 4:51 pm</p>

@@ -31,16 +31,16 @@ public class CategoryController {
 		return catergoryServiceImp.getAllCategory();
 	}
 	
-//	@GetMapping("/category/{categoryId}")
-//	public ResponseEntity<Category> getCategoryById(@PathVariable String categoryId){
-//		Category category = catergoryServiceImp.getCategoryById(categoryId);
-//		if(category!=null) {
-//			return ResponseEntity.ok(category);
-//			}
-//		else {
-//			return ResponseEntity.notFound().build();
-//		}
-//	}
+	@GetMapping("/open/category/{categoryId}")
+	public ResponseEntity<Category> getCategoryById(@PathVariable String categoryId){
+		Category category = catergoryServiceImp.getCategoryById(categoryId);
+		if(category!=null) {
+			return ResponseEntity.ok(category);
+			}
+		else {
+			return ResponseEntity.notFound().build();
+		}
+	}
 	
 	@PostMapping("/open/category")
 	public ResponseEntity<Category> addCategory(@RequestBody Category category){

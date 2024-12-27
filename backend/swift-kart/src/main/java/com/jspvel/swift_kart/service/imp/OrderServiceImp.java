@@ -23,8 +23,34 @@ public class OrderServiceImp implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
+<<<<<<< HEAD
     @Transactional
     public Order placeOrder(Order orderRequest) {
+=======
+	@Transactional
+	public Order placeOrder(Order orderRequest) {
+       
+       
+	        return null;  
+	    }
+	    
+	    public Order getOrderById(String orderId) {
+	        Optional<Order> order = orderRepository.findById(orderId);
+	        if (order.isPresent()) {
+	            return order.get();  
+	        } else {
+	            throw new OrderNotFoundException("Order not found with id " + orderId);
+	       }
+	    }
+	    
+	    public List<Order> getOrdersByUserId(Long userId) {
+//	        return orderRepository.findByUserId(userId);
+	        return null;
+	    }
+	    
+	    public Order cancelOrder(String orderId) {
+	        Order order = orderRepository.findById(orderId).orElseThrow(() -> new OrderNotFoundException("Order not found with id " + orderId));
+>>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 
         return null;
     }
@@ -38,6 +64,7 @@ public class OrderServiceImp implements OrderService {
         }
     }
 
+<<<<<<< HEAD
     public List<Order> getOrdersByUserId(Long userId) {
         // return orderRepository.findByUserId(userId);
         return null;
@@ -62,4 +89,12 @@ public class OrderServiceImp implements OrderService {
         // TODO Auto-generated method stub
         return null;
     }
+=======
+		@Override
+		public List<Order> getOrdersByUserId(String userId) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+>>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 }

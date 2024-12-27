@@ -95,6 +95,7 @@
     cursor: pointer;
     font-size: 14px;
     transition: all 0.3s ease;
+    /* z-index: 10; */
 }
 .popup .account-button,.logout-button{
     background-color: transparent;
@@ -113,6 +114,11 @@
     color: white;
 
 }
+/* .account-button:hover{
+    border:1px solid  #0C831F;
+    background-color: white;
+    color: black;
+} */
 .login-btn {
     background-color: #fff;
     color: #0C831F;
@@ -131,8 +137,7 @@
     gap: 5px;
 }
 
-.cart-btn:hover,
-.account-button:hover {
+.cart-btn:hover {
     background-color: #064d11;
     color: white;
 }
@@ -195,7 +200,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
+        flex-direction: row;
         align-items: stretch;
     }
 
@@ -204,13 +209,13 @@
         padding-left: 0;
         text-align: center;
     }
-
+/* 
     .btn {
         flex-direction: column;
         gap: 10px;
-    }
+    } */
 
-    .search-bar {
-        max-width: 100%;
+ .search-bar {
+       display: none;
     }
 }

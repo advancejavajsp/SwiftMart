@@ -33,8 +33,13 @@ public class PaymentServiceImp implements PaymentService {
 
 	@Override
 	public Payment addPayment(Payment payment) {
+<<<<<<< HEAD
 		String customId = customPaymentIdGenerator.generateCustomId();
         payment.setPaymentId(customId);
+=======
+		String generatedId = customPaymentIdGenerator.generateCustomId();
+        payment.setPaymentId(generatedId);
+>>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 		return paymentRepository.save(payment);
 	}
 

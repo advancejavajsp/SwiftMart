@@ -2,6 +2,7 @@ package com.jspvel.swift_kart.entity;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -22,14 +23,14 @@ public class Category {
 
 	@Column(name = "name")
 	private String name;
-
+	
 	@Column(name = "description")
 	private String description;
 	
 	@Column(name="category_image")
 	private String image;
 	
-	@OneToMany(mappedBy = "category")
+	@OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
 	private List<Product> products;
 
 }

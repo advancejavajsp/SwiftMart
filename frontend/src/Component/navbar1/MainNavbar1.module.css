@@ -61,6 +61,11 @@
     background-color: #e6e6e6;
 }
 
+@media (max-width:800px) {
+   .navbar1{
+    display: none;
+   }
+}
 @media (max-width: 768px) {
     .navbar1 {
         padding: 10px 15px;

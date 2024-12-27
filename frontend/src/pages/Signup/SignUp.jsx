@@ -3,9 +3,10 @@ import style from "../Signup/SignUp.module.css";
 import { globalvar } from "../../GlobalContext/GlobalContext";
 import axios from "axios";
 import toast from "react-hot-toast";
+import OtpPopup from "../otpPopup/OtpPopup";
 
 const SignUp = () => {
-  let { signupPanel, setSignuPanel, setLoginPanel } = useContext(globalvar);
+  let { signupPanel, setSignuPanel, setLoginPanel, otpRender, setOtpRender } = useContext(globalvar);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,7 +14,8 @@ const SignUp = () => {
     image: "",
     phone: "",
   });
-
+  const [otp, setOtp] = useState('');
+  const [otpVerified, setOtpVerified] = useState(false);
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
@@ -22,26 +24,37 @@ const SignUp = () => {
     }));
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
       formData.name &&
       formData.email &&
       formData.password &&
-      formData.phone
+      formData.phone 
      
     ) {
-      console.log(e.name);
+      if (!otpVerified) {
+      setOtpRender(true);
+        
+   
       let verify = await axios.post(
         `http://localhost:8080/auth/send-otp?email=${formData?.email}`
+        
       );
-      console.log(verify);
-      if (verify === "123456") {
+
+      console.log(verify)
+      setOtp(verify.data)
+        }
+      // let otp = 
+      if (otpVerified) {
         let response = await axios.post(
           "http://localhost:8080/auth/signup",
           formData
         );
         console.log(response);
+        toast.success("SignUp Succesfully")
+        setTimeout(()=>{setSignuPanel(false)},1500)
       }
     } else {
       toast.error("error");
@@ -49,6 +62,8 @@ const SignUp = () => {
   };
 
   return (
+    <>
+    {otpRender&& <OtpPopup mailOtp={otp} verifiy={setOtpVerified}/>}
     <div
       className={style["signup"]}
       onClick={(e) => {
@@ -124,11 +139,12 @@ const SignUp = () => {
           </div>
 
           <div className={style["signButton"]}>
-            <button type="submit">Sign Up</button>
+            <button type="submit" >{otpVerified ? "Sign Up" : "Get OTP"}</button>
           </div>
         </form>
       </fieldset>
     </div>
+    </>
   );
 };
 

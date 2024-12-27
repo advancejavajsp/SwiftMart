@@ -1,5 +1,9 @@
 package com.jspvel.swift_kart.util;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.EntityManager;

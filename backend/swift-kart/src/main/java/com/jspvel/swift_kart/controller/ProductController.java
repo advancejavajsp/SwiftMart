@@ -18,7 +18,7 @@ import com.jspvel.swift_kart.service.imp.ProductServiceImp;
 
 @RestController
 @CrossOrigin
-//@RequestMapping("/swiftmart")
+@RequestMapping("/open/swiftmart")
 public class ProductController {
 
 	@Autowired
@@ -31,7 +31,7 @@ public class ProductController {
 	
 	@GetMapping("/products/{productId}")
 	public ResponseEntity<Product> getProductById(@PathVariable String  productId){
-		Product product = productServiceImp.findProductById(productId);
+		Product product = productServiceImp.getProductById(productId);
 		if (product != null) {
             return ResponseEntity.ok(product);
         } else {
@@ -39,6 +39,7 @@ public class ProductController {
         }
 	}
 	
+<<<<<<< HEAD
 	@PostMapping("/products")
 	public ResponseEntity<Product> addProduct(@RequestBody Product product){
 		Product product2 = productServiceImp.addProduct(product);
@@ -54,6 +55,22 @@ public class ProductController {
 //            return ResponseEntity.notFound().build(); 
 //        }
 //	}
+=======
+	@PostMapping("/products/{categoreyId}")
+	public ResponseEntity<Product> addProduct(@RequestBody Product product,@PathVariable String categoreyId){
+		return new ResponseEntity<>(productServiceImp.addProduct(product,categoreyId), HttpStatus.CREATED);
+	}
+	
+	@DeleteMapping("/products/{productId}")
+	public ResponseEntity<Void> deleteProduct(@PathVariable String productId){
+		boolean deleted = productServiceImp.deleteProduct(productId);
+        if (deleted) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.notFound().build();  
+        }
+	}
+>>>>>>> 36651367c7167e54be882a10476ef5284413adfb
 	
 
 	@PutMapping("/products/{productId}")
@@ -66,9 +83,5 @@ public class ProductController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	@GetMapping("/category/{categoryId}")
-    public List<Product> getProductsByCategory(@PathVariable String categoryId) {
-        return productServiceImp.getProductsByCategory(categoryId);
-    }
+	
 }
-   
