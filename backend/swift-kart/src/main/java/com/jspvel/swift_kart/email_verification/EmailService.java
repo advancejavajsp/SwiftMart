@@ -1,5 +1,6 @@
 package com.jspvel.swift_kart.email_verification;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -11,7 +12,7 @@ import jakarta.mail.internet.MimeMessage;
 public class EmailService {
 
 	private JavaMailSender javaMailSender;
-	
+	@Autowired
 	 public EmailService(JavaMailSender javaMailSender) {
 	        this.javaMailSender = javaMailSender;
 	    }

@@ -12,6 +12,8 @@ import com.jspvel.swift_kart.email_verification.requests.RegisterRequest;
 import com.jspvel.swift_kart.email_verification.responses.RegisterResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import com.jspvel.swift_kart.dao.UserRepository;
@@ -93,46 +95,62 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class UserServiceImp implements UserService {
 
-	@Autowired
-	private UserRepository userRepository;
-	
+    @Autowired
+    private UserRepository userRepository;
 
-	@Autowired
-	public UserServiceImp(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
+    @Autowired
+    private EmailService emailService; 
 
-	@Override
-	public User findByUserEmail(String email) {
+    @Autowired
+    public UserServiceImp(UserRepository userRepository, EmailService emailService) {
+        this.userRepository = userRepository;
+        this.emailService = emailService;
+    }
 
-		return userRepository.findByEmail(email).orElseThrow();
-	}
+    @Override
+    public User findByUserEmail(String email) {
+        return userRepository.findByEmail(email).orElseThrow();
+    }
 
-	@Override
-	public String deleteUserByEmail(String email) {
+    @Override
+    public String deleteUserByEmail(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow();
+        userRepository.delete(user);
+        return "User is deleted";
+    }
 
-		User byEmail = userRepository.findByEmail(email).orElseThrow();
-		userRepository.delete(byEmail);
-		
+    @Override
+    public String updateUserDetails(String id, String newEmail, String newName, long newPhone) {
+        User user = userRepository.findById(id).orElse(null);
+        if (user != null) {
+            user.setEmail(newEmail);
+            user.setName(newName);
+            user.setPhone(newPhone);
+            userRepository.save(user);
+            return "User Updated";
+        } else {
+            return "User not Found";
+        }
+    }
 
-		return "User is deleted";
+    @Override
+    public void sendOtpToEmail(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
 
-	}
+        String otp = generateOtp();
+        user.setOtp(otp);  
+        userRepository.save(user);
 
-	@Override
-	public String updateUserDetails(String id, String newEmail, String newName, long newPhone) {
-		User user = userRepository.findById(id).orElse(null);
-		if (user != null) {
-			user.setEmail(newEmail);
-			user.setName(newName);
-			user.setPhone(newPhone);
+        
+        String subject = "Your OTP Code";
+        String body = "Your OTP code is: " + otp;
+        emailService.sendEmail(email, subject, body);
+    }
 
-			userRepository.save(user);
 
-			return "User Updated";
-		} else {
-			return "User not Found";
-		}
-	}
-
+    private String generateOtp() {
+        Random random = new Random();
+        int otp = 100000 + random.nextInt(900000);
+        return String.valueOf(otp);
+    }
 }
