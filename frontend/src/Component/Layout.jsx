@@ -6,14 +6,19 @@ import Login from "../pages/login/Login"
 import SignUp from "../pages/Signup/SignUp"
 import MyCart from "./MyCart/MyCart"
 import PaymentSucessful from "./paymentSuccessful/PaymentSucessful"
+import UpdateNotification from "./Notification/UpdateNotification"
+import DeleteNotification from "./Notification/DeleteNotification"
 const Layout = () => {
-  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,mycartPanel,setMycartPanel,paymentSuccessful,setPaymentSuccessful}=useContext(globalvar)
+  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel, setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel}=useContext(globalvar)
 
   return (
     <>
+    <Toaster/>
     {loginPanel && <Login />}
     {signupPanel && <SignUp/>}
     {mycartPanel && <MyCart/>}
+    {updateProductPanel && <UpdateNotification/>}
+    {deleteProductPanel && <DeleteNotification/>}
  
     {paymentSuccessful && <PaymentSucessful/>}
     <Outlet></Outlet>

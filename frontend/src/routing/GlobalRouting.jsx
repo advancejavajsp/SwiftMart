@@ -20,6 +20,7 @@ import PaymentDetails from "../Component/PaymentDetails/PaymentDetails";
 import Payments from "../Component/Payments/Payments";
 import UserProfile from "../Component/UserProfile/UserProfile";
 import Sidebar from "../Component/sidebar/SideBar";
+import Footer from "../Component/Footer/Footer";
 import Search from "../Component/search/Search";
 import ProductContainer from "../Component/Productcontainer/ProductContainer";
 import Navbar1 from "../Component/navbar1/MainNavBar1";
@@ -33,13 +34,15 @@ import Login from "../pages/login/Login";
 import NavBar from "../Component/Navbar/MainNavBar";
 import HomePage from "../Component/HomePage/HomePage";
 import SignUp from "../pages/Signup/SignUp";
+import UpdateNotification from "../Component/Notification/UpdateNotification";
+import DeleteNotification from "../Component/Notification/DeleteNotification";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
       {
-        path: "/homePage",
+        path: "/",
         element: <HomePage />,
         children: [
           {
@@ -132,14 +135,6 @@ export const globalRoute = createBrowserRouter([
             element: <AdminNav />
           },
           {
-            path: "/homePage/signup",
-            element: <SignUp/>
-          },
-          {
-            path: "/homePage/login",
-            element: <Login/>
-          },
-          {
             path: "/homePage/addProduct",
             element: <AddProduct />
           },
@@ -147,13 +142,14 @@ export const globalRoute = createBrowserRouter([
             path: "/homePage/addCategory",
             element: <AddCategory />
           },
-          {
-            path: "/homePage/updateProduct",
-            element: <UpdateProduct />
-          },
+
           {
             path: "/homePage/aboutnav",
             element: <AboutNav />
+          },
+          {
+            path: "/homePage/footer",
+            element: <Footer/>
           },
           
         ],
@@ -161,8 +157,8 @@ export const globalRoute = createBrowserRouter([
     ],
   },
   {
-    path: "/Payment",
-    element: <Payment/>,
+    path: "/updateProduct",
+    element: <UpdateProduct />
   },
   {
     path: "*",

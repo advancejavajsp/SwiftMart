@@ -39,9 +39,9 @@ const Payment = () => {
             </div>
           </div>
           <div className={style["payment"]}>
-            <div className={style["check3"]}>
+            {/* <div className={style["check3"]}>
               <span>payment</span>
-            </div>
+            </div> */}
             <div className={style["payment-step"]}>
               <section className={style["paymentsection"]}>
                 <div className={style["payment-invoice"]}>

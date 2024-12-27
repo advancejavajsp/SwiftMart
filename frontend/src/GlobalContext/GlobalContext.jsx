@@ -1,7 +1,8 @@
 /* eslint-disable */
-import axios from 'axios';
-import React, { createContext, useEffect } from 'react'
+import React,{createContext, useEffect} from 'react'
 import { useState } from 'react';
+import { jwtDecode } from "jwt-decode";
+
 
 export const globalvar = createContext();
 const GlobalContext = ({ children }) => {
@@ -12,7 +13,8 @@ const GlobalContext = ({ children }) => {
   let [paymentSuccessful,setPaymentSuccessful] = useState(false)
   let [product, setProducts] = useState([]);
   let [productCategory, setProductsCategory] = useState([]);
-  let [updateProductPanel, setUpdateProductPanel] = useState([]);
+  let [updateProductPanel, setUpdateProductPanel] = useState(false);
+  let [deleteProductPanel, setDeleteProductPanel] = useState(false);
 
 
 let allcategory=()=>{
@@ -25,19 +27,22 @@ let fetchdataByCategory=(id)=>{
    setProducts(response)
 }
 
+let getUserDataFromToken=(token)=>{
+  const decoded = jwtDecode(token);
+  console.log(decoded)
+   setUser(decoded)
+}
+
 useEffect(()=>{
 
-let user=localStorage.getItem("token");
-//here decode the token and then store the role inmside user state
-//  console.log(user);
- setUser({
-  userName:"Manav",
-  email:"manav123@gmail.com",
-  role:"user"
- })
+let token=localStorage.getItem("token");
+const decoded = jwtDecode(token);
+console.log(decoded)
+ setUser(decoded)
+
 },[])
   return (
-    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory,updateProductPanel, setUpdateProductPanel,mycartPanel,setMycartPanel }}>
+    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory,updateProductPanel, setUpdateProductPanel,mycartPanel,setMycartPanel,getUserDataFromToken ,deleteProductPanel, setDeleteProductPanel}}>
       {children}
     </globalvar.Provider>
   )
