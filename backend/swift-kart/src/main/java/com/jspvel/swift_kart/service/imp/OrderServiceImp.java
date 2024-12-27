@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 
 import com.jspvel.swift_kart.dao.OrderRepository;
 import com.jspvel.swift_kart.entity.Order;
-import com.jspvel.swift_kart.entity.Payment;
+
 import com.jspvel.swift_kart.exception.OrderNotFoundException;
-import com.jspvel.swift_kart.service.OrderItemService;
+
 import com.jspvel.swift_kart.service.OrderService;
-import com.jspvel.swift_kart.service.PaymentService;
+
 import com.jspvel.swift_kart.util.OrderStatus;
 
 import jakarta.transaction.Transactional;
@@ -43,21 +43,7 @@ public class OrderServiceImp implements OrderService {
         return null;
     }
 
-    /*
-     * public Order getOrderById(String orderId) {
-     * Optional<Order> order = orderRepository.findById(orderId);
-     * if (order.isPresent()) {
-     * return order.get();
-     * } else {
-     * throw new OrderNotFoundException("Order not found with id " + orderId);
-     * }
-     * }
-     */
-    //
-    // public List<Order> getOrdersByUserId(String userId) {
-    //// return orderRepository.findByUserId(userId);
-    // return null;
-    // }
+    
 
     public Order cancelOrder(String orderId) {
         Order order = orderRepository.findById(orderId)

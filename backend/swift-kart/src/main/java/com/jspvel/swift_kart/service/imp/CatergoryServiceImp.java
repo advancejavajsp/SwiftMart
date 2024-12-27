@@ -15,9 +15,13 @@ public class CatergoryServiceImp implements CategoryService {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
+	
+	
 
 	@Autowired
 	CategoryCustomIdGenerator categoryCustomIdGenerator;
+	
+	
 	@Override
 	public List<Category> getAllCategory() {
 		return categoryRepository.findAll();

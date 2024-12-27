@@ -17,7 +17,7 @@ public class CustomOrderItemIdGenerator {
    	@Transactional
     public String generateCustomId() {
         Long nextVal = ((Number) entityManager
-                .createNativeQuery("SELECT nextval('ITE_sequence')")
+                .createNativeQuery("SELECT nextval('orditm_sequence')")
                 .getSingleResult()).longValue();
 
         return PREFIX + String.format("%04d", nextVal);
