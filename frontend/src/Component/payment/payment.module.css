@@ -1,27 +1,18 @@
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 .paymentcheckout {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     background-color: #f4f4f4;
-    padding: 20px;
+    padding: 5px;
 }
 
 .checkout {
-    width: 680px;
+    width: 500px;
     background-color: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin: 15px;
+    border-radius: 10px;
     font-size: 14px;
-   
 }
 
 .checkout:hover {
@@ -32,14 +23,12 @@
     list-style-type: none;
 }
 
-.check1,
-.checkf,
-.checks,
-.check3 {
-    padding: 20px;
+.check1{
+    padding: 20px 20px;
     border-bottom: 1px solid #eee;
     font-size: large;
     font-weight: 600;
+    display: flex;
 }
 
 .number,
@@ -47,7 +36,8 @@
     background-color: #318616;
     color: white;
     width: 60px;
-    height: 60px;
+    height: 50px;
+    padding: 5px;
     text-align: center;
     line-height: 40px;
     border-radius: 50%;
@@ -61,16 +51,26 @@
     font-size: 16px;
     font-weight: 600;
     color: #333;
+    padding-left: 50px;
 }
 
 .check1_number,
 .check2_home {
     color: #888;
+    padding-left: 50px;
+}
+.check3{
+    display: flex;
+    padding-left: 20px;
+    border-bottom: 1px solid #eee;
+    font-size: large;
+    font-weight: 600;
+    height: 30px;
 }
 
 .payment {
     width: 100%;
-    padding: 20px;
+    padding: 10px;
 }
 
 .paymentsection {
@@ -79,7 +79,7 @@
 
 .payment-invoice {
     padding: 20px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     background-color: #fafafa;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -133,7 +133,7 @@
     display: flex;
     justify-content: space-between;
     list-style: none;
-    margin: 20px 0;
+    margin: 10px 0;
     padding: 0;
 }
 
@@ -155,7 +155,7 @@
 .wallet-type {
     display: flex;
     align-items: center;
-    margin: 16px 0;
+    margin: 10px 0;
     padding: 15px;
     border: 1px solid #eee;
     justify-content: space-between;
@@ -174,7 +174,7 @@
 
 .payment-btn {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .payment-btn button {

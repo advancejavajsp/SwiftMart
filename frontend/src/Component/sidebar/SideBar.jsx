@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import img1 from "../../asset/img11.webp"
 import img2 from "../../asset/img12.webp"
 import img3 from "../../asset/img3.webp"
@@ -11,17 +11,18 @@ import { globalvar } from '../../GlobalContext/GlobalContext'
 
 
 const SideBar = () => {
-  let {productCategory, setProductsCategory}=useContext(globalvar);
+    let {allCategory} = useContext(globalvar);
+    
 
-  
-
-  useEffect(()=>{},[])
   return (
     <aside className={style["sidebar"]}>
       <nav className={style["sidebar-nav"]}>
         <ul>
-          <li> <Link to="/milk"><img src={img1} alt="Milk carton" /><p>Milk</p></Link></li>
-          <li><Link to="/bread"><img src={img2} alt="Bread" /><p>Bread & Pav</p></Link></li>
+          {allCategory.map((ele,i)=>{
+            return <li> <img src={img1} alt="Milk carton" /><p>{ele?.name}</p></li>
+          })}
+          {/* <li> <Link to="/milk"><img src={img1} alt="Milk carton" /><p>Milk</p></Link></li>
+          <li><Link to="/bread"><img src={img2} alt="Bread" /><p>Bread & Pav</p></Link></li> */}
         </ul>
       </nav>
     </aside>

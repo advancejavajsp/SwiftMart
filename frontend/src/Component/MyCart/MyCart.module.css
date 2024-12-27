@@ -1,3 +1,12 @@
+.container{
+  width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.76);
+    top: 0;
+    z-index: 20;
+}
+
 .cartContainer {
     max-width: 400px;
     margin: 20px auto;
@@ -6,7 +15,13 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     font-family: Arial, sans-serif;
-  }
+    width: 100vw;
+    height: 95vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 20;
+}
   
   .header {
     display: flex;
@@ -24,8 +39,14 @@
     border: none;
     background: none;
     cursor: pointer;
+    padding: 5px;
+    border-radius: 2px;
+    width: 40px;
   }
-  
+  .closeButton:hover{
+    background-color: rgb(238, 56, 56);
+    color: white;
+    }
   .deliveryInfo {
     background-color: #f9f9f9;
     padding: 10px;

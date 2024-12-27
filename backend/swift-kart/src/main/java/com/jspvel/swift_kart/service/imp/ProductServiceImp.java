@@ -78,9 +78,9 @@ public class ProductServiceImp implements ProductService {
 	public List<Product> getProductsByCategory(String categoryId) {
         Category category = new Category();  
         category.setCategoryId(categoryId);
+        return null;
         
 //        return productRepository.findByCategory(categoryId);
-        return null;
     }
 
 

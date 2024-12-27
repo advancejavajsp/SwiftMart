@@ -23,15 +23,10 @@ public class OrderServiceImp implements OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    @Autowired
-    private OrderItemService orderItemService;  // Service to fetch order items
-    @Autowired
-    private PaymentService paymentService;  // Service to fetch payment details
-
     @Transactional
     public Order placeOrder(Order orderRequest) {
-        // Fetch payment by orderId
-       return null;
+
+        return null;
     }
 
     public Order getOrderById(String orderId) {
@@ -42,14 +37,31 @@ public class OrderServiceImp implements OrderService {
             throw new OrderNotFoundException("Order not found with id " + orderId);
         }
     }
-//
-//    public List<Order> getOrdersByUserId(String userId) {
-////        return orderRepository.findByUserId(userId);
-//    	return null;
-//    }
+
+    public List<Order> getOrdersByUserId(Long userId) {
+        // return orderRepository.findByUserId(userId);
+        return null;
+    }
+
+    /*
+     * public Order getOrderById(String orderId) {
+     * Optional<Order> order = orderRepository.findById(orderId);
+     * if (order.isPresent()) {
+     * return order.get();
+     * } else {
+     * throw new OrderNotFoundException("Order not found with id " + orderId);
+     * }
+     * }
+     */
+    //
+    // public List<Order> getOrdersByUserId(String userId) {
+    //// return orderRepository.findByUserId(userId);
+    // return null;
+    // }
 
     public Order cancelOrder(String orderId) {
-        Order order = orderRepository.findById(orderId).orElseThrow(() -> new OrderNotFoundException("Order not found with id " + orderId));
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new OrderNotFoundException("Order not found with id " + orderId));
 
         if (order.getOrderStatus() == OrderStatus.DELIVERED) {
             throw new IllegalStateException("Order has already been delivered and cannot be cancelled");
@@ -59,9 +71,9 @@ public class OrderServiceImp implements OrderService {
         return orderRepository.save(order);
     }
 
-	@Override
-	public List<Order> getOrdersByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<Order> getOrdersByUserId(String userId) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

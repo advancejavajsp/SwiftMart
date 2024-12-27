@@ -20,6 +20,7 @@ import PaymentDetails from "../Component/PaymentDetails/PaymentDetails";
 import Payments from "../Component/Payments/Payments";
 import UserProfile from "../Component/UserProfile/UserProfile";
 import Sidebar from "../Component/sidebar/SideBar";
+import Footer from "../Component/Footer/Footer";
 import Search from "../Component/search/Search";
 import ProductContainer from "../Component/Productcontainer/ProductContainer";
 import Navbar1 from "../Component/navbar1/MainNavBar1";
@@ -33,23 +34,22 @@ import Login from "../pages/login/Login";
 import NavBar from "../Component/Navbar/MainNavBar";
 import HomePage from "../Component/HomePage/HomePage";
 import SignUp from "../pages/Signup/SignUp";
+import UpdateNotification from "../Component/Notification/UpdateNotification";
+import DeleteNotification from "../Component/Notification/DeleteNotification";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
     children: [
       {
-        path: "/homePage",
+        path: "/",
         element: <HomePage />,
         children: [
           {
             path: "/homePage/Status",
             element: <Status />,
           },
-          {
-            path: "/homePage/Payment",
-            element: <Payment />,
-          },
+
           {
             path: "/homePage/PaymentSucessful",
             element: <PaymentSucessful />,
@@ -106,10 +106,7 @@ export const globalRoute = createBrowserRouter([
             path: '/homePage/completed',
             element: <Completed />
           },
-          {
-            path: "/homePage/userprofile",
-            element: <UserProfile />
-          },
+
           {
             path: "/homePage/sidebar",
             element: <Sidebar />
@@ -135,33 +132,35 @@ export const globalRoute = createBrowserRouter([
             element: <AdminNav />
           },
           {
-            path: "/homePage/signup",
-            element: <SignUp/>
-          },
-          {
-            path: "/homePage/login",
-            element: <Login/>
-          },
-          {
             path: "/homePage/addProduct",
             element: <AddProduct />
           },
-          {
-            path: "/homePage/addCategory",
-            element: <AddCategory />
-          },
-          {
-            path: "/homePage/updateProduct",
-            element: <UpdateProduct />
-          },
+         
+
           {
             path: "/homePage/aboutnav",
             element: <AboutNav />
+          },
+          {
+            path: "/homePage/footer",
+            element: <Footer/>
           },
           
         ],
       },
     ],
+  },
+  {
+    path: "/user-profile",
+    element: <UserProfile />
+  },
+  {
+    path: "/addCategory",
+    element: <AddCategory />
+  },
+  {
+    path: "/updateProduct",
+    element: <UpdateProduct />
   },
   {
     path: "*",
