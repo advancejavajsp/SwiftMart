@@ -5,7 +5,7 @@ import { globalvar } from "../../GlobalContext/GlobalContext";
 
 const Card = ({product}) => {
   let { user,setUpdateProductPanel,setDeleteProductPanel } = useContext(globalvar);
-  console.log(user)
+  console.log(product)
 
   const [quantity, setQuantity] = useState(user || 0);
 
@@ -23,19 +23,22 @@ const Card = ({product}) => {
   const productTitle = "Mother Dairy Cow Fresh Milk";
 
 
-  const truncatedTitle = productTitle.length > 50 ? productTitle.slice(0, 50) + "..." : productTitle;
+  const truncatedTitle = product?.name?.length > 50 ? product?.name?.slice(0, 50) + "..." : product?.name;
+  const truncateDesc = product?.description?.length > 20 ? product?.description?.slice(0, 20) + "..." : product?.description;
 
   return (
     <div className={styles.cardContainer}>
       <img
-        src={product?.image || Milk}
-        alt={productTitle}
+        src={product?.imageUrl || Milk}
+        alt={product?.name}
         className={styles.productImage}
       />
       <div className={styles.productDetails}>
         <h3 className={styles.productTitle}>{truncatedTitle}</h3>
-        <p className={styles.productSize}>500 ml</p>
-        <p className={styles.productPrice}>₹56</p>
+       {user.role == "ADMIN" &&  <p className={styles.productSize}>{product?.quantityAvailable}</p>}
+       
+        <p className={styles.productPrice}>{truncateDesc}</p>
+        <p className={styles.productPrice}>Price :{product?.price}</p>
         <div className={styles.buttonGroup}>
           {user?.role == "ADMIN" ? <>   <button className={styles.updateButton} onClick={(e)=>{e.stopPropagation(), setUpdateProductPanel(true)}}>UPDATE</button>
             <button className={styles.deleteButton}  onClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(true)}}>DELETE</button></> :         ( quantity === 0 ? (

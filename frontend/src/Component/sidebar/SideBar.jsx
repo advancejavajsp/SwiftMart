@@ -11,15 +11,16 @@ import { globalvar } from '../../GlobalContext/GlobalContext'
 
 
 const SideBar = () => {
-    let {allCategory} = useContext(globalvar);
+    let {allCategory,categoryId, setCategoryId} = useContext(globalvar);
     
+
 
   return (
     <aside className={style["sidebar"]}>
       <nav className={style["sidebar-nav"]}>
         <ul>
           {allCategory.map((ele,i)=>{
-            return <li> <img src={img1} alt="Milk carton" /><p>{ele?.name}</p></li>
+            return <li onClick={(e)=>{e.stopPropagation(),setCategoryId(ele.categoryId)}}> <img src={img1} alt="Milk carton" /><p>{ele?.name}</p></li>
           })}
           {/* <li> <Link to="/milk"><img src={img1} alt="Milk carton" /><p>Milk</p></Link></li>
           <li><Link to="/bread"><img src={img2} alt="Bread" /><p>Bread & Pav</p></Link></li> */}

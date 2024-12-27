@@ -22,7 +22,6 @@ const AddCategory = () => {
     };
   }, [isPopupOpen]);
 
- 
   const handleCancel = () => {
     setIsPopupOpen(false);  
   };
@@ -44,13 +43,13 @@ const AddCategory = () => {
           <input
             type="text"
             placeholder="Enter category description"
-            required
+            
           />
            <label htmlFor="">Image</label>
           <input
             type="text"
             placeholder="Enter Image Url"
-            required
+            
           />
           <div className={styles["btn"]}>
             <button type="submit">Add</button>

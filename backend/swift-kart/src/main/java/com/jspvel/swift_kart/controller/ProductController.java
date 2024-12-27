@@ -68,4 +68,9 @@ public class ProductController {
 		}
 	}
 	
+	@GetMapping("/category/{categoryId}")
+    public List<Product> getProductsByCategory(@PathVariable String categoryId) {
+        return productServiceImp.getProductsByCategory(categoryId);
+    }
+	
 }

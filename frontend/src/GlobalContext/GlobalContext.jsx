@@ -22,20 +22,18 @@ const GlobalContext = ({ children }) => {
   let [otpRender, setOtpRender] = useState(false);
   let [categoryId, setCategoryId] = useState("");
 
-
-
-  let getAllcategory = async () => {
+let getAllcategory=async ()=>{
     let response = await axios.get("http://localhost:8080/open/categoryall");
     console.log(response)
     setAllCategory(response.data);
-
+    setCategoryId(response.data[0].categoryId)
 
   }
 
-  let fetchProductByCategory = (id) => {
-    // fetch the data by category and store that data inside product state
-    let response = axios.get("");
-    setProducts(response)
+  let fetchProductByCategory =async (categoryId) => {
+    console.log(categoryId)
+    let response =await axios.get(`http://localhost:8080/open/category/${categoryId}`);
+    setProducts(response.data)
   }
 
   let getUserDataFromToken = (token) => {
@@ -43,7 +41,6 @@ const GlobalContext = ({ children }) => {
     console.log(decoded)
     setUser(decoded)
   }
-
 
   useEffect(() => {
 
@@ -53,8 +50,12 @@ const GlobalContext = ({ children }) => {
     setUser(decoded)
     getAllcategory()
   }, [])
+
+  useEffect(()=>{
+    fetchProductByCategory(categoryId)
+  },[categoryId])
   return (
-    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId }}>
+    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory }}>
       {children}
     </globalvar.Provider>
   )

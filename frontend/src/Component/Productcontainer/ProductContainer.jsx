@@ -4,7 +4,7 @@ import Card from '../Card/Card';
 import { globalvar } from '../../GlobalContext/GlobalContext';
 
 const ProductContainer = () => {
-  let {categoryId, setCategoryId} = useContext(globalvar);
+  let {product} = useContext(globalvar);
   const truncatedTitle = "Mother Dairy Cow Fresh Milk".length > 50 ? "Mother Dairy Cow Fresh Milk".slice(0, 50) + "..." : "Mother Dairy Cow Fresh Milk";
 
   return (
@@ -13,7 +13,7 @@ const ProductContainer = () => {
 
 
       <div className={style["dropdown"]}>
-        <h4>Buy Paper Online</h4>
+        <h4>Buy {product.name} Online</h4>
 
         <div className={style["bropDownCont"]}>
           <label htmlFor="options">Sort By</label>
@@ -27,7 +27,13 @@ const ProductContainer = () => {
         </div>
       </div>
       {/* </div> */}
-      <Card />
+       <div className={style["cardContainer"]}>
+       {product?.products?.map((ele,i)=>{
+                  return <Card product={ele}/>
+                })}
+       </div>
+   
+    
     </section>
   );
 }

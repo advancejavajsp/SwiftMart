@@ -69,4 +69,10 @@ public class OrderServiceImp implements OrderService {
 	        return orderRepository.save(order);
 	    }
 
+		@Override
+		public List<Order> getOrdersByUserId(String userId) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
 }
