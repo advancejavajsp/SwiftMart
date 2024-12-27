@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import style from './addProduct.module.css'
+import { globalvar } from '../../../GlobalContext/GlobalContext';
 
 const AddProduct = () => {
 
-
+let {setAddProductPanel} = useContext(globalvar);
   let {addProduct, setAddProduct} =  useState({
     productId: "",
     name: "",
@@ -12,20 +13,16 @@ const AddProduct = () => {
     quantity: "",
     imageUrl:"",
     description: "",
-    
-
-
    })
 
    let handleData = (e)=>{
     setAddProduct({...addProduct, [e.target.name]: e.target.value})
    }
   return (
-    <div className={style["addProduct"]}>
-      
-        <div className={style["addProduct1"]}>
+    <div className={style["addProduct"]} onClick={(e) => {e.stopPropagation(),setAddProductPanel(false)}}>
+        <div className={style["addProduct1"]}  onClick={(e) => {e.stopPropagation(),setAddProductPanel(true)}}>
         <form action="">
-        <h1>Add Product</h1>
+        <h2>Add Product</h2>
           <div className={style["productDetails"]}>
             <label htmlFor="">Id</label>
             <input type="text" name='productId' placeholder='ProductId'  />
@@ -39,7 +36,7 @@ const AddProduct = () => {
             <select id="myDropdown" name="category" onChange={handleData} >
             <option value="option1">Category 1</option>
             <option value="option2">Category 2</option>
-            <option value="option3" selected>Category 3</option> 
+            <option value="option3">Category 3</option> 
             </select>
               
             

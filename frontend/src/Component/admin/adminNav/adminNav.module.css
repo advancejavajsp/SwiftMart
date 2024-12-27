@@ -1,73 +1,39 @@
 .adminNav {
-  height: 10vh;
+  height: 8vh;
   width: 100%;
-  background-color: #3a6f42;
-  border: 1px solid black;
+  margin-top: 2px;
+  background-color: white;
+  /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
   font-size: 20px;
   align-items: center;
   padding: 0 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px gray;
 }
 
 .adminNav .adminNav1 {
-  width: 85%;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.adminNav1 li {
-  width: 15%;
-  list-style: none;
+.adminNav1 {
+  width: 50%;
   text-align: center;
 }
 
-.adminNav .logo {
-  height: 100%;
-  width: 7%;
-  background-color: white;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+.adminNav1  li{
+  list-style-type: none;
+  color: black;
+  cursor: pointer;
+  padding: 50px;
 }
-
-.adminNav .logo img {
-  max-width: 100%;
-  height: auto;
-}
-
-.adminNav .adminNav1 li > a {
-  color: #f0f8e0;
-  text-decoration: none;
-  position: relative;
-  transition: color 0.3s ease, transform 0.3s ease;
-  font-weight: bold;
-}
-
-.adminNav .adminNav1 li > a:hover {
-  color: #ffffff;
-  transform: translateY(-3px);
-}
-
-.adminNav .adminNav1 li > a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #f0f8e0, transparent);
-  background-size: 300% 100%;
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-
-.adminNav .adminNav1 li > a:hover::after {
-  opacity: 1;
-  animation: shimmer111 2s linear infinite;
+.adminNav1  li:hover{
+  color: green;
+  font-size: 16px;
 }
 
 @keyframes shimmer111 {
@@ -87,7 +53,6 @@
 .hamburger {
   display: none;
   border: 1px solid black !important;
-  /* flex-direction: column; */
   cursor: pointer;
 }
 
@@ -98,56 +63,10 @@
   margin: 4px 0;
 }
 
-@media (max-width: 768px) {
-  .adminNav .adminNav1 {
-    display: none; 
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 10vh;
-    left: 0;
-    background-color: #3a6f42;
-    padding: 20px 0;
-    transition: transform 0.3s ease-in-out;
-    z-index: 10;
-  }
-
-  .adminNav .adminNav1.open {
-    display: flex;
-    transform: translateY(0);
-  }
-
-  .adminNav .adminNav1 li {
-    width: 100%;
-    margin: 10px 0;
-    text-align: center;
-  }
-
-  .hamburger {
-    display: flex; 
-  }
-
-  .adminNav1 li > a {
-    font-size: 18px;
+@media (max-width:800px) {
+  .adminNav{
+   display: none;
   }
 }
 
-@media (max-width: 480px) {
-  .adminNav {
-    height: 15vh;
-    padding: 0 10px;
-  }
 
-  .adminNav .logo {
-    width: 30%;
-  }
-
-  .adminNav1 li > a {
-    font-size: 16px;
-  }
-
-  .adminNav1 li {
-    margin: 15px 0;
-  }
-}

@@ -18,7 +18,6 @@
   width: 100%;
   max-width: 400px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
 }
 
 .popupOverlay .popupContent h2 {
@@ -36,14 +35,14 @@
 .popupOverlay .popupContent form input {
   padding: 12px;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid gray;
   border-radius: 5px;
   outline: none;
   transition: border-color 0.3s ease;
 }
 
 .popupOverlay .popupContent form input:focus {
-  border-color: #007bff;
+  border-color: green;
 }
 
 .popupOverlay .popupContent form .btn {
@@ -66,25 +65,11 @@
   background-color: #135d08;
   color: white;
 }
-
-.popupOverlay .popupContent form .btn button[type="submit"]:hover {
-  background-color: #3e1508;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 .popupOverlay .popupContent form .btn button[type="button"] {
-  background-color: #6c757d;
+  background-color: red;
   color: white;
 }
 
-.popupOverlay .popupContent form .btn button[type="button"]:hover {
-  background-color: #f80808;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.popupOverlay .popupContent form .btn button:focus {
-  outline: none;
-}
 
 @media screen and (max-width: 600px) {
   .popupOverlay .popupContent {

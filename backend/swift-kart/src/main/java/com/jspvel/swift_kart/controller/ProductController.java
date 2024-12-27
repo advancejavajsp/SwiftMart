@@ -21,7 +21,7 @@ import com.jspvel.swift_kart.service.imp.ProductServiceImp;
 
 @RestController
 @CrossOrigin
-//@RequestMapping("/swiftmart")
+@RequestMapping("/open/swiftmart")
 public class ProductController {
 
 	@Autowired

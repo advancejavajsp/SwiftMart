@@ -15,6 +15,8 @@ const GlobalContext = ({ children }) => {
   let [productCategory, setProductsCategory] = useState([]);
   let [updateProductPanel, setUpdateProductPanel] = useState(false);
   let [deleteProductPanel, setDeleteProductPanel] = useState(false);
+  let [addProductPanel, setAddProductPanel] = useState(false);
+  let [addCategoryPanel, setAddCategoryPanel] = useState(false);
 
 
 let allcategory=()=>{
@@ -42,7 +44,7 @@ console.log(decoded)
 
 },[])
   return (
-    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory,updateProductPanel, setUpdateProductPanel,mycartPanel,setMycartPanel,getUserDataFromToken ,deleteProductPanel, setDeleteProductPanel}}>
+    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory,updateProductPanel, setUpdateProductPanel,mycartPanel,setMycartPanel,getUserDataFromToken ,deleteProductPanel, setDeleteProductPanel,addProductPanel, setAddProductPanel,addCategoryPanel, setAddCategoryPanel}}>
       {children}
     </globalvar.Provider>
   )
