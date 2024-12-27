@@ -34,8 +34,8 @@ import Login from "../pages/login/Login";
 import NavBar from "../Component/Navbar/MainNavBar";
 import HomePage from "../Component/HomePage/HomePage";
 import SignUp from "../pages/Signup/SignUp";
-import UpdateNotification from "../Component/Notification/UpdateNotification";
-import DeleteNotification from "../Component/Notification/DeleteNotification";
+import UpdateNotification from "../Component/notificataion/UpdateNotification";
+import DeleteNotification from "../Component/notificataion/DeleteNotification";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",
@@ -66,10 +66,7 @@ export const globalRoute = createBrowserRouter([
             path:"/homePage/cart",
             element:<MyCart/>
           },
-          {
-            path:"/homePage/cardpage",
-            element:<CardPage/>
-          },
+          
            {
             path:"/homePage/about",
             element:<About/>
@@ -145,6 +142,10 @@ export const globalRoute = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path:"/cardpage",
+    element:<CardPage/>
   },
   {
     path: '/order',

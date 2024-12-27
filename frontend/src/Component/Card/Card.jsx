@@ -2,10 +2,11 @@ import React, { useState,useContext  } from 'react';
 import styles from "./Card.module.css";
 import Milk from "../../asset/Milk.avif";
 import { globalvar } from "../../GlobalContext/GlobalContext";
+import { Link } from 'react-router-dom';
 
 const Card = ({product}) => {
   let { user,setUpdateProductPanel,setDeleteProductPanel } = useContext(globalvar);
-  console.log(product)
+  console.log(user)
 
   const [quantity, setQuantity] = useState(user || 0);
 
@@ -27,17 +28,16 @@ const Card = ({product}) => {
   const truncateDesc = product?.description?.length > 20 ? product?.description?.slice(0, 20) + "..." : product?.description;
 
   return (
-    <div className={styles.cardContainer}>
-      <img
-        src={product?.imageUrl || Milk}
-        alt={product?.name}
+  
+  <div className={styles.cardContainer}>
+     <Link to='/cardPage'><img
+        src={product?.image || Milk}
+        alt={truncatedTitle}
         className={styles.productImage}
-      />
+      /></Link>
       <div className={styles.productDetails}>
         <h3 className={styles.productTitle}>{truncatedTitle}</h3>
-       {user.role == "ADMIN" &&  <p className={styles.productSize}>{product?.quantityAvailable}</p>}
-       
-        <p className={styles.productPrice}>{truncateDesc}</p>
+       {user?.role == "ADMIN" &&  <p className={styles.productSize}>Quantity :{product?.quantityAvailable}</p>} 
         <p className={styles.productPrice}>Price :{product?.price}</p>
         <div className={styles.buttonGroup}>
           {user?.role == "ADMIN" ? <>   <button className={styles.updateButton} onClick={(e)=>{e.stopPropagation(), setUpdateProductPanel(true)}}>UPDATE</button>

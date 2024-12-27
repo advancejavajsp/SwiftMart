@@ -76,8 +76,12 @@ const MainNavBar = () => {
       </div>
 
       <div className={style["search-bar"]}>
-        <CiSearch className={style["search"]} />
-        <input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} />
+        <ul className={style["search-bar-ul"]}>
+          <li><CiSearch className={style["search"]} /></li>
+          <li><input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} /></li>
+        
+        
+        </ul>
       </div>
 
       <div className={style["btn"]}>

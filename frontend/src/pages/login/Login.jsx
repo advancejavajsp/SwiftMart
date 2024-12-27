@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 
 const Login = () => {
-  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,getUserDataFromToken}=useContext(globalvar)
+  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,getUserDataFromToken,user,setUser}=useContext(globalvar)
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -32,12 +32,11 @@ const Login = () => {
     
     if (credentials.email && credentials.password) {
       let {data} =await axios.post(`http://localhost:8080/auth/login?email=${credentials.email}&password=${credentials.password}`,credentials)
-      console.log("data :",data);
       if (data.token) {
+        localStorage.setItem("token", data.token)
         getUserDataFromToken(data.token);
         toast.success("Login succesful");
         console.log("Login succesful");
-        localStorage.setItem("token", data.token)
        setTimeout(()=>{
         setLoginPanel(false)
        },1500)
@@ -95,7 +94,7 @@ const Login = () => {
           <button type="submit">Login</button>
 
           <div className={style['register-link']}>
-          <p onClick={()=>{setLoginPanel( !loginPanel),setSignuPanel(!signupPanel)}}> Don't have an account? SignUp </p>
+          <p onClick={(e)=>{e.stopPropagation(),setLoginPanel(!loginPanel),setSignuPanel(!signupPanel)}}> Don't have an account? SignUp </p>
 
           </div>
         </form>

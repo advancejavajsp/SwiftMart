@@ -1,9 +1,11 @@
 package com.jspvel.swift_kart.entity;
 
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -30,14 +32,14 @@ public class Cart {
 	@Column(name = "price")
 	private double price;
 
-	@OneToMany
+	@OneToMany(cascade =  CascadeType.ALL)
 	@JsonIgnore
-	private List<Product> product;
+	private List<CartItem> product;
 	
 	@JsonIgnore
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
     private User user;
 
-	  
+	
 }
 			

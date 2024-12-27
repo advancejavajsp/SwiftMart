@@ -10,11 +10,6 @@ const DeleteNotification = () => {
     const handleEdit = () => {
           // Logic for edit action (if any)
     };
-      
- 
-      
-
-
   return (
     <section className={styles.notificationPannel} onClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(false)}}>
     <div className={styles.notification} onClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(true)}}>

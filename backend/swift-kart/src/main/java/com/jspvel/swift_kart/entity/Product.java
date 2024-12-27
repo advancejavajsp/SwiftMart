@@ -46,5 +46,8 @@ public class Product {
 	@JoinColumn
 	private Category category;
 
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 438e71d41da12a9c7aec7cf0934598ae50204fa6
 }

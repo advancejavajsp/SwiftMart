@@ -22,7 +22,8 @@ const GlobalContext = ({ children }) => {
   let [otpRender, setOtpRender] = useState(false);
   let [categoryId, setCategoryId] = useState("");
 
-let getAllcategory=async ()=>{
+
+  let getAllcategory = async () => {
     let response = await axios.get("http://localhost:8080/open/categoryall");
     console.log(response)
     setAllCategory(response.data);
@@ -36,17 +37,18 @@ let getAllcategory=async ()=>{
     setProducts(response.data)
   }
 
-  let getUserDataFromToken = (token) => {
-    const decoded = jwtDecode(token);
-    console.log(decoded)
-    setUser(decoded)
-  }
+let getUserDataFromToken=()=>{
+  let token=localStorage.getItem("token"); 
+console.log(token);
+const decoded = token && jwtDecode(token);
+console.log(decoded)
+ setUser(decoded)
 
+}
   useEffect(() => {
 
     let token = localStorage.getItem("token");
     const decoded = token && jwtDecode(token);
-    console.log(decoded)
     setUser(decoded)
     getAllcategory()
   }, [])

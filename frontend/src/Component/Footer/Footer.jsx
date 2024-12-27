@@ -146,7 +146,7 @@ const Footer = () => {
                 <li>Toys & Games</li>
               </ul>
             </div>
-            <div className={styles.listItem}>
+            <div className={styles.listItem1}>
               <ul>
                 <li><Link>Dairy & Breakfast</Link></li>
                 <li><Link>Instant & Frozen Food</Link></li>
@@ -160,7 +160,7 @@ const Footer = () => {
                 <li><Link>Print Store</Link></li>
               </ul>
             </div>
-            <div className={styles.listItem}>
+            <div className={styles.listItem1}>
               <ul>
                 <li><Link>Munchies</Link></li>
                 <li><Link>Tea, Coffee & Health Drinks</Link></li>

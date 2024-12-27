@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.jspvel.swift_kart.util.Role;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -57,7 +58,7 @@ public class User implements UserDetails {
 	@Transient
 	private MultipartFile photo;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private Cart cart;
 
 //    private boolean verified;
