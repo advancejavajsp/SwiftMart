@@ -102,10 +102,7 @@ export const globalRoute = createBrowserRouter([
             path: '/homePage/completed',
             element: <Completed />
           },
-          {
-            path: "/homePage/userprofile",
-            element: <UserProfile />
-          },
+
           {
             path: "/homePage/sidebar",
             element: <Sidebar />
@@ -134,10 +131,7 @@ export const globalRoute = createBrowserRouter([
             path: "/homePage/addProduct",
             element: <AddProduct />
           },
-          {
-            path: "/homePage/addCategory",
-            element: <AddCategory />
-          },
+         
 
           {
             path: "/homePage/aboutnav",
@@ -155,6 +149,14 @@ export const globalRoute = createBrowserRouter([
   {
     path: '/order',
     element: <Order />
+  },
+  {
+    path: "/user-profile",
+    element: <UserProfile />
+  },
+  {
+    path: "/addCategory",
+    element: <AddCategory />
   },
   {
     path: "/updateProduct",

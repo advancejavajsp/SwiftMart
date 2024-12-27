@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jspvel.swift_kart.entity.Payment;
@@ -22,7 +23,7 @@ import com.jspvel.swift_kart.service.imp.ProductServiceImp;
 
 @RestController
 @CrossOrigin
-//@RequestMapping("/swiftmart")
+@RequestMapping("/open/swiftmart")
 public class PaymentController {
 	@Autowired
 	private PaymentServiceImp paymentServiceImp; 
@@ -42,10 +43,9 @@ public class PaymentController {
         }
 	}
 	
-	@PostMapping("/open/payments")
+	@PostMapping("/payments")
 	public ResponseEntity<Payment> addPayment(@RequestBody Payment payment){
-		Payment payment2 = paymentServiceImp.addPayment(payment);
-		return new ResponseEntity<>(payment2, HttpStatus.CREATED);
+		return new ResponseEntity<>(paymentServiceImp.addPayment(payment), HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping("/payments/{paymentId}")

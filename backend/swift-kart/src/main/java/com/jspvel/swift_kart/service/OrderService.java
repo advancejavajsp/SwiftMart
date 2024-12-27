@@ -13,7 +13,7 @@ public interface OrderService {
 	
 	public Order getOrderById(String orderId);
 	
-	public List<Order> getOrdersByUserId(Long userId);
+	public List<Order> getOrdersByUserId(String userId);
 	
 	public Order cancelOrder(String orderId);
 }

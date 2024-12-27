@@ -55,7 +55,7 @@ const MainNavBar = () => {
   };
 
   const getNavbarQRData = (userData) => {
-    return `Name: ${user.userName}\nEmail: ${userData.email}`;
+    return `Name: ${userData?.userName}\nEmail: ${userData?.email}`;
   };
 
   const qrData = getNavbarQRData(user);
