@@ -1,14 +1,22 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import QRCode from 'react-qr-code';  
 import style from "./UserProfile.module.css"; 
+import axios from 'axios';
 
 function UserProfile() {
+
+  let [fetchedUserdata, setFetchedUserdata] = useState({});
   const userData = {
     name: "Hemant Kumar Verma",
     email: "XXXXXXX@gmail.com",
   };
 
+
+  useEffect(()=>{
+    let response = axios.get(`/open/swiftmart/email/${userData.email}`)
+    setFetchedUserdata(response.data);
+  },[])
   const getUserProfileQRData = (userData) => {
     return `Name: ${userData.name}\nEmail: ${userData.email}`;
   };
@@ -22,8 +30,8 @@ function UserProfile() {
           alt="Profile"
           className={style['profile-picture']}
         />
-        <h3>{userData.name}</h3>
-        <p>Email: {userData.email}</p>
+        <h3>{fetchedUserdata.name}</h3>
+        <p>Email: {fetchedUserdata.email}</p>
       </div>
 
       <div className={style['qr-section']}>
@@ -33,9 +41,9 @@ function UserProfile() {
 
       <div className={style['user-details']}>
         <h4>Personal Information</h4>
-        <p>Full Name: {userData.name}</p>
+        <p>Full Name: {fetchedUserdata.name}</p>
         <p>Address: Sector 14 Gurugram</p>
-        <p>Phone: XXXXXXXXXX</p>
+        <p>{fetchedUserdata.phone}</p>
         <button className={style['edit-button']}>Edit Profile</button>
       </div>
 

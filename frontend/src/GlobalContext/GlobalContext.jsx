@@ -2,6 +2,7 @@
 import React,{createContext, useEffect} from 'react'
 import { useState } from 'react';
 import { jwtDecode } from "jwt-decode";
+import axios from 'axios';
 
 
 export const globalvar = createContext();
@@ -15,10 +16,14 @@ const GlobalContext = ({ children }) => {
   let [productCategory, setProductsCategory] = useState([]);
   let [updateProductPanel, setUpdateProductPanel] = useState(false);
   let [deleteProductPanel, setDeleteProductPanel] = useState(false);
+  let [allCategory, setAllCategory] = useState([]);
 
 
-let allcategory=()=>{
+let getAllcategory=async()=>{
+    let response=await axios.get("http://localhost:8080/open/categoryall");
+    setAllCategory(response.data);
 
+    
 }
 
 let fetchdataByCategory=(id)=>{
@@ -39,10 +44,10 @@ let token=localStorage.getItem("token");
 const decoded = jwtDecode(token);
 console.log(decoded)
  setUser(decoded)
-
+ getAllcategory()
 },[])
   return (
-    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory,updateProductPanel, setUpdateProductPanel,mycartPanel,setMycartPanel,getUserDataFromToken ,deleteProductPanel, setDeleteProductPanel}}>
+    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory,updateProductPanel, setUpdateProductPanel,mycartPanel,setMycartPanel,getUserDataFromToken ,deleteProductPanel, setDeleteProductPanel, allCategory}}>
       {children}
     </globalvar.Provider>
   )

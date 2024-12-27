@@ -18,7 +18,7 @@ import com.jspvel.swift_kart.service.imp.UserServiceImp;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/swiftmart")
+@RequestMapping("/open/swiftmart")
 public class UserController {
 
 	@Autowired
