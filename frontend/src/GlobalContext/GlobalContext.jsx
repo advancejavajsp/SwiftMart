@@ -17,6 +17,9 @@ const GlobalContext = ({ children }) => {
   let [updateProductPanel, setUpdateProductPanel] = useState(false);
   let [deleteProductPanel, setDeleteProductPanel] = useState(false);
   let [allCategory, setAllCategory] = useState([]);
+  let [otpRender, setOtpRender] = useState(false);
+  let [categoryId, setCategoryId] = useState("");
+
 
 
 let getAllcategory=async()=>{
@@ -26,7 +29,7 @@ let getAllcategory=async()=>{
     
 }
 
-let fetchdataByCategory=(id)=>{
+let fetchProductByCategory=(id)=>{
   // fetch the data by category and store that data inside product state
    let response=axios.get("");
    setProducts(response)
@@ -38,16 +41,17 @@ let getUserDataFromToken=(token)=>{
    setUser(decoded)
 }
 
+
 useEffect(()=>{
 
 let token=localStorage.getItem("token");
-const decoded = jwtDecode(token);
+const decoded =token && jwtDecode(token);
 console.log(decoded)
  setUser(decoded)
  getAllcategory()
 },[])
   return (
-    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory,updateProductPanel, setUpdateProductPanel,mycartPanel,setMycartPanel,getUserDataFromToken ,deleteProductPanel, setDeleteProductPanel, allCategory}}>
+    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory,updateProductPanel, setUpdateProductPanel,mycartPanel,setMycartPanel,getUserDataFromToken ,deleteProductPanel, setDeleteProductPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId}}>
       {children}
     </globalvar.Provider>
   )
