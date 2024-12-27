@@ -75,10 +75,6 @@ export const globalRoute = createBrowserRouter([
             element:<About/>
           },
           {
-            path: '/homePage/order',
-            element: <Order />
-          },
-          {
             path: '/homePage/orderdetails',
             element: <OrderDetails />
           },
@@ -149,6 +145,10 @@ export const globalRoute = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: '/order',
+    element: <Order />
   },
   {
     path: "/user-profile",

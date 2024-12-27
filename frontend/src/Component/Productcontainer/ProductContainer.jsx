@@ -9,12 +9,13 @@ const ProductContainer = () => {
 
   return (
     <section className={style["section"]}>
-      
 
-      
-        <div className={style["dropdown"]}>
-            <h4>Buy Paper Online</h4>
-        
+
+
+      <div className={style["dropdown"]}>
+        <h4>Buy Paper Online</h4>
+
+        <div className={style["bropDownCont"]}>
           <label htmlFor="options">Sort By</label>
           <select id="options" className={style["select"]}>
             <option className={style["style"]}>Relevance</option>
@@ -24,8 +25,9 @@ const ProductContainer = () => {
             <option value="Name (A to Z)">Name (A to Z)</option>
           </select>
         </div>
+      </div>
       {/* </div> */}
-      <Card/>
+      <Card />
     </section>
   );
 }
