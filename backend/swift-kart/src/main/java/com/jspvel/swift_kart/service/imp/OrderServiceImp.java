@@ -46,7 +46,7 @@ public class OrderServiceImp implements OrderService {
 	            return order.get();  
 	        } else {
 	            throw new OrderNotFoundException("Order not found with id " + orderId);
-	        }
+	       }
 	    }
 	    
 	    public List<Order> getOrdersByUserId(Long userId) {

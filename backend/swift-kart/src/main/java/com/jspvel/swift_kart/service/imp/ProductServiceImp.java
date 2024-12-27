@@ -47,7 +47,7 @@ public class ProductServiceImp implements ProductService {
 		String generatedId = customProductIdGenrator.generateCustomId();
 		product.setProductId(generatedId);
 		product.setCategory(category);
-		productRepository.save(product);
+		product=productRepository.save(product);
 		if (category.getProducts() != null) {
 			List<Product> products = new ArrayList<Product>();
 			products.add(product);
