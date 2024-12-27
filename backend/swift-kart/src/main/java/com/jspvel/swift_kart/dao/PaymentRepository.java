@@ -8,6 +8,6 @@ import com.jspvel.swift_kart.entity.Payment;
 
 public interface PaymentRepository extends JpaRepository<Payment, String> {
 	
-	Optional<Payment> findById(String id);
+//	Optional<Payment> findById(String id);
 
 }

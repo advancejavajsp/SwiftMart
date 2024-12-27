@@ -34,11 +34,12 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
     
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable Long userId) {
-        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
-        return ResponseEntity.ok(orders);
-    }
+//    @GetMapping("/user/{userId}")
+//    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable Long userId) {
+////        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
+////        return ResponseEntity.ok(orders);
+//    	return null;
+//    }
     
     @DeleteMapping("/orders/{orderId}")
     public ResponseEntity<Order> cancelOrder(@PathVariable String orderId) {

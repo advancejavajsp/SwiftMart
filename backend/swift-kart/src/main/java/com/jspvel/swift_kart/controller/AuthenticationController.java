@@ -60,6 +60,28 @@ public class AuthenticationController {
 
 		return ResponseEntity.ok(registeredUser);
 	}
+	
+	@Operation(summary = "sign up Delivery Agent")
+	@ApiResponse(description = "user sign up sucessfull", responseCode = "201")
+	@ApiResponse(description = "error in signup", responseCode = "404")
+	@PostMapping("/signup/agent")
+	public ResponseEntity<User> registerDeliveryAgent(@RequestBody @Valid User registerUserDto) {
+
+		User registeredUser = authenticationService.signupDeliveryAgent(registerUserDto);
+
+		return ResponseEntity.ok(registeredUser);
+	}
+	
+	@Operation(summary = "sign up Delivery Agent")
+	@ApiResponse(description = "user sign up sucessfull", responseCode = "201")
+	@ApiResponse(description = "error in signup", responseCode = "404")
+	@PostMapping("/signup/admin")
+	public ResponseEntity<User> registerAdmin(@RequestBody @Valid User registerUserDto) {
+
+		User registeredUser = authenticationService.signupAdmin(registerUserDto);
+
+		return ResponseEntity.ok(registeredUser);
+	}
 
 	@PostMapping("/login")
 	public ResponseEntity<LoginResponse> authenticate(@RequestParam String email, @RequestParam String password) {

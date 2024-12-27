@@ -10,6 +10,7 @@ import com.jspvel.swift_kart.dao.ProductRepository;
 import com.jspvel.swift_kart.entity.Category;
 import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.service.ProductService;
+import com.jspvel.swift_kart.util.CustomProductIdGenrator;
 
 @Service
 public class ProductServiceImp implements ProductService {
@@ -17,8 +18,8 @@ public class ProductServiceImp implements ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-   
-
+    @Autowired
+    private CustomProductIdGenrator customProductIdGenrator;
     
     @Override
     public Product findProductById(String productId) {
@@ -68,6 +69,8 @@ public class ProductServiceImp implements ProductService {
 
 	public Product addProduct(Product product) {
 		
+		String customId = customProductIdGenrator.generateCustomId();
+        product.setProductId(customId);
 		
 		return productRepository.save(product);
 	}
@@ -76,7 +79,8 @@ public class ProductServiceImp implements ProductService {
         Category category = new Category();  
         category.setCategoryId(categoryId);
         
-        return productRepository.findByCategory(categoryId);
+//        return productRepository.findByCategory(categoryId);
+        return null;
     }
 
 

@@ -31,8 +31,6 @@ public class Order {
 	@Column(name = "order_id")
 	private String orderId;
 
-	
-
 	@Enumerated(EnumType.STRING)
 	@Column(name = "order_status")
 	private OrderStatus orderStatus;

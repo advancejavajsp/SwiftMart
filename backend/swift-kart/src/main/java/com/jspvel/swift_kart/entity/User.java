@@ -30,7 +30,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Validated
+@Validated	
 public class User implements UserDetails {
 
 	@Id

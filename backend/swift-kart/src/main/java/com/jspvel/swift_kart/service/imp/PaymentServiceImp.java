@@ -1,19 +1,25 @@
 package com.jspvel.swift_kart.service.imp;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jspvel.swift_kart.dao.PaymentRepository;
+import com.jspvel.swift_kart.entity.Order;
 import com.jspvel.swift_kart.entity.Payment;
 import com.jspvel.swift_kart.service.PaymentService;
+import com.jspvel.swift_kart.util.CustomPaymentIdGenerator;
 
 @Service
 public class PaymentServiceImp implements PaymentService {
 	
 	@Autowired
 	private PaymentRepository paymentRepository;
+	
+	@Autowired
+	private CustomPaymentIdGenerator customPaymentIdGenerator;
 
 	@Override
 	public List<Payment> getAllPayment() {
@@ -27,6 +33,8 @@ public class PaymentServiceImp implements PaymentService {
 
 	@Override
 	public Payment addPayment(Payment payment) {
+		String customId = customPaymentIdGenerator.generateCustomId();
+        payment.setPaymentId(customId);
 		return paymentRepository.save(payment);
 	}
 
@@ -58,8 +66,5 @@ public class PaymentServiceImp implements PaymentService {
 		return false;
 	}
 
-	public List<Payment> getAllPayment1() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }

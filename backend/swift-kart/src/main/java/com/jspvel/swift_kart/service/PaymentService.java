@@ -5,21 +5,18 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.jspvel.swift_kart.entity.Order;
 import com.jspvel.swift_kart.entity.Payment;
 
-@Service
+@Service  
 public interface PaymentService {
 
-	public List<Payment> getAllPayment();
-	
-	public Payment getPaymentById(String  paymentId);
-	
-	public Payment addPayment(Payment payment);
-	
-	public Payment updatePayment(String paymentId, Payment updatedPayment);
-	
-	public boolean deletePayment(String paymentId);
-
-	public Optional<Order> findById(String orderId);
+    public List<Payment> getAllPayment();
+    
+    public Payment getPaymentById(String paymentId);
+    
+    public Payment addPayment(Payment payment);
+    
+    public Payment updatePayment(String paymentId, Payment updatedPayment);
+    
+    public boolean deletePayment(String paymentId);
 }

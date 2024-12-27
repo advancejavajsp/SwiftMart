@@ -57,7 +57,6 @@ public class AuthenticationService {
 
 
 	public User signupDeliveryAgent(User user) {
-		// TODO Auto-generated method stub
 		user.setRole(Role.DELIVERY_AGENT);
 
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -67,7 +66,6 @@ public class AuthenticationService {
 	}
 	
 	public User signupAdmin(User user) {
-		// TODO Auto-generated method stub
 		user.setRole(Role.ADMIN);
 
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
