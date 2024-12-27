@@ -45,6 +45,7 @@ public class PaymentController {
 	
 	@PostMapping("/payments")
 	public ResponseEntity<Payment> addPayment(@RequestBody Payment payment){
+
 		return new ResponseEntity<>(paymentServiceImp.addPayment(payment), HttpStatus.CREATED);
 	}
 	

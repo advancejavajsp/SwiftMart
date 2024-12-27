@@ -19,6 +19,7 @@ public class OrderItem {
 	@Column(name = "order_item_id")
 	private String orderItemId;
 
+  
 	@Column(name = "product_id")
 	private String productId;
 

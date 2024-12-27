@@ -26,27 +26,26 @@ import jakarta.validation.Valid;
 public class AuthenticationController {
 	private final JwtService jwtService;
 
-    private final UserService userService;
+	private final UserService userService;
 	private final AuthenticationService authenticationService;
 
 	public static int counter = 1000;
 
 	@Autowired
-    public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService, UserService userService) {
-        this.jwtService = jwtService;
+	public AuthenticationController(JwtService jwtService, AuthenticationService authenticationService,
+			UserService userService) {
+		this.jwtService = jwtService;
 		this.userService = userService;
-        this.authenticationService = authenticationService;
- 
-    }
+		this.authenticationService = authenticationService;
 
-    
+	}
 
-
-//    @PostMapping("/register")
-//    public ResponseEntity<RegisterResponse> register_e(@RequestBody RegisterRequest registerRequest){
-//       RegisterResponse registerResponse = userService.register(registerRequest);
-//       return new ResponseEntity<>(registerResponse,HttpStatus.CREATED);
-//    }
+	// @PostMapping("/register")
+	// public ResponseEntity<RegisterResponse> register_e(@RequestBody
+	// RegisterRequest registerRequest){
+	// RegisterResponse registerResponse = userService.register(registerRequest);
+	// return new ResponseEntity<>(registerResponse,HttpStatus.CREATED);
+	// }
 
 	@Operation(summary = "sign up user")
 	@ApiResponse(description = "user sign up sucessfull", responseCode = "201")
@@ -58,21 +57,41 @@ public class AuthenticationController {
 
 		return ResponseEntity.ok(registeredUser);
 	}
-	
-	 @Operation(summary = "Send OTP to the user's email")
-	    @ApiResponse(description = "OTP sent successfully", responseCode = "200")
-	    @ApiResponse(description = "Error sending OTP", responseCode = "400")
-	    @PostMapping("/send-otp")
-	    public ResponseEntity<String> sendOtp(@RequestParam String email) {
-	        try {
-	          String otp=  userService.sendOtpToEmail(email);
-	            return ResponseEntity.ok(otp);
-	        } catch (Exception e) {
-	            return ResponseEntity.status(400).body("Error sending OTP: " + e.getMessage());
-	        }
-	    }
 
+	@Operation(summary = "sign up Delivery Agent")
+	@ApiResponse(description = "user sign up sucessfull", responseCode = "201")
+	@ApiResponse(description = "error in signup", responseCode = "404")
+	@PostMapping("/signup/agent")
+	public ResponseEntity<User> registerDeliveryAgent(@RequestBody @Valid User registerUserDto) {
 
+		User registeredUser = authenticationService.signupDeliveryAgent(registerUserDto);
+
+		return ResponseEntity.ok(registeredUser);
+	}
+
+	@Operation(summary = "sign up Delivery Agent")
+	@ApiResponse(description = "user sign up sucessfull", responseCode = "201")
+	@ApiResponse(description = "error in signup", responseCode = "404")
+	@PostMapping("/signup/admin")
+	public ResponseEntity<User> registerAdmin(@RequestBody @Valid User registerUserDto) {
+
+		User registeredUser = authenticationService.signupAdmin(registerUserDto);
+
+		return ResponseEntity.ok(registeredUser);
+	}
+
+	@Operation(summary = "Send OTP to the user's email")
+	@ApiResponse(description = "OTP sent successfully", responseCode = "200")
+	@ApiResponse(description = "Error sending OTP", responseCode = "400")
+	@PostMapping("/send-otp")
+	public ResponseEntity<String> sendOtp(@RequestParam String email) {
+		try {
+			String otp = userService.sendOtpToEmail(email);
+			return ResponseEntity.ok(otp);
+		} catch (Exception e) {
+			return ResponseEntity.status(400).body("Error sending OTP: " + e.getMessage());
+		}
+	}
 
 	@PostMapping("/login")
 	public ResponseEntity<LoginResponse> authenticate(@RequestParam String email, @RequestParam String password) {

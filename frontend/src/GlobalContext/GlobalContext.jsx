@@ -6,6 +6,7 @@ import axios from 'axios';
 
 
 export const globalvar = createContext();
+
 const GlobalContext = ({ children }) => {
   let [user, setUser] = useState("");
   let [loginPanel, setLoginPanel] = useState(false);
@@ -22,6 +23,7 @@ const GlobalContext = ({ children }) => {
   let [otpRender, setOtpRender] = useState(false);
   let [categoryId, setCategoryId] = useState("");
 
+  let allcategory;  
 
   let getAllcategory = async () => {
     let response = await axios.get("http://localhost:8080/open/categoryall");
@@ -60,7 +62,7 @@ console.log(decoded)
     <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory }}>
       {children}
     </globalvar.Provider>
-  )
+  );
 }
 
 export default GlobalContext

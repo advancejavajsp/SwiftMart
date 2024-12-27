@@ -1,7 +1,6 @@
 package com.jspvel.swift_kart.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -42,6 +41,23 @@ public class ProductController {
         }
 	}
 	
+
+//	@PostMapping("/products")
+//	public ResponseEntity<Product> addProduct(@RequestBody Product product){
+//		Product product2 = productServiceImp.addProduct(product);
+//		return new ResponseEntity<>(product2, HttpStatus.CREATED);
+//	}
+	
+//	@DeleteMapping("/products/{productId}")
+//	public ResponseEntity<Void> deleteProduct(@PathVariable String productId){
+//		Product deleted = productServiceImp.addProduct(productId);
+//        if (deleted != null) {
+//            return ResponseEntity.noContent().build(); 
+//        } else {
+//            return ResponseEntity.notFound().build(); 
+//        }
+//	}
+
 	@PostMapping("/products/{categoreyId}")
 	public ResponseEntity<Product> addProduct(@RequestBody Product product,@PathVariable String categoreyId){
 		return new ResponseEntity<>(productServiceImp.addProduct(product,categoreyId), HttpStatus.CREATED);
@@ -56,7 +72,9 @@ public class ProductController {
             return ResponseEntity.notFound().build();  
         }
 	}
+
 	
+
 	@PutMapping("/products/{productId}")
 	public ResponseEntity<Product> updateProduct(@PathVariable ("productId") String productId, @RequestBody Product updatedProduct){
 		Product updated = productServiceImp.updateProduct(productId, updatedProduct);
