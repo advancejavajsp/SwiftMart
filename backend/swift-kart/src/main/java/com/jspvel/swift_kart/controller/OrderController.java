@@ -36,8 +36,9 @@ public class OrderController {
     
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable Long userId) {
-        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
-        return ResponseEntity.ok(orders);
+//        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
+//        return ResponseEntity.ok(orders);
+        return null;
     }
     
     @DeleteMapping("/orders/{orderId}")
