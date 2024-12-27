@@ -22,6 +22,6 @@ public interface UserService {
 	
 	public String updateUserDetails(String id, String newEmail, String newName, long newPhone);
 
-	void sendOtpToEmail(String email);
+	String sendOtpToEmail(String email);
 
 }

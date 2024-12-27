@@ -1,47 +1,74 @@
-import React, { useContext, useState } from 'react';
-import style from '../Signup/SignUp.module.css';
-import { globalvar } from '../../GlobalContext/GlobalContext';
+import React, { useContext, useState } from "react";
+import style from "../Signup/SignUp.module.css";
+import { globalvar } from "../../GlobalContext/GlobalContext";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
-  let {signupPanel,setSignuPanel,setLoginPanel}=useContext(globalvar)
+  let { signupPanel, setSignuPanel, setLoginPanel } = useContext(globalvar);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    image: '',
-    phone: '',
+    name: "",
+    email: "",
+    password: "",
+    image: "",
+    phone: "",
   });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.password && formData.phone && formData.role) {
+    if (
+      formData.name &&
+      formData.email &&
+      formData.password &&
+      formData.phone
+     
+    ) {
       console.log(e.name);
-      let response =await axios.post("http://localhost:8080/auth/signup",formData)
-      console.log(response)
-         
+      let verify = await axios.post(
+        `http://localhost:8080/auth/send-otp?email=${formData?.email}`
+      );
+      console.log(verify);
+      if (verify === "123456") {
+        let response = await axios.post(
+          "http://localhost:8080/auth/signup",
+          formData
+        );
+        console.log(response);
+      }
     } else {
-      toast.error('error');
+      toast.error("error");
     }
   };
 
   return (
-    <div className={style['signup']} onClick={(e)=>{e.stopPropagation(),setSignuPanel(false),setLoginPanel(false)}}>
+    <div
+      className={style["signup"]}
+      onClick={(e) => {
+        e.stopPropagation(), setSignuPanel(false), setLoginPanel(false);
+      }}
+    >
       <fieldset>
         <legend>SignUp</legend>
-        <form onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(),setSignuPanel(true)}}>
+        <form
+          onSubmit={handleSubmit}
+          onClick={(e) => {
+            e.stopPropagation(), setSignuPanel(true);
+          }}
+        >
           <div>
             <label>Username</label>
-            <input className={style["username"]}
+            <input
+              className={style["username"]}
               type="text"
-              name='name'
+              name="name"
               value={formData.name}
               onChange={handleInputChange}
               placeholder="Enter your username"
@@ -93,13 +120,12 @@ const SignUp = () => {
               value={formData.image}
               onChange={handleInputChange}
               placeholder="Enter your address"
-             
             />
           </div>
 
-        <div className={style['signButton']}>
-        <button type="submit" >Sign Up</button>
-        </div>
+          <div className={style["signButton"]}>
+            <button type="submit">Sign Up</button>
+          </div>
         </form>
       </fieldset>
     </div>

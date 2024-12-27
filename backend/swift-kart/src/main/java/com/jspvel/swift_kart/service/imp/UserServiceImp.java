@@ -134,17 +134,15 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public void sendOtpToEmail(String email) {
-        User user = userRepository.findByEmail(email).orElseThrow(() -> new RuntimeException("User not found"));
+    public String sendOtpToEmail(String email) {
 
         String otp = generateOtp();
-        user.setOtp(otp);  
-        userRepository.save(user);
 
         
         String subject = "Your OTP Code";
         String body = "Your OTP code is: " + otp;
         emailService.sendEmail(email, subject, body);
+        return otp;
     }
 
 

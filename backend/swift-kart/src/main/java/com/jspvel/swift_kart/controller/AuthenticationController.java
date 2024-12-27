@@ -65,8 +65,8 @@ public class AuthenticationController {
 	    @PostMapping("/send-otp")
 	    public ResponseEntity<String> sendOtp(@RequestParam String email) {
 	        try {
-	            userService.sendOtpToEmail(email);
-	            return ResponseEntity.ok("OTP sent to " + email);
+	          String otp=  userService.sendOtpToEmail(email);
+	            return ResponseEntity.ok(otp);
 	        } catch (Exception e) {
 	            return ResponseEntity.status(400).body("Error sending OTP: " + e.getMessage());
 	        }
