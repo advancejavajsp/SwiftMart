@@ -95,7 +95,7 @@ const Login = () => {
           <button type="submit">Login</button>
 
           <div className={style['register-link']}>
-          <p onClick={()=>{setLoginPanel( !loginPanel),setSignuPanel(!signupPanel)}}> Don't have an account? SignUp </p>
+          <p onClick={(e)=>{e.stopPropagation(),setLoginPanel(!loginPanel),setSignuPanel(!signupPanel)}}> Don't have an account? SignUp </p>
 
           </div>
         </form>

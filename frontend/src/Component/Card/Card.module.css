@@ -24,8 +24,8 @@
 
 /* Product Image */
 .productImage {
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   object-fit: cover;
   object-position: center;
   border-radius: 8px;

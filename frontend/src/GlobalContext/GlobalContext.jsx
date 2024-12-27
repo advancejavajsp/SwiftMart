@@ -25,7 +25,6 @@ const GlobalContext = ({ children }) => {
 
   let allcategory;  
 
-
   let getAllcategory = async () => {
     let response = await axios.get("http://localhost:8080/open/categoryall");
     console.log(response)
@@ -40,13 +39,13 @@ const GlobalContext = ({ children }) => {
     setProducts(response)
   }
 
-  let getUserDataFromToken = (token) => {
-    const decoded = jwtDecode(token);
-    console.log(decoded)
-    setUser(decoded)
-  }
+let getUserDataFromToken=()=>{let token=localStorage.getItem("token"); 
+console.log(token);
+const decoded = token && jwtDecode(token);
+console.log(decoded)
+ setUser(decoded)
 
-
+}
   useEffect(() => {
 
     let token = localStorage.getItem("token");
@@ -62,4 +61,4 @@ const GlobalContext = ({ children }) => {
   );
 }
 
-export default GlobalContext;
+export default GlobalContext
