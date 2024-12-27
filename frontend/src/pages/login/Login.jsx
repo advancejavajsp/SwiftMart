@@ -2,13 +2,17 @@ import React, { useState, useEffect, useContext } from 'react';
 import style from '../Login/Login.module.css';  
 import { globalvar } from '../../GlobalContext/GlobalContext';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const Login = () => {
-  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel}=useContext(globalvar)
+  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,getUserDataFromToken}=useContext(globalvar)
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
+    
   });
+
 
   const [rememberMe, setRememberMe] = useState(false);
 
@@ -23,16 +27,36 @@ const Login = () => {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
+    
+    if (credentials.email && credentials.password) {
+      let {data} =await axios.post(`http://localhost:8080/auth/login?email=${credentials.email}&password=${credentials.password}`,credentials)
+      console.log("data :",data);
+      if (data.token) {
+        getUserDataFromToken(data.token);
+        toast.success("Login succesful");
+        console.log("Login succesful");
+        localStorage.setItem("token", data.token)
+       setTimeout(()=>{
+        setLoginPanel(false)
+       },1500)
+      }else{
+        toast.error("Something went wrong")
+      }
+         
+    } else {
+      toast.error('error');
+    }
+
 
   }
 
   return (
-    <div className={style['login']} onClick={()=>{}}>
+    <div className={style['login']} onClick={(e)=>{e.stopPropagation(), setLoginPanel(false)}}>
       <fieldset>
         <legend>Login</legend>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(), setLoginPanel(true)}}>
 
           <div className={style['username']}>
             <label>Email</label>
@@ -60,14 +84,12 @@ const Login = () => {
           </div>
 
           <div className={style['checkbox']}>
-            <label>
-              <input
+          <input
                 type="checkbox"
                 checked={rememberMe}
-                onChange={handleCheckboxChange}
+                onClick={()=>{setRememberMe(!rememberMe)}}
               />
-              Remember me
-            </label>
+            <label>Remember me</label>
           </div>
 
           <button type="submit">Login</button>

@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import style from "./payment.module.css";
 import mobikwik from "../../asset/mobikwik.webp"
 import paytm from "../../asset/paytm.webp"
+import { globalvar } from "../../GlobalContext/GlobalContext";
 
 
 const Payment = () => {
 
   const [selectedUpi, setSelectedUpi]= useState(null);
   const [upiId, setUpiId] = useState('');
+  const {paymentSuccessful,setPaymentSuccessful} = useContext(globalvar);
 
   const handlePayment = (method)=>{
     setSelectedUpi(method)
@@ -37,9 +39,9 @@ const Payment = () => {
             </div>
           </div>
           <div className={style["payment"]}>
-            <div className={style["check3"]}>
+            {/* <div className={style["check3"]}>
               <span>payment</span>
-            </div>
+            </div> */}
             <div className={style["payment-step"]}>
               <section className={style["paymentsection"]}>
                 <div className={style["payment-invoice"]}>
@@ -141,7 +143,7 @@ const Payment = () => {
                     </ul>
                   </div>
                   <div className={style["payment-btn"]}>
-                    <button id={style["paybtn"]}>Pay Now</button>
+                    <button id={style["paybtn"]} onClick={()=>{setPaymentSuccessful(!paymentSuccessful)}}>Pay Now</button>
                   </div>
                   <div>
                     You will be redirected to wallet’s website to authorize

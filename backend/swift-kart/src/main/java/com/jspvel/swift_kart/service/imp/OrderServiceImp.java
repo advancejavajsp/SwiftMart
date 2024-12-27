@@ -49,9 +49,9 @@ public class OrderServiceImp implements OrderService {
 	        }
 	    }
 	    
-	    public List<Order> getOrdersByUserId(String userId) {
+	    public List<Order> getOrdersByUserId(Long userId) {
 //	        return orderRepository.findByUserId(userId);
-	    	return null;
+	        return null;
 	    }
 	    
 	    public Order cancelOrder(String orderId) {
