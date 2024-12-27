@@ -16,7 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "product")
+@Table(name = "products")
 @Getter
 @Setter
 @Data
@@ -46,7 +46,4 @@ public class Product {
 	@JoinColumn
 	private Category category;
 
-	@ManyToOne
-	@JsonIgnore
-	private Cart cart;
 }

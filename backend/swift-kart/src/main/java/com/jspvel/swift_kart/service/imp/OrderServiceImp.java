@@ -46,7 +46,7 @@ public class OrderServiceImp implements OrderService {
 	            return order.get();  
 	        } else {
 	            throw new OrderNotFoundException("Order not found with id " + orderId);
-	        }
+	       }
 	    }
 	    
 	    public List<Order> getOrdersByUserId(Long userId) {
@@ -68,5 +68,11 @@ public class OrderServiceImp implements OrderService {
 	        
 	        return orderRepository.save(order);
 	    }
+
+		@Override
+		public List<Order> getOrdersByUserId(String userId) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 
 }
