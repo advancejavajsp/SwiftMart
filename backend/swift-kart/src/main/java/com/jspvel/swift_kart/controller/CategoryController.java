@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jspvel.swift_kart.entity.Category;
@@ -19,6 +20,7 @@ import com.jspvel.swift_kart.service.imp.CatergoryServiceImp;
 
 @RestController
 @CrossOrigin
+@RequestMapping("/open/category")
 public class CategoryController {
 	
 	@Autowired
@@ -26,12 +28,12 @@ public class CategoryController {
 	
 	
 	
-	@GetMapping("/open/categoryall")
+	@GetMapping("/categoryall")
 	public List<Category> getAllCategories(){
 		return catergoryServiceImp.getAllCategory();
 	}
 	
-	@GetMapping("/open/category/{categoryId}")
+	@GetMapping("/{categoryId}")
 	public ResponseEntity<Category> getCategoryById(@PathVariable String categoryId){
 		Category category = catergoryServiceImp.getCategoryById(categoryId);
 		if(category!=null) {
@@ -42,7 +44,7 @@ public class CategoryController {
 		}
 	}
 	
-	@PostMapping("/open/category")
+	@PostMapping
 	public ResponseEntity<Category> addCategory(@RequestBody Category category){
 		System.out.println(category);
 		
@@ -50,7 +52,7 @@ public class CategoryController {
 		
 	}
 	
-	@DeleteMapping("open/category/{categoryId}")
+	@DeleteMapping("{categoryId}")
 	public ResponseEntity<Void> deleteCategory(@PathVariable String categoryId){
 		boolean deleted = catergoryServiceImp.deleateCategory(categoryId);
 		if (deleted) {
@@ -60,7 +62,7 @@ public class CategoryController {
         }
 	}
 	
-	@PutMapping("/category/{categoryId}")
+	@PutMapping("/{categoryId}")
 	public ResponseEntity<Category> updateCategory(@PathVariable("categoryId") String categoryId, @RequestBody Category updateCategory){
 		Category update = catergoryServiceImp.updateCategory(categoryId,updateCategory);
 				if(update != null) {

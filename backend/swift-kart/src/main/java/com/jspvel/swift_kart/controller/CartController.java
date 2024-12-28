@@ -13,7 +13,7 @@ import com.jspvel.swift_kart.entity.Cart;
 import com.jspvel.swift_kart.service.imp.CartServiceImp;
 
 @RestController
-@RequestMapping("/open")
+@RequestMapping("/open/cart")
 public class CartController {
 
 	@Autowired
@@ -24,12 +24,12 @@ public class CartController {
 //	        return cartServiceImp.createCartAndAssignToUser(userId, cartDTO);
 //	    }
 	
-	@PostMapping("/create/{userId}")
+	@PostMapping("/{userId}")
     public ResponseEntity<?> createCartAndAssignToUser(@PathVariable String userId, @RequestBody Cart cartDTO) {
         return  ResponseEntity.ok( cartServiceImp.createCartAndAssignToUser(userId, cartDTO));
     }
 	
-	@PostMapping("/add/{userId}/{productId}")
+	@PostMapping("/{userId}/{productId}")
     public CartDTO addProductToCart(@PathVariable String userId, @PathVariable String productId) {
         return cartServiceImp.addProductToCart(userId, productId);
     }
