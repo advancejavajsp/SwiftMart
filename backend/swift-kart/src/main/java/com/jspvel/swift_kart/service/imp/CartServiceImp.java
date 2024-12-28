@@ -75,48 +75,78 @@ public class CartServiceImp implements CartService {
 	
     
     public CartDTO addProductToCart(String userId, String productId) {
-    	// Step 1: Find the user by userId
     	User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
 
-    	// Step 2: Find the product by productId
     	Product product = productRepository.findById(productId).orElseThrow(() -> new RuntimeException("Product not found"));
 
-    	// Step 3: Get the user's cart
+    	if (product.getQuantityAvailable() == 0) {
+    	    throw new RuntimeException("Out of Stock");
+    	}
     	Cart cart = user.getCart();
     	if (cart == null) {
     	    cart = new Cart();
     	    user.setCart(cart);
     	}
 
-    	// Step 4: Check if the product is already in the cart
     	Optional<CartItem> existingCartItem = cart.getProduct().stream()
     	    .filter(cartItem -> cartItem.getProduct().getProductId().equals(productId))
     	    .findFirst();
 
     	if (existingCartItem.isPresent()) {
-    	    // If the product is already in the cart, increase its quantity
     	    CartItem cartItem = existingCartItem.get();
     	    cartItem.setQuantity(cartItem.getQuantity() + 1);
     	} else {
-    	    // If the product is not in the cart, add it as a new item
+    	   
     	    CartItem cartItem = new CartItem();
     	    cartItem.setProduct(product);
     	    cartItem.setQuantity(1);
-    	    cartItem.setProduct(product); // Set the cart for the CartItem
+    	    cartItem.setProduct(product); 
     	    cart.getProduct().add(cartItem);
     	}
 
-    	// Step 5: Update the cart's total quantity and price
-    	cart.setQuantity(cart.getQuantity() + 1); // Update the total quantity of items in the cart
-    	cart.setPrice(cart.getPrice() + product.getPrice()); // Update the total price
+    	cart.setQuantity(cart.getQuantity() + 1); 
+    	cart.setPrice(cart.getPrice() + product.getPrice()); 
 
-    	// Step 6: Save the updated cart
     	cartRepository.save(cart);
 
-    	// Step 7: Convert the updated cart to CartDTO
     	CartDTO cartDTO = new CartDTO(cart);
 
     	return cartDTO;
 
     }
+    
+    public CartDTO removeProductFromCart(String userId, String productId) {
+        User user = userRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+        Cart cart = user.getCart();
+        if (cart == null) {
+            throw new RuntimeException("Cart not found for the user");
+        }
+
+        Optional<CartItem> cartItemOptional = cart.getProduct().stream()
+            .filter(cartItem -> cartItem.getProduct().getProductId().equals(productId))
+            .findFirst();
+
+        if (cartItemOptional.isPresent()) {
+            CartItem cartItem = cartItemOptional.get();
+            if (cartItem.getQuantity() > 1) {
+                cartItem.setQuantity(cartItem.getQuantity() - 1);
+            } else {
+                cart.getProduct().remove(cartItem);
+            }
+
+            cart.setQuantity(cart.getQuantity() - 1);
+            cart.setPrice(cart.getPrice() - cartItem.getProduct().getPrice());
+        } else {
+            throw new RuntimeException("Product not found in the cart");
+        }
+
+        cartRepository.save(cart);
+
+        CartDTO cartDTO = new CartDTO(cart);
+
+        return cartDTO;
+    }
+
 }

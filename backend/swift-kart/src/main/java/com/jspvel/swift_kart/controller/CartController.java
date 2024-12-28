@@ -2,6 +2,7 @@ package com.jspvel.swift_kart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +33,11 @@ public class CartController {
 	@PostMapping("/{userId}/{productId}")
     public CartDTO addProductToCart(@PathVariable String userId, @PathVariable String productId) {
         return cartServiceImp.addProductToCart(userId, productId);
+    }
+	
+	@DeleteMapping("/{userId}/{productId}")
+    public CartDTO removeProductFromCart(@PathVariable String userId, @PathVariable String productId) {
+        return cartServiceImp.removeProductFromCart(userId, productId);
     }
 	 
 }
