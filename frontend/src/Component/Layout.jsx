@@ -11,10 +11,11 @@ import DeleteNotification from "./notificataion/DeleteNotification"
 import AddProduct from "./admin/addProduct/AddProduct"
 import AddCategory from "./admin/addCategory/AddCategory";
 import OtpPopup from "../pages/otpPopup/OtpPopup"
+import UpdateProduct from "./admin/updateProduct/UpdateProduct"
 
 
 const Layout = () => {
-  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender}=useContext(globalvar)
+  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender}=useContext(globalvar)
 
   return (
     <>
@@ -27,6 +28,7 @@ const Layout = () => {
     {addProductPanel && <AddProduct/>}
     {paymentSuccessful && <PaymentSucessful/>}
     {addCategoryPanel && <AddCategory/>}
+    {updateProductPopUp && <UpdateProduct/>}
     <Outlet></Outlet>
     </>
   )

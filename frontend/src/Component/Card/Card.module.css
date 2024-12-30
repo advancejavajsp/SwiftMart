@@ -2,7 +2,7 @@
 .cardContainer {
   width: 200px; 
   height: 280px; 
-  margin: 20px;
+  margin: 5px;
   /* padding: 10px; */
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -123,23 +123,28 @@
 
 /* Update Button */
 .updateButton {
-  border-color:#4caf50;
+  color: white;
+  background-color: rgba(0, 128, 0, 0.658);
+  border: none;
+  
 }
 
 .updateButton:hover {
   color: white;
-  background-color: #007bff;
+  background-color: green;
   transform: translateY(-2px);
 }
 
 /* Delete Button */
 .deleteButton {
-  border-color: #4caf50;
+  color: white;
+  background-color: rgba(255, 0, 0, 0.61);
+  border: none;
 }
 
 .deleteButton:hover {
-  color: white;
-  background-color: #e63946;
+  /* color: white; */
+  background-color:red;
   transform: translateY(-2px);
 }
 

@@ -83,7 +83,7 @@ const Login = () => {
             <label>Remember me</label>
           </div>
 
-          <button type="submit">Login</button>
+          <button type="submit" >Login</button>
 
           <div className={style['register-link']}>
             <p onClick={(e) => { e.stopPropagation(); setLoginPanel(!loginPanel); setSignuPanel(!signupPanel); }}>Don't have an account? SignUp</p>

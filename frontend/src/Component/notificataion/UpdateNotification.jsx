@@ -3,16 +3,20 @@ import styles from './UpdateNotification.module.css';
 import { globalvar } from '../../GlobalContext/GlobalContext';
 import { useNavigate } from 'react-router-dom';
 const UpdateNotification = () => {
-      let {setUpdateProductPanel}=useContext(globalvar);
-      let navigate=useNavigate()
+      let {setUpdateProductPanel, productComp,setUpdateProductPopUp}=useContext(globalvar);
+      let {name} = productComp
+      let navigate=useNavigate();
+
     const handleClose = (e) => {
       e.stopPropagation(),
       setUpdateProductPanel(false)
     };
       
-    const handleEdit = (product) => {
+    const handleEdit = (e) => {
+      e.stopPropagation();
       setUpdateProductPanel(false)
-      navigate("/updateProduct", {state:product})
+      // navigate("/updateProduct", {state:product})
+      setUpdateProductPopUp(true)
     };
       
 
@@ -23,7 +27,7 @@ const UpdateNotification = () => {
     <div className={styles.notification} onClick={(e)=>{e.stopPropagation(), setUpdateProductPanel(true)}}>
       {/* Header */}
       <div className={styles.notificationHeader}>
-        <h3 className={styles.notificationTitle}>Update Card</h3>
+        <h3 className={styles.notificationTitle}>Update {name}</h3>
         <button className={styles.notificationClose} onClick={handleClose}>
           &times;
         </button>
@@ -31,14 +35,14 @@ const UpdateNotification = () => {
       
       {/* Body */}
       <div className={styles.notificationBody}>
-      "Do you want to update this card? You can change the details, adjust the quantity, or modify the price. Click the edit button to make changes and save them."
+     <p>Do you want to update {name} product?</p>  Click the edit button to make changes and save them.
       </div>
       
       {/* Footer */}
       <div className={styles.notificationFooter}>
         <button
           className={styles.notificationButton}
-          onClick={()=>{handleEdit()}}
+          onClick={handleEdit}
         >
         Update
         </button>

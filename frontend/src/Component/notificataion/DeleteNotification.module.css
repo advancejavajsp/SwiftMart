@@ -36,7 +36,7 @@
   }
   
   .notificationClose {
-    background: none;
+    background-color: #e63946;
     border: none;
     color: white;
     font-size: 20px;
@@ -46,6 +46,8 @@
   
   .notificationClose:hover {
     transform: scale(1.2);
+    
+    background-color: #e63946;
   }
   
   /* Body */
