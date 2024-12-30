@@ -29,7 +29,7 @@
   list-style-type: none;
   color: black;
   cursor: pointer;
-  padding: 50px;
+  padding: 30px;
 }
 .adminNav1  li:hover{
   color: green;

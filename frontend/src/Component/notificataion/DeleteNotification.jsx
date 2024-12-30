@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import styles from './DeleteNotification.module.css';
 import { globalvar } from '../../GlobalContext/GlobalContext';
+import axios from 'axios';
 const DeleteNotification = () => {
      let {setDeleteProductPanel}=useContext(globalvar)
     const handleClose = (e) => {
@@ -9,6 +10,8 @@ const DeleteNotification = () => {
       
     const handleEdit = () => {
           // Logic for edit action (if any)
+          let response = axios.delete(`http://localhost:8080/open/products/${product.productId}`)
+          console.log(response.data)
     };
   return (
     <section className={styles.notificationPannel} onClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(false)}}>

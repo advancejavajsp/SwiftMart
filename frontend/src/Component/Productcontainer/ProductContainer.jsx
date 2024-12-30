@@ -9,12 +9,8 @@ const ProductContainer = () => {
 
   return (
     <section className={style["section"]}>
-
-
-
       <div className={style["dropdown"]}>
         <h4>Buy {product.name} Online</h4>
-
         <div className={style["bropDownCont"]}>
           <label htmlFor="options">Sort By</label>
           <select id="options" className={style["select"]}>
@@ -26,7 +22,6 @@ const ProductContainer = () => {
           </select>
         </div>
       </div>
-      {/* </div> */}
        <div className={style["cardContainer"]}>
        {product?.products?.map((ele,i)=>{
                   return <Card product={ele}/>
