@@ -5,7 +5,10 @@
 
 
 }
-
+.dustbin:hover{
+  /* transform: scale(0.01); */
+  cursor: pointer !important;
+}
 .sidebar-nav ul {
   /* border: 1px solid brown; */
   width: 300px;
@@ -26,6 +29,7 @@
   width: 300px;
   color: black;
   align-items: center;
+  justify-content: space-between;
   /* justify-content: stretch; */
 }
 

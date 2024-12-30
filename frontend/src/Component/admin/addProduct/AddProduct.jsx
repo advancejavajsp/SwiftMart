@@ -15,7 +15,7 @@ let {setAddProductPanel, allCategory } = useContext(globalvar);
     imageUrl:"",
     description: "",
    })
-let [categoryId, setCategoryId]=useState("")
+  let [categoryId, setCategoryId]=useState("")
 
    let {name, category, price, quantityAvailable, description, imageUrl} = addProduct
 

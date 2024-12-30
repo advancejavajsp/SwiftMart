@@ -13,17 +13,15 @@ const UpdateProduct = () => {
     updateQuantity: "",
     updateImageUrl:"",
     updateDescription: "",
-    
-
-
    })
    
 
    let handleData = (e)=>{
     setUpdateProduct({...updateProduct, [e.target.name]:e.target.value})
    }
+
   return (
-    <div className={style["addProduct"]}>
+    <div className={style["addProduct"]}  onClick={(e) => {e.stopPropagation(),setUpdateProduct(false)}}>
       
     <div className={style["addProduct1"]}>
     <form action="">
@@ -43,8 +41,6 @@ const UpdateProduct = () => {
         <option value="option2">Category 2</option>
         <option value="option3" selected>Category 3</option> 
         </select>
-          
-        
       </div>
       <div className={style["productDetails"]}>
         <label htmlFor="">Price</label>
@@ -64,7 +60,7 @@ const UpdateProduct = () => {
 
       </div>
       <div className={style["productDetails"]}>
-            <div className={style["btn"]}><button >Submit</button></div>
+            <div className={style["btn"]}><button>Submit</button></div>
       </div>
     </form>
     </div>

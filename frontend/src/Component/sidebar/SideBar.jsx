@@ -8,22 +8,34 @@ import img6 from "../../asset/img6.webp"
 import style from "../sidebar/sidebar.module.css"
 import { Link } from "react-router-dom"
 import { globalvar } from '../../GlobalContext/GlobalContext'
+import { MdDelete } from "react-icons/md";
+import axios from 'axios'
+import toast from 'react-hot-toast'
 
 
 const SideBar = () => {
-    let {allCategory,categoryId, setCategoryId} = useContext(globalvar);
-    
+    let {allCategory,categoryId, setCategoryId,setAllCategory} = useContext(globalvar);
+   
 
+    const handleDelete = async (categ) => {
+        try {
+          const response = await axios.delete(`http://localhost:8080/open/category/${categ}`);
+          toast.success("Category deleted successfully!");
+        } 
+        catch (error) {
+          toast.error("An error occurred. Please try again later.");
+        }
+    }
+    
+   
 
   return (
     <aside className={style["sidebar"]}>
       <nav className={style["sidebar-nav"]}>
         <ul>
           {allCategory.map((ele,i)=>{
-            return <li onClick={(e)=>{e.stopPropagation(),setCategoryId(ele.categoryId)}}> <img src={img1} alt="Milk carton" /><p>{ele?.name}</p></li>
+            return <li onClick={(e)=>{e.stopPropagation(),setCategoryId(ele.categoryId)}}> <img src={img1} alt="Milk carton" /><p>{ele?.name}</p><MdDelete className={style['dustbin']} onClick={()=>{handleDelete(ele?.categoryId)}}/></li>
           })}
-          {/* <li> <Link to="/milk"><img src={img1} alt="Milk carton" /><p>Milk</p></Link></li>
-          <li><Link to="/bread"><img src={img2} alt="Bread" /><p>Bread & Pav</p></Link></li> */}
         </ul>
       </nav>
     </aside>
