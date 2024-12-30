@@ -1,27 +1,30 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import QRCode from 'react-qr-code';  
 import style from "./UserProfile.module.css"; 
 import axios from 'axios';
+import { globalvar } from '../../GlobalContext/GlobalContext';
 
 function UserProfile() {
 
-  let [fetchedUserdata, setFetchedUserdata] = useState({});
-  const userData = {
-    name: "Hemant Kumar Verma",
-    email: "XXXXXXX@gmail.com",
-  };
+  let {user, setUser} = useContext(globalvar);
+  let [fetchedUserdata, setFetchedUserdata] = useState();
+   
 
+  let getUserData=async()=>{
+    let response = user && await axios.get(`http://localhost:8080/open/swiftmart/email/${user?.sub}`)
+    setFetchedUserdata(response.data);
+  }
 
   useEffect(()=>{
-    let response = axios.get(`/open/swiftmart/email/${userData.email}`)
-    setFetchedUserdata(response.data);
-  },[])
-  const getUserProfileQRData = (userData) => {
-    return `Name: ${userData.name}\nEmail: ${userData.email}`;
+    getUserData();
+  },[user]);
+
+  const getUserProfileQRData = (fetchedUserdata) => {
+    return `Name: ${fetchedUserdata?.name}\nEmail: ${fetchedUserdata?.email}`;
   };
 
-  const qrData = getUserProfileQRData(userData);  
+  const qrData = getUserProfileQRData(fetchedUserdata);  
   return (
     <div className={style['user-profile']}>
       <div className={style['profile-header']}>
@@ -30,8 +33,8 @@ function UserProfile() {
           alt="Profile"
           className={style['profile-picture']}
         />
-        <h3>{fetchedUserdata.name}</h3>
-        <p>Email: {fetchedUserdata.email}</p>
+        <h3>{fetchedUserdata?.name}</h3>
+        <p>Email: {fetchedUserdata?.email}</p>
       </div>
 
       <div className={style['qr-section']}>
@@ -41,9 +44,9 @@ function UserProfile() {
 
       <div className={style['user-details']}>
         <h4>Personal Information</h4>
-        <p>Full Name: {fetchedUserdata.name}</p>
+        <p>Full Name: {fetchedUserdata?.name}</p>
         <p>Address: Sector 14 Gurugram</p>
-        <p>{fetchedUserdata.phone}</p>
+        <p>{fetchedUserdata?.phone}</p>
         <button className={style['edit-button']}>Edit Profile</button>
       </div>
 
