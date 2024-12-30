@@ -21,9 +21,10 @@ const SideBar = () => {
         try {
           const response = await axios.delete(`http://localhost:8080/open/category/${categ}`);
           toast.success("Category deleted successfully!");
+          setCategoryId(allCategory[0].categoryId)
         } 
         catch (error) {
-          toast.error("An error occurred. Please try again later.");
+          toast.error("An error occurred categoryDelete. Please try again later.");
         }
     }
     

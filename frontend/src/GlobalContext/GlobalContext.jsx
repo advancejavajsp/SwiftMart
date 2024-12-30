@@ -26,7 +26,7 @@ const GlobalContext = ({ children }) => {
   let allcategory;  
 
   let getAllcategory = async () => {
-    let response = await axios.get("http://localhost:8080/open/categoryall");
+    let response = await axios.get("http://localhost:8080/open/category/categoryall");
     console.log(response)
     setAllCategory(response.data);
     setCategoryId(response.data[0].categoryId)
