@@ -30,23 +30,28 @@ const Login = () => {
   const handleSubmit =async (e) => {
     e.preventDefault();
     
-    if (credentials.email && credentials.password) {
-      let {data} =await axios.post(`http://localhost:8080/auth/login?email=${credentials.email}&password=${credentials.password}`,credentials)
-      if (data.token) {
-        localStorage.setItem("token", data.token)
-        getUserDataFromToken(data.token);
-        toast.success("Login succesful");
-        console.log("Login succesful");
-       setTimeout(()=>{
-        setLoginPanel(false)
-       },1500)
-      }else{
-        toast.error("Something went wrong")
-      }
-         
-    } else {
-      toast.error('error');
+try {
+  if (credentials.email && credentials.password) {
+    let {data} =await axios.post(`http://localhost:8080/auth/login?email=${credentials.email}&password=${credentials.password}`,credentials)
+    if (data.token) {
+      localStorage.setItem("token", data.token)
+      getUserDataFromToken(data.token);
+      toast.success("Login succesful");
+      console.log("Login succesful");
+     setTimeout(()=>{
+      setLoginPanel(false)
+     },1500)
+    }else{
+      toast.error("Something went wrong")
     }
+       
+  } else {
+    console.log("Something Went Erong")
+   toast.error("Something Went Erong")
+  }
+} catch (error) {
+  toast.error("May email or password is wrong")
+}
 
 
   }

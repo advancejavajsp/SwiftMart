@@ -5,7 +5,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const AddCategory = () => {
-  const { setAddCategoryPanel } = useContext(globalvar);
+  const { setAddCategoryPanel ,refreshId, setRefreshId} = useContext(globalvar);
 
   const [addCategory, setAddCategory] = useState({
     name: "",
@@ -35,6 +35,7 @@ const AddCategory = () => {
         const response = await axios.post(`http://localhost:8080/open/category`, addCategory);
         if (response.status === 201) {
           toast.success(`${name} added successfully!`);
+          setRefreshId(refreshId + 1)
           setTimeout(() => {
             setAddCategoryPanel(false);
           }, 1500);

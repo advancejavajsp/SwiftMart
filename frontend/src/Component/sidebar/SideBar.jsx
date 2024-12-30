@@ -14,13 +14,14 @@ import toast from 'react-hot-toast'
 
 
 const SideBar = () => {
-    let {allCategory,categoryId, setCategoryId,setAllCategory} = useContext(globalvar);
+    let {user,allCategory,categoryId, setCategoryId,setAllCategory,refreshId,setRefreshId} = useContext(globalvar);
    
 
     const handleDelete = async (categ) => {
         try {
           const response = await axios.delete(`http://localhost:8080/open/category/${categ}`);
           toast.success("Category deleted successfully!");
+          setRefreshId(refreshId -1)
           setCategoryId(allCategory[0].categoryId)
         } 
         catch (error) {
@@ -34,9 +35,38 @@ const SideBar = () => {
     <aside className={style["sidebar"]}>
       <nav className={style["sidebar-nav"]}>
         <ul>
-          {allCategory.map((ele,i)=>{
-            return <li onClick={(e)=>{e.stopPropagation(),setCategoryId(ele.categoryId)}}> <img src={img1} alt="Milk carton" /><p>{ele?.name}</p><MdDelete className={style['dustbin']} onClick={()=>{handleDelete(ele?.categoryId)}}/></li>
-          })}
+        {allCategory.map((ele) => (
+            user?.role === "ADMIN" ? (
+              <li
+                key={ele.categoryId}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCategoryId(ele.categoryId);
+                }}
+              >
+                <img src={img1} alt="Milk carton" />
+                <p>{ele?.name}</p>
+                <MdDelete
+                  className={style['dustbin']}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleDelete(ele?.categoryId);
+                  }}
+                />
+              </li>
+            ) : (
+              <li
+                key={ele.categoryId}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCategoryId(ele.categoryId);
+                }}
+              >
+                <img src={img1} alt="Milk carton" />
+                <p>{ele?.name}</p>
+              </li>
+            )
+          ))}
         </ul>
       </nav>
     </aside>

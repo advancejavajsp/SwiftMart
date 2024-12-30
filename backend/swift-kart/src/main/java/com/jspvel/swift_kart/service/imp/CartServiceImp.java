@@ -1,5 +1,7 @@
 package com.jspvel.swift_kart.service.imp;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +16,16 @@ import com.jspvel.swift_kart.entity.CartItem;
 import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.entity.User;
 import com.jspvel.swift_kart.service.CartService;
+import com.jspvel.swift_kart.util.CustomCartIdGenerator;
 
 @Service
 public class CartServiceImp implements CartService {
 
 	@Autowired
 	private CartRepository cartRepository;
+	
+	@Autowired
+	private CustomCartIdGenerator cartIdGenerator;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -66,6 +72,7 @@ public class CartServiceImp implements CartService {
 
 	public Cart createCartAndAssignToUser(String userId, Cart cartDTO) {
 		User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+		cartDTO.setCart_id("CART"+userId);
 		cartDTO.setUser(user);
 		user.setCart(cartDTO);
 		cartRepository.save(cartDTO);
@@ -87,12 +94,14 @@ public class CartServiceImp implements CartService {
     	    cart = new Cart();
     	    user.setCart(cart);
     	}
-
-    	Optional<CartItem> existingCartItem = cart.getProduct().stream()
+  
+    	Optional<CartItem> existingCartItem=null;
+    	if(cart.getProduct()!=null) {
+    	existingCartItem = cart.getProduct().stream()
     	    .filter(cartItem -> cartItem.getProduct().getProductId().equals(productId))
     	    .findFirst();
-
-    	if (existingCartItem.isPresent()) {
+    	}
+    	if (existingCartItem!=null && existingCartItem.isPresent()) {
     	    CartItem cartItem = existingCartItem.get();
     	    cartItem.setQuantity(cartItem.getQuantity() + 1);
     	} else {
@@ -101,6 +110,12 @@ public class CartServiceImp implements CartService {
     	    cartItem.setProduct(product);
     	    cartItem.setQuantity(1);
     	    cartItem.setProduct(product); 
+    	    if(cart.getProduct()==null) {
+    	    	List<CartItem> list=new ArrayList<CartItem>();
+    	    	list.add(cartItem);
+    	    	cart.setProduct(list);
+    	    }
+    	    else
     	    cart.getProduct().add(cartItem);
     	}
 
