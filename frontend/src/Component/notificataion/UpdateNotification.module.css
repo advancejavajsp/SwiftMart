@@ -46,6 +46,7 @@
   
   .notificationClose:hover {
     transform: scale(1.2);
+    background-color: #4caf50;
   }
   
   /* Body */

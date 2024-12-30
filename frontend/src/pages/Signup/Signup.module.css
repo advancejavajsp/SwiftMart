@@ -1,170 +1,154 @@
+/* ----- SignUp Container ----- */
 .signup {
-  width: 100vw;
-  height: 100vh;
-  padding: 20px;
-  position: fixed;
-  border-radius: 10px;
-  align-items: stretch;
-  flex-direction: column;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: fixed;
   z-index: 20;
-  background-color: white;
-
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.76);
 }
 
-.signup fieldset {
-  min-width: 400px;
-  height: 90vh;
-  border: 2px solid #4CAF50;
-  border-radius: 10px;
-  padding: 20px;
+/* ----- Form Container ----- */
+.signup .form-container {
+  border: 2px solid #ddd;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  gap: 15px;
+  width: 40%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #fff;
 }
 
-
-.signup legend {
-  font-size: 20px;
+/* ----- SignUp Title ----- */
+.signup .form-title {
+  text-align: center;
+  color: #333;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #4CAF50;
-  padding: 0 10px;
+  margin-bottom: 10px;
 }
 
-
+/* ----- Form Elements ----- */
 .signup form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
+  width: 90%;
 }
 
+.signup form div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
 .signup label {
   font-size: 14px;
-  font-weight: bold;
-  color: #333;
+  color: #555;
+  font-weight: 500;
 }
 
-
-.signup input[type="text"],
-.signup input[type="email"],
-.signup input[type="password"],
-.signup input[type="tel"] {
+.signup input {
+  height: 35px;
   border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
   width: 100%;
-  padding: 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  box-sizing: border-box;
 }
-
 
 .signup input:focus {
-  border-color: #4CAF50;
-  outline: none;
-  box-shadow: #4CAF50;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-
-.role-dropdown {
+/* ----- Button ----- */
+.signButton {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.role-dropdown label {
-  font-size: 14px !important;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.role-dropdown .role {
-  width: 100%;
-  padding: 12px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: 2px solid #ddd;
-  background-color: #f9f9f9;
-  box-sizing: border-box;
-}
-
-.role-dropdown .role:focus {
-  border-color: #4CAF50;
-  outline: none;
-  box-shadow: 0 0 5px #4CAF50;
-}
-
-.role-dropdown .role option:disabled {
-  color: #ccc;
-}
-
-.role-dropdown .role option {
-  padding: 10px;
-  background-color: #fff;
-
-}
-
-.signButton button{
-  border:1px solid red ;
-  width: 10vw;
-  padding: 12px 15px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #fff;
-  background-color: #4CAF50 !important;
-  border: none;
+  justify-content: center;
   align-items: center;
-  border-radius: 5px;
+}
+
+.username,
+.contact,
+.img {
+  padding: 10px; 
+  
+}
+
+.signButton button {
+  height: 40px;
+  width: 60%;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 14px;
   cursor: pointer;
-
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
 
-.signButton :hover {
-  background-color: #4CAF50 !important;
+.signButton button:hover {
+  background-color: #388e3c;
 }
 
+/* ----- Media Queries for Responsiveness ----- */
 
+/* For medium screens like tablets */
+@media (max-width: 768px) {
+  .signup .form-container {
+    width: 70%;
+    padding: 15px;
+  }
 
+  .signup .form-title {
+    font-size: 1.3rem;
+  }
+
+  .signup label {
+    font-size: 13px;
+  }
+
+  .signup input {
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .signButton button {
+    width: 70%;
+    font-size: 16px;
+  }
+}
+
+/* For small screens like mobile phones */
 @media (max-width: 480px) {
-  .signup {
-    gap: 15px;
+  .signup .form-container {
+    width: 90%;
     padding: 10px;
   }
 
-  .signup legend {
+  .signup .form-title {
+    font-size: 1.2rem;
+  }
+
+  .signup label {
+    font-size: 12px;
+  }
+
+  .signup input {
+    height: 45px;
     font-size: 14px;
   }
 
-  .signup input[type="text"],
-  .signup input[type="email"],
-  .signup input[type="password"],
-  .signup input[type="tel"],
-  .role select {
-    font-size: 14px;
-    padding: 8px;
+  .signButton button {
+    width: 80%;
+    font-size: 16px;
+    height: 45px;
   }
-
-  .signup button {
-    font-size: 14px;
-    padding: 10px 12px;
-  }
-
-  .role-dropdown label {
-    font-size: 14px;
-  }
-
-  .role-dropdown .role {
-    font-size: 14px;
-    padding: 10px;
-  }
-
-  .signup button {
-    font-size: 14px;
-    padding: 10px 12px;
-
-  }
-} 
+}

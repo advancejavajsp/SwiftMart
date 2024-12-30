@@ -6,17 +6,13 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 
 const Login = () => {
-  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,getUserDataFromToken,user,setUser}=useContext(globalvar)
+  let { loginPanel, setLoginPanel, signupPanel, setSignuPanel, getUserDataFromToken, user, setUser } = useContext(globalvar);
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
-    
   });
 
-
   const [rememberMe, setRememberMe] = useState(false);
-
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,8 +22,7 @@ const Login = () => {
     }));
   };
 
-
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
 try {
@@ -57,10 +52,10 @@ try {
   }
 
   return (
-    <div className={style['login']} onClick={(e)=>{e.stopPropagation(), setLoginPanel(false)}}>
-      <fieldset>
-        <legend>Login</legend>
-        <form onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(), setLoginPanel(true)}}>
+    <div className={style['login']} onClick={(e) => { e.stopPropagation(); setLoginPanel(false); }}>
+      <div className={style['container']}>
+        <h2 className={style['login-title']}>Login</h2>
+        <form onSubmit={handleSubmit} onClick={(e) => { e.stopPropagation(); setLoginPanel(true); }}>
 
           <div className={style['username']}>
             <label>Email</label>
@@ -72,7 +67,6 @@ try {
               placeholder="Enter your email"
               required
             />
-
           </div>
 
           <div className={style['password']}>
@@ -88,22 +82,21 @@ try {
           </div>
 
           <div className={style['checkbox']}>
-          <input
-                type="checkbox"
-                checked={rememberMe}
-                onClick={()=>{setRememberMe(!rememberMe)}}
-              />
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onClick={() => { setRememberMe(!rememberMe); }}
+            />
             <label>Remember me</label>
           </div>
 
-          <button type="submit">Login</button>
+          <button type="submit" >Login</button>
 
           <div className={style['register-link']}>
-          <p onClick={(e)=>{e.stopPropagation(),setLoginPanel(!loginPanel),setSignuPanel(!signupPanel)}}> Don't have an account? SignUp </p>
-
+            <p onClick={(e) => { e.stopPropagation(); setLoginPanel(!loginPanel); setSignuPanel(!signupPanel); }}>Don't have an account? SignUp</p>
           </div>
         </form>
-      </fieldset>
+      </div>
     </div>
   );
 };
