@@ -20,18 +20,18 @@ import com.jspvel.swift_kart.service.imp.ProductServiceImp;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/open/swiftmart")
+@RequestMapping("/open/products")
 public class ProductController {
 
 	@Autowired
 	private ProductServiceImp productServiceImp;
 	
-	@GetMapping("/products")
+	@GetMapping()
 	public List<Product> getAllProducts(){
 		return productServiceImp.getAllProducts();
 	}
 	
-	@GetMapping("/products/{productId}")
+	@GetMapping("/{productId}")
 	public ResponseEntity<Product> getProductById(@PathVariable String  productId){
 		Product product = productServiceImp.getProductById(productId);
 		if (product != null) {
@@ -58,12 +58,12 @@ public class ProductController {
 //        }
 //	}
 
-	@PostMapping("/products/{categoreyId}")
+	@PostMapping("/{categoreyId}")
 	public ResponseEntity<Product> addProduct(@RequestBody Product product,@PathVariable String categoreyId){
 		return new ResponseEntity<>(productServiceImp.addProduct(product,categoreyId), HttpStatus.CREATED);
 	}
 	
-	@DeleteMapping("/products/{productId}")
+	@DeleteMapping("/{productId}")
 	public ResponseEntity<Void> deleteProduct(@PathVariable String productId){
 		boolean deleted = productServiceImp.deleteProduct(productId);
         if (deleted) {
@@ -75,7 +75,7 @@ public class ProductController {
 
 	
 
-	@PutMapping("/products/{productId}")
+	@PutMapping("/{productId}")
 	public ResponseEntity<Product> updateProduct(@PathVariable ("productId") String productId, @RequestBody Product updatedProduct){
 		Product updated = productServiceImp.updateProduct(productId, updatedProduct);
 		
