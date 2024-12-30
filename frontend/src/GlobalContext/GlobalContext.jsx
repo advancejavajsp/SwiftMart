@@ -22,11 +22,12 @@ const GlobalContext = ({ children }) => {
   let [allCategory, setAllCategory] = useState([]);
   let [otpRender, setOtpRender] = useState(false);
   let [categoryId, setCategoryId] = useState("");
+  let [accounts, setAccounts] = useState(false);
 
   let allcategory;  
 
   let getAllcategory = async () => {
-    let response = await axios.get("http://localhost:8080/open/categoryall");
+    let response = await axios.get("http://localhost:8080/open/category/categoryall");
     console.log(response)
     setAllCategory(response.data);
     setCategoryId(response.data[0].categoryId)
@@ -59,7 +60,7 @@ console.log(decoded)
     fetchProductByCategory(categoryId)
   },[categoryId])
   return (
-    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory }}>
+    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory }}>
       {children}
     </globalvar.Provider>
   );

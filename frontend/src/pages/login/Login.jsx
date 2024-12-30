@@ -6,17 +6,13 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 
 const Login = () => {
-  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,getUserDataFromToken,user,setUser}=useContext(globalvar)
+  let { loginPanel, setLoginPanel, signupPanel, setSignuPanel, getUserDataFromToken, user, setUser } = useContext(globalvar);
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
-    
   });
 
-
   const [rememberMe, setRememberMe] = useState(false);
-
-
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -26,36 +22,33 @@ const Login = () => {
     }));
   };
 
-
-  const handleSubmit =async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (credentials.email && credentials.password) {
-      let {data} =await axios.post(`http://localhost:8080/auth/login?email=${credentials.email}&password=${credentials.password}`,credentials)
+      let { data } = await axios.post(`http://localhost:8080/auth/login?email=${credentials.email}&password=${credentials.password}`, credentials);
       if (data.token) {
-        localStorage.setItem("token", data.token)
+        localStorage.setItem("token", data.token);
         getUserDataFromToken(data.token);
-        toast.success("Login succesful");
-        console.log("Login succesful");
-       setTimeout(()=>{
-        setLoginPanel(false)
-       },1500)
-      }else{
-        toast.error("Something went wrong")
+        toast.success("Login successful");
+        console.log("Login successful");
+        setTimeout(() => {
+          setLoginPanel(false);
+        }, 1500);
+      } else {
+        toast.error("Something went wrong");
       }
-         
+
     } else {
-      toast.error('error');
+      toast.error('Please fill in both fields');
     }
-
-
-  }
+  };
 
   return (
-    <div className={style['login']} onClick={(e)=>{e.stopPropagation(), setLoginPanel(false)}}>
-      <fieldset>
-        <legend>Login</legend>
-        <form onSubmit={handleSubmit} onClick={(e)=>{e.stopPropagation(), setLoginPanel(true)}}>
+    <div className={style['login']} onClick={(e) => { e.stopPropagation(); setLoginPanel(false); }}>
+      <div className={style['container']}>
+        <h2 className={style['login-title']}>Login</h2>
+        <form onSubmit={handleSubmit} onClick={(e) => { e.stopPropagation(); setLoginPanel(true); }}>
 
           <div className={style['username']}>
             <label>Email</label>
@@ -67,7 +60,6 @@ const Login = () => {
               placeholder="Enter your email"
               required
             />
-
           </div>
 
           <div className={style['password']}>
@@ -83,22 +75,21 @@ const Login = () => {
           </div>
 
           <div className={style['checkbox']}>
-          <input
-                type="checkbox"
-                checked={rememberMe}
-                onClick={()=>{setRememberMe(!rememberMe)}}
-              />
+            <input
+              type="checkbox"
+              checked={rememberMe}
+              onClick={() => { setRememberMe(!rememberMe); }}
+            />
             <label>Remember me</label>
           </div>
 
           <button type="submit">Login</button>
 
           <div className={style['register-link']}>
-          <p onClick={(e)=>{e.stopPropagation(),setLoginPanel(!loginPanel),setSignuPanel(!signupPanel)}}> Don't have an account? SignUp </p>
-
+            <p onClick={(e) => { e.stopPropagation(); setLoginPanel(!loginPanel); setSignuPanel(!signupPanel); }}>Don't have an account? SignUp</p>
           </div>
         </form>
-      </fieldset>
+      </div>
     </div>
   );
 };
