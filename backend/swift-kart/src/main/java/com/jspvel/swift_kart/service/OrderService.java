@@ -8,8 +8,11 @@ import com.jspvel.swift_kart.entity.Order;
 
 @Service
 public interface OrderService {
+	
+	
+	public Order placeOrder(String userId, String paymentId);
 
-	public Order placeOrder(Order order);
+//	public Order placeOrder(Order order);
 	
 	public Order getOrderById(String orderId);
 	

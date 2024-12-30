@@ -151,7 +151,7 @@ public class CartServiceImp implements CartService {
                 cart.getProduct().remove(cartItem);
             }
 
-            cart.setQuantity(cart.getQuantity() - 1);
+           
             cart.setPrice(cart.getPrice() - cartItem.getProduct().getPrice());
         } else {
             throw new RuntimeException("Product not found in the cart");
@@ -163,5 +163,7 @@ public class CartServiceImp implements CartService {
 
         return cartDTO;
     }
+    
+    
 
 }

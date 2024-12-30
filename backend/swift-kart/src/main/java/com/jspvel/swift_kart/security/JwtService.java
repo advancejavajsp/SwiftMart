@@ -56,6 +56,7 @@ public class JwtService {
     	        User user = (User) userDetails;
     	        
     	        extraClaims.put("role", user.getRole().name()); 
+    	        extraClaims.put("userId", user.getId());
     	    }
     	
         return Jwts

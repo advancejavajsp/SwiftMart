@@ -10,4 +10,6 @@ import com.jspvel.swift_kart.entity.User;
 
 public interface CartRepository extends JpaRepository<Cart, String> {
 	Optional<Cart> findByUser(User user);
+	
+	Cart findByUserId(String userId);
 }
