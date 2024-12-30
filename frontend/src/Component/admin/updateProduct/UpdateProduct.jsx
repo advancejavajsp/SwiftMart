@@ -5,9 +5,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const UpdateProduct = () => {
-  const { productComp, setUpdateProductPanel, allCategory ,setUpdateProductPopUp, refreshId, setRefreshId} = useContext(globalvar);
-
-  console.log(productComp);
+  const { productComp, allCategory ,setUpdateProductPopUp, refreshId, setRefreshId} = useContext(globalvar);
 
   const [updateProduct, setUpdateProduct] = useState({
     productId: productComp.productId,

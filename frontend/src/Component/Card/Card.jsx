@@ -24,15 +24,11 @@ const Card = ({ product }) => {
   const truncatedTitle = product?.name?.length > 50 ? product?.name?.slice(0, 50) + "..." : product?.name;
 
   const handleUpdateClick = (e) => {
-    e.stopPropagation(); 
-    
     setProductComp({ ...product});
     setUpdateProductPanel(true); 
   };
-  let handleDeleteClick = (e)=>{
+  let handleDeleteClick = ()=>{
     
-    console.log("first")
-    e.stopPropagation(product.productId);
     setProductComp({ ...product});
 
 
@@ -54,11 +50,11 @@ const Card = ({ product }) => {
         {user?.role === "ADMIN" && <p className={styles.productSize}>Quantity: {product?.quantityAvailable}</p>}
         <p className={styles.productPrice}>Price: {product?.price}</p>
         <div className={styles.buttonGroup}>
-          {user?.role === "ADMIN" ? (
-            <>
-              <button className={styles.updateButton} onClick={handleUpdateClick}>UPDATE</button>
-              <button className={styles.deleteButton} onClick={ handleDeleteClick  }>DELETE</button>
-            </>
+          {user?.role == "ADMIN" ? <>  <button className={styles.updateButton} onClick={(e)=>{e.stopPropagation(), handleUpdateClick()}}>UPDATE</button>
+            <button className={styles.deleteButton}  onClick={(e)=>{e.stopPropagation(), handleDeleteClick()}}>DELETE</button></> :         ( quantity === 0 ? (
+            <button className={styles.addButton} onClick={handleIncrement}>
+              ADD
+            </button>
           ) : (
             quantity === 0 ? (
               <button className={styles.addButton} onClick={handleIncrement}>
@@ -71,7 +67,7 @@ const Card = ({ product }) => {
                 <button className={styles.quantityBtn} onClick={handleIncrement}>+</button>
               </div>
             )
-          )}
+          ))}
         </div>
       </div>
     </div>
