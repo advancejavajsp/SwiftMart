@@ -40,18 +40,8 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
     
-
-//    @GetMapping("/user/{userId}")
-//    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable Long userId) {
-////        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
-////        return ResponseEntity.ok(orders);
-//    	return null;
-//    }
-
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable Long userId) {
-//        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
-//        return ResponseEntity.ok(orders);
         return null;
     }
 

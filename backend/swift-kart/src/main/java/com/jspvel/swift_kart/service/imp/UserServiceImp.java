@@ -20,6 +20,7 @@ import com.jspvel.swift_kart.dao.UserRepository;
 
 import com.jspvel.swift_kart.entity.User;
 import com.jspvel.swift_kart.service.UserService;
+import com.jspvel.swift_kart.util.Role;
 
 import lombok.RequiredArgsConstructor;
 
@@ -150,5 +151,14 @@ public class UserServiceImp implements UserService {
         Random random = new Random();
         int otp = 100000 + random.nextInt(900000);
         return String.valueOf(otp);
+    }
+
+    @Override
+    public String changeUserRoleToDeliveryAgent(String userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        user.setRole(Role.DELIVERY_AGENT);  
+        userRepository.save(user);
+        return "User role to DELIVERY_AGENT";
     }
 }

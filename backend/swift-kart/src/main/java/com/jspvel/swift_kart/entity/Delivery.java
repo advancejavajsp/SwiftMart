@@ -3,6 +3,7 @@ package com.jspvel.swift_kart.entity;
 import java.time.LocalDateTime;
 
 import com.jspvel.swift_kart.util.DeliveryStatus;
+import com.jspvel.swift_kart.util.OrderStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

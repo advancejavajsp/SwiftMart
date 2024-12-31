@@ -12,8 +12,7 @@ import com.jspvel.swift_kart.entity.Order;
 import com.jspvel.swift_kart.exception.OrderNotFoundException;
 
 import com.jspvel.swift_kart.service.OrderService;
-
-
+import com.jspvel.swift_kart.util.OrderStatus;
 
 import jakarta.transaction.Transactional;
 
@@ -61,6 +60,12 @@ public class OrderServiceImp implements OrderService {
 
 		@Override
 		public List<Order> getOrdersByUserId(String userId) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public Order updateOrderStatus(String orderId, OrderStatus status) {
 			// TODO Auto-generated method stub
 			return null;
 		}

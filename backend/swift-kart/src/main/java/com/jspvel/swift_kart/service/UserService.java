@@ -23,5 +23,7 @@ public interface UserService {
 	public String updateUserDetails(String id, String newEmail, String newName, long newPhone);
 
 	String sendOtpToEmail(String email);
+	
+	String changeUserRoleToDeliveryAgent(String userId);
 
 }
