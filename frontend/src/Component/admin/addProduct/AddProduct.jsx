@@ -15,7 +15,7 @@ let {setAddProductPanel, allCategory } = useContext(globalvar);
     imageUrl:"",
     description: "",
    })
-let [categoryId, setCategoryId]=useState("")
+  let [categoryId, setCategoryId]=useState("")
 
    let {name, category, price, quantityAvailable, description, imageUrl} = addProduct
 
@@ -30,7 +30,9 @@ let [categoryId, setCategoryId]=useState("")
     e.stopPropagation(),
     e.preventDefault();
       if(name && quantityAvailable&& price&& description){
-        let response = await axios.post(`http://localhost:8080/open/swiftmart/products/${categoryId}`,addProduct);
+        console.log(categoryId)
+        // console.log(addProduct)
+        let response = await axios.post(`http://localhost:8080/open/products/${categoryId}`,addProduct);
         if (response.status == 201) {
           toast.success(`${name} is added succesfully`);
           setTimeout(()=>{
@@ -55,7 +57,7 @@ let [categoryId, setCategoryId]=useState("")
             <select id="myDropdown" name="category" onChange={handleCategoryID} >
             {/* <option value="option1">Category 1</option>
             <option value="option2">Category 2</option>*/}
-            <option value="option3" disabled>Select Category</option>  
+            <option value="option3" disabled selected>Select Category</option>  
             {allCategory.map((ele, i)=>  <option name="category" value={ele.categoryId}>{ele.name}</option>)}
             </select>
               

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from './order.module.css'
 import { FaArrowLeft } from "react-icons/fa";
 import { SlLocationPin } from "react-icons/sl";
@@ -7,8 +7,13 @@ import { HiOutlineGiftTop } from "react-icons/hi2";
 import { LuLockKeyhole } from "react-icons/lu";
 import { FaRegUser } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Order = () => {
+
+  useEffect(()=>{
+      let orderData = axios.get("http://localhost:8080/")
+  },[])
   return (
     <div className={style['mainbody']}>
       <div className={style['side']}>

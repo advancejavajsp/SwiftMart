@@ -47,7 +47,7 @@ const Footer = () => {
               <ul>
                 {/* Adding the Link for About */}
                 <li>
-                  <Link >About</Link>
+                  <Link to ="/about" >About</Link>
                 </li>
                 <li>
                   <Link >Career</Link>

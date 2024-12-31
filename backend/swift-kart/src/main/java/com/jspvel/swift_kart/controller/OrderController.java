@@ -4,8 +4,10 @@ package com.jspvel.swift_kart.controller;
 
 import java.util.List;
 
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,24 +16,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jspvel.swift_kart.entity.Cart;
 import com.jspvel.swift_kart.entity.Order;
 import com.jspvel.swift_kart.service.imp.OrderServiceImp;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/open/swiftmart")
+@RequestMapping("/open/orders")
 public class OrderController {
 
     @Autowired
     private OrderServiceImp orderServiceImp;
+    
+   
 
-    @PostMapping("/orderss")
-    public ResponseEntity<Order> placeOrder(@RequestBody Order order) {
-        
-        Order newOrder = orderServiceImp.placeOrder(order);
-        return ResponseEntity.status(201).body(newOrder);
+    @PostMapping("/place-order/{userId}/{paymentId}")
+    public ResponseEntity<Order> placeOrder(@PathVariable String userId, @PathVariable String paymentId) {
+        try {
+            Order order = orderServiceImp.placeOrder(userId, paymentId);
+            return ResponseEntity.ok(order);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.status(400).body(null);
+        }
     }
     
     @GetMapping("/{orderId}")
@@ -49,7 +58,7 @@ public class OrderController {
 //    }
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable Long userId) {
+    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable String userId) {
 //        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
 //        return ResponseEntity.ok(orders);
         return null;

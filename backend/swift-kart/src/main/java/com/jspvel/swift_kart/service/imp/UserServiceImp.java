@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.jspvel.swift_kart.dao.UserRepository;
+import com.jspvel.swift_kart.dto.UserDTO;
 import com.jspvel.swift_kart.email_verification.EmailService;
 import com.jspvel.swift_kart.email_verification.requests.RegisterRequest;
 import com.jspvel.swift_kart.email_verification.responses.RegisterResponse;
@@ -122,12 +123,12 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public String updateUserDetails(String id, String newEmail, String newName, long newPhone) {
+    public String updateUserDetails(String id, UserDTO userDTO) {
         User user = userRepository.findById(id).orElse(null);
         if (user != null) {
-            user.setEmail(newEmail);
-            user.setName(newName);
-            user.setPhone(newPhone);
+            user.setEmail(userDTO.getEmail());
+            user.setName(userDTO.getName());
+            user.setPhone(userDTO.getPhone());
             userRepository.save(user);
             return "User Updated";
         } else {

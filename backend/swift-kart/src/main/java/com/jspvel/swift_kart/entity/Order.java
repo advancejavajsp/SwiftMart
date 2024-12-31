@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jspvel.swift_kart.util.OrderStatus;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -44,18 +46,21 @@ public class Order {
 
 	@Column(name = "delivered_at")
 	private LocalDateTime deliveredAt;
-
+    @JsonIgnore
 	@OneToOne
 	private Delivery delivery;
 
+    @JsonIgnore
 	@OneToOne(mappedBy = "order")
 	private Payment payment;
 
-	@OneToMany(mappedBy = "order")
+    @JsonIgnore
+	@OneToMany(mappedBy = "order",cascade = CascadeType.ALL)
 	private List<OrderItem> orderItem;
 
-	@ManyToOne
-	@JoinColumn
+	@JsonIgnore
+	@ManyToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "customer_id")
 	private User customer_id;
 
 	
