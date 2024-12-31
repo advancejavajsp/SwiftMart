@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jspvel.swift_kart.dao.CartItemRepository;
 import com.jspvel.swift_kart.dao.CartRepository;
 import com.jspvel.swift_kart.dao.OrderItemRepository;
 import com.jspvel.swift_kart.dao.OrderRepository;
@@ -20,6 +21,7 @@ import com.jspvel.swift_kart.entity.OrderItem;
 import com.jspvel.swift_kart.entity.Payment;
 import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.entity.User;
+import com.jspvel.swift_kart.exception.CartNotFoundException;
 import com.jspvel.swift_kart.exception.OrderNotFoundException;
 import com.jspvel.swift_kart.exception.OutOfStockException;
 import com.jspvel.swift_kart.exception.PaymentFailedException;
@@ -54,12 +56,13 @@ public class OrderServiceImp implements OrderService {
 	private CartServiceImp cartServiceImp;
 
 	@Autowired
+	private CartItemRepository cartItemRepository;
+
+	@Autowired
 	private CustomOrderItemIdGenerator customOrderItemIdGenerator;
 
 	@Autowired
 	private OrderCustomIdGenerator orderCustomIdGenerator;
-
-
 
 	@Override
 	public Order placeOrder(String userId, String paymentId) {
@@ -71,30 +74,30 @@ public class OrderServiceImp implements OrderService {
 		    throw new PaymentFailedException("Payment failed.");
 		}
 		System.out.println("hello");
-		// Create the order
 		Order order = new Order();
 		order.setOrderId(orderCustomIdGenerator.generateCategoryId());
 		order.setOrderStatus(OrderStatus.PENDING);
 		order.setCustomer_id(user);
 
-		// Calculate total amount
 		Cart cart = user.getCart();
-		if (cart == null || cart.getProduct() == null) {
-		    throw new IllegalArgumentException("Cart is empty.");
+		if (cart == null || cart.getProduct() == null || cart.getProduct().isEmpty()) {
+		    throw new CartNotFoundException("Cart is empty.");
 		}
 
 		order.setTotalAmount(cart.getPrice());
 		List<OrderItem> items = new ArrayList<OrderItem>();
+
 		for (CartItem cartItem : cart.getProduct()) {
 		    Product product = cartItem.getProduct();
 
-		    // Reduce quantity
-		    if (product.getQuantityAvailable() <= 0)
-		        throw new OutOfStockException("Out of stock");
+		    if (product.getQuantityAvailable() <= 0) {
+		        cartItemRepository.delete(cartItem);  
+		        continue; 
+		    }
+
 		    product.setQuantityAvailable(product.getQuantityAvailable() - cartItem.getQuantity());
 		    productRepository.save(product);
 
-		    // Add order items
 		    OrderItem orderItem = new OrderItem();
 		    orderItem.setOrderItemId(customOrderItemIdGenerator.generateCustomId());
 		    orderItem.setProductId(product.getProductId());
@@ -103,34 +106,39 @@ public class OrderServiceImp implements OrderService {
 		    orderItem.setOrder(order);
 		    items.add(orderItem);
 
-		    cartItem.setProduct(null);
-		    cartItem.setQuantity(0);
-
-		    // If the cart item quantity is greater than 1, reduce the quantity
-		    if (cartItem.getQuantity() > 1) {
-		        cartItem.setQuantity(cartItem.getQuantity() - 1);
-		    } else {
-		        cart.getProduct().remove(cartItem); // Remove the item from the cart
+		    if (cartItem.getQuantity() <= 1) {
+		        cartItemRepository.delete(cartItem); 
 		    }
-		    cartRepository.save(cart);
 		}
 
-		// Set order items to the order
 		order.setOrderItem(items);
 		orderRepository.save(order);
 
-		// Clear the cart by removing all products
-		cart.getProduct().clear();  // This removes all products from the cart
-
-		// Optionally, you can also delete the cart if it should be emptied and removed entirely
-		 cartRepository.delete(cart);
-
-		// Set the payment details for the order
 		payment.setOrder(order);
 		order.setPayment(payment);
 		paymentRepository.save(payment);
 
+		cart.getProduct().clear();  
+		cartRepository.save(cart);  
+
+		cartRepository.delete(cart);  
+
+		
+		user.setCart(null); 
+		userRepository.save(user);
+
 		return order;
+
+	}
+
+	public void deleteCart(User user) {
+
+		Cart cart = user.getCart();
+		cartItemRepository.deleteAll(cart.getProduct());
+
+		cartRepository.delete(user.getCart());
+		userRepository.save(user);
+
 	}
 
 	public List<Order> getOrdersByUserId(Long userId) {
@@ -159,7 +167,5 @@ public class OrderServiceImp implements OrderService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
 
 }
