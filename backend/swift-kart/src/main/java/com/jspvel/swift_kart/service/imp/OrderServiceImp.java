@@ -31,6 +31,8 @@ import com.jspvel.swift_kart.util.OrderCustomIdGenerator;
 import com.jspvel.swift_kart.util.OrderStatus;
 import com.jspvel.swift_kart.util.PaymentStatus;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class OrderServiceImp implements OrderService {
 
@@ -63,6 +65,8 @@ public class OrderServiceImp implements OrderService {
 
 	@Autowired
 	private OrderCustomIdGenerator orderCustomIdGenerator;
+
+
 
 	@Override
 	public Order placeOrder(String userId, String paymentId) {
@@ -167,5 +171,6 @@ public class OrderServiceImp implements OrderService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

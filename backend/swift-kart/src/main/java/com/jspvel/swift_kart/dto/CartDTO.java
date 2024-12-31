@@ -22,7 +22,6 @@ public class CartDTO {
 		public CartDTO(Cart cart) {
 			super();
 			this.cart_id = cart.getCart_id();
-			this.quantity = cart.getQuantity();
 			this.price = cart.getPrice();
 			this.user_id = cart.getUser().getId();
 			this.product=cart.getProduct();

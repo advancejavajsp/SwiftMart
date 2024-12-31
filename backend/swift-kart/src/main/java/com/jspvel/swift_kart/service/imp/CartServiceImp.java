@@ -169,6 +169,14 @@ public class CartServiceImp implements CartService {
 
         return cartDTO;
     }
+
+
+	public CartDTO findCartByUserId(String userId) {
+		// TODO Auto-generated method stub
+		Cart cart= userRepository.findById(userId).get().getCart();
+		
+		return new CartDTO(cart);
+	}
     
    
 }

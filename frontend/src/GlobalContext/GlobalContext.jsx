@@ -26,46 +26,63 @@ const GlobalContext = ({ children }) => {
   let [accounts, setAccounts] = useState(false);
   let [productComp, setProductComp ] = useState({productId: "", name:""});
   let [refreshId, setRefreshId] = useState(0);
+  let [cartProducts , setCartProducts] = useState([]);
+  let [loaderPanel , setLoaderPanel] = useState(false);
 
  
 
   let getAllcategory = async () => {
+    setLoaderPanel(true);
     let response = await axios.get("http://localhost:8080/open/category/categoryall");
-    console.log(response)
     setAllCategory(response.data);
+    setLoaderPanel(false);
     setCategoryId(response.data[0].categoryId)
 
   }
 
   let fetchProductByCategory =async (categoryId) => {
     // console.log(categoryId)
+    setLoaderPanel(true);
     let response =await axios.get(`http://localhost:8080/open/category/${categoryId}`);
     setProducts(response.data)
+    setLoaderPanel(false);
   }
 
 let getUserDataFromToken=()=>{
   let token=localStorage.getItem("token"); 
-console.log(token);
 const decoded = token && jwtDecode(token);
-console.log(decoded)
  setUser(decoded)
 
 }
+
+let getCartProducts = async()=>{
+if (user) {
+  let response = await axios.get(`http://localhost:8080/open/cart/find/${user.userId}`);
+  console.log(response);
+  setCartProducts(response?.data);
+}else{
+  setCartProducts([])
+}
+  
+}
+
+
   useEffect(() => {
 
     let token = localStorage.getItem("token");
     const decoded = token && jwtDecode(token);
-    console.log(decoded);
     
     setUser(decoded)
     getAllcategory()
+   
   }, [refreshId])
 
   useEffect(()=>{
-    fetchProductByCategory(categoryId)
+    fetchProductByCategory(categoryId);
+    getCartProducts();
   },[categoryId, refreshId])
   return (
-    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId }}>
+    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel }}>
       {children}
     </globalvar.Provider>
   );

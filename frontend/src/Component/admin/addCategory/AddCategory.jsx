@@ -5,7 +5,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const AddCategory = () => {
-  const { setAddCategoryPanel ,refreshId, setRefreshId} = useContext(globalvar);
+  const { setAddCategoryPanel ,refreshId, setRefreshId, setLoaderPanel} = useContext(globalvar);
 
   const [addCategory, setAddCategory] = useState({
     name: "",
@@ -32,7 +32,9 @@ const AddCategory = () => {
     e.preventDefault();
     if (name && description) {
       try {
+        setLoaderPanel(true);
         const response = await axios.post(`http://localhost:8080/open/category`, addCategory);
+        setLoaderPanel(false);
         if (response.status === 201) {
           toast.success(`${name} added successfully!`);
           setRefreshId(refreshId + 1)
