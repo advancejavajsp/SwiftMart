@@ -23,15 +23,12 @@ import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.entity.User;
 import com.jspvel.swift_kart.exception.CartNotFoundException;
 import com.jspvel.swift_kart.exception.OrderNotFoundException;
-import com.jspvel.swift_kart.exception.OutOfStockException;
 import com.jspvel.swift_kart.exception.PaymentFailedException;
 import com.jspvel.swift_kart.service.OrderService;
 import com.jspvel.swift_kart.util.CustomOrderItemIdGenerator;
 import com.jspvel.swift_kart.util.OrderCustomIdGenerator;
 import com.jspvel.swift_kart.util.OrderStatus;
 import com.jspvel.swift_kart.util.PaymentStatus;
-
-import jakarta.transaction.Transactional;
 
 @Service
 public class OrderServiceImp implements OrderService {
@@ -66,8 +63,6 @@ public class OrderServiceImp implements OrderService {
 	@Autowired
 	private OrderCustomIdGenerator orderCustomIdGenerator;
 
-
-
 	@Override
 	public Order placeOrder(String userId, String paymentId) {
 		User user = userRepository.findById(userId).orElseThrow(null);
@@ -75,7 +70,7 @@ public class OrderServiceImp implements OrderService {
 		Payment payment = paymentRepository.findById(paymentId).orElse(null);
 
 		if (!(payment.getPaymentStatus().equals(PaymentStatus.SUCCESS))) {
-		    throw new PaymentFailedException("Payment failed.");
+			throw new PaymentFailedException("Payment failed.");
 		}
 		System.out.println("hello");
 		Order order = new Order();
@@ -85,34 +80,34 @@ public class OrderServiceImp implements OrderService {
 
 		Cart cart = user.getCart();
 		if (cart == null || cart.getProduct() == null || cart.getProduct().isEmpty()) {
-		    throw new CartNotFoundException("Cart is empty.");
+			throw new CartNotFoundException("Cart is empty.");
 		}
 
 		order.setTotalAmount(cart.getPrice());
 		List<OrderItem> items = new ArrayList<OrderItem>();
 
 		for (CartItem cartItem : cart.getProduct()) {
-		    Product product = cartItem.getProduct();
+			Product product = cartItem.getProduct();
 
-		    if (product.getQuantityAvailable() <= 0) {
-		        cartItemRepository.delete(cartItem);  
-		        continue; 
-		    }
+			if (product.getQuantityAvailable() <= 0) {
+				cartItemRepository.delete(cartItem);
+				continue;
+			}
 
-		    product.setQuantityAvailable(product.getQuantityAvailable() - cartItem.getQuantity());
-		    productRepository.save(product);
+			product.setQuantityAvailable(product.getQuantityAvailable() - cartItem.getQuantity());
+			productRepository.save(product);
 
-		    OrderItem orderItem = new OrderItem();
-		    orderItem.setOrderItemId(customOrderItemIdGenerator.generateCustomId());
-		    orderItem.setProductId(product.getProductId());
-		    orderItem.setQuantity(cartItem.getQuantity());
-		    orderItem.setPrice(cartItem.getProduct().getPrice());
-		    orderItem.setOrder(order);
-		    items.add(orderItem);
+			OrderItem orderItem = new OrderItem();
+			orderItem.setOrderItemId(customOrderItemIdGenerator.generateCustomId());
+			orderItem.setProductId(product.getProductId());
+			orderItem.setQuantity(cartItem.getQuantity());
+			orderItem.setPrice(cartItem.getProduct().getPrice());
+			orderItem.setOrder(order);
+			items.add(orderItem);
 
-		    if (cartItem.getQuantity() <= 1) {
-		        cartItemRepository.delete(cartItem); 
-		    }
+			if (cartItem.getQuantity() <= 1) {
+				cartItemRepository.delete(cartItem);
+			}
 		}
 
 		order.setOrderItem(items);
@@ -122,13 +117,12 @@ public class OrderServiceImp implements OrderService {
 		order.setPayment(payment);
 		paymentRepository.save(payment);
 
-		cart.getProduct().clear();  
-		cartRepository.save(cart);  
+		cart.getProduct().clear();
+		cartRepository.save(cart);
 
-		cartRepository.delete(cart);  
+		cartRepository.delete(cart);
 
-		
-		user.setCart(null); 
+		user.setCart(null);
 		userRepository.save(user);
 
 		return order;
@@ -171,6 +165,5 @@ public class OrderServiceImp implements OrderService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

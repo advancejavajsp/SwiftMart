@@ -1,18 +1,16 @@
 package com.jspvel.swift_kart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jspvel.swift_kart.dao.OrderRepository;
 import com.jspvel.swift_kart.entity.Delivery;
+import com.jspvel.swift_kart.entity.Order;
+import com.jspvel.swift_kart.exception.OrderNotFoundException;
 import com.jspvel.swift_kart.service.imp.DeliveryServiceImp;
 import com.jspvel.swift_kart.util.DeliveryStatus;
 
@@ -21,34 +19,23 @@ import com.jspvel.swift_kart.util.DeliveryStatus;
 @RequestMapping("/open/swiftmart")
 public class DeliveryController {
 
-    @Autowired
-    private DeliveryServiceImp deliveryServiceImp;
+	@Autowired
+	private DeliveryServiceImp deliveryServiceImp;
 
-    @PostMapping("/create")
-    public ResponseEntity<Delivery> createDelivery(@RequestBody Delivery delivery) {
-        Delivery createdDelivery = deliveryServiceImp.createDelivery(delivery);
-        return ResponseEntity.status(201).body(createdDelivery);  
-    }
+	@Autowired
+	private OrderRepository orderRepository;
 
-    @PutMapping("/status/{id}")
-    public ResponseEntity<Delivery> trackDeliveryStatus(@PathVariable String id, @RequestParam DeliveryStatus status) {
-        Delivery updatedDelivery = deliveryServiceImp.trackDeliveryStatus(id, status);
-        
-        if (updatedDelivery != null) {
-            return ResponseEntity.ok(updatedDelivery);  
-        } else {
-            return ResponseEntity.status(404).build();  
-        }
-    }
+	@PostMapping("/create/{orderId}/{deliveryAgentId}")
+	public Delivery createDelivery(@PathVariable String orderId, @PathVariable String deliveryAgentId) {
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Delivery> getDeliveryById(@PathVariable String id) {
-        Delivery delivery = deliveryServiceImp.getDeliveryById(id);
-        
-        if (delivery != null) {
-            return ResponseEntity.ok(delivery);  
-        } else {
-            return ResponseEntity.status(404).build();  
-        }
-    }
+		Delivery delivery = deliveryServiceImp.createDelivery(orderId, deliveryAgentId);
+		Order order = orderRepository.findById(orderId)
+				.orElseThrow(() -> new OrderNotFoundException("Order not found"));
+		delivery.setDeliveryStatus(DeliveryStatus.DELEVIRED);
+
+		return delivery;
+	}
+	
+	
+
 }
