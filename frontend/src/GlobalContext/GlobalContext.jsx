@@ -23,6 +23,7 @@ const GlobalContext = ({ children }) => {
   let [allCategory, setAllCategory] = useState([]);
   let [otpRender, setOtpRender] = useState(false);
   let [categoryId, setCategoryId] = useState("");
+  let [accounts, setAccounts] = useState(false);
   let [productComp, setProductComp ] = useState({productId: "", name:""});
   let [refreshId, setRefreshId] = useState(0);
 
@@ -62,7 +63,7 @@ console.log(decoded)
     fetchProductByCategory(categoryId)
   },[categoryId, refreshId])
   return (
-    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId }}>
+    <globalvar.Provider value={{ user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId }}>
       {children}
     </globalvar.Provider>
   );

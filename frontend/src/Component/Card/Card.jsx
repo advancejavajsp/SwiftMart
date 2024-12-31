@@ -30,9 +30,6 @@ const Card = ({ product }) => {
   let handleDeleteClick = ()=>{
     
     setProductComp({ ...product});
-
-
-    
     setDeleteProductPanel(true);
   }
 
