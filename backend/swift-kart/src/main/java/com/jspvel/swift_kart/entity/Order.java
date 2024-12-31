@@ -57,4 +57,6 @@ public class Order {
 	@ManyToOne
 	@JoinColumn
 	private User customer_id;
+
+	
 }

@@ -99,7 +99,9 @@ public class UserServiceImp implements UserService {
     private UserRepository userRepository;
 
     @Autowired
-    private EmailService emailService; 
+    private EmailService emailService;
+
+	private int balance; 
 
     @Autowired
     public UserServiceImp(UserRepository userRepository, EmailService emailService) {
@@ -151,4 +153,14 @@ public class UserServiceImp implements UserService {
         int otp = 100000 + random.nextInt(900000);
         return String.valueOf(otp);
     }
+
+	public String checkBalance(String id) {
+		if (this.balance < 0) {
+            return "Invalid Balance";  
+        } else {
+            return "Payment Successful";  
+        }
+	}
+
+	
 }

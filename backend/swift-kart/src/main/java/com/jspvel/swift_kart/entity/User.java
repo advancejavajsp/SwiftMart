@@ -54,6 +54,9 @@ public class User implements UserDetails {
 	private Role role;
 
 	private String image;
+	
+	@Column(name = "balance")
+    private Double balance;  
 
 	@Transient
 	private MultipartFile photo;
@@ -61,7 +64,6 @@ public class User implements UserDetails {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Cart cart;
 
-//    private boolean verified;
 
 	@OneToMany(mappedBy = "customer_id")
 	private List<Order> order;
@@ -102,5 +104,6 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+
 
 }

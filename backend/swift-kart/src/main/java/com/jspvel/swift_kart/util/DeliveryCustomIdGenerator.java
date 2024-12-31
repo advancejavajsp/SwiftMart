@@ -16,7 +16,7 @@ private static final String PREFIX = "DEL";
 	private EntityManager entityManager;
 	
     @Transactional
-    public String generateCategoryId() {
+    public String generateDeliveryId() {
     	Long nextVal = ((Number) entityManager
                 .createNativeQuery("SELECT nextval('deli_sequence')")
                 .getSingleResult()).longValue();
