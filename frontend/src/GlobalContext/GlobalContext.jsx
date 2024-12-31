@@ -27,7 +27,7 @@ const GlobalContext = ({ children }) => {
   let [productComp, setProductComp ] = useState({productId: "", name:""});
   let [refreshId, setRefreshId] = useState(0);
 
-  let allcategory;  
+ 
 
   let getAllcategory = async () => {
     let response = await axios.get("http://localhost:8080/open/category/categoryall");
