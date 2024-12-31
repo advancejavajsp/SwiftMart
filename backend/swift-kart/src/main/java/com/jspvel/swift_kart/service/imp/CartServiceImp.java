@@ -153,12 +153,14 @@ public class CartServiceImp implements CartService {
             CartItem cartItem = cartItemOptional.get();
             if (cartItem.getQuantity() > 1) {
                 cartItem.setQuantity(cartItem.getQuantity() - 1);
+                
             } else {
                 cart.getProduct().remove(cartItem);
             }
 
            
             cart.setPrice(cart.getPrice() - cartItem.getProduct().getPrice());
+            cart.setQuantity(cart.getQuantity()-1);
         } else {
             throw new RuntimeException("Product not found in the cart");
         }
