@@ -92,6 +92,9 @@ public class CartServiceImp implements CartService {
     	Cart cart = user.getCart();
     	if (cart == null) {
     	    cart = new Cart();
+    	    cart.setCart_id(cartIdGenerator.generateCustomId());
+    	    cart.setUser(user);
+    	    cartRepository.save(cart);
     	    user.setCart(cart);
     	}
   
