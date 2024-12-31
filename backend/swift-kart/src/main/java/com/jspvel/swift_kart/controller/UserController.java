@@ -27,8 +27,8 @@ public class UserController {
 	private UserServiceImp userServiceImp;
 	
 	@GetMapping("/email/{email}")
-	public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email) {
-		User user = userServiceImp.findByUserEmail(email);
+	public ResponseEntity<UserDTO> getUserByEmail(@PathVariable("email") String email) {
+		UserDTO user = userServiceImp.findByUserEmail(email);
 		return ResponseEntity.status(HttpStatus.OK).body(user);
 	}
 	

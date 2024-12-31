@@ -111,8 +111,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    public User findByUserEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow();
+    public UserDTO findByUserEmail(String email) {
+       
+        	User user=	userRepository.findByEmail(email).orElseThrow();
+        		UserDTO userDTO=new UserDTO(user);
+        		 return userDTO;
     }
 
     @Override

@@ -17,7 +17,7 @@ public interface UserService {
 
 	
 	
-	User findByUserEmail(String email);
+	UserDTO findByUserEmail(String email);
 	
 	public String deleteUserByEmail(String email);
 	
