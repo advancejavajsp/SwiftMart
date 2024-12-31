@@ -11,11 +11,7 @@
     font-family: Arial, sans-serif;
     position: sticky;
     top: 74px;
-<<<<<<< HEAD
-    z-index: 10;
-=======
-    z-index: 0;
->>>>>>> 7086fc4306c2aea7221b2b056b39b2241b322df3
+    z-index: 5;
 
 }
 

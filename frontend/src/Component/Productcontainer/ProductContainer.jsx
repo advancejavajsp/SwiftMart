@@ -4,14 +4,15 @@ import Card from '../Card/Card';
 import { globalvar } from '../../GlobalContext/GlobalContext';
 
 const ProductContainer = () => {
-  let {product} = useContext(globalvar);
-  const truncatedTitle = "Mother Dairy Cow Fresh Milk".length > 50 ? "Mother Dairy Cow Fresh Milk".slice(0, 50) + "..." : "Mother Dairy Cow Fresh Milk";
+  const { product, cartProducts } = useContext(globalvar);
 
+console.log(cartProducts)
   return (
     <section className={style["section"]}>
+      {/* Dropdown for Sorting */}
       <div className={style["dropdown"]}>
-        <h4>Buy {product.name} Online</h4>
-        <div className={style["bropDownCont"]}>
+        <h4>Buy {product?.name || "Products"} Online</h4>
+        <div className={style["dropDownCont"]}>
           <label htmlFor="options">Sort By</label>
           <select id="options" className={style["select"]}>
             <option className={style["style"]}>Relevance</option>
@@ -22,15 +23,32 @@ const ProductContainer = () => {
           </select>
         </div>
       </div>
-       <div className={style["cardContainer"]}>
-       {product?.products?.map((ele,i)=>{
-                  return <Card product={ele}/>
-                })}
-       </div>
-   
-    
+
+      {/* Product Cards */}
+      <div className={style["cardContainer"]}>
+        {console.log(product.products)}
+        {product?.products?.length > 0 ? (
+          product.products.map((ele) => {
+            // Find quantity in cartProducts for the current product
+            const cartProduct = cartProducts?.product?.find(
+              (item) => item?.product?.productId === ele.productId
+            );
+            const quantity = cartProduct?.quantity || 0;
+
+            return (
+              <Card
+                key={ele.productId}
+                product={ele}
+                cardProductQuantity={quantity}
+              />
+            );
+          })
+        ) : (
+          <p>No products available.</p>
+        )}
+      </div>
     </section>
   );
-}
+};
 
 export default ProductContainer;

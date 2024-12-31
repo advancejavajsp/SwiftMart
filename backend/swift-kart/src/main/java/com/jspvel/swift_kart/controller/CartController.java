@@ -16,8 +16,8 @@ import com.jspvel.swift_kart.entity.Cart;
 import com.jspvel.swift_kart.service.imp.CartServiceImp;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/open/cart")
+@CrossOrigin
 public class CartController {
 
 	@Autowired

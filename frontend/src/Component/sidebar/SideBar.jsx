@@ -14,15 +14,18 @@ import toast from 'react-hot-toast'
 
 
 const SideBar = () => {
-    let {user,allCategory,categoryId, setCategoryId,setAllCategory,refreshId,setRefreshId} = useContext(globalvar);
+    let {user,allCategory,categoryId, setCategoryId,setAllCategory,refreshId,setRefreshId,loaderPanel,setLoaderPanel} = useContext(globalvar);
    
 
     const handleDelete = async (categ) => {
         try {
+          setLoaderPanel(true)
           const response = await axios.delete(`http://localhost:8080/open/category/${categ}`);
+          
           toast.success("Category deleted successfully!");
           setRefreshId(refreshId -1)
           setCategoryId(allCategory[0].categoryId)
+          setLoaderPanel(false)
         } 
         catch (error) {
           toast.error("An error occurred categoryDelete. Please try again later.");

@@ -1,29 +1,36 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import styles from "./Card.module.css";
 import Milk from "../../asset/Milk.avif";
 import { globalvar } from "../../GlobalContext/GlobalContext";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Card = ({ product }) => {
-  let { user, setUpdateProductPanel, setDeleteProductPanel, setProductComp } = useContext(globalvar);
-  console.log(user);
+const Card = ({ product,cardProductQuantity }) => {
+  let {productComp,setLoginPanel, user, setUpdateProductPanel, setDeleteProductPanel, setProductComp, setLoaderPanel } = useContext(globalvar);
   const [quantity, setQuantity] = useState(0);
 
-  
-
-  console.log(product)
-
-  const handleIncrement = () => {
-    // setProductComp({ ...product});
-    let res = axios.post(`http://localhost:8080/open/cart/${user.id}/${product?.productId}`)
-    setQuantity(quantity + 1);
-
    
+ useEffect(()=>{
+  setQuantity(cardProductQuantity)
+ },[cardProductQuantity]);
+
+  const handleIncrement =async () => {
+    if (user) {
+      setLoaderPanel(true);
+      let response = await axios.post(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
+      setLoaderPanel(false);
+      setQuantity(quantity + 1);
+    }else{
+      setLoginPanel(true)
+    }
+  
   };
 
   
-  const handleDecrement = () => {
+  const handleDecrement = async () => {
+    setLoaderPanel(true);
+    let response = await axios.delete(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
+    setLoaderPanel(false);
     if (quantity > 0) {
       let res = axios.delete(`http://localhost:8080/open/cart/${user.id}/${product?.productId}`)
       setQuantity(quantity - 1);
