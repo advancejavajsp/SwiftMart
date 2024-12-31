@@ -28,10 +28,14 @@ public class UserServiceImp implements UserService {
 		this.emailService = emailService;
 	}
 
-	@Override
-	public User findByUserEmail(String email) {
-		return userRepository.findByEmail(email).orElseThrow();
-	}
+    @Override
+    public UserDTO findByUserEmail(String email) {
+       
+        	User user=	userRepository.findByEmail(email).orElseThrow();
+        		UserDTO userDTO=new UserDTO(user);
+        		 return userDTO;
+    }
+
 
 	@Override
 	public String deleteUserByEmail(String email) {
