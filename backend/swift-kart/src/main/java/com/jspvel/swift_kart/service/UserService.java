@@ -2,6 +2,7 @@ package com.jspvel.swift_kart.service;
 
 import org.springframework.stereotype.Service;
 
+import com.jspvel.swift_kart.dto.UserDTO;
 import com.jspvel.swift_kart.email_verification.requests.RegisterRequest;
 import com.jspvel.swift_kart.email_verification.responses.RegisterResponse;
 
@@ -20,8 +21,9 @@ public interface UserService {
 	
 	public String deleteUserByEmail(String email);
 	
-	public String updateUserDetails(String id, String newEmail, String newName, long newPhone);
 
 	String sendOtpToEmail(String email);
+
+	String updateUserDetails(String id, UserDTO userDTO);
 
 }

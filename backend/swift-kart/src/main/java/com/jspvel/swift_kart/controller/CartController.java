@@ -29,14 +29,14 @@ public class CartController {
 //	    }
 	
 	@PostMapping("/{userId}")
-    public ResponseEntity<?> createCartAndAssignToUser(@PathVariable String userId, @RequestBody Cart cartDTO) {
+    public ResponseEntity<?>createCartAndAssignToUser(@PathVariable String userId, @RequestBody Cart cartDTO) {
         return  ResponseEntity.ok( cartServiceImp.createCartAndAssignToUser(userId, cartDTO));
     }
 	
 	@GetMapping("find/{userId}")
     public ResponseEntity<?> findCartByUserId(@PathVariable String userId) {
         return  ResponseEntity.ok( cartServiceImp.findCartByUserId(userId));
-    }
+	}
 	
 	@PostMapping("/{userId}/{productId}")
     public CartDTO addProductToCart(@PathVariable String userId, @PathVariable String productId) {

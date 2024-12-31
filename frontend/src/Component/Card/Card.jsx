@@ -32,9 +32,14 @@ const Card = ({ product,cardProductQuantity }) => {
     let response = await axios.delete(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
     setLoaderPanel(false);
     if (quantity > 0) {
+      let res = axios.delete(`http://localhost:8080/open/cart/${user.id}/${product?.productId}`)
       setQuantity(quantity - 1);
     }
   };
+
+  // let addProduct = ()=>{
+  //   let res = axios.post(`http://localhost:8080/open/cart/${user.id}/${""}`)
+  // }
 
   const truncatedTitle = product?.name?.length > 50 ? product?.name?.slice(0, 50) + "..." : product?.name;
 

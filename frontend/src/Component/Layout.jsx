@@ -30,7 +30,7 @@ const Layout = () => {
     {paymentSuccessful && <PaymentSucessful/>}
     {addCategoryPanel && <AddCategory/>}
     {updateProductPopUp && <UpdateProduct/>}
-    {loaderPanel && <Loader/>}
+    {/* {loaderPanel && <Loader/>} */}
     <Outlet></Outlet>
     </>
   )
