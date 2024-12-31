@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.jspvel.swift_kart.dto.UserDTO;
 import com.jspvel.swift_kart.entity.User;
 import com.jspvel.swift_kart.service.imp.UserServiceImp;
 
@@ -36,9 +38,14 @@ public class UserController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public String updateUserDetails(@PathVariable String id, @RequestBody User userDetails) {
-		return userServiceImp.updateUserDetails(id,userDetails.getEmail(), userDetails.getName(), userDetails.getPhone());
-		
+	public ResponseEntity<String> updateUserDetails(@PathVariable String id, @RequestBody UserDTO userDetails) {
+		 String result = userServiceImp.updateUserDetails(id, userDetails);
+	        if ("User Updated".equals(result)) {
+	            return new ResponseEntity<>(result, HttpStatus.OK);  
+	        } else {
+	            return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);  
+	        }
+
 	}
 	
 	 @PutMapping("/user/{id}/role/delivery-agent")

@@ -44,4 +44,10 @@ public class Payment {
 
 	@OneToOne
 	private Order order;
+
+	private Double amount;
+	
+
+	
+	
 }

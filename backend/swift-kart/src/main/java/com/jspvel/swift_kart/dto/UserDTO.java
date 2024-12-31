@@ -15,15 +15,10 @@ import lombok.Setter;
 @Setter
 public class UserDTO {
     
-    private String id;
-    
     private String name;
     
     private String email;
     
     private long phone;
     
-    private Role role; 
-    
-    private String image;
 }

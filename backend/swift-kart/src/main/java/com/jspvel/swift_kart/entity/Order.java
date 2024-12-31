@@ -62,4 +62,6 @@ public class Order {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "customer_id")
 	private User customer_id;
+
+	
 }
