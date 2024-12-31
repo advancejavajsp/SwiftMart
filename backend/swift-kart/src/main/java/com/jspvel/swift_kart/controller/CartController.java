@@ -2,6 +2,7 @@ package com.jspvel.swift_kart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.jspvel.swift_kart.service.imp.CartServiceImp;
 
 @RestController
 @RequestMapping("/open/cart")
+@CrossOrigin
 public class CartController {
 
 	@Autowired

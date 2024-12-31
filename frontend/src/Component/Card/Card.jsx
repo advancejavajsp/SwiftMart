@@ -12,7 +12,7 @@ const Card = ({ product }) => {
 
   const handleIncrement =async () => {
     if (user) {
-      let response = await axios.post(`http://localhost:8080/open/cart/${user}/${product.id}`);
+      let response = await axios.post(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
       console.log(response)
       setQuantity(quantity + 1);
     }else{
@@ -23,7 +23,8 @@ const Card = ({ product }) => {
 
   
   const handleDecrement = async () => {
-    let response = await axios.delete(`http://localhost:8080/open/cart/${user.id}/${product.id}`);
+    let response = await axios.delete(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
+    console.log(response)
     if (quantity > 0) {
       setQuantity(quantity - 1);
     }

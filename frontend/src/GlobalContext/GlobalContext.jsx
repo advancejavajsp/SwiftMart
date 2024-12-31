@@ -55,6 +55,8 @@ console.log(decoded)
 
     let token = localStorage.getItem("token");
     const decoded = token && jwtDecode(token);
+    console.log(decoded);
+    
     setUser(decoded)
     getAllcategory()
   }, [refreshId])
