@@ -3,7 +3,9 @@ import styles from './DeleteNotification.module.css';
 import { globalvar } from '../../GlobalContext/GlobalContext';
 import axios from 'axios';
 const DeleteNotification = () => {
-     let {setDeleteProductPanel}=useContext(globalvar)
+     let {setDeleteProductPanel, productComp}=useContext(globalvar)
+     let {name} = productComp
+
     const handleClose = (e) => {
       e.stopPropagation(), setDeleteProductPanel(false)
     };
@@ -18,7 +20,7 @@ const DeleteNotification = () => {
     <div className={styles.notification} onClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(true)}}>
       {/* Header */}
       <div className={styles.notificationHeader}>
-        <h3 className={styles.notificationTitle}>Delete Card</h3>
+        <h3 className={styles.notificationTitle}>Delete  {name}</h3>
         <button className={styles.notificationClose} onClick={handleClose}>
           &times;
         </button>
@@ -26,7 +28,7 @@ const DeleteNotification = () => {
       
       {/* Body */}
       <div className={styles.notificationBody}>
-      **"Are you sure you want to delete this card? This action will permanently remove the item, and it cannot be undone. Click the **Delete** button to confirm or **Cancel** to go back."**
+     <p> Are you sure you want to delete {name}?</p>Click the delete button to make changes.
       </div>
       
       {/* Footer */}

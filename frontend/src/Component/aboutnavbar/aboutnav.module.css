@@ -1,9 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .nav {
   width: 100%;
 }
@@ -23,33 +17,43 @@
 .nav .navbar .logo {
   width: 20%;
   height: 50px;
+  mix-blend-mode: color-burn;
 }
 
+/* .logo{
+  height: 100vh;
+} */
 .nav .navbar .logo img {
-  height: 30px;
+  height: 40px;
 }
 
 .nav .navbar .links {
   display: flex;
   gap: 7rem;
+  
 }
 
 .nav .navbar .links .link {
   text-decoration: none;
   color: #333;
-  font-size: 1rem;
+  font-size: 1.2rem;
   transition: color 0.3s ease;
 }
 
 .nav .navbar .links .link:hover {
-  color: #007bff;
+  color: green;
 }
 
-.nav .navbar .icon {
-  font-size: 1.5rem;
+.nav .navbar .icon  {
+  font-size: 20px;
   color: #333;
   cursor: pointer;
-  margin-right: 8px;
+  margin-right: 14px;
+  /* border: 1px solid; */
+  
+}
+.nav .navbar .icon svg{
+  font-size: large;
 }
 
 .first {
