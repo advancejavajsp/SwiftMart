@@ -1,74 +1,58 @@
-import React from 'react'
-import style from "../navbar1/MainNavbar1.module.css"
-import { Link } from "react-router-dom"
-
+import React, { useContext, useState } from "react";
+import style from "../navbar1/MainNavbar1.module.css";
+import { globalvar } from "../../GlobalContext/GlobalContext";
 
 const MainNavBar1 = () => {
-    return (
-        <nav className={style['navbar1']}>
-            <div className={style["nav-links"]}>
-                <Link to="">Vegetables & Fruits</Link>
-                <Link to="">Dairy & Breakfast</Link>
-                <Link to="">Munchies</Link>
-                <Link to="">Cold Drinks & Juices</Link>
-                <Link to="">Instant & Frozen Food</Link>
-                <Link to="">Tea, Coffee & Health Drinks</Link>
-                <Link to="">Bakery & Biscuits</Link>
+  const { allCategory, setCategoryId } = useContext(globalvar);
+  // const [render, setRender] = useState(false);
 
-                <select className={style['drop-down']}>
-                    <option selected>
-                         More
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link>  */} Sweet tooth
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Atta, Rice & Dal
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */}Dry Fruit, Masala & Oil
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */}Sauces & Spread
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Chicken, Meat & Fish
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Paan Corne
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Organic & Premium
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Baby Care
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Pharma & Wellness
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Cleaning Essentials
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Home & Office
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Personal Care
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Beauty & Cosmetics
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Magazines
-                    </option>
-                    <option>
-                        {/* <Link to=""></Link> */} Electronics & Electrical
-                    </option>
-                </select>
 
-            </div>
-        </nav>
-    )
-}
+  const categoryArray = Object.values(allCategory);
+  
+  const size = categoryArray.length;
 
-export default MainNavBar1
+
+  const categoryPart = categoryArray.slice(0, 6);
+
+  const categoryRemaining = categoryArray.slice(6);
+
+
+  // if (size < 6) {
+  //   setRender(true);
+  // }
+
+  return (
+    <nav className={style["navbar1"]}>
+      <div className={style["nav-links"]}>
+        <ul>
+          {categoryPart.map((ele, index) => (
+            <li key={index} onClick={() => setCategoryId(ele.categoryId)}>
+              {ele.name}
+            </li>
+          ))}
+        </ul>
+
+        {size > 6 && (
+          <select className={style["dropdown"]}   onChange={(e) => setCategoryId(e.target.value)}>
+            <option value="">Select a category</option>
+            {categoryRemaining.map((ele) => (
+              <option key={ele.categoryId} value={ele.categoryId}>
+                {ele.name}
+              </option>
+            ))}
+          </select>
+        )}
+        
+      </div>
+    </nav>
+  );
+};
+
+export default MainNavBar1;
+
+
+
+
+
+
+
