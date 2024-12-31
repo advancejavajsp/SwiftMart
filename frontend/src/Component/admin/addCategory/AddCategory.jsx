@@ -5,9 +5,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const AddCategory = () => {
-  const [isPopupOpen, setIsPopupOpen] = useState(true);
-  const popupRef = useRef(null);
-  const { setAddCategoryPanel } = useContext(globalvar);
+  const { setAddCategoryPanel ,refreshId, setRefreshId} = useContext(globalvar);
 
   const [addCategory, setAddCategory] = useState({
     name: "",
@@ -17,25 +15,6 @@ const AddCategory = () => {
 
   const { name, description, image } = addCategory;
 
-  const handleClickOutside = (event) => {
-    if (popupRef.current && !popupRef.current.contains(event.target)) {
-      setIsPopupOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    if (isPopupOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isPopupOpen]);
-
-  const handleCancel = () => {
-    setIsPopupOpen(false);
-    setAddCategoryPanel(false);
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,6 +24,10 @@ const AddCategory = () => {
     }));
   };
 
+  let handleCancel=(e)=>{
+    e.stopPropagation();
+    setAddCategoryPanel(false)
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (name && description) {
@@ -52,6 +35,7 @@ const AddCategory = () => {
         const response = await axios.post(`http://localhost:8080/open/category`, addCategory);
         if (response.status === 201) {
           toast.success(`${name} added successfully!`);
+          setRefreshId(refreshId + 1)
           setTimeout(() => {
             setAddCategoryPanel(false);
           }, 1500);
@@ -64,11 +48,10 @@ const AddCategory = () => {
     }
   };
 
-  if (!isPopupOpen) return null;
 
   return (
-    <div className={styles["popupOverlay"]}>
-      <div ref={popupRef} className={styles["popupContent"]}>
+    <div className={styles["popupOverlay"]} onClick={handleCancel}>
+      <div  className={styles["popupContent"]} onClick={(e)=>{e.stopPropagation(), setAddCategoryPanel(true)}}>
         <h2>Add Category</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Name</label>

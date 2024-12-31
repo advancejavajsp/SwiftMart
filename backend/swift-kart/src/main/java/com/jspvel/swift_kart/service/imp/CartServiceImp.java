@@ -1,10 +1,13 @@
 package com.jspvel.swift_kart.service.imp;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jspvel.swift_kart.dao.CartItemRepository;
 import com.jspvel.swift_kart.dao.CartRepository;
 import com.jspvel.swift_kart.dao.ProductRepository;
 import com.jspvel.swift_kart.dao.UserRepository;
@@ -14,18 +17,24 @@ import com.jspvel.swift_kart.entity.CartItem;
 import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.entity.User;
 import com.jspvel.swift_kart.service.CartService;
+import com.jspvel.swift_kart.util.CustomCartIdGenerator;
 
 @Service
 public class CartServiceImp implements CartService {
 
 	@Autowired
 	private CartRepository cartRepository;
+	
+	@Autowired
+	private CustomCartIdGenerator cartIdGenerator;
 
 	@Autowired
 	private UserRepository userRepository;
 
 	@Autowired
 	private ProductRepository productRepository;
+	
+	
 
 //	 @Transactional
 //	    public CartDTO createCartAndAssignToUser(String userId, CartDTO cartDTO) {
@@ -66,6 +75,7 @@ public class CartServiceImp implements CartService {
 
 	public Cart createCartAndAssignToUser(String userId, Cart cartDTO) {
 		User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+		cartDTO.setCart_id("CART"+userId);
 		cartDTO.setUser(user);
 		user.setCart(cartDTO);
 		cartRepository.save(cartDTO);
@@ -85,14 +95,19 @@ public class CartServiceImp implements CartService {
     	Cart cart = user.getCart();
     	if (cart == null) {
     	    cart = new Cart();
+    	    cart.setCart_id(cartIdGenerator.generateCustomId());
+    	    cart.setUser(user);
+    	    cartRepository.save(cart);
     	    user.setCart(cart);
     	}
-
-    	Optional<CartItem> existingCartItem = cart.getProduct().stream()
+  
+    	Optional<CartItem> existingCartItem=null;
+    	if(cart.getProduct()!=null) {
+    	existingCartItem = cart.getProduct().stream()
     	    .filter(cartItem -> cartItem.getProduct().getProductId().equals(productId))
     	    .findFirst();
-
-    	if (existingCartItem.isPresent()) {
+    	}
+    	if (existingCartItem!=null && existingCartItem.isPresent()) {
     	    CartItem cartItem = existingCartItem.get();
     	    cartItem.setQuantity(cartItem.getQuantity() + 1);
     	} else {
@@ -101,6 +116,12 @@ public class CartServiceImp implements CartService {
     	    cartItem.setProduct(product);
     	    cartItem.setQuantity(1);
     	    cartItem.setProduct(product); 
+    	    if(cart.getProduct()==null) {
+    	    	List<CartItem> list=new ArrayList<CartItem>();
+    	    	list.add(cartItem);
+    	    	cart.setProduct(list);
+    	    }
+    	    else
     	    cart.getProduct().add(cartItem);
     	}
 
@@ -132,12 +153,14 @@ public class CartServiceImp implements CartService {
             CartItem cartItem = cartItemOptional.get();
             if (cartItem.getQuantity() > 1) {
                 cartItem.setQuantity(cartItem.getQuantity() - 1);
+                
             } else {
                 cart.getProduct().remove(cartItem);
             }
 
-            cart.setQuantity(cart.getQuantity() - 1);
+           
             cart.setPrice(cart.getPrice() - cartItem.getProduct().getPrice());
+            cart.setQuantity(cart.getQuantity()-1);
         } else {
             throw new RuntimeException("Product not found in the cart");
         }
@@ -149,4 +172,13 @@ public class CartServiceImp implements CartService {
         return cartDTO;
     }
 
+
+	public CartDTO findCartByUserId(String userId) {
+		// TODO Auto-generated method stub
+		Cart cart= userRepository.findById(userId).get().getCart();
+		
+		return new CartDTO(cart);
+	}
+    
+   
 }

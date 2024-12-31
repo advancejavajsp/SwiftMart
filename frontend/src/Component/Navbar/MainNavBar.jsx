@@ -38,20 +38,19 @@ const useTypewriter = (texts, speed = 100, pause = 1000) => {
 };
 
 const MainNavBar = () => {
-  const { loginPanel, setLoginPanel, mycartPanel, setMycartPanel, user,setUser } = useContext(globalvar);
-
-//   console.log(user)
+  const { loginPanel, setLoginPanel, mycartPanel, setMycartPanel, user, setUser } = useContext(globalvar);
   const searchBarRef = useRef();
   const [isPopupVisible, setPopupVisible] = useState(false);
+  const popupRef = useRef(null);  // Add reference for the popup container
 
   const togglePopup = () => {
     setPopupVisible(!isPopupVisible);
   };
 
   const handleLogout = () => {
-     localStorage.removeItem("token");
-     setPopupVisible(false);
-     setUser("")
+    localStorage.removeItem("token");
+    setPopupVisible(false);
+    setUser("");
   };
 
   const getNavbarQRData = (userData) => {
@@ -59,8 +58,21 @@ const MainNavBar = () => {
   };
 
   const qrData = getNavbarQRData(user);
-
   const typewriterPlaceholder = useTypewriter(["Search 'eggs'", "Search 'milk'", "Search 'bread'"], 100, 2000);
+
+  // Effect to handle click outside popup
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setPopupVisible(false);  // Close the popup if click is outside
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className={style["navbar"]}>
@@ -79,8 +91,6 @@ const MainNavBar = () => {
         <ul className={style["search-bar-ul"]}>
           <li><CiSearch className={style["search"]} /></li>
           <li><input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} /></li>
-        
-        
         </ul>
       </div>
 
@@ -93,7 +103,7 @@ const MainNavBar = () => {
               </button>
 
               {isPopupVisible && (
-                <div className={style.popup}>
+                <div className={style.popup} ref={popupRef}>
                   <div className={style["popup-content"]}>
                     <Link to="/user-profile" onClick={() => setPopupVisible(false)}>
                       <button className={style["account-button"]}>My Account</button>
@@ -112,7 +122,7 @@ const MainNavBar = () => {
                     </ul>
                     <div className={style["qr-section"]}>
                       <h4>Simple way to get groceries in minutes</h4>
-                      <p>Scan the QR code and download Blinkit app</p>
+                      <p>Scan the QR code and download the SwiftMart app</p>
                       <QRCode value={qrData} size={100} />
                     </div>
                   </div>
@@ -134,8 +144,4 @@ const MainNavBar = () => {
   );
 };
 
-
-    
-
-
-export default MainNavBar
+export default MainNavBar;

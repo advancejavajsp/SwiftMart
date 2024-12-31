@@ -1,72 +1,104 @@
+/* ----- Navbar Container ----- */
 .adminNav {
   height: 8vh;
   width: 100%;
-  margin-top: 2px;
-  background-color: white;
-  /* border: 1px solid black; */
+  background-color: #fff;
   display: flex;
   justify-content: space-between;
-  font-size: 20px;
   align-items: center;
-  padding: 0 20px;
-  box-shadow: 0 4px 10px gray;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  gap: 10px;
 }
 
+/* ----- Navbar Links ----- */
 .adminNav .adminNav1 {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 10px;
 }
 
-.adminNav1 {
-  width: 50%;
-  text-align: center;
-}
-
-.adminNav1  li{
+.adminNav1 li {
   list-style-type: none;
   color: black;
   cursor: pointer;
-  padding: 50px;
-}
-.adminNav1  li:hover{
-  color: green;
-  font-size: 16px;
-}
-
-@keyframes shimmer111 {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+  text-align: center;
+  font-size: 15px; /* Fixed font size */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  transition: color 0.3s ease;
 }
 
-.adminNav {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.adminNav1 li:hover {
+  color: green; /* Only text color changes */
 }
 
-
+/* ----- Hamburger Menu ----- */
 .hamburger {
-  display: none;
-  border: 1px solid black !important;
+  display: none; /* Hidden by default on larger screens */
+  flex-direction: column;
+  gap: 5px;
   cursor: pointer;
 }
 
 .hamburger .bar {
   width: 25px;
   height: 3px;
-  background-color: #f0f8e0;
-  margin: 4px 0;
+  background-color: #333;
+  border-radius: 2px;
 }
 
-@media (max-width:800px) {
-  .adminNav{
-   display: none;
+/* ----- Responsive Design ----- */
+
+/* Tablets and Smaller Screens (800px and below) */
+@media (max-width: 800px) {
+  .adminNav {
+    flex-direction: column;
+    height: auto;
+    gap: 5px;
+  }
+
+  .adminNav1 {
+    display: none; /* Hidden by default on smaller screens */
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 8vh;
+    left: 0;
+    width: 100%;
+    z-index: 1001;
+  }
+
+  .adminNav1 li {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .adminNav1.open {
+    display: flex;
+  }
+
+  .hamburger {
+    display: flex; /* Show hamburger menu */
   }
 }
 
+/* Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+  .adminNav1 li {
+    font-size: 12px;
+  }
 
+  .hamburger .bar {
+    width: 20px;
+  }
+}

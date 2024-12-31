@@ -1,5 +1,6 @@
 package com.jspvel.swift_kart.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -27,12 +28,11 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Table(name = "users_table")
 @Entity
 @Getter
 @Setter
-@Validated	
+@Validated
 public class User implements UserDetails {
 
 	@Id
@@ -57,17 +57,17 @@ public class User implements UserDetails {
 
 	@Transient
 	private MultipartFile photo;
-	
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private Cart cart;
 
 //    private boolean verified;
 
 	@OneToMany(mappedBy = "customer_id")
-	private List<Order> order;
+	private List<Order> order = new ArrayList<Order>();
 
 	@OneToMany(mappedBy = "deliveryAgentId")
-	private List<Delivery> delivery;
+	private List<Delivery> delivery=new ArrayList<Delivery>();
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

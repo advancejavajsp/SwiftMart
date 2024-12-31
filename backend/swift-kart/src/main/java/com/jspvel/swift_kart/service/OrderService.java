@@ -9,8 +9,11 @@ import com.jspvel.swift_kart.util.OrderStatus;
 
 @Service
 public interface OrderService {
+	
+	
+	public Order placeOrder(String userId, String paymentId);
 
-	public Order placeOrder(Order order);
+//	public Order placeOrder(Order order);
 	
 	public Order getOrderById(String orderId);
 	
@@ -18,5 +21,5 @@ public interface OrderService {
 	
 	public Order cancelOrder(String orderId);
 	
-	public Order updateOrderStatus(String orderId, OrderStatus status);
+	
 }
