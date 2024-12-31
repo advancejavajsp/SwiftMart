@@ -150,4 +150,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
     }
    
+    @ExceptionHandler(CartNotFoundException.class)
+    public ResponseEntity<String> OrderNotFoundException(CartNotFoundException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
 }

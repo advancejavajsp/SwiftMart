@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jspvel.swift_kart.dao.CartItemRepository;
 import com.jspvel.swift_kart.dao.CartRepository;
 import com.jspvel.swift_kart.dao.ProductRepository;
 import com.jspvel.swift_kart.dao.UserRepository;
@@ -32,6 +33,8 @@ public class CartServiceImp implements CartService {
 
 	@Autowired
 	private ProductRepository productRepository;
+	
+	
 
 //	 @Transactional
 //	    public CartDTO createCartAndAssignToUser(String userId, CartDTO cartDTO) {
@@ -92,6 +95,9 @@ public class CartServiceImp implements CartService {
     	Cart cart = user.getCart();
     	if (cart == null) {
     	    cart = new Cart();
+    	    cart.setCart_id(cartIdGenerator.generateCustomId());
+    	    cart.setUser(user);
+    	    cartRepository.save(cart);
     	    user.setCart(cart);
     	}
   
@@ -172,6 +178,5 @@ public class CartServiceImp implements CartService {
 		return new CartDTO(cart);
 	}
     
-    
-
+   
 }

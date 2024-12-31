@@ -21,6 +21,7 @@ import com.jspvel.swift_kart.entity.OrderItem;
 import com.jspvel.swift_kart.entity.Payment;
 import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.entity.User;
+import com.jspvel.swift_kart.exception.CartNotFoundException;
 import com.jspvel.swift_kart.exception.OrderNotFoundException;
 import com.jspvel.swift_kart.exception.OutOfStockException;
 import com.jspvel.swift_kart.exception.PaymentFailedException;
@@ -57,86 +58,92 @@ public class OrderServiceImp implements OrderService {
 	private CartServiceImp cartServiceImp;
 
 	@Autowired
+	private CartItemRepository cartItemRepository;
+
+	@Autowired
 	private CustomOrderItemIdGenerator customOrderItemIdGenerator;
 
 	@Autowired
 	private OrderCustomIdGenerator orderCustomIdGenerator;
 
-    @Autowired
-	private CartItemRepository cartItemRepository;
 
-//	@Override
-//	public Order placeOrder(String userId, String paymentId) {
-//		User user = userRepository.findById(userId).orElseThrow(null);
-//
-//		Payment payment = paymentRepository.findById(paymentId).orElse(null);
-//
-//		if (!(payment.getPaymentStatus().equals(PaymentStatus.SUCCESS))) {
-//		    throw new PaymentFailedException("Payment failed.");
-//		}
-//		// Create the order
-//		Order order = new Order();
-//		order.setOrderId(orderCustomIdGenerator.generateCategoryId());
-//		order.setOrderStatus(OrderStatus.PENDING);
-//		order.setCustomer_id(user);
-//
-//		// Calculate total amount
-//		Cart cart = user.getCart();
-//		if (cart == null || cart.getProduct() == null) {
-//		    throw new IllegalArgumentException("Cart is empty.");
-//		}
-//
-//		order.setTotalAmount(cart.getPrice());
-//		List<OrderItem> items = new ArrayList<OrderItem>();
-//		for (CartItem cartItem : cart.getProduct()) {
-//		    Product product = cartItem.getProduct();
-//
-//		    // Reduce quantity
-//		    if (product.getQuantityAvailable() <= 0)
-//		        throw new OutOfStockException("Out of stock");
-//		    product.setQuantityAvailable(product.getQuantityAvailable() - cartItem.getQuantity());
-//		    productRepository.save(product);
-//
-//		    // Add order items
-//		    OrderItem orderItem = new OrderItem();
-//		    orderItem.setOrderItemId(customOrderItemIdGenerator.generateCustomId());
-//		    orderItem.setProductId(product.getProductId());
-//		    orderItem.setQuantity(cartItem.getQuantity());
-//		    orderItem.setPrice(cartItem.getProduct().getPrice());
-//		    orderItem.setOrder(order);
-//		    items.add(orderItem);
-//
-//		    cartItem.setProduct(null);
-//		    cartItem.setQuantity(0);
-//
-//		    // If the cart item quantity is greater than 1, reduce the quantity
-//		    if (cartItem.getQuantity() > 1) {
-//		        cartItem.setQuantity(cartItem.getQuantity() - 1);
-//		    } else {
-//		        cart.getProduct().remove(cartItem); // Remove the item from the cart
-//		    }
-//		    cartRepository.save(cart);
-//		}
-//
-//		// Set order items to the order
-//		order.setOrderItem(items);
-//		orderRepository.save(order);
-//
-//		// Clear the cart by removing all products
-//		cart.getProduct().clear();  // This removes all products from the cart
-//
-//		// Optionally, you can also delete the cart if it should be emptied and removed entirely
-//		 cartRepository.delete(cart);
-//
-//		// Set the payment details for the order
-//		payment.setOrder(order);
-//		order.setPayment(payment);
-//		paymentRepository.save(payment);
-//
-//		return order;
-//	}
-	
-	
+
+	@Override
+	public Order placeOrder(String userId, String paymentId) {
+		User user = userRepository.findById(userId).orElseThrow(null);
+
+		Payment payment = paymentRepository.findById(paymentId).orElse(null);
+
+		if (!(payment.getPaymentStatus().equals(PaymentStatus.SUCCESS))) {
+		    throw new PaymentFailedException("Payment failed.");
+		}
+		System.out.println("hello");
+		Order order = new Order();
+		order.setOrderId(orderCustomIdGenerator.generateCategoryId());
+		order.setOrderStatus(OrderStatus.PENDING);
+		order.setCustomer_id(user);
+
+		Cart cart = user.getCart();
+		if (cart == null || cart.getProduct() == null || cart.getProduct().isEmpty()) {
+		    throw new CartNotFoundException("Cart is empty.");
+		}
+
+		order.setTotalAmount(cart.getPrice());
+		List<OrderItem> items = new ArrayList<OrderItem>();
+
+		for (CartItem cartItem : cart.getProduct()) {
+		    Product product = cartItem.getProduct();
+
+		    if (product.getQuantityAvailable() <= 0) {
+		        cartItemRepository.delete(cartItem);  
+		        continue; 
+		    }
+
+		    product.setQuantityAvailable(product.getQuantityAvailable() - cartItem.getQuantity());
+		    productRepository.save(product);
+
+		    OrderItem orderItem = new OrderItem();
+		    orderItem.setOrderItemId(customOrderItemIdGenerator.generateCustomId());
+		    orderItem.setProductId(product.getProductId());
+		    orderItem.setQuantity(cartItem.getQuantity());
+		    orderItem.setPrice(cartItem.getProduct().getPrice());
+		    orderItem.setOrder(order);
+		    items.add(orderItem);
+
+		    if (cartItem.getQuantity() <= 1) {
+		        cartItemRepository.delete(cartItem); 
+		    }
+		}
+
+		order.setOrderItem(items);
+		orderRepository.save(order);
+
+		payment.setOrder(order);
+		order.setPayment(payment);
+		paymentRepository.save(payment);
+
+		cart.getProduct().clear();  
+		cartRepository.save(cart);  
+
+		cartRepository.delete(cart);  
+
+		
+		user.setCart(null); 
+		userRepository.save(user);
+
+		return order;
+
+	}
+
+	public void deleteCart(User user) {
+
+		Cart cart = user.getCart();
+		cartItemRepository.deleteAll(cart.getProduct());
+
+		cartRepository.delete(user.getCart());
+		userRepository.save(user);
+
+	}
 
 	public List<Order> getOrdersByUserId(Long userId) {
 //	        return orderRepository.findByUserId(userId);
@@ -165,68 +172,5 @@ public class OrderServiceImp implements OrderService {
 		return null;
 	}
 
-	@Transactional
-	@Override
-	public Order placeOrder(String userId, String paymentId) {
-		//find payment if payment is sucess place get user and get the cart
-		
-		Payment payment=paymentRepository.findById(paymentId).orElseThrow();
-		if(payment.getPaymentStatus().equals(PaymentStatus.SUCCESS)) {
-			
-			User user = userRepository.findById(userId).orElseThrow();
-			
-			//from user get cart
-			Cart cart=user.getCart();
-			if(cart!=null && !(cart.getProduct().isEmpty())) {
-				
-				Order order=new Order();
-				
-				order.setOrderId(customOrderItemIdGenerator.generateCustomId());
-				order.setCustomer_id(user);
-				order.setPayment(payment);
-				order.setTotalAmount(cart.getPrice());
-				order.setOrderStatus(OrderStatus.PENDING);
-		        
-				orderRepository.save(order);
-				List<OrderItem> items=new ArrayList<OrderItem>();
-				for(CartItem cartItem:cart.getProduct()) {
-					Product product=cartItem.getProduct();
-					
-					OrderItem item=new OrderItem();
-					item.setOrder(order);
-					item.setOrderItemId(customOrderItemIdGenerator.generateCustomId());
-					item.setPrice(product.getPrice()*cartItem.getQuantity());
-					item.setQuantity(cartItem.getQuantity());
-					
-					product.setQuantityAvailable(product.getQuantityAvailable()-cartItem.getQuantity());
-					cartItem.setProduct(null);
-					productRepository.save(product);
-					cartItemRepository.delete(cartItem);
-					items.add(item);
-					
-				}
-				order.setOrderItem(items);
-				orderRepository.save(order);
-				
-				cart.setPrice(0);
-				cart.setQuantity(0);
-				cart.setProduct(new ArrayList<CartItem>());
-				cartRepository.save(cart);
-				
-				user.getOrder().add(order);
-				userRepository.save(user);
-				
-			}
-			else {
-				throw new PaymentFailedException("exp");
-			}
-			
-		}
-		//if payment is not sucess throw payment not found exception
-		throw new PaymentFailedException("payment failed");
-		
-	}
-	
-	
 
 }
