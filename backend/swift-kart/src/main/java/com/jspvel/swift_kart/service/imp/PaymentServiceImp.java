@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jspvel.swift_kart.dao.PaymentRepository;
+import com.jspvel.swift_kart.dto.PaymentDTO;
 import com.jspvel.swift_kart.entity.Order;
 import com.jspvel.swift_kart.entity.Payment;
 import com.jspvel.swift_kart.service.PaymentService;
@@ -44,21 +45,26 @@ public class PaymentServiceImp implements PaymentService {
 	}
 
 	@Override
-	public Payment updatePayment(String paymentId, Payment updatedPayment) {
-		Payment previousPayment = paymentRepository.findById(paymentId).orElse(null);
-		
-		if(previousPayment !=null) {
-			
-			previousPayment.setPaymentDate(updatedPayment.getPaymentDate());
-			previousPayment.setPaymentId(updatedPayment.getPaymentId());
-			previousPayment.setPaymentMode(updatedPayment.getPaymentMode());
-			previousPayment.setPaymentStatus(updatedPayment.getPaymentStatus());
-			previousPayment.setTransactionId(updatedPayment.getTransactionId());
-		 
-			return paymentRepository.save(previousPayment);
-		}
-		return null;
+	public PaymentDTO updatePayment(String paymentId, PaymentDTO updatedPaymentDTO) {
+	    Payment previousPayment = paymentRepository.findById(paymentId).orElse(null);
+
+	    if (previousPayment != null) {
+	        previousPayment.setPaymentMode(updatedPaymentDTO.getPaymentMode());
+	        previousPayment.setPaymentStatus(updatedPaymentDTO.getPaymentStatus());
+
+	        Payment updatedPayment = paymentRepository.save(previousPayment);
+
+	        PaymentDTO updatedPaymentDTOResponse = PaymentDTO.builder()
+	                .paymentStatus(updatedPayment.getPaymentStatus())
+	                .paymentMode(updatedPayment.getPaymentMode())
+	                .build();
+
+	        return updatedPaymentDTOResponse;
+	    }
+	    return null; 
 	}
+
+
 
 	@Override
 	public boolean deletePayment(String paymentId) {

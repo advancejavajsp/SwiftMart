@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jspvel.swift_kart.dto.PaymentDTO;
 import com.jspvel.swift_kart.entity.Payment;
 import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.service.PaymentService;
@@ -59,14 +60,15 @@ public class PaymentController {
         }
 	}
 	
-	@PutMapping("/{paymenttId}")
-	public ResponseEntity<Payment> updatePayment(@PathVariable ("paymentId") String paymentId, @RequestBody Payment updatedPayment){
-		Payment updated = paymentServiceImp.updatePayment(paymentId, updatedPayment);
-		
-		if(updated != null) {
-			return ResponseEntity.ok(updated);
-		}else {
-			return ResponseEntity.notFound().build();
-		}
+	@PutMapping("/{paymentId}")
+	public ResponseEntity<PaymentDTO> updatePayment(@PathVariable("paymentId") String paymentId, @RequestBody PaymentDTO updatedPaymentDTO) {
+	    PaymentDTO updated = paymentServiceImp.updatePayment(paymentId, updatedPaymentDTO);
+
+	    if (updated != null) {
+	        return ResponseEntity.ok(updated);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
+
 }

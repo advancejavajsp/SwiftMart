@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.jspvel.swift_kart.dto.PaymentDTO;
 import com.jspvel.swift_kart.entity.Payment;
 
 @Service  
@@ -16,7 +17,8 @@ public interface PaymentService {
     
     public Payment addPayment(Payment payment);
     
-    public Payment updatePayment(String paymentId, Payment updatedPayment);
+    public PaymentDTO updatePayment(String paymentId, PaymentDTO updatedPaymentDTO);
+    
     
     public boolean deletePayment(String paymentId);
 }
