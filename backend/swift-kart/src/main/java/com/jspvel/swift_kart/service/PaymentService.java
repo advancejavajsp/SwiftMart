@@ -15,7 +15,7 @@ public interface PaymentService {
     
     public Payment addPayment(Payment payment);
     
-    public Payment updatePayment(String paymentId, PaymentDTO updatedPaymentDTO);
+    public PaymentDTO updatePayment(String paymentId, PaymentDTO updatedPaymentDTO);
     
     
     public boolean deletePayment(String paymentId);
