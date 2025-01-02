@@ -1,370 +1,297 @@
-
+/* ----- Global Styles ----- */
 .paymentcheckout {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
-    background-color: #f4f4f4;
-    padding: 5px;
-}
-
-.checkout {
-    width: 500px;
-    background-color: #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    font-size: 14px;
-}
-
-.checkout:hover {
-
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-}
-.lia{
-    list-style-type: none;
-}
-
-.check1{
-    padding: 20px 20px;
-    border-bottom: 1px solid #eee;
-    font-size: large;
-    font-weight: 600;
-    display: flex;
-}
-
-.number,
-.number2 {
-    background-color: #318616;
-    color: white;
-    width: 60px;
-    height: 50px;
-    padding: 5px;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 50%;
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.check1_name,
-.check2_name,
-.check2_home {
-    font-size: 16px;
-    font-weight: 600;
-    color: #333;
-    padding-left: 50px;
-}
-
-.check1_number,
-.check2_home {
-    color: #888;
-    padding-left: 50px;
-}
-.check3{
-    display: flex;
-    padding-left: 20px;
-    border-bottom: 1px solid #eee;
-    font-size: large;
-    font-weight: 600;
-    height: 30px;
-}
-
-.payment {
-    width: 100%;
-    padding: 10px;
-}
-
-.paymentsection {
-    width: 100%;
-}
-
-.payment-invoice {
+    justify-content: space-between;
+    gap: 20px;
     padding: 20px;
-    margin-bottom: 10px;
-    background-color: #fafafa;
+    background-color: #f9fafc;
+   
+    height: 100vh;
+  }
+  
+  /* ----- Left Section: Checkout Steps ----- */
+  .checkout {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* ----- Checkout Steps ----- */
+  .check1,
+  .checks {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.payment-invoice-row {
+    padding: 8px;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .number,
+  .number2 {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* ----- Payment Section ----- */
+  .payment {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .payment-invoice {
+    margin-bottom: 20px;
+  }
+  
+  .payment-invoice-row {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 12px;
-}
-
-.float-left {
-    font-weight: 600;
-    color: #333;
-}
-
-.float-right {
+    margin-bottom: 10px;
+  }
+  
+  .payment-invoice-row .float-left,
+  .payment-invoice-row .float-left1 {
     font-weight: 500;
     color: #333;
-}
-
-.promocode-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.promocode-container:hover {
-    background-color: #f1f1f1;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.promocode-text {
-    font-size: 16px;
-    font-weight: 600;
-    color: #318616;
-}
-
-.promocode-arrow {
-    font-size: 18px;
-    color: #318616;
-}
-
-.payment-table ul {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-    margin: 10px 0;
-    padding: 0;
-}
-
-.payment-table ul li {
-    background-color: #318616;
-    color: white;
-    padding: 15px;
-    border-radius: 8px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.payment-table ul li:hover {
-    background-color: #267014;
-    transform: scale(1.05);
-}
-
-.wallet-type {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    padding: 15px;
-    border: 1px solid #eee;
-    justify-content: space-between;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-}
-
-.wallet-type:hover {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.wallet-type img {
-    height: 40px;
-    width: auto;
-}
-
-.payment-btn {
-    text-align: center;
-    margin-top: 10px;
-}
-
-.payment-btn button {
-    width: 100%;
-    padding: 16px;
-    background-color: #318616;
-    color: white;
-    font-weight: 700;
-    font-size: 18px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.payment-btn button:hover {
-    background-color: #267014;
-    transform: translateY(-3px);
-}
-
-.card-container {
-    width: 300px;
-    border-radius: 8px;
-    margin: 15px;
-    background-color: #f9f9f9;
-}
-
-.cardheader {
-    font-size: 18px;
-    padding: 15px;
-    background-color: #fbfbfb;
-    border-bottom: 1px solid #eee;
-    display: flex;
-    justify-content: space-between;
+  }
+  
+  .payment-invoice-row .float-right,
+  .payment-invoice-row .float-right2 {
     font-weight: bold;
-    color: #333;
-}
-
-.cardappended {
-    padding: 20px;
-}
-
-/* Mobile Responsiveness (max-width: 480px) */
-@media (max-width: 480px) {
-    .checkout {
-        width: 100%;
-        margin: 0;
-        padding: 15px;
-    }
-
-    .paymentcheckout {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .payment {
-        width: 100%;
-        padding: 15px;
-    }
-
-    .paymentsection {
-        width: 100%;
-    }
-
-    .payment-invoice {
-        padding: 16px;
-    }
-
-    .payment-invoice-row {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .payment-table ul {
-        flex-direction: column;
-        align-items: stretch;
-        margin: 10px 0;
-    }
-
-    .payment-table ul li {
-        width: 100%;
-        margin-bottom: 8px;
-    }
-
-    .payment-btn button {
-        font-size: 14px;
-        padding: 12px;
-    }
-
-    .card-container {
-        width: 100%;
-        margin: 15px 0;
-        visibility: hidden;
-    }
-
-    .wallet-type {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .wallet-type img {
-        height: 50px;
-    }
-
-    .float-left,
-    .float-right {
-        font-size: 14px;
-        text-align: left;
-    }
-
-    .promocode-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .promocode-arrow {
-        display: none;
-    }
-
-    .float-left1 {
-        font-size: 14px;
-        margin-top: 5px;
-    }
-
-    .cardappended {
-        padding: 10px;
-    }
-}
-
-/* Tablet Responsiveness (481px to 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-    .checkout {
-        width: 90%;
-        margin: 0 auto;
-    }
-
-    .payment {
-        width: 90%;
-    }
-
-    .payment-table ul {
-        flex-wrap: wrap;
-    }
-
-    .payment-table ul li {
-        width: 48%;
-        margin: 5px;
-    }
-
-    .wallet-type {
-        width: 100%;
-        justify-content: space-between;
-    }
-
-    .payment-btn button {
-        font-size: 16px;
-        padding: 14px;
-    }
-
-   
-}
-
-.payment-table ul {
-    list-style: none;
-    padding: 0;
+    color: #4caf50;
   }
   
-  .payment-table li {
-    cursor: pointer;
+  /* ----- Promo Code Section ----- */
+  .promocode-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
     padding: 10px;
-    background-color: #f0f0f0;
-    margin: 5px 0;
-    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
   }
   
-  .payment-table li:hover {
-    background-color: #e0e0e0;
+  .promocode-text span {
+    font-weight: 500;
+    color: #333;
   }
   
+  /* ----- Payment Methods ----- */
+  .payment-table ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    flex-wrap: wrap;
+  }
+  
+  .payment-table ul li {
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .payment-table ul li:hover {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  /* ----- UPI Input ----- */
   .upi-dropdown {
     margin-top: 10px;
   }
   
+  .upi-dropdown label {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
   .upi-dropdown input {
+    margin-top: 5px;
     width: 100%;
     padding: 8px;
-    margin-top: 5px;
+    border-radius: 4px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+  }
+  
+  /* ----- Wallets Section ----- */
+  .payment-wallets {
+    margin-top: 20px;
+  }
+  
+  .payment-wallets ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .payment-wallets .wallet-type {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    background-color: #f9fafc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wallet-type img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .wallet-type span {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  /* ----- Pay Button ----- */
+  .payment-btn {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  #paybtn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #paybtn:hover {
+    background-color: #388e3c;
+  }
+  .payment-text{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* ----- Right Section: Cart ----- */
+  .card-container {
+    flex: 1 1 35%;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+  }
+  
+  .cardheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .totalitems {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .cardappended {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* ----- Footer Info ----- */
+  #cardheader1 {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #777;
+  }
+  
+  /* ----- Media Queries ----- */
+  
+  /* 📱 Mobile Devices */
+  @media (max-width: 600px) {
+    .paymentcheckout {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .checkout,
+    .card-container {
+      flex: 1 1 100%;
+    }
+  
+    .payment-invoice-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .payment-table ul {
+      flex-direction: column;
+    }
+  
+    .promocode-container {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+  
+    #paybtn {
+      width: 100%;
+    }
+  }
+  
+  /* 📊 Tablets */
+  @media (max-width: 1024px) {
+    .paymentcheckout {
+      gap: 15px;
+    }
+  
+    .checkout {
+      flex: 1 1 55%;
+    }
+  
+    .card-container {
+      flex: 1 1 40%;
+    }
+  
+    .payment-table ul {
+      gap: 5px;
+    }
+  }
+  
+  /* 🖥️ Desktop */
+  @media (min-width: 1025px) {
+    .paymentcheckout {
+      padding: 40px;
+    }
+  
+    .checkout {
+      max-width: 65%;
+    }
+  
+    .card-container {
+      max-width: 30%;
+    }
   }
   
