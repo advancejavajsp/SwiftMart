@@ -16,8 +16,9 @@ import Loader from "../pages/loader/Loader"
 
 
 const Layout = () => {
-  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender,loaderPanel }=useContext(globalvar)
+  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender,loaderPanel, }=useContext(globalvar)
 
+  console.log(paymentSuccessful )
   return (
     <>
     <Toaster/>
@@ -27,6 +28,7 @@ const Layout = () => {
     {updateProductPanel && <UpdateNotification/>}
     {deleteProductPanel && <DeleteNotification/>}
     {addProductPanel && <AddProduct/>}
+   
     {paymentSuccessful && <PaymentSucessful/>}
     {addCategoryPanel && <AddCategory/>}
     {updateProductPopUp && <UpdateProduct/>}

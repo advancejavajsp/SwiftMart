@@ -9,8 +9,12 @@ import { useLocation } from "react-router-dom";
 const Payment = () => {
 
   const [selectedUpi, setSelectedUpi]= useState(null);
+  let [paymentMode, setPaymentMode] = useState("")
+
+  
   const [upiId, setUpiId] = useState('');
-  const {paymentSuccessful,setPaymentSuccessful,userData} = useContext(globalvar);
+  const {paymentSuccessful,setPaymentSuccessful,userData, userDetail} = useContext(globalvar);
+  console.log(userDetail)
 
   let {state}=useLocation();
   console.log(state)
@@ -33,7 +37,7 @@ const Payment = () => {
             <span className={style["number"]}>1</span>
             <div className={style["checkf"]}>
               <span className={style["check1_name"]}>Verify Phone Number</span>
-              <div className={style["check1_number"]}>"41564156416"</div>
+              <div className={style["check1_number"]}>{userDetail?.phone}</div>
             </div>
           </div>
           <div className={style["check1"]}>
@@ -61,7 +65,7 @@ const Payment = () => {
                       Amount Payable
                       <span>(incl. of all taxes)</span>
                     </div>
-                    <div className={style["float-right2"]}>Rs {state?.totalPrice +state?.totalPrice * 0.18}</div>
+                    <div className={style["float-right2"]}>Rs {Math.ceil(state?.totalPrice +state?.totalPrice * 0.18)}</div>
                   </div>
                 </div>
                 <div className={style["promocode-container"]}>
@@ -150,7 +154,7 @@ const Payment = () => {
                     </ul>
                   </div>
                   <div className={style["payment-btn"]}>
-                    <button id={style["paybtn"]} onClick={()=>{setPaymentSuccessful(!paymentSuccessful)}}>Pay Now</button>
+                    <button id={style["paybtn"]} onClick={()=>{setPaymentSuccessful(true)}}>Pay Now</button>
                   </div>
                   <div>
                     You will be redirected to wallet’s website to authorize

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import style from './paymentsucessful.module.css'
+import { Link } from "react-router-dom";
+import { globalvar } from "../../GlobalContext/GlobalContext";
 
 const PaymentSucessful = () => {
+  let {PaymentSucessful, setPaymentSuccessful} = useContext(globalvar)
   return (
     <div>
       <div className={style["pbody"]}>
@@ -15,7 +18,7 @@ const PaymentSucessful = () => {
                 />
                 <h2 className={style["textSize"]}>Payment Successful</h2>
 
-                <button id={style["backtohome"]}>Back To Home</button>
+                <Link to ="/" ><button id={style["backtohome"]} onClick={setPaymentSuccessful(false)}>Back To Home</button></Link>
               </div>
             </div>
           </div>

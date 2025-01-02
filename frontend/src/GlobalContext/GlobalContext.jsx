@@ -12,7 +12,7 @@ const GlobalContext = ({ children }) => {
   let [loginPanel, setLoginPanel] = useState(false);
   let [signupPanel, setSignuPanel] = useState(false);
   let [mycartPanel, setMycartPanel] = useState(false)
-  let [paymentSuccessful, setPaymentSuccessful] = useState(false)
+  let [paymentSuccessful, setPaymentSuccessful] = useState(false);
   let [product, setProducts] = useState([]);
   let [productCategory, setProductsCategory] = useState([]);
   let [updateProductPanel, setUpdateProductPanel] = useState(false);
@@ -28,6 +28,10 @@ const GlobalContext = ({ children }) => {
   let [refreshId, setRefreshId] = useState(0);
   let [cartProducts , setCartProducts] = useState([]);
   let [loaderPanel , setLoaderPanel] = useState(false);
+  let [userDetail, setUserDetail] = useState({});
+
+
+  
 
  
 
@@ -70,6 +74,7 @@ if (user) {
     
     let response = await axios.get(`http://localhost:8080/open/swiftmart/email/${userId}`);
     console.log(response);
+    setUserDetail(response.data);
   }
   useEffect(() => {
 
@@ -86,7 +91,7 @@ if (user) {
     getCartProducts();
   },[categoryId, refreshId])
   return (
-    <globalvar.Provider value={{ userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel }}>
+    <globalvar.Provider value={{ userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel,userDetail, setUserDetail, paymentSuccessful, setPaymentSuccessful }}>
       {children}
     </globalvar.Provider>
   );

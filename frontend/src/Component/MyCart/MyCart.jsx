@@ -43,7 +43,9 @@ const MyCart = () => {
 
   const navigate = useNavigate();
 
-  const handleProceedToPay = () => {
+  const handleProceedToPay = (e) => {
+    e.stopPropagation();
+    setMycartPanel(false)
     navigate("/Payment" ,{state:{totalPrice:total,cartProducts,userId:user?.sub}});
   };
 
