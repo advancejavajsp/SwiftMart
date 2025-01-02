@@ -164,7 +164,7 @@ const Payment = () => {
         <div className={style["card-container"]}>
           <div className={style["cardheader"]}>
             <span>My Cart</span>
-            <span className={style["totalitems"]}>{state?.cartProducts.quantit}</span>
+            <span className={style["totalitems"]}>{state?.cartProducts.quantity}</span>
           </div>
           {state.cartProducts.product.map((ele,i)=><div className={style["cardappended"]} key={ele.id}>{ele.product.name}</div>) }
         </div>

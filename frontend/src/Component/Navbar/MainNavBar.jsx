@@ -114,7 +114,7 @@ const MainNavBar = () => {
                       <button className={style["account-button"]}>My Account</button>
                     </Link>
                     <ul>
-                      <li>My Orders</li>
+                      <Link to="/order"><li>My Orders</li></Link>
                       <li>Saved Address</li>
                       <li>E-Gift Cards</li>
                       <li>FAQ's</li>
@@ -141,9 +141,11 @@ const MainNavBar = () => {
           </button>
         )}
 
-        <button className={style["cart-btn"]} onClick={() => setMycartPanel(!mycartPanel)}>
-          <IoCartOutline className={style["mycart"]} /> My Cart
-        </button>
+{user?.role !== "ADMIN" && (
+  <button className={style["cart-btn"]} onClick={() => setMycartPanel(!mycartPanel)}>
+    <IoCartOutline className={style["mycart"]} /> My Cart
+  </button>
+)}
       </div>
     </nav>
   );

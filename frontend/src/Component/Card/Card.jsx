@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Card = ({ product,cardProductQuantity }) => {
-  let {productComp,setLoginPanel, user, setUpdateProductPanel, setDeleteProductPanel, setProductComp, setLoaderPanel } = useContext(globalvar);
+  let {productComp,setLoginPanel, user, setUpdateProductPanel, setDeleteProductPanel, setProductComp, setLoaderPanel,refreshId,setRefreshId } = useContext(globalvar);
   const [quantity, setQuantity] = useState(0);
 
    
@@ -18,6 +18,7 @@ const Card = ({ product,cardProductQuantity }) => {
     if (user) {
       setLoaderPanel(true);
       let response = await axios.post(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
+      setRefreshId(refreshId+1)
       setLoaderPanel(false);
       setQuantity(quantity + 1);
     }else{
@@ -30,8 +31,9 @@ const Card = ({ product,cardProductQuantity }) => {
   const handleDecrement = async () => {
     setLoaderPanel(true);
     let response = await axios.delete(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
+    setRefreshId(refreshId+1)
     setLoaderPanel(false);
-    if (quantity > 0) {
+    if (quantity > 0) { 
       let res = axios.delete(`http://localhost:8080/open/cart/${user.id}/${product?.productId}`)
       setQuantity(quantity - 1);
     }
