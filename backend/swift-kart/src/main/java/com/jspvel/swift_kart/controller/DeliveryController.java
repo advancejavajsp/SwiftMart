@@ -28,9 +28,10 @@ public class DeliveryController {
 	@PostMapping("/create/{orderId}/{deliveryAgentId}")
 	public Delivery createDelivery(@PathVariable String orderId, @PathVariable String deliveryAgentId) {
 
-		Delivery delivery = deliveryServiceImp.createDelivery(orderId, deliveryAgentId);
 		Order order = orderRepository.findById(orderId)
 				.orElseThrow(() -> new OrderNotFoundException("Order not found"));
+		
+		Delivery delivery = deliveryServiceImp.createDelivery(orderId, deliveryAgentId);
 		delivery.setDeliveryStatus(DeliveryStatus.DELEVIRED);
 
 		return delivery;
