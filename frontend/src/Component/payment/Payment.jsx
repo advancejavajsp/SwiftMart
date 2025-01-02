@@ -1,15 +1,19 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import style from "./payment.module.css";
 import mobikwik from "../../asset/mobikwik.webp"
 import paytm from "../../asset/paytm.webp"
 import { globalvar } from "../../GlobalContext/GlobalContext";
+import { useLocation } from "react-router-dom";
 
 
 const Payment = () => {
 
   const [selectedUpi, setSelectedUpi]= useState(null);
   const [upiId, setUpiId] = useState('');
-  const {paymentSuccessful,setPaymentSuccessful} = useContext(globalvar);
+  const {paymentSuccessful,setPaymentSuccessful,userData} = useContext(globalvar);
+
+  let {state}=useLocation();
+  console.log(state)
 
   const handlePayment = (method)=>{
     setSelectedUpi(method)
@@ -18,6 +22,9 @@ const Payment = () => {
   const handleUpiChange=(event)=>{
     setUpiId(event.target.value)
   }
+
+
+  useEffect(()=>{userData(state.userId)},[])
   return (
     <div>
       <div className={style["paymentcheckout"]}>
@@ -47,14 +54,14 @@ const Payment = () => {
                 <div className={style["payment-invoice"]}>
                   <div className={style["payment-invoice-row"]}>
                     <div className={style["float-left"]}>Total Amount</div>
-                    <div className={style["float-right"]}>"Rs" "8965"</div>
+                    <div className={style["float-right"]}>Rs {state?.totalPrice}</div>
                   </div>
                   <div className={style["payment-invoice-row"]}>
                     <div className={style["float-left1"]}>
                       Amount Payable
                       <span>(incl. of all taxes)</span>
                     </div>
-                    <div className={style["float-right2"]}>"$" "88"</div>
+                    <div className={style["float-right2"]}>Rs {state?.totalPrice +state?.totalPrice * 0.18}</div>
                   </div>
                 </div>
                 <div className={style["promocode-container"]}>
@@ -157,9 +164,9 @@ const Payment = () => {
         <div className={style["card-container"]}>
           <div className={style["cardheader"]}>
             <span>My Cart</span>
-            <span className={style["totalitems"]}>1 item</span>
+            <span className={style["totalitems"]}>{state?.cartProducts.quantit}</span>
           </div>
-          <div className={style["cardappended"]}></div>
+          {state.cartProducts.product.map((ele,i)=><div className={style["cardappended"]} key={ele.id}>{ele.product.name}</div>) }
         </div>
         <div id={style["cardheader1"]}>
           <span id={style["priceM"]}></span> <br />

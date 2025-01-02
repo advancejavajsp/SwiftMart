@@ -54,9 +54,9 @@ public class User implements UserDetails {
 	private Role role;
 
 	private String image;
-	
+
 	@Column(name = "balance")
-    private Double balance;  
+	private Double balance;
 
 	@Transient
 	private MultipartFile photo;
@@ -64,12 +64,13 @@ public class User implements UserDetails {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Cart cart;
 
-
 	@OneToMany(mappedBy = "customer_id")
 	private List<Order> order = new ArrayList<Order>();
 
 	@OneToMany(mappedBy = "deliveryAgentId")
-	private List<Delivery> delivery=new ArrayList<Delivery>();
+	private List<Delivery> delivery = new ArrayList<Delivery>();
+	@OneToMany
+	private List<Address> addresses;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -104,6 +105,5 @@ public class User implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-
 
 }

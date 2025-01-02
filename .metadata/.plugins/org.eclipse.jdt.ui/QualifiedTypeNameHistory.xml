@@ -5,7 +5,6 @@
     <fullyQualifiedTypeName name="com.jspvel.swift_kart.util.CategoryCustomIdGenerator"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.CrossOrigin"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.jspvel.swift_kart.service.imp.CatergoryServiceImp"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
@@ -17,4 +16,17 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.entity.Delivery"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.dao.DeliveryRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.util.DeliveryCustomIdGenerator"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.util.DeliveryStatus"/>
+    <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseStatus"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.entity.Order"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.dao.OrderRepository"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.util.OrderStatus"/>
+    <fullyQualifiedTypeName name="com.jspvel.swift_kart.util.Role"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="org.hibernate.annotations.DialectOverride.OverridesAnnotation"/>
 </qualifiedTypeNameHistroy>

@@ -9,7 +9,6 @@ const MyCart = () => {
   const { mycartPanel, setMycartPanel,setLoginPanel, cartProducts,setCartProducts,user, setLoaderPanel } = useContext(globalvar);
   const [quantity, setQuantity] = useState(0);
 
- 
   const handleIncrement =async (product) => {
     if (user) {
       setLoaderPanel(true);
@@ -37,15 +36,15 @@ const MyCart = () => {
     }
   };
 
-  const itemPrice = 56;
+  const itemPrice = cartProducts.price;
   const deliveryCharge = 25;
   const handlingCharge = 4;
-  const total = itemPrice * quantity + deliveryCharge + handlingCharge;
+  const total = itemPrice  + deliveryCharge + handlingCharge;
 
   const navigate = useNavigate();
 
   const handleProceedToPay = () => {
-    navigate("/Payment");
+    navigate("/Payment" ,{state:{totalPrice:total,cartProducts,userId:user?.sub}});
   };
 
   const handleReturnToHome = (e) => {
@@ -148,7 +147,7 @@ const MyCart = () => {
             </div>
 
             <div className={styles.footer}>
-              <div className={styles.totalPrice}>₹{total} TOTAL</div>
+              <div className={styles.totalPrice}>₹{total} </div>
               <button className={styles.loginButton} onClick={handleProceedToPay}>
                 Proceed to pay ➤
               </button>

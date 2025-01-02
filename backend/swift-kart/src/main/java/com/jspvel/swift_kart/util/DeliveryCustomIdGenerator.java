@@ -12,7 +12,6 @@ public class DeliveryCustomIdGenerator {
 private static final String PREFIX = "DEL";
 	
     @PersistenceContext
-
 	private EntityManager entityManager;
 	
     @Transactional
@@ -23,4 +22,6 @@ private static final String PREFIX = "DEL";
 
         return PREFIX + String.format("%04d", nextVal);
     }
+
+	
 }
