@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 
 const Login = () => {
-  let { loginPanel, setLoginPanel, signupPanel, setSignuPanel, getUserDataFromToken, user, setUser } = useContext(globalvar);
+  let { loginPanel, setLoginPanel, signupPanel, setSignuPanel, getUserDataFromToken, user, setUser, setLoaderPanel,refreshId,setRefreshId} = useContext(globalvar);
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -27,12 +27,15 @@ const Login = () => {
     
 try {
   if (credentials.email && credentials.password) {
+     setLoaderPanel(true);
     let {data} =await axios.post(`http://localhost:8080/auth/login?email=${credentials.email}&password=${credentials.password}`,credentials)
     if (data.token) {
       localStorage.setItem("token", data.token)
+      setLoaderPanel(false);
       getUserDataFromToken(data.token);
       toast.success("Login succesful");
       console.log("Login succesful");
+      setRefreshId(refreshId+ 1);
      setTimeout(()=>{
       setLoginPanel(false)
      },1500)

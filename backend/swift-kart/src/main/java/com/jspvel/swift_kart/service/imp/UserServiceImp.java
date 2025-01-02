@@ -27,8 +27,10 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
-	public User findByUserEmail(String email) {
-		return userRepository.findByEmail(email).orElseThrow();
+	public UserDTO findByUserEmail(String email) {
+		User user=userRepository.findByEmail(email).orElseThrow();
+		UserDTO userDTO=new UserDTO(user);
+		return userDTO;
 	}
 
 	@Override
@@ -67,5 +69,11 @@ public class UserServiceImp implements UserService {
 		Random random = new Random();
 		int otp = 100000 + random.nextInt(900000);
 		return String.valueOf(otp);
+	}
+
+	@Override
+	public String changeUserRoleToDeliveryAgent(String userId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

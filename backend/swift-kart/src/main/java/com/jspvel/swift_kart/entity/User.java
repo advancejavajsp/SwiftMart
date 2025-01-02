@@ -55,19 +55,22 @@ public class User implements UserDetails {
 
 	private String image;
 
+	@Column(name = "balance")
+	private Double balance;
+
 	@Transient
 	private MultipartFile photo;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Cart cart;
 
-//    private boolean verified;
-
 	@OneToMany(mappedBy = "customer_id")
 	private List<Order> order = new ArrayList<Order>();
 
 	@OneToMany(mappedBy = "deliveryAgentId")
-	private List<Delivery> delivery=new ArrayList<Delivery>();
+	private List<Delivery> delivery = new ArrayList<Delivery>();
+	@OneToMany
+	private List<Address> addresses;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

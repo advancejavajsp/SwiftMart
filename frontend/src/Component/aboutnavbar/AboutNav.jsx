@@ -18,7 +18,7 @@ const AboutNav = () => {
           </div>
 
           <div className={styles["links"]}>
-            <Link to="/home" className={styles["link"]}>Home</Link>
+            <Link to="/" className={styles["link"]}>Home</Link>
             <Link to="/about" className={styles["link"]}>About</Link>
             <Link to="/careers" className={styles["link"]}>Careers</Link>
             <Link to="/partner" className={styles["link"]}>Partner</Link>

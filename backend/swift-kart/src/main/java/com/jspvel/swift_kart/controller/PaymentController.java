@@ -13,21 +13,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jspvel.swift_kart.dto.PaymentDTO;
 import com.jspvel.swift_kart.entity.Payment;
-import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.service.PaymentService;
 import com.jspvel.swift_kart.service.imp.PaymentServiceImp;
-import com.jspvel.swift_kart.service.imp.ProductServiceImp;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/open/swiftmart/payments")
 public class PaymentController {
 	@Autowired
-	private PaymentServiceImp paymentServiceImp; 
+	private PaymentServiceImp paymentServiceImp;
+	
+    @Autowired
+    private PaymentService paymentService;
+
 	
 	@GetMapping
 	public List<Payment> getAllPayments(){
@@ -54,9 +57,9 @@ public class PaymentController {
 	public ResponseEntity<Void> deletePayment(@PathVariable String paymentId){
 		boolean deleted = paymentServiceImp.deletePayment(paymentId);
         if (deleted) {
-            return ResponseEntity.noContent().build(); // 204 No Content, means deleted successfully
+            return ResponseEntity.noContent().build(); 
         } else {
-            return ResponseEntity.notFound().build(); // 404 Not Found, if product not found
+            return ResponseEntity.notFound().build(); 
         }
 	}
 	
@@ -70,5 +73,11 @@ public class PaymentController {
 	        return ResponseEntity.notFound().build();
 	    }
 	}
-
+	@PostMapping("/payments/makePayment")
+    public ResponseEntity<Payment> makePayment(@RequestParam String userId,
+                                              @RequestBody Payment payment) {
+        Payment payment2 = paymentService.makePayment(userId, payment);
+      return ResponseEntity.status(HttpStatus.OK).body(payment2);
+    }
 }
+

@@ -50,6 +50,7 @@ public class OrderController {
     public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable String userId) {
     List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
       return ResponseEntity.ok(orders);
+
     }
 
     
@@ -58,9 +59,5 @@ public class OrderController {
         Order cancelledOrder = orderServiceImp.cancelOrder(orderId);
         return ResponseEntity.ok(cancelledOrder);
     }
-
-	
-
-
 	
 }

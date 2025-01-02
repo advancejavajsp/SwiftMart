@@ -38,7 +38,7 @@ const useTypewriter = (texts, speed = 100, pause = 1000) => {
 };
 
 const MainNavBar = () => {
-  const { loginPanel, setLoginPanel, mycartPanel, setMycartPanel, user, setUser } = useContext(globalvar);
+  const { loginPanel, setLoginPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel} = useContext(globalvar);
   const searchBarRef = useRef();
   const [isPopupVisible, setPopupVisible] = useState(false);
   const popupRef = useRef(null);  // Add reference for the popup container
@@ -48,8 +48,13 @@ const MainNavBar = () => {
   };
 
   const handleLogout = () => {
+    setLoaderPanel(true);
     localStorage.removeItem("token");
     setPopupVisible(false);
+    setRefreshId(refreshId+ 1);
+    setTimeout(()=>{
+      setLoaderPanel(false);
+    },1500)
     setUser("");
   };
 

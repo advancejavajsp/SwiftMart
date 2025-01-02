@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jspvel.swift_kart.dto.UserDTO;
-import com.jspvel.swift_kart.entity.User;
 import com.jspvel.swift_kart.service.imp.UserServiceImp;
 
 
@@ -27,8 +26,8 @@ public class UserController {
 	private UserServiceImp userServiceImp;
 	
 	@GetMapping("/email/{email}")
-	public ResponseEntity<User> getUserByEmail(@PathVariable("email") String email) {
-		User user = userServiceImp.findByUserEmail(email);
+	public ResponseEntity<UserDTO> getUserByEmail(@PathVariable("email") String email) {
+		UserDTO user = userServiceImp.findByUserEmail(email);
 		return ResponseEntity.status(HttpStatus.OK).body(user);
 	}
 	
@@ -47,5 +46,11 @@ public class UserController {
 	        }
 
 	}
+	
+	 @PutMapping("/user/{id}/role/delivery-agent")
+	    public ResponseEntity<String> changeUserRoleToDeliveryAgent(@PathVariable("id") String userId) {
+	        String response = userServiceImp.changeUserRoleToDeliveryAgent(userId);
+	        return ResponseEntity.status(HttpStatus.OK).body(response);  // Return success message
+	    }
 	
 }

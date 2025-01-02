@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.jspvel.swift_kart.dao.CartItemRepository;
 import com.jspvel.swift_kart.dao.CartRepository;
 import com.jspvel.swift_kart.dao.OrderItemRepository;
@@ -162,7 +161,7 @@ public class OrderServiceImp implements OrderService {
 
 	@Override
 	public List<Order> getOrdersByUserId(String userId) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
