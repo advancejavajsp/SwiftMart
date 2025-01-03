@@ -9,13 +9,17 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.jspvel.swift_kart.dao.CartItemRepository;
 import com.jspvel.swift_kart.dao.CartRepository;
 import com.jspvel.swift_kart.dao.CategoryRepository;
 import com.jspvel.swift_kart.dao.ProductRepository;
+import com.jspvel.swift_kart.dto.ProductDTO;
 import com.jspvel.swift_kart.entity.Category;
 import com.jspvel.swift_kart.entity.Product;
 import com.jspvel.swift_kart.service.ProductService;
 import com.jspvel.swift_kart.util.CustomProductIdGenrator;
+
+import jakarta.transaction.Transactional;
 
 @Service
 public class ProductServiceImp implements ProductService {
@@ -27,6 +31,9 @@ public class ProductServiceImp implements ProductService {
 
 	@Autowired
 	private CustomProductIdGenrator customProductIdGenrator;
+	
+	@Autowired
+	private CartItemRepository cartItemRepository;
 
 	@Override
 	public List<Product> getAllProducts() {
@@ -58,34 +65,22 @@ public class ProductServiceImp implements ProductService {
 		return product;
 	}
 
-	@Override
-	public Product updateProduct(String productId, Product updatedProduct) {
-		Product previousProduct = productRepository.findById(productId).orElse(null);
+	
 
-		if (previousProduct != null) {
+	 @Override
+	 @Transactional
+	    public boolean deleteProduct(String productId) {
+	        Product product = productRepository.findById(productId).orElse(null);
 
-			previousProduct.setName(updatedProduct.getName());
-			previousProduct.setPrice(updatedProduct.getPrice());
-			previousProduct.setDescription(updatedProduct.getDescription());
-			previousProduct.setQuantityAvailable(updatedProduct.getQuantityAvailable());
-			previousProduct.setImageUrl(updatedProduct.getImageUrl());
+	        if (product != null) {
+	            cartItemRepository.removeProductFromCartItems(productId);
 
-			return productRepository.save(previousProduct);
-		}
-		return null;
-	}
+	            productRepository.deleteById(productId);
 
-	public boolean deleteProduct(String productId) {
-		Product product = productRepository.findById(productId).orElse(null);
-
-		if (product != null) {
-			productRepository.deleteById(productId);
-			return true;
-		}
-		return false;
-
-	}
-
+	            return true;
+	        }
+	        return false; 
+	    }
 	public List<Product> getProductsByCategory(String categoryId) {
 		Category category = new Category();
 		category.setCategoryId(categoryId);
@@ -94,5 +89,24 @@ public class ProductServiceImp implements ProductService {
 
 		return null;
 	}
+	
+	@Override
+	public Product updateProduct(String productId, ProductDTO updatedProductDTO) {
+	    Product previousProduct = productRepository.findById(productId).orElse(null);
+
+	    if (previousProduct != null) {
+
+	        previousProduct.setName(updatedProductDTO.getName());
+	        previousProduct.setPrice(updatedProductDTO.getPrice());
+	        previousProduct.setDescription(updatedProductDTO.getDescription());
+	        previousProduct.setQuantityAvailable(updatedProductDTO.getQuantityAvailable());
+	        previousProduct.setImageUrl(updatedProductDTO.getImageUrl());
+
+	        return productRepository.save(previousProduct);
+	    }
+
+	    return null;
+	}
+
 
 }
