@@ -110,10 +110,10 @@ public class OrderServiceImp implements OrderService {
 		}
 
 		order.setOrderItem(items);
+		order.setPayment(payment);
 		orderRepository.save(order);
 
 		payment.setOrder(order);
-		order.setPayment(payment);
 		paymentRepository.save(payment);
 
 		cart.getProduct().clear();
@@ -123,7 +123,7 @@ public class OrderServiceImp implements OrderService {
 
 		user.setCart(null);
 		userRepository.save(user);
-
+        
 		return order;
 
 	}

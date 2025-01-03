@@ -156,7 +156,7 @@ const Payment = () => {
                   <div className={style["payment-btn"]}>
                     <button id={style["paybtn"]} onClick={()=>{setPaymentSuccessful(true)}}>Pay Now</button>
                   </div>
-                  <div>
+                  <div  className={style["payment-text"]}>
                     You will be redirected to wallet’s website to authorize
                     payment
                   </div>

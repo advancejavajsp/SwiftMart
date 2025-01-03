@@ -1,5 +1,8 @@
 package com.jspvel.swift_kart.entity;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,6 +22,7 @@ public class CartItem {
 	private Long id;
 
 	@ManyToOne
+	@Cascade(CascadeType.ALL)
 	private Product product;
 
 	@Column(name = "quantity")

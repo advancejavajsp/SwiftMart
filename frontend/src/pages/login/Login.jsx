@@ -41,14 +41,17 @@ try {
      },1500)
     }else{
       toast.error("Something went wrong")
+      setLoaderPanel(false);
     }
        
   } else {
     console.log("Something Went Erong")
    toast.error("Something Went Erong")
+   setLoaderPanel(false);
   }
 } catch (error) {
   toast.error("May email or password is wrong")
+  setLoaderPanel(false);
 }
 
 

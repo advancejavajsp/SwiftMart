@@ -56,7 +56,7 @@ const MyCart = () => {
 
   const cartIsEmpty = !cartProducts?.product?.length;
   
-  console.log(cartProducts)
+  // console.log(cartProducts);
   useEffect(()=>{
     setQuantity(cartProducts?.quantity)
   },[cartProducts])

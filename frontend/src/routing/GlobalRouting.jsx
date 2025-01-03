@@ -1,4 +1,3 @@
-
 import { createBrowserRouter } from "react-router-dom";
 import About from "../Component/about/About";
 import Status from "../Component/Delivery/Status";
@@ -15,7 +14,7 @@ import Active from "../Component/DeliveryAgent/Active";
 import Completed from "../Component/DeliveryAgent/Completed";
 import DeliveryAgent from "../Component/DeliveryAgent/DeliveryAgent";
 import OrderDetails from "../Component/OrderDetails/OrderDetails";
-import Order from '../Component/Orders/Order';
+import Order from "../Component/Orders/Order";
 import PaymentDetails from "../Component/PaymentDetails/PaymentDetails";
 import Payments from "../Component/Payments/Payments";
 import UserProfile from "../Component/UserProfile/UserProfile";
@@ -37,6 +36,7 @@ import SignUp from "../pages/Signup/SignUp";
 import UpdateNotification from "../Component/notificataion/UpdateNotification";
 import DeleteNotification from "../Component/notificataion/DeleteNotification";
 import EditProfile from "../Component/editProfile/EditProfile";
+import HomeDefault from "../Component/HomeDefault/HomeDefault";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",
@@ -47,125 +47,53 @@ export const globalRoute = createBrowserRouter([
         element: <HomePage />,
         children: [
           {
-            path: "/homePage/Status",
-            element: <Status />,
-          },
-
-          {
-            path: "/homePage/PaymentSucessful",
-            element: <PaymentSucessful />,
-          },
-          
-          {
-            path:"/homePage/card",
-            element:<Card/>
+            path: "/",
+            element: <HomeDefault />,
           },
           {
-            path:"/homePage/cart",
-            element:<MyCart/>
-          },
-          
-          {
-            path: '/homePage/orderdetails',
-            element: <OrderDetails />
-          },
-
-          {
-            path: '/homePage/paymentdetails',
-            element: <PaymentDetails />
+            path: "/Paymentss",
+            element: <Payments />,
           },
           {
-            path: '/homePage/deliveryagent',
-            element: <DeliveryAgent />,
+            path: "/PaymentDetails",
+            element: <PaymentDetails />,
           },
-          {
-            path: '/homePage/active',
-            element: <Active />
-          },
-          {
-            path: '/homePage/pending',
-            element: <Pending />
-          },
-          {
-            path: '/homePage/completed',
-            element: <Completed />
-          },
-
-          {
-            path: "/homePage/sidebar",
-            element: <Sidebar />
-          },
-          {
-            path: "/homePage/search",
-            element: <Search />
-          },
-          {
-            path: "/homePage/productcontainer",
-            element: <ProductContainer />
-          },
-          {
-            path: "/homePage/navbar1",
-            element: <Navbar1 />
-          },
-          {
-            path: "/homePage/mainnavbar",
-            element: <MainNavBar />
-          },
-          {
-            path: "/homePage/adminnav",
-            element: <AdminNav />
-          },
-          {
-            path: "/homePage/addProduct",
-            element: <AddProduct />
-          },
-         
-
-          {
-            path: "/homePage/aboutnav",
-            element: <AboutNav />
-          },
-          {
-            path: "/homePage/footer",
-            element: <Footer/>
-          },
-          
         ],
       },
       {
-        path: '/Payment',
-        element: <Payment />
+        path: "/Payment",
+        element: <Payment />,
       },
     ],
   },
 
   {
-    path:"/editprofile",
-    element:<EditProfile/>
+    path: "/editprofile",
+    element: <EditProfile />,
   },
   {
-    path:"/about",
-    element:<About/>
+    path: "/about",
+    element: <About />,
   },
   {
-    path:"/cardpage",
-    element:<CardPage/>
+    path: "/cardpage",
+    element: <CardPage />,
   },
   {
-    path: '/order',
-    element: <Order />
+    path: "/order",
+    element: <Order />,
   },
   {
     path: "/user-profile",
-    element: <UserProfile />
+    element: <UserProfile />,
   },
   {
     path: "/addCategory",
-    element: <AddCategory />
+    element: <AddCategory />,
   },
   {
     path: "/updateProduct",
-    element: <UpdateProduct />
+    element: <UpdateProduct />,
   },
   {
     path: "*",

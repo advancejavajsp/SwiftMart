@@ -3,8 +3,12 @@ import style from './paymentdetails.module.css'
 import product1 from '../../asset/product1.avif'
 import { IoChatboxEllipsesOutline } from "react-icons/io5";
 import { MdArrowBack } from "react-icons/md";
+import { useLocation } from 'react-router-dom';
 
 const PaymentDetails = () => {
+  let {state} = useLocation()
+
+  console.log(state)
   return (
     <div className={style['mainbody']}>
       <button className={style['arrow']}><MdArrowBack className={style['icon']}/></button>
