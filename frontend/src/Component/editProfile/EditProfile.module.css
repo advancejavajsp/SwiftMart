@@ -1,57 +1,93 @@
+.edit-container{
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333ab; 
+}
 .edit-profile {
-    max-width: 400px;
-    height: 530px;
-    margin: 2rem auto;
-    padding: 2rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
-  .edit-profile h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    font-weight: bold;
-  }
-  
-  .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 0.8rem;
-    margin-top: 0.3rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
-  
-  .form-group input:focus {
-    outline: none;
-    border-color: #007bff;
-  }
-  
-  .save-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    width: 100%;
-   
-  } 
-  
-  .save-button:hover {
-    background-color: #338e36;
-  }
+  max-width: 400px;
+  min-width: 400px;
+  /* height: 530px; */
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+
+.edit-profile h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+
+.edit-profile .form-group {
+  margin-bottom: 1rem;
+}
+
+
+.edit-profile .form-group label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+
+.edit-profile .form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+
+.edit-profile .form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+
+.edit-profile .save-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+.edit-profile .save-button:hover {
+  background-color: #338e36;
+}
+
+.edit-profile .image-preview {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.edit-profile .image-preview img {
+  width: 100px;  
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+
+.edit-profile .form-group input[type="file"] {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}

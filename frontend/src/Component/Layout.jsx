@@ -13,10 +13,13 @@ import AddCategory from "./admin/addCategory/AddCategory";
 import OtpPopup from "../pages/otpPopup/OtpPopup"
 import UpdateProduct from "./admin/updateProduct/UpdateProduct"
 import Loader from "../pages/loader/Loader"
+import MainNavBar from "./Navbar/MainNavBar"
+import UserProfile from "./UserProfile/UserProfile"
+import EditProfile from "./editProfile/EditProfile"
 
 
 const Layout = () => {
-  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender,loaderPanel }=useContext(globalvar)
+  let {loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender,loaderPanel ,userProfilePanel,editProfile }=useContext(globalvar)
 
   return (
     <>
@@ -31,6 +34,8 @@ const Layout = () => {
     {addCategoryPanel && <AddCategory/>}
     {updateProductPopUp && <UpdateProduct/>}
     {loaderPanel && <Loader/>}
+    {userProfilePanel && <UserProfile/>}
+    {editProfile && <EditProfile/>}
     <Outlet></Outlet>
     </>
   )

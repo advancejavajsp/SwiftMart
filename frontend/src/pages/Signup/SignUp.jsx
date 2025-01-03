@@ -1,4 +1,3 @@
-// 
 
 import React, { useContext, useState } from "react";
 import style from "../Signup/SignUp.module.css";
