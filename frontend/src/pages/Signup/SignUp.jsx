@@ -1,5 +1,4 @@
-
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import style from "../Signup/SignUp.module.css";
 import { globalvar } from "../../GlobalContext/GlobalContext";
 import axios from "axios";
@@ -7,30 +6,58 @@ import toast from "react-hot-toast";
 import OtpPopup from "../otpPopup/OtpPopup";
 
 const SignUp = () => {
-  let { signupPanel,setLoaderPanel, setSignuPanel, setLoginPanel, otpRender, setOtpRender } = useContext(globalvar);
+  let { signupPanel, setLoaderPanel, setSignuPanel, setLoginPanel, otpRender, setOtpRender } = useContext(globalvar);
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    image: "",
     phone: "",
+    addresses: [{
+      city: "",
+      state: "", 
+      pincode: "",
+    }]
   });
 
+  console.log(formData)
   const [otp, setOtp] = useState('');
   const [otpVerified, setOtpVerified] = useState(false);
+  const [states, setStates] = useState([]);
+
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+
+    if (name in formData.addresses[0]) {
+      setFormData((prevState) => ({
+        ...prevState,
+        addresses:[ {
+          ...prevState.addresses[0],
+          [name]: value,
+        },]
+      }));
+    } else {
+      setFormData((prevState) => ({
+        ...prevState,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.password && formData.phone) {
+
+    if (
+      formData.name &&
+      formData.email &&
+      formData.password &&
+      formData.phone &&
+      formData.addresses[0].city &&
+      formData.addresses[0].state &&
+      formData.addresses[0].pincode
+    ) {
       if (!otpVerified) {
         setOtpRender(true);
         setLoaderPanel(true);
@@ -44,22 +71,39 @@ const SignUp = () => {
 
       if (otpVerified) {
         setLoaderPanel(true);
-        let response = await axios.post(
-          "http://localhost:8080/auth/signup",
-          formData
-
-        );
-        console.log(response);
-        setLoaderPanel(false);
-        toast.success("SignUp Successfully");
-        setTimeout(() => {
-          setSignuPanel(false);
-        }, 1500);
+        formData.addresses[0].pincode = parseInt(formData.addresses[0].pincode);
+         console.log(formData);
+        try {
+          let response = await axios.post(
+            "http://localhost:8080/auth/signup",
+            formData,
+           
+          );
+          console.log(response);
+          setLoaderPanel(false);
+          toast.success("SignUp Successfully");
+          setTimeout(() => {
+            setSignuPanel(false);
+          }, 1500);
+        } catch (error) {
+          console.error("Error during sign up:", error);
+          setLoaderPanel(false);
+          toast.error("SignUp failed. Please try again.");
+        }
       }
     } else {
       toast.error("All fields are required!");
     }
   };
+  let getStates=async()=>{
+    const response = await axios.get("http://localhost:8080/open/swiftmart/allstate");
+    setStates(response.data)
+
+  }
+  useEffect(()=>{
+    getStates();
+
+  },[])
 
   return (
     <>
@@ -97,7 +141,7 @@ const SignUp = () => {
             <div>
               <label>Email</label>
               <input
-               className={style["email"]}
+                className={style["email"]}
                 type="email"
                 name="email"
                 value={formData.email}
@@ -110,7 +154,7 @@ const SignUp = () => {
             <div>
               <label>Password</label>
               <input
-               className={style["password"]}
+                className={style["password"]}
                 type="password"
                 name="password"
                 value={formData.password}
@@ -123,7 +167,7 @@ const SignUp = () => {
             <div>
               <label>Contact</label>
               <input
-               className={style["contact"]}
+                className={style["contact"]}
                 type="tel"
                 name="phone"
                 value={formData.phone}
@@ -134,13 +178,46 @@ const SignUp = () => {
             </div>
 
             <div>
-              <label>Image</label>
+              <label>City</label>
               <input
-              className={style["img"]}
-                type="file"
-                name="image"
-                value={formData.image}
+                className={style["city"]}
+                type="text"
+                name="city"
+                value={formData.addresses[0].city}
                 onChange={handleInputChange}
+                placeholder="Enter your city"
+                required
+              />
+            </div>
+
+            <div>
+              <label>State</label>
+              <select
+                className={style["state"]}
+                name="state"
+                value={formData.addresses[0].state}
+                onChange={handleInputChange}
+                required
+              >
+                <option value="">Select State</option>
+                {states.map((state, index) => (
+                  <option key={index} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label>Pincode</label>
+              <input
+                className={style["pincode"]}
+                type="number"
+                name="pincode"
+                value={formData.addresses[0].pincode}
+                onChange={handleInputChange}
+                placeholder="Enter your pincode"
+                required
               />
             </div>
 

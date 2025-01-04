@@ -32,7 +32,8 @@ const GlobalContext = ({ children }) => {
   let  [getOrdersbyUserid , setgetOrdersbyUserid ] = useState([]);
   let [userProfilePanel , setUserProfilePanel] = useState(false);
   let [editProfile , setEditProfile] = useState(false);
-
+  let [searchPanel , setsearchPanel] = useState(false);
+  let [searchData , setSearchData] = useState("");
  
 
 
@@ -93,7 +94,7 @@ if (user) {
     getCartProducts();
   },[categoryId, refreshId])
   return (
-    <globalvar.Provider value={{ addressPanel,setaddressPanel ,userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, getOrdersbyUserid , setgetOrdersbyUserid,signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel ,userProfilePanel , setUserProfilePanel,editProfile , setEditProfile,paymentSuccessful, setPaymentSuccessful,userDetails,setUserDetails}}>
+    <globalvar.Provider value={{ addressPanel,setaddressPanel ,userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, getOrdersbyUserid , setgetOrdersbyUserid,signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel ,userProfilePanel , setUserProfilePanel,editProfile , setEditProfile,paymentSuccessful, setPaymentSuccessful,userDetails,setUserDetails,searchPanel , setsearchPanel,searchData , setSearchData}}>
       {children}
     </globalvar.Provider>
   );

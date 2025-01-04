@@ -36,7 +36,7 @@ public class AuthenticationService {
 		this.passwordEncoder = passwordEncoder;
 	}
 
-	public User signup(User user) {
+	public User signup(User user) throws Exception{
 
 		user.setRole(Role.USER);
 		user.setBalance(10000.00);

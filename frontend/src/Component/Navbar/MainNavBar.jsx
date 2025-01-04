@@ -38,7 +38,7 @@ const useTypewriter = (texts, speed = 100, pause = 1000) => {
 };
 
 const MainNavBar = () => {
-  const { loginPanel, setLoginPanel,addressPanel,setaddressPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel,setUserProfilePanel } = useContext(globalvar);
+  const { loginPanel, setLoginPanel,addressPanel,setaddressPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel,setUserProfilePanel,searchPanel , setsearchPanel,searchData , setSearchData } = useContext(globalvar);
   const searchBarRef = useRef();
   const [isPopupVisible, setPopupVisible] = useState(false);
   let [address, setAddress]=useState('B62, Pocket B, South City I, Sect...');
@@ -59,6 +59,11 @@ const MainNavBar = () => {
       setLoaderPanel(false);
     },1500)
     setUser("");
+  };
+
+  const handleChange = (e) => {
+    const searchValue = e.target.value; 
+    setSearchData(searchValue); 
   };
 
   const getNavbarQRData = (userData) => {
@@ -88,9 +93,13 @@ const MainNavBar = () => {
    setAddress(JSON.parse(localStorage.getItem("address")));
    console.log(localStorage.getItem("address"))
   },[refreshId])
+
+
+  console.log(searchData);
+  
   return (
     <nav className={style["navbar"]} >
-      <div className={style["logo"]}>
+      <div className={style["logo"]} onClick={(e) =>{e.stopPropagation , setsearchPanel(!searchPanel)}}>
         <img src={logo} alt="Logo" />
       </div>
 
@@ -101,10 +110,10 @@ const MainNavBar = () => {
         <p>{address ?(`B${refreshId} ${address?.city} , ${address?.country} `) :'B62, Pocket B, South City I, Sect...'}</p>
       </div>
 
-      <div className={style["search-bar"]}>
+      <div className={style["search-bar"]} onClick={(e) =>{e.stopPropagation , setsearchPanel(!searchPanel)}}>
         <ul className={style["search-bar-ul"]}>
           <li><CiSearch className={style["search"]} /></li>
-          <li><input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} /></li>
+          <li><input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} onChange={handleChange} /></li>
         </ul>
       </div>
 

@@ -67,10 +67,7 @@ export const globalRoute = createBrowserRouter([
             path: "/PaymentDetails",
             element: <PaymentDetails />,
           },
-          {
-            path: "/homePage/search",
-            element: <Search />
-          },
+  
           {
             path: "/homePage/productcontainer",
             element: <ProductContainer />

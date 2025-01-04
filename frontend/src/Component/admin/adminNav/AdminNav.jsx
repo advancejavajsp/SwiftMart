@@ -34,6 +34,7 @@ const AdminNav = () => {
         <li onClick={()=>{getOrderAndPayments("/orders","get")}}>All Orders</li>
         <li onClick={()=>{getOrderAndPayments("/payments","payments")}}>All Payments</li>
         <li>Delivery</li>
+        
       </ul>
     </div>
   );

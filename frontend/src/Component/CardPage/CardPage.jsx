@@ -57,13 +57,12 @@ const CardPage = ({ product, cardProductQuantity }) => {
     <div className={styles.container}>
     <div className={styles.imageSection}>
       <img 
-        src={Milk}
-        alt="Amul Taaza Milk" 
+        src={state?.imageUrl || Milk}
+        alt=""
         className={styles.productImage} 
       />
       
-      {/* Conditionally render the textlist div */}
-      {isTextListVisible && (
+     
         <div className={styles.textlist}>
           <h1>Product Details</h1>
           <ul>
@@ -114,7 +113,7 @@ const CardPage = ({ product, cardProductQuantity }) => {
             <li>recommended not to solely rely on the information presented.</li>
           </ul>
         </div>
-      )}
+    
     </div>
 
     <div className={styles.productContainer}>
