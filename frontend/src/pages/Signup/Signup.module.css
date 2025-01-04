@@ -1,4 +1,4 @@
-/* ----- SignUp Container ----- */
+
 .signup {
   display: flex;
   justify-content: center;
@@ -10,7 +10,6 @@
   background-color: rgba(0, 0, 0, 0.76);
 }
 
-/* ----- Form Container ----- */
 .signup .form-container {
   border: 2px solid #ddd;
   border-radius: 8px;
@@ -23,9 +22,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   background-color: #fff;
+  overflow-y: auto; 
 }
 
-/* ----- SignUp Title ----- */
 .signup .form-title {
   text-align: center;
   color: #333;
@@ -34,7 +33,6 @@
   margin-bottom: 10px;
 }
 
-/* ----- Form Elements ----- */
 .signup form {
   display: flex;
   flex-direction: column;
@@ -54,31 +52,26 @@
   font-weight: 500;
 }
 
-.signup input {
+.signup input,
+.signup select {
   height: 35px;
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
   width: 100%;
+  padding: 0 10px;
 }
 
-.signup input:focus {
+.signup input:focus,
+.signup select:focus {
   border-color: #4caf50;
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-/* ----- Button ----- */
 .signButton {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.username,
-.contact,
-.img {
-  padding: 10px; 
-  
 }
 
 .signButton button {
@@ -98,9 +91,7 @@
   background-color: #388e3c;
 }
 
-/* ----- Media Queries for Responsiveness ----- */
 
-/* For medium screens like tablets */
 @media (max-width: 768px) {
   .signup .form-container {
     width: 70%;
@@ -115,7 +106,8 @@
     font-size: 13px;
   }
 
-  .signup input {
+  .signup input,
+  .signup select {
     height: 40px;
     font-size: 16px;
   }
@@ -126,7 +118,6 @@
   }
 }
 
-/* For small screens like mobile phones */
 @media (max-width: 480px) {
   .signup .form-container {
     width: 90%;
@@ -141,7 +132,8 @@
     font-size: 12px;
   }
 
-  .signup input {
+  .signup input,
+  .signup select {
     height: 45px;
     font-size: 14px;
   }
