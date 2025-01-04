@@ -68,7 +68,7 @@ public class OrderServiceImp implements OrderService {
 		User user = userRepository.findById(userId).orElseThrow(null);
 
 		Payment payment = paymentRepository.findById(paymentId).orElse(null);
-
+		
 		if (!(payment.getPaymentStatus().equals(PaymentStatus.SUCCESS))) {
 			throw new PaymentFailedException("Payment failed.");
 		}
@@ -179,5 +179,11 @@ public class OrderServiceImp implements OrderService {
 
 	        return filteredOrders;
 	    }
+	 
+	 public List<Order> getAllOrders() {
+	        return orderRepository.findAll();
+	    }
+	 
+	 
 
 }

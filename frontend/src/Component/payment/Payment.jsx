@@ -43,7 +43,7 @@ const Payment = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8080/open/orders/place-order/${user.userId}/PAY0020`
+        `http://localhost:8080/open/orders/place-order/${user.userId}/PAY0031`
       );
 
       console.log(response);
