@@ -17,9 +17,10 @@ import MainNavBar from "./Navbar/MainNavBar"
 import UserProfile from "./UserProfile/UserProfile"
 import EditProfile from "./editProfile/EditProfile"
 import OrderDetails from "./OrderDetails/OrderDetails"
+import Address from "../Component/address/Address"
 
 const Layout = () => {
-  let {orderdetails,loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender,loaderPanel ,userProfilePanel,editProfile }=useContext(globalvar)
+  let {addressPanel,setaddressPanel,orderdetails,loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender,loaderPanel ,userProfilePanel,editProfile }=useContext(globalvar)
 
   console.log(paymentSuccessful )
   return (
@@ -36,6 +37,7 @@ const Layout = () => {
     {addCategoryPanel && <AddCategory/>}
     {updateProductPopUp && <UpdateProduct/>}
     {loaderPanel && <Loader/>}
+    {addressPanel && <Address/>}
     {userProfilePanel && <UserProfile/>}
     {editProfile && <EditProfile/>}
     <Outlet></Outlet>

@@ -38,9 +38,10 @@ const useTypewriter = (texts, speed = 100, pause = 1000) => {
 };
 
 const MainNavBar = () => {
-  const { loginPanel, setLoginPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel,setUserProfilePanel} = useContext(globalvar);
+  const { loginPanel, setLoginPanel,addressPanel,setaddressPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel} = useContext(globalvar);
   const searchBarRef = useRef();
   const [isPopupVisible, setPopupVisible] = useState(false);
+  let [address, setAddress]=useState('B62, Pocket B, South City I, Sect...');
   const popupRef = useRef(null);  // Add reference for the popup container
   let navigate=useNavigate();
   const togglePopup = () => {
@@ -67,6 +68,7 @@ const MainNavBar = () => {
   const qrData = getNavbarQRData(user);
   const typewriterPlaceholder = useTypewriter(["Search 'eggs'", "Search 'milk'", "Search 'bread'"], 100, 2000);
 
+
   // Effect to handle click outside popup
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -81,17 +83,22 @@ const MainNavBar = () => {
     };
   }, []);
 
+
+  useEffect(()=>{
+   setAddress(JSON.parse(localStorage.getItem("address")));
+   console.log(localStorage.getItem("address"))
+  },[refreshId])
   return (
-    <nav className={style["navbar"]}>
+    <nav className={style["navbar"]} >
       <div className={style["logo"]}>
         <img src={logo} alt="Logo" />
       </div>
 
-      <div className={style["delivery-info"]}>
+      <div className={style["delivery-info"]} onClick={()=>{setaddressPanel(!addressPanel)}}>
         <h3>
           <b>Delivery in 8 minutes</b>
         </h3>
-        <p>B62, Pocket B, South City I, Sect...</p>
+        <p>{(`B${refreshId} ${address.city} , ${address.country} `) ||'B62, Pocket B, South City I, Sect...'}</p>
       </div>
 
       <div className={style["search-bar"]}>
@@ -115,8 +122,8 @@ const MainNavBar = () => {
                    
                       <button className={style["account-button"]} onClick={(e) => {e.stopPropagation(), setPopupVisible(false),setUserProfilePanel(true)}}>My Account</button>
                     <ul>
-                      <Link to="/order"><li>My Orders</li></Link>
-                      <li>Saved Address</li>
+                    <Link to="/order"><li>My Orders</li></Link>
+                      <li className={style["Save-Address-li"]} onClick={()=>{setaddressPanel(!addressPanel)}} >Saved Address</li>
                       <li>E-Gift Cards</li>
                       <li>FAQ's</li>
                       <li>Account Privacy</li>
