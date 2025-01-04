@@ -22,5 +22,14 @@ public class CustomIdGenerator  {
 
 	        return PREFIX + String.format("%04d", nextVal);
 	    }
+	    
+	    @Transactional
+	    public String generateCustomIdAddress() {
+	        Long nextVal = ((Number) entityManager
+	                .createNativeQuery("SELECT nextval('addresses_id_seq')")
+	                .getSingleResult()).longValue();
+
+	        return "ADDRESS" + String.format("%04d", nextVal);
+	    }
 }
 

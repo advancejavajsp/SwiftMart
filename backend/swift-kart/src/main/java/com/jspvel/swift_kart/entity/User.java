@@ -47,13 +47,10 @@ public class User implements UserDetails {
 	@Min(6000000000l)
 	private long phone;
 
-	private String otp;
 
 	private String password;
 	@Enumerated(EnumType.STRING)
 	private Role role;
-
-	private String image;
 
 	@Column(name = "balance")
 	private Double balance;
@@ -69,7 +66,7 @@ public class User implements UserDetails {
 
 	@OneToMany(mappedBy = "deliveryAgentId")
 	private List<Delivery> delivery = new ArrayList<Delivery>();
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Address> addresses;
 
 	@Override
