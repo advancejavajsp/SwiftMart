@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 
 const AddProduct = () => {
 
-let {setAddProductPanel, allCategory , setLoaderPanel} = useContext(globalvar);
+let {setAddProductPanel, allCategory , setLoaderPanel,refreshId, setRefreshId} = useContext(globalvar);
   let [addProduct, setAddProduct] =  useState({
     
     name: "",
@@ -36,6 +36,7 @@ let {setAddProductPanel, allCategory , setLoaderPanel} = useContext(globalvar);
         let response = await axios.post(`http://localhost:8080/open/products/${categoryId}`,addProduct);
         setLoaderPanel(false);
         if (response.status == 201) {
+          setRefreshId(refreshId + 1)
           toast.success(`${name} is added succesfully`);
           setTimeout(()=>{
             setAddProductPanel(false)

@@ -22,7 +22,7 @@ const MyCart = () => {
     }
   
   };
-
+console.log(cartProducts)
   
   const handleDecrement = async (product) => {
     setLoaderPanel(true);
@@ -40,7 +40,7 @@ const MyCart = () => {
   const itemPrice = cartProducts.price;
   const deliveryCharge = 25;
   const handlingCharge = 4;
-  const total = itemPrice  + deliveryCharge + handlingCharge;
+  const total = cartProducts?.price  + deliveryCharge + handlingCharge;
 
   const navigate = useNavigate();
 
@@ -128,7 +128,7 @@ const MyCart = () => {
               <h4>Bill details</h4>
               <div className={styles.billRow}>
                 <span>Items total</span>
-                <span>₹{itemPrice * quantity}</span>
+                <span>₹{itemPrice }</span>
               </div>
               <div className={styles.billRow}>
                 <span>Delivery charge</span>

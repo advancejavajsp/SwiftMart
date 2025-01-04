@@ -50,7 +50,7 @@ public class AuthenticationController {
 	@ApiResponse(description = "user sign up sucessfull", responseCode = "201")
 	@ApiResponse(description = "error in signup", responseCode = "404")
 	@PostMapping("/signup")
-	public ResponseEntity<User> register(@RequestBody @Valid User registerUserDto) {
+	public ResponseEntity<User> register(@RequestBody @Valid User registerUserDto) throws Exception {
 
 		User registeredUser = authenticationService.signup(registerUserDto);
 
