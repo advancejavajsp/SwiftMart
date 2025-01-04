@@ -77,7 +77,7 @@ const Card = ({ product,cardProductQuantity }) => {
         <p className={styles.productPrice}>Price: {product?.price}</p>
         <div className={styles.buttonGroup}>
           {user?.role == "ADMIN" ? <>  <button className={styles.updateButton} onClick={(e)=>{e.stopPropagation(), handleUpdateClick()}}>UPDATE</button>
-            <button className={styles.deleteButton}  onClick={(e)=>{e.stopPropagation(), handleDeleteClick()}}>DELETE</button></> :         ( quantity === 0 ? (
+            </> :         ( quantity === 0 ? (
             <button className={styles.addButton} onClick={handleIncrement}>
               ADD
             </button>
