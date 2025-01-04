@@ -4,6 +4,7 @@ import milkImage from "../../asset/Milk.avif";
 import { globalvar } from "../../GlobalContext/GlobalContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import img from '../../asset/cart.png';
 
 const MyCart = () => {
   const { mycartPanel, setMycartPanel,setLoginPanel, cartProducts,setCartProducts,user, setLoaderPanel } = useContext(globalvar);
@@ -94,6 +95,9 @@ const MyCart = () => {
             <button className={styles.returnHomeButton} onClick={handleReturnToHome}>
               Return to Home
             </button>
+            <div className={styles['img']}>
+              <img src={img} alt="" />
+            </div>
           </div>
         ) : (
           <>

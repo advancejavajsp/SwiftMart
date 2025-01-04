@@ -8,6 +8,7 @@ import { GrDocumentTime } from "react-icons/gr";
 import { HiOutlineGiftTop } from "react-icons/hi2";
 import { LuLockKeyhole } from "react-icons/lu";
 import { FaRegUser } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 
 const OrderDetails = () => {
   return (
@@ -15,7 +16,7 @@ const OrderDetails = () => {
        <div className={style['side']}>
               <ul>
                   <li><SlLocationPin className={style['icon']}/>My Addresses</li>
-                  <li><GrDocumentTime className={style['icon']} />My Orders</li>
+                 <Link to="/order"><li><GrDocumentTime className={style['icon']} />My Orders</li></Link>
                   <li><HiOutlineGiftTop className={style['icon']} />E-Gift Cards</li>
                   <li><LuLockKeyhole className={style['icon']}/>Account privacy</li>
                   <li><FaRegUser className={style['icon']} />Logout</li>

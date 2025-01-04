@@ -58,19 +58,24 @@ export const globalRoute = createBrowserRouter([
             path: "/PaymentDetails",
             element: <PaymentDetails />,
           },
+          {
+            path: "/homePage/search",
+            element: <Search />
+          },
+          {
+            path: "/homePage/productcontainer",
+            element: <ProductContainer />
+          },
+          
         ],
       },
       {
-        path: "/Payment",
-        element: <Payment />,
+        path: '/Payment',
+        element: <Payment />
       },
     ],
   },
 
-  {
-    path: "/editprofile",
-    element: <EditProfile />,
-  },
   {
     path: "/about",
     element: <About />,
@@ -86,14 +91,6 @@ export const globalRoute = createBrowserRouter([
   {
     path: "/user-profile",
     element: <UserProfile />,
-  },
-  {
-    path: "/addCategory",
-    element: <AddCategory />,
-  },
-  {
-    path: "/updateProduct",
-    element: <UpdateProduct />,
   },
   {
     path: "*",

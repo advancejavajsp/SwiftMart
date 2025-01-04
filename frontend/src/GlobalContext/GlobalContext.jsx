@@ -28,10 +28,8 @@ const GlobalContext = ({ children }) => {
   let [refreshId, setRefreshId] = useState(0);
   let [cartProducts , setCartProducts] = useState([]);
   let [loaderPanel , setLoaderPanel] = useState(false);
-  let [userDetail, setUserDetail] = useState({});
-
-
-  
+  let [userDetails,setUserDetails]=useState({})
+  let  [getOrdersbyUserid , setgetOrdersbyUserid ] = useState([]);
   let [userProfilePanel , setUserProfilePanel] = useState(false);
   let [editProfile , setEditProfile] = useState(false);
 
@@ -41,6 +39,7 @@ const GlobalContext = ({ children }) => {
     setLoaderPanel(true);
     let response = await axios.get("http://localhost:8080/open/category/categoryall");
     setAllCategory(response.data);
+    console.log(response)
     setLoaderPanel(false);
     setCategoryId(response.data[0].categoryId)
 
@@ -75,8 +74,7 @@ if (user) {
   let userData=async(userId)=>{
     
     let response = await axios.get(`http://localhost:8080/open/swiftmart/email/${userId}`);
-    console.log(response);
-    setUserDetail(response.data);
+    setUserDetails(response?.data)
   }
   useEffect(() => {
 
@@ -93,7 +91,7 @@ if (user) {
     getCartProducts();
   },[categoryId, refreshId])
   return (
-    <globalvar.Provider value={{ userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel ,userProfilePanel , setUserProfilePanel,editProfile , setEditProfile, userDetail, setUserDetail, paymentSuccessful, setPaymentSuccessful}}>
+    <globalvar.Provider value={{ userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, getOrdersbyUserid , setgetOrdersbyUserid,signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel ,userProfilePanel , setUserProfilePanel,editProfile , setEditProfile,paymentSuccessful, setPaymentSuccessful,userDetails,setUserDetails}}>
       {children}
     </globalvar.Provider>
   );

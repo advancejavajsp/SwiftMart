@@ -1,5 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import QRCode from "react-qr-code";
 import { IoCartOutline } from "react-icons/io5";
 import { CiSearch } from "react-icons/ci";
@@ -42,7 +42,7 @@ const MainNavBar = () => {
   const searchBarRef = useRef();
   const [isPopupVisible, setPopupVisible] = useState(false);
   const popupRef = useRef(null);  // Add reference for the popup container
-
+  let navigate=useNavigate();
   const togglePopup = () => {
     setPopupVisible(!isPopupVisible);
   };
@@ -52,7 +52,9 @@ const MainNavBar = () => {
     localStorage.removeItem("token");
     setPopupVisible(false);
     setRefreshId(refreshId+ 1);
+
     setTimeout(()=>{
+      navigate("/")
       setLoaderPanel(false);
     },1500)
     setUser("");
@@ -113,7 +115,7 @@ const MainNavBar = () => {
                    
                       <button className={style["account-button"]} onClick={(e) => {e.stopPropagation(), setPopupVisible(false),setUserProfilePanel(true)}}>My Account</button>
                     <ul>
-                      <li>My Orders</li>
+                      <Link to="/order"><li>My Orders</li></Link>
                       <li>Saved Address</li>
                       <li>E-Gift Cards</li>
                       <li>FAQ's</li>
@@ -140,9 +142,11 @@ const MainNavBar = () => {
           </button>
         )}
 
-        <button className={style["cart-btn"]} onClick={() => setMycartPanel(!mycartPanel)}>
-          <IoCartOutline className={style["mycart"]} /> My Cart
-        </button>
+{user?.role !== "ADMIN" && (
+  <button className={style["cart-btn"]} onClick={() => setMycartPanel(!mycartPanel)}>
+    <IoCartOutline className={style["mycart"]} /> My Cart
+  </button>
+)}
       </div>
     </nav>
   );

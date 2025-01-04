@@ -41,6 +41,17 @@ public class ProductController {
 			return ResponseEntity.notFound().build();
 		}
 	}
+	
+	
+	@GetMapping("search/{field}")
+	public ResponseEntity<?> getProductByField(@PathVariable String field) {
+		List< Product> product = productServiceImp.getProductByField(field);
+		if (product != null) {
+			return ResponseEntity.ok(product);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
 
 	@PostMapping("/{categoreyId}")
 	public ResponseEntity<Product> addProduct(@RequestBody Product product, @PathVariable String categoreyId) {
@@ -75,5 +86,7 @@ public class ProductController {
 	public List<Product> getProductsByCategory(@PathVariable String categoryId) {
 		return productServiceImp.getProductsByCategory(categoryId);
 	}
+	
+	
 
 }

@@ -43,16 +43,17 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
     
-
+    
 
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable String userId) {
-    List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
-      return ResponseEntity.ok(orders);
-
+    public ResponseEntity<List<Order>> getOrdersByUserId(@PathVariable String userId) {
+        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
+        if (orders.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(orders);
     }
-
     
     @DeleteMapping("/orders/{orderId}")
     public ResponseEntity<Order> cancelOrder(@PathVariable String orderId) {

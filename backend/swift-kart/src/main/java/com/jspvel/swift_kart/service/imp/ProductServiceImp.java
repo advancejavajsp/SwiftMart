@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.jspvel.swift_kart.dao.CartItemRepository;
@@ -106,6 +107,15 @@ public class ProductServiceImp implements ProductService {
 	    }
 
 	    return null;
+	}
+
+	public List<Product> getProductByField(String field) {
+		
+		
+		List<Product> products= productRepository.findAll(Sort.by("name"));
+		
+		return products.stream().filter(pro->pro.getName().equals(field)).toList();
+		
 	}
 
 
