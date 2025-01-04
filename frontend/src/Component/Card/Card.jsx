@@ -2,13 +2,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import styles from "./Card.module.css";
 import Milk from "../../asset/Milk.avif";
 import { globalvar } from "../../GlobalContext/GlobalContext";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Card = ({ product,cardProductQuantity }) => {
   let {productComp,setLoginPanel, user, setUpdateProductPanel, setDeleteProductPanel, setProductComp, setLoaderPanel,refreshId,setRefreshId } = useContext(globalvar);
   const [quantity, setQuantity] = useState(0);
-
+  let navigate=useNavigate()
    
  useEffect(()=>{
   setQuantity(cardProductQuantity)
@@ -55,15 +55,20 @@ const Card = ({ product,cardProductQuantity }) => {
     setDeleteProductPanel(true);
   }
 
+  let getProductDetails = ()=>{
+    navigate("/cardPage", {state:product})
+  }
+
   return (
-    <div className={styles.cardContainer}>
-      <Link to='/cardPage'>
+    <div className={styles.cardContainer} >
+      
         <img
           src={product?.image || Milk}
           alt={truncatedTitle}
           className={styles.productImage}
+          onClick={getProductDetails}
         />
-      </Link>
+      
       <div className={styles.productDetails}>
         <h3 className={styles.productTitle}>{truncatedTitle}</h3>
         {user?.role === "ADMIN" && <p className={styles.productSize}>Quantity: {product?.quantityAvailable}</p>}

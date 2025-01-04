@@ -125,12 +125,13 @@ export const globalRoute = createBrowserRouter([
           
         ],
       },
+      {
+        path: '/Payment',
+        element: <Payment />
+      },
     ],
   },
-  {
-    path: '/Payment',
-    element: <Payment />
-  },
+
   {
     path:"/editprofile",
     element:<EditProfile/>

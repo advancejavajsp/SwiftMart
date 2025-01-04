@@ -18,7 +18,6 @@ import OrderDetails from "./OrderDetails/OrderDetails"
 
 const Layout = () => {
   let {loginPanel,signupPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,deleteProductPanel, otpRender,loaderPanel,orderdetails}=useContext(globalvar)
-
   return (
     <>
     <Toaster/>

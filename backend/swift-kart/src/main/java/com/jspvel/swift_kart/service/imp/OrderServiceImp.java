@@ -117,11 +117,15 @@ public class OrderServiceImp implements OrderService {
 		paymentRepository.save(payment);
 
 		cart.getProduct().clear();
+		cart.setQuantity(0);
+		cart.setPrice(0);
+		cart.setUser(null);
 		cartRepository.save(cart);
 
 		cartRepository.delete(cart);
 
 		user.setCart(null);
+		
 		userRepository.save(user);
 
 		return order;

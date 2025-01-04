@@ -24,15 +24,16 @@ const Order = () => {
 
   // })
 
-  useEffect(() => {
+  
     const fetchOrderDetails = async () => {
-        const response = await axios.get(`http://localhost:8080/open/orders/user/${user?.userid}`);
-        setgetOrdersbyUserid(response.data?.data.product);
+        const response = await axios.get(`http://localhost:8080/open/orders/user/${user?.userId}`);
+       console.log(response);
+       
     };
 
-    fetchOrderDetails();
-  }, []);
-  console.log(setgetOrdersbyUserid);
+ 
+
+  
   return (
     <div className={style['mainbody']}>
       <div className={style['side']}>
