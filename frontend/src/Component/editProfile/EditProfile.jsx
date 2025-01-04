@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import styles from './EditProfile.module.css';
-import { globalvar } from '../../GlobalContext/GlobalContext';
+import { globalvar } from '../../GlobalContext/GlobalContext'; 
+import toast from 'react-hot-toast';
 
 function EditProfile() {
-  const { user, setUser } = useContext(globalvar);
+  const { user, setUser ,setEditProfile,setLoaderPanel} = useContext(globalvar);
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -15,27 +16,18 @@ function EditProfile() {
   const [successMessage, setSuccessMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
+  
   useEffect(() => {
     if (!user) {
       setError('User not logged in.');
       return;
     }
 
-    const token = localStorage.getItem('token');
-    if (!token) {
-      setError('Authentication token missing.');
-      return;
-    }
-
     const fetchUserData = async () => {
       try {
+      
         setLoading(true);
-        const response = await axios.get(`http://localhost:8080/swiftmart/me/${user.sub}`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
+        const response = await axios.get(`http://localhost:8080/open/swiftmart/email/${user.sub}`);
         if (response.data) {
           setFormData({
             fullName: response.data.name || '',
@@ -68,52 +60,45 @@ function EditProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
-    if (!formData.phone.match(/^\d{10}$/)) {
-      setError('Phone number must be 10 digits.');
-      return;
-    }
-
-    const token = localStorage.getItem('token');
-    if (!token) {
-      setError('Authentication token missing.');
-      return;
-    }
+      console.log(formData?.phone)
 
     try {
-      const response = await axios.put(
-        `http://localhost:8080/open/swiftmart/update/${user.id}`,
-        {
-          name: formData.fullName,
-          email: formData.email,
-          phone: formData.phone,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      console.log('Profile updated:', response.data);
-
-      setUser((prevUser) => ({
-        ...prevUser,
+      setLoaderPanel(true)
+      const response = await axios.put(`http://localhost:8080/open/swiftmart/update/${user.userId}`, {
         name: formData.fullName,
         email: formData.email,
         phone: formData.phone,
-      }));
+      });
 
-      setSuccessMessage('Profile updated successfully!');
-      setError('');
-      setTimeout(() => setSuccessMessage(''), 3000);
+   
+      if (response.status === 200) {
+        console.log('Profile updated:', response.data);
+        setUser((prevUser) => ({
+          ...prevUser,
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+        }));
+        toast.success('Profile updated successfully!')
+        setSuccessMessage('Profile updated successfully!');
+        setError(''); 
+      setTimeout(()=>{
+        setLoaderPanel(false)
+        setEditProfile(false)
+      },1500)
+      } else {
+        toast.error('Failed to update profile.')
+        setError('Failed to update profile.');
+      }
     } catch (error) {
       console.error('Error updating profile:', error);
       setError('Failed to update profile.');
+      toast.error('Failed to update profile.')
     }
   };
 
   return (
+    <section className={styles['edit-container']}  onClick={(e)=>{e.stopPropagation(), setEditProfile(true)}}>
     <div className={styles['edit-profile']}>
       <h2>Edit Profile</h2>
 
@@ -158,7 +143,11 @@ function EditProfile() {
         </button>
       </form>
     </div>
+    </section>
   );
 }
 
 export default EditProfile;
+
+
+
