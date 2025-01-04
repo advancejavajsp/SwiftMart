@@ -1,4 +1,3 @@
-// 
 
 import React, { useContext, useState } from "react";
 import style from "../Signup/SignUp.module.css";
@@ -8,7 +7,7 @@ import toast from "react-hot-toast";
 import OtpPopup from "../otpPopup/OtpPopup";
 
 const SignUp = () => {
-  let { signupPanel, setSignuPanel, setLoginPanel, otpRender, setOtpRender } = useContext(globalvar);
+  let { signupPanel,setLoaderPanel, setSignuPanel, setLoginPanel, otpRender, setOtpRender } = useContext(globalvar);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -34,19 +33,24 @@ const SignUp = () => {
     if (formData.name && formData.email && formData.password && formData.phone) {
       if (!otpVerified) {
         setOtpRender(true);
+        setLoaderPanel(true);
         let verify = await axios.post(
           `http://localhost:8080/auth/send-otp?email=${formData?.email}`
         );
+        setLoaderPanel(false);
         console.log(verify);
         setOtp(verify.data);
       }
 
       if (otpVerified) {
+        setLoaderPanel(true);
         let response = await axios.post(
           "http://localhost:8080/auth/signup",
           formData
+
         );
         console.log(response);
+        setLoaderPanel(false);
         toast.success("SignUp Successfully");
         setTimeout(() => {
           setSignuPanel(false);

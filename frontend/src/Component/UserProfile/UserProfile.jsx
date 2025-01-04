@@ -10,6 +10,7 @@ function UserProfile() {
   let {user, setUser} = useContext(globalvar);
   let [fetchedUserdata, setFetchedUserdata] = useState();
    
+  let {userProfilePanel , setUserProfilePanel,setEditProfile}=useContext(globalvar)
 
   let getUserData=async()=>{
     let response = user && await axios.get(`http://localhost:8080/open/swiftmart/email/${user?.sub}`)
@@ -26,6 +27,7 @@ function UserProfile() {
 
   const qrData = getUserProfileQRData(fetchedUserdata);  
   return (
+    <section className={style['user-main']} onClick={(e)=>{e.stopPropagation(),setUserProfilePanel(false) }}>
     <div className={style['user-profile']}>
       <div className={style['profile-header']}>
         <img
@@ -47,7 +49,7 @@ function UserProfile() {
         <p>Full Name: {fetchedUserdata?.name}</p>
         <p>Address: Sector 14 Gurugram</p>
         <p>{fetchedUserdata?.phone}</p>
-        <button className={style['edit-button']}>Edit Profile</button>
+        <button className={style['edit-button']} onClick={(e)=>{e.stopPropagation(), setEditProfile(true),setUserProfilePanel(false)}}>Edit Profile</button>
       </div>
 
       <div className={style['user-orders']}>
@@ -58,6 +60,7 @@ function UserProfile() {
         </ul>
       </div>
     </div>
+    </section>
   );
 }
 

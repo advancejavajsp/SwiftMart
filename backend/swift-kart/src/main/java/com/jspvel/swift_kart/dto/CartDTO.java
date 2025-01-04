@@ -20,7 +20,6 @@ public class CartDTO {
 	    private List<CartItem> product;  // You can customize this if you need only certain attributes from Product
 	    private String user_id;
 		public CartDTO(Cart cart) {
-			super();
 			this.cart_id = cart.getCart_id();
 			this.price = cart.getPrice();
 			this.user_id = cart.getUser().getId();

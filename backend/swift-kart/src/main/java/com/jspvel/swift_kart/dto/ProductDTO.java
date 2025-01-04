@@ -19,11 +19,10 @@ import jakarta.validation.constraints.Positive;
 @Builder
 public class ProductDTO {
 
-    private String productId;
 
     private String name;
 
-    private Long categoryId;
+    private String categoryId;
 
     private double price;
 

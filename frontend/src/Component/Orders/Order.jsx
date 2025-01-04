@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect ,useState} from 'react'
 import style from './order.module.css'
 import { FaArrowLeft } from "react-icons/fa";
 import { SlLocationPin } from "react-icons/sl";
@@ -8,12 +8,32 @@ import { LuLockKeyhole } from "react-icons/lu";
 import { FaRegUser } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { globalvar } from '../../GlobalContext/GlobalContext';
+
 
 const Order = () => {
+  let {getOrdersbyUserid , setgetOrdersbyUserid,user} = useContext(globalvar);
 
-  useEffect(()=>{
-      let orderData = axios.get("http://localhost:8080/")
-  },[])
+  // let [order,setOrder] = useState({
+  //   orderID : "",
+  //   orderDate : "",
+  //   totalAmount : "",
+  //   productID : "" ,
+  //   quantity : "" ,
+  //   price : ""
+
+  // })
+
+  
+    const fetchOrderDetails = async () => {
+        const response = await axios.get(`http://localhost:8080/open/orders/user/${user?.userId}`);
+       console.log(response);
+       
+    };
+
+ 
+
+  
   return (
     <div className={style['mainbody']}>
       <div className={style['side']}>
@@ -27,21 +47,18 @@ const Order = () => {
       </div>
       <div className={style['orders']}>
       <Link to="/"><FaArrowLeft className={style['arroww']} /></Link>
-        <div className={style['ordercards']}>
-            
-            <div className={style["text"]}>
-            <h3>ORD861487083  ·  ₹234</h3>
-            <p>Placed on thu, 31 oct'24, 4:51 pm</p>
-            </div>
-            <button>view details</button>
-        </div>
-        <div className={style['ordercards']}>
-            <div className={style["text"]}>
-            <h3>ORD861487083  ·  ₹234</h3>
-            <p>Placed on thu, 31 oct'24, 4:51 pm</p>
-            </div>
-            <button>view details</button>
-        </div>
+      <div className={style['ordercards']}>
+       {getOrdersbyUserid.map((order) => (
+                <>
+                <p>{order.orderID}</p>
+                <p>{new Date(order.orderDate).toLocaleDateString()}</p>
+                <p>{order.totalAmount}</p>
+                <p>{order.productID}</p>
+                <p>{order.quantity}</p>
+                <p>{order.price}</p>
+                </>
+            ))}
+      </div>
       </div>
      
     </div>

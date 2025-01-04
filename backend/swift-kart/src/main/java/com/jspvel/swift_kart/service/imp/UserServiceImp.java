@@ -20,22 +20,18 @@ public class UserServiceImp implements UserService {
 	@Autowired
 	private EmailService emailService;
 
-	private int balance;
-
 	@Autowired
 	public UserServiceImp(UserRepository userRepository, EmailService emailService) {
 		this.userRepository = userRepository;
 		this.emailService = emailService;
 	}
 
-    @Override
-    public UserDTO findByUserEmail(String email) {
-       
-        	User user=	userRepository.findByEmail(email).orElseThrow();
-        		UserDTO userDTO=new UserDTO(user);
-        		 return userDTO;
-    }
-
+	@Override
+	public UserDTO findByUserEmail(String email) {
+		User user=userRepository.findByEmail(email).orElseThrow();
+		UserDTO userDTO=new UserDTO(user);
+		return userDTO;
+	}
 
 	@Override
 	public String deleteUserByEmail(String email) {
@@ -75,18 +71,9 @@ public class UserServiceImp implements UserService {
 		return String.valueOf(otp);
 	}
 
-	public String checkBalance(String id) {
-		if (this.balance < 0) {
-			return "Invalid Balance";
-		} else {
-			return "Payment Successful";
-		}
-	}
-
 	@Override
 	public String changeUserRoleToDeliveryAgent(String userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

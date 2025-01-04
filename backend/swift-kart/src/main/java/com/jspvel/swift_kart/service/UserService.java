@@ -13,7 +13,6 @@ public interface UserService {
 	
 	public String deleteUserByEmail(String email);
 	
-
 	String sendOtpToEmail(String email);
 	
 	String changeUserRoleToDeliveryAgent(String userId);

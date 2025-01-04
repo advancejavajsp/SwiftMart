@@ -13,10 +13,14 @@ import AddCategory from "./admin/addCategory/AddCategory";
 import OtpPopup from "../pages/otpPopup/OtpPopup"
 import UpdateProduct from "./admin/updateProduct/UpdateProduct"
 import Loader from "../pages/loader/Loader"
+import MainNavBar from "./Navbar/MainNavBar"
+import UserProfile from "./UserProfile/UserProfile"
+import EditProfile from "./editProfile/EditProfile"
+import OrderDetails from "./OrderDetails/OrderDetails"
 import Address from "../Component/address/Address"
 
 const Layout = () => {
-  let {addressPanel,setaddressPanel ,loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender,loaderPanel }=useContext(globalvar)
+  let {addressPanel,setaddressPanel,orderdetails,loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender,loaderPanel ,userProfilePanel,editProfile }=useContext(globalvar)
 
   return (
     <>
@@ -32,6 +36,8 @@ const Layout = () => {
     {updateProductPopUp && <UpdateProduct/>}
     {loaderPanel && <Loader/>}
     {addressPanel && <Address/>}
+    {userProfilePanel && <UserProfile/>}
+    {editProfile && <EditProfile/>}
     <Outlet></Outlet>
     </>
   )

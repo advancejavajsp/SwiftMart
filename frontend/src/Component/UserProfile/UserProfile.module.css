@@ -1,7 +1,19 @@
+.user-main{
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #333333ab;
+}
+
 .user-profile {
   font-family: 'Arial', sans-serif;
   padding: 20px;
   max-width: 400px;
+  min-width: 400px;
   margin: 10px auto;
   background-color: #ffffff;
   border-radius: 12px;

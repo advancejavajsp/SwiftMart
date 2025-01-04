@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +25,7 @@ public class OrderController {
     @Autowired
     private OrderServiceImp orderServiceImp;
     
-   
+    
 
     @PostMapping("/place-order/{userId}/{paymentId}")
     public ResponseEntity<Order> placeOrder(@PathVariable String userId, @PathVariable String paymentId) {
@@ -44,13 +43,17 @@ public class OrderController {
         return ResponseEntity.ok(order);
     }
     
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<List<Order>> getOrdersByUser(@PathVariable String userId) {
-        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
-        return ResponseEntity.ok(orders);
-        
-    }
+    
 
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<Order>> getOrdersByUserId(@PathVariable String userId) {
+        List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
+        if (orders.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(orders);
+    }
     
     @DeleteMapping("/orders/{orderId}")
     public ResponseEntity<Order> cancelOrder(@PathVariable String orderId) {
