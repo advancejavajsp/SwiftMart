@@ -3,6 +3,7 @@ package com.jspvel.swift_kart.service.imp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -111,7 +112,7 @@ public class OrderServiceImp implements OrderService {
 
 		order.setOrderItem(items);
 		orderRepository.save(order);
-
+		
 		payment.setOrder(order);
 		order.setPayment(payment);
 		paymentRepository.save(payment);
@@ -120,7 +121,13 @@ public class OrderServiceImp implements OrderService {
 		cartRepository.save(cart);
 
 		cartRepository.delete(cart);
-
+		if(user.getOrder()==null) {
+			List<Order> list = new ArrayList<Order>();
+			list.add(order);
+			user.setOrder(list);
+		}
+		else
+        user.getOrder().add(order);  
 		user.setCart(null);
 		userRepository.save(user);
 
@@ -138,10 +145,7 @@ public class OrderServiceImp implements OrderService {
 
 	}
 
-	public List<Order> getOrdersByUserId(Long userId) {
-//	        return orderRepository.findByUserId(userId);
-		return null;
-	}
+	
 
 	public Order cancelOrder(String orderId) {
 		Order order = orderRepository.findById(orderId)
@@ -159,10 +163,17 @@ public class OrderServiceImp implements OrderService {
 		}
 	}
 
-	@Override
-	public List<Order> getOrdersByUserId(String userId) {
-		
-		return null;
-	}
+	 public List<Order> getOrdersByUserId(String userId) {
+	        List<Order> orders = orderRepository.findAll();
+	        
+	        List<Order> filteredOrders = orders.stream()
+	                .filter(order-> order.getCustomer_id().getId().equals(userId)).toList();
+
+	        if (filteredOrders.isEmpty()) {
+	            throw new OrderNotFoundException("No orders found for user with id " + userId);
+	        }
+
+	        return filteredOrders;
+	    }
 
 }
