@@ -37,6 +37,7 @@ import SignUp from "../pages/Signup/SignUp";
 import UpdateNotification from "../Component/notificataion/UpdateNotification";
 import DeleteNotification from "../Component/notificataion/DeleteNotification";
 import EditProfile from "../Component/editProfile/EditProfile";
+import Address from "../Component/address/Address";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",

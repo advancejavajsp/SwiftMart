@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { createContext, useEffect } from 'react'
 import { useState } from 'react';
 import { jwtDecode } from "jwt-decode";
@@ -28,8 +27,18 @@ const GlobalContext = ({ children }) => {
   let [refreshId, setRefreshId] = useState(0);
   let [cartProducts , setCartProducts] = useState([]);
   let [loaderPanel , setLoaderPanel] = useState(false);
-
+  let [addressPanel,setaddressPanel]=useState(false);
  
+
+  let getAlladdress = async () => {
+    setaddressPanel(true);
+    let response = await axios.get("https://countriesnow.space/api/v0.1/countries/states");
+    setAlladdress(response.data);
+    setaddressPanel(false);
+    setCategoryId(response.data[0].categoryId)
+
+  }
+
 
   let getAllcategory = async () => {
     setLoaderPanel(true);
@@ -86,7 +95,7 @@ if (user) {
     getCartProducts();
   },[categoryId, refreshId])
   return (
-    <globalvar.Provider value={{ userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel }}>
+    <globalvar.Provider value={{ getAlladdress,addressPanel,setaddressPanel ,userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel }}>
       {children}
     </globalvar.Provider>
   );
