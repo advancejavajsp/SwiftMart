@@ -20,10 +20,8 @@ public class Address {
 
 	@Id
 	private String id;
-	private String doorNo;
-	private String street;
 	private String city;
-	private State state;
+	private String state;
 	private int pincode;
 	
 	@ManyToOne
