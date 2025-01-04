@@ -38,7 +38,7 @@ const useTypewriter = (texts, speed = 100, pause = 1000) => {
 };
 
 const MainNavBar = () => {
-  const { loginPanel, setLoginPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel} = useContext(globalvar);
+  const { loginPanel, setLoginPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel,setUserProfilePanel} = useContext(globalvar);
   const searchBarRef = useRef();
   const [isPopupVisible, setPopupVisible] = useState(false);
   const popupRef = useRef(null);  // Add reference for the popup container
@@ -110,9 +110,8 @@ const MainNavBar = () => {
               {isPopupVisible && (
                 <div className={style.popup} ref={popupRef}>
                   <div className={style["popup-content"]}>
-                    <Link to="/user-profile" onClick={() => setPopupVisible(false)}>
-                      <button className={style["account-button"]}>My Account</button>
-                    </Link>
+                   
+                      <button className={style["account-button"]} onClick={(e) => {e.stopPropagation(), setPopupVisible(false),setUserProfilePanel(true)}}>My Account</button>
                     <ul>
                       <li>My Orders</li>
                       <li>Saved Address</li>
