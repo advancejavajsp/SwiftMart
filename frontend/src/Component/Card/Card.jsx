@@ -7,7 +7,6 @@ import axios from 'axios';
 
 const Card = ({ product,cardProductQuantity }) => {
 
-  console.log(product)
   let {productComp,setLoginPanel, user, setUpdateProductPanel, setDeleteProductPanel, setProductComp, setLoaderPanel,refreshId,setRefreshId } = useContext(globalvar);
   const [quantity, setQuantity] = useState(0);
   let navigate=useNavigate()

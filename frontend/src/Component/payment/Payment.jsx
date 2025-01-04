@@ -14,16 +14,22 @@ import milkImage from "../../asset/Milk.avif";
 const Payment = () => {
 
   const [upiId, setUpiId] = useState('');
+  
   const { paymentSuccessful, setPaymentSuccessful, userData, userDetails, setLoaderPanel, user, product, cartProducts, rez, mycartPanel, setMycartPanel, setLoginPanel, setCartProducts } = useContext(globalvar);
   const [quantity, setQuantity] = useState(0);
+
+  // console.log(user.userId)
 
 
   let { state } = useLocation();
   const [orderDetails, setOrderDetails] = useState({
-    orderStatus: "Success",
-    paymentMode: "",
-    productDetails: state.cartProducts,
+    paymentMode:"UPI",
+    amount:cartProducts?.price +25 + 4,
+    paymentStatus: "SUCCESS"
   })
+
+
+  console.log(orderDetails)
 
   const itemPrice = cartProducts.price;
   const deliveryCharge = 25;
@@ -31,7 +37,7 @@ const Payment = () => {
   const total = itemPrice + deliveryCharge + handlingCharge;
 
   const handlePayment = (method) => {
-    setOrderDetails({ ...orderDetails, paymentMode: method })
+    setOrderDetails({ ...orderDetails, paymentMode: method?.toUpperCase() })
   }
 
   const handleUpiChange = (event) => {
@@ -43,13 +49,17 @@ const Payment = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8080/open/orders/place-order/${user.userId}/PAY0020`
+        `http://localhost:8080/open/swiftmart/payments/makePayment/${user.userId}`, orderDetails
       );
-
-      console.log(response);
+      console.log(response)
 
       if (response.status == 200) {
         setPaymentSuccessful(true);
+        //call order api
+        let res =await axios.post(`http://localhost:8080/open/swiftmart/place-order/${user.userId}/${response.data.paymentId}`)
+        console.log("first")
+        console.log(res)
+        
         toast.success("Payment Successful");
       } else {
         setPaymentSuccessful(false);
@@ -61,33 +71,6 @@ const Payment = () => {
       toast.error("Payment Unsuccessful");
     } finally {
       setLoaderPanel(false);
-    }
-  };
-
-  const handleIncrement = async (product) => {
-    if (user) {
-      setLoaderPanel(true);
-      let response = await axios.post(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
-      setCartProducts(response?.data)
-      setLoaderPanel(false);
-      setQuantity(quantity + 1);
-    } else {
-      setLoginPanel(true)
-    }
-
-  };
-
-
-  const handleDecrement = async (product) => {
-    setLoaderPanel(true);
-    console.log(user?.userId);
-    console.log(product?.productId)
-    let response = await axios.delete(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
-    setCartProducts(response?.data)
-    setLoaderPanel(false);
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-
     }
   };
 
@@ -140,6 +123,7 @@ const Payment = () => {
                     <span>
                       <i className={style["fa-solid fa-percent"]}></i>
                     </span>
+
                   </div>
                   <div className={style["promocode-text"]}>
                     <span>Promo code &amp; Bank offers</span>
@@ -243,7 +227,7 @@ const Payment = () => {
             <p>Shipment of {cartProducts?.product?.length} item</p>
           </div>
 
-          <section className={styles.cartItemsContainer}> {cartProducts?.product.map((ele, i) => <div className={styles.cartItem} key={ele.id}>
+          <section className={styles.cartItemsContainer}> {cartProducts?.product?.map((ele, i) => <div className={styles.cartItem} key={ele.id}>
             <img src={ele.product.imageUrl || milkImage} alt="Amul Milk" className={styles.itemImage} />
             <div className={styles.itemDetails}>
               <h4>{ele.product.name}</h4>

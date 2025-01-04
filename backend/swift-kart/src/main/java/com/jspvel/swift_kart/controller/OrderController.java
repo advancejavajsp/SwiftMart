@@ -19,7 +19,7 @@ import com.jspvel.swift_kart.service.imp.OrderServiceImp;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/open/orders")
+@RequestMapping("/open/swiftmart")
 public class OrderController {
 
     @Autowired
