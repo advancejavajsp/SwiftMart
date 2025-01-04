@@ -20,7 +20,7 @@ public class CustomIdGenerator  {
 	                .createNativeQuery("SELECT nextval('user_sequence')")
 	                .getSingleResult()).longValue();
 
-	        return PREFIX + String.format("%04d", nextVal);
+	        return  String.format("%04d", nextVal);
 	    }
 	    
 	    @Transactional

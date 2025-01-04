@@ -16,6 +16,7 @@ import toast from 'react-hot-toast'
 const SideBar = () => {
     let {user,allCategory,categoryId, setCategoryId,setAllCategory,refreshId,setRefreshId,loaderPanel,setLoaderPanel} = useContext(globalvar);
    
+    console.log(allCategory)
 
     const handleDelete = async (categ) => {
         try {
@@ -47,7 +48,7 @@ const SideBar = () => {
                   setCategoryId(ele.categoryId);
                 }}
               >
-                <img src={img1} alt="Milk carton" />
+                <img src={ele?.image} alt="Milk carton" />
                 <p>{ele?.name}</p>
                 <MdDelete
                   className={style['dustbin']}
@@ -65,7 +66,7 @@ const SideBar = () => {
                   setCategoryId(ele.categoryId);
                 }}
               >
-                <img src={img1} alt="Milk carton" />
+                <img src={ele?.image} alt="Milk carton" />
                 <p>{ele?.name}</p>
               </li>
             )
