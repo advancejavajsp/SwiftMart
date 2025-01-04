@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jspvel.swift_kart.dto.PaymentDTO;
@@ -73,5 +74,12 @@ public class PaymentController {
 	        return ResponseEntity.notFound().build();
 	    }
 	}
+	
+	@PostMapping("/makePayment/{userId}")
+    public ResponseEntity<Payment> makePayment(@PathVariable String userId,
+                                              @RequestBody Payment payment) {
+        Payment payment2 = paymentServiceImp.makePayment(userId, payment);
+      return ResponseEntity.status(HttpStatus.OK).body(payment2);
+    }
 
 }
