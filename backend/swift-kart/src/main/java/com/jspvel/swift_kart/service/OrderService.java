@@ -21,5 +21,7 @@ public interface OrderService {
 	
 	public Order cancelOrder(String orderId);
 	
+	public List<Order> getAllOrders();
+	
 	
 }

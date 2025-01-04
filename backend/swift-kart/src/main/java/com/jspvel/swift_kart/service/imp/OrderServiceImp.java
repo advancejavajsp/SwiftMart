@@ -177,5 +177,11 @@ public class OrderServiceImp implements OrderService {
 
 	        return filteredOrders;
 	    }
+	 
+	 public List<Order> getAllOrders() {
+	        return orderRepository.findAll();
+	    }
+	 
+	 
 
 }
