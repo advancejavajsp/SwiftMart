@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 const Card = ({ product,cardProductQuantity }) => {
+
+  console.log(product)
   let {productComp,setLoginPanel, user, setUpdateProductPanel, setDeleteProductPanel, setProductComp, setLoaderPanel,refreshId,setRefreshId } = useContext(globalvar);
   const [quantity, setQuantity] = useState(0);
   let navigate=useNavigate()
@@ -65,7 +67,7 @@ const Card = ({ product,cardProductQuantity }) => {
     <div className={styles.cardContainer} >
       
         <img
-          src={product?.image || Milk}
+          src={product?.imageUrl || Milk}
           alt={truncatedTitle}
           className={styles.productImage}
           onClick={getProductDetails}

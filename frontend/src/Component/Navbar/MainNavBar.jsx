@@ -98,7 +98,7 @@ const MainNavBar = () => {
         <h3>
           <b>Delivery in 8 minutes</b>
         </h3>
-        {/* <p>{(`B${refreshId} ${address.city} , ${address.country} `) ||'B62, Pocket B, South City I, Sect...'}</p> */}
+        <p>{address ?(`B${refreshId} ${address?.city} , ${address?.country} `) :'B62, Pocket B, South City I, Sect...'}</p>
       </div>
 
       <div className={style["search-bar"]}>
