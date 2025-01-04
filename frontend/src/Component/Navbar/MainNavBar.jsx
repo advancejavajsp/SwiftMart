@@ -38,7 +38,7 @@ const useTypewriter = (texts, speed = 100, pause = 1000) => {
 };
 
 const MainNavBar = () => {
-  const { loginPanel, setLoginPanel,addressPanel,setaddressPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel,searchPanel , setsearchPanel,searchData , setSearchData} = useContext(globalvar);
+  const { loginPanel, setLoginPanel,addressPanel,setaddressPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel,setUserProfilePanel,searchPanel , setsearchPanel,searchData , setSearchData } = useContext(globalvar);
   const searchBarRef = useRef();
   const [isPopupVisible, setPopupVisible] = useState(false);
   let [address, setAddress]=useState('B62, Pocket B, South City I, Sect...');

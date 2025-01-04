@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jspvel.swift_kart.util.State;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -20,10 +18,8 @@ public class Address {
 
 	@Id
 	private String id;
-	private String doorNo;
-	private String street;
 	private String city;
-	private State state;
+	private String state;
 	private int pincode;
 	
 	@ManyToOne

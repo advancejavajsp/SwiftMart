@@ -91,7 +91,7 @@ public class CartServiceImp implements CartService {
 
     	cart.setQuantity(cart.getQuantity() + 1); 
     	cart.setPrice(cart.getPrice() + product.getPrice()); 
-
+    	
     	cartRepository.save(cart);
 
     	CartDTO cartDTO = new CartDTO(cart);
@@ -138,7 +138,6 @@ public class CartServiceImp implements CartService {
 
 
 	public CartDTO findCartByUserId(String userId) {
-		// TODO Auto-generated method stub
 		User user= userRepository.findById(userId).orElseThrow();
 		Cart cart = user.getCart();
 		if(cart==null) {

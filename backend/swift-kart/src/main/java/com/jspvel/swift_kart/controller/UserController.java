@@ -1,5 +1,8 @@
 package com.jspvel.swift_kart.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jspvel.swift_kart.dto.UserDTO;
 import com.jspvel.swift_kart.service.imp.UserServiceImp;
+import com.jspvel.swift_kart.util.State;
 
 
 @CrossOrigin
@@ -52,5 +56,11 @@ public class UserController {
 	        String response = userServiceImp.changeUserRoleToDeliveryAgent(userId);
 	        return ResponseEntity.status(HttpStatus.OK).body(response);  // Return success message
 	    }
+	 
+	 @GetMapping("/allstate")
+	 public List<State> findAllState(){
+		return Arrays.asList(State.values());
+		 
+	 }
 	
 }
