@@ -93,8 +93,8 @@ public class PaymentServiceImp implements PaymentService {
 	        user.setBalance(balance - payment.getAmount()); 
 	        userRepository.save(user);
             payment.setPaymentStatus(PaymentStatus.SUCCESS);
-	        paymentRepository.save(payment); 
            payment.setTransactionId("TXN-" + UUID.randomUUID().toString());
+           paymentRepository.save(payment); 
 	        return payment; 
 	    } else {
 	        throw new PaymentFailedException("insufficent balance"); 	    }

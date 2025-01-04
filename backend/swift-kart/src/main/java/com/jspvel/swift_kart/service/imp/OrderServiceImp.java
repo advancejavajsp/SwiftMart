@@ -111,13 +111,16 @@ public class OrderServiceImp implements OrderService {
 		}
 
 		order.setOrderItem(items);
+		order.setPayment(payment);
 		orderRepository.save(order);
 		
 		payment.setOrder(order);
-		order.setPayment(payment);
 		paymentRepository.save(payment);
 
 		cart.getProduct().clear();
+		cart.setQuantity(0);
+		cart.setPrice(0);
+		cart.setUser(null);
 		cartRepository.save(cart);
 
 		cartRepository.delete(cart);
@@ -129,8 +132,9 @@ public class OrderServiceImp implements OrderService {
 		else
         user.getOrder().add(order);  
 		user.setCart(null);
+		
 		userRepository.save(user);
-
+        
 		return order;
 
 	}

@@ -27,7 +27,7 @@ const AdminNav = () => {
         <li onClick={() => setAddCategoryPanel(!addCategoryPanel)}>Add Category</li>
         <Link to="/order"><li>All Orders</li></Link>
         <li>Delivery</li>
-        <li>Payments</li>
+        <Link to={"/Paymentss"}>Payments</Link>
       </ul>
     </div>
   );

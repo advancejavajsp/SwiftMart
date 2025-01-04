@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { createContext, useEffect } from 'react'
 import { useState } from 'react';
 import { jwtDecode } from "jwt-decode";
@@ -12,7 +11,7 @@ const GlobalContext = ({ children }) => {
   let [loginPanel, setLoginPanel] = useState(false);
   let [signupPanel, setSignuPanel] = useState(false);
   let [mycartPanel, setMycartPanel] = useState(false)
-  let [paymentSuccessful, setPaymentSuccessful] = useState(false)
+  let [paymentSuccessful, setPaymentSuccessful] = useState(false);
   let [product, setProducts] = useState([]);
   let [productCategory, setProductsCategory] = useState([]);
   let [updateProductPanel, setUpdateProductPanel] = useState(false);
@@ -28,15 +27,29 @@ const GlobalContext = ({ children }) => {
   let [refreshId, setRefreshId] = useState(0);
   let [cartProducts , setCartProducts] = useState([]);
   let [loaderPanel , setLoaderPanel] = useState(false);
+  let [addressPanel,setaddressPanel]=useState(false);
+  let [userDetails,setUserDetails]=useState({})
+  let  [getOrdersbyUserid , setgetOrdersbyUserid ] = useState([]);
   let [userProfilePanel , setUserProfilePanel] = useState(false);
   let [editProfile , setEditProfile] = useState(false);
 
  
 
+  let getAlladdress = async () => {
+    setaddressPanel(true);
+    let response = await axios.get("https://countriesnow.space/api/v0.1/countries/states");
+    setAlladdress(response.data);
+    setaddressPanel(false);
+    setCategoryId(response.data[0].categoryId)
+
+  }
+
+
   let getAllcategory = async () => {
     setLoaderPanel(true);
     let response = await axios.get("http://localhost:8080/open/category/categoryall");
     setAllCategory(response.data);
+    console.log(response)
     setLoaderPanel(false);
     setCategoryId(response.data[0].categoryId)
 
@@ -71,7 +84,7 @@ if (user) {
   let userData=async(userId)=>{
     
     let response = await axios.get(`http://localhost:8080/open/swiftmart/email/${userId}`);
-    console.log(response);
+    setUserDetails(response?.data)
   }
   useEffect(() => {
 
@@ -88,7 +101,7 @@ if (user) {
     getCartProducts();
   },[categoryId, refreshId])
   return (
-    <globalvar.Provider value={{ userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel ,userProfilePanel , setUserProfilePanel,editProfile , setEditProfile}}>
+    <globalvar.Provider value={{ getAlladdress,addressPanel,setaddressPanel ,userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, getOrdersbyUserid , setgetOrdersbyUserid,signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel ,userProfilePanel , setUserProfilePanel,editProfile , setEditProfile,paymentSuccessful, setPaymentSuccessful,userDetails,setUserDetails}}>
       {children}
     </globalvar.Provider>
   );

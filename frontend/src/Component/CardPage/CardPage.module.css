@@ -19,7 +19,7 @@
     justify-content:center;
     align-items: center;
      gap: 1px;
-     width: 60%;
+     width: 80%;
   }
   .imageSection::-webkit-scrollbar{
     display: none;
@@ -28,7 +28,8 @@
 
 
   .imageSection img{
-    min-width: 90% !important;
+    height: 20%;
+    min-width: 80% !important;
     gap: 200px;
   
     

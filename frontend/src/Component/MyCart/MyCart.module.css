@@ -34,19 +34,47 @@
     margin: 0;
   }
   
+  .returnHomeButton{
+    width: 100px;
+    height: 50px;
+    margin-top: 15px;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+
+  }
+  .img{
+    padding-right: 20px;
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .img img{
+    height: 250px;
+    
+  }
+
   .closeButton {
     font-size: 1.5rem;
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 2px;
-    width: 40px;
-  }
-  .closeButton:hover{
     background-color: rgb(238, 56, 56);
     color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    width: 40px;
+  }
+
+  .closeButton:hover{
+    background-color: rgb(160, 22, 22);
+    color: white;
+    border: none;
     }
+
   .deliveryInfo {
     background-color: #f9f9f9;
     padding: 10px;

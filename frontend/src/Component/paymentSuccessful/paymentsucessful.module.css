@@ -1,8 +1,12 @@
 .pbody{
-width: 98vw;
-height: 96vh;
-background-size: cover;
-background-position-y: -110px;
+width: 100%;
+height: 100vh;
+/* background-size: cover; */
+position: fixed;
+z-index: 1000;
+width: 100%;
+background-color: rgba(0, 0, 0, 0.76) !important;
+/* background-position-y: -110px; */
 }
  
 /* .link-body{

@@ -1,0 +1,194 @@
+/* Address.module.css */
+
+/* Popup Container Styling */
+.mainContainer{
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333333c5;
+}
+.popupContainer {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px 30px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Section Title */
+  .popupContainer h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color:green;
+  }
+  
+  /* Dropdown Wrapper */
+  .popupContainer1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  /* Dropdown Styling */
+  
+
+.addressDropdown {
+    width: 100%; /* Use 100% to ensure both dropdowns take full width of their container */
+    max-width: 350px; 
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; 
+    margin-bottom: 20px;
+  }
+  
+  .addressDropdown1 {
+    /* width: 100%; Takes full width of the container */
+    max-width: 500px; /* Fixed maximum width for consistency */
+    min-width: 340px;
+    padding: 10px 15px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+  }
+  
+
+  
+  /* Display Selected Country */
+  .popupContainer1 p {
+    font-size: 16px;
+    color: #555;
+    margin-top: 10px;
+  }
+  
+  /* Button Container */
+  .popupContainer3 {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    
+    height: 40px;
+  }
+  
+  /* Button Styling */
+  .popupContainer3 button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .saveBtn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+  }
+  
+  .saveBtn:hover {
+    background-color: #388E3C;
+  }
+  
+  .closeBtn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+  }
+  
+  .closeBtn:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 480px) {
+    .popupContainer {
+      width: 90%;
+      padding: 15px;
+    }
+  
+    .addressDropdown {
+      font-size: 12px;
+      padding: 8px 10px;
+    }
+  
+    .popupContainer3 button {
+      padding: 8px 15px;
+      font-size: 12px;
+    }
+  }
+  /* AddressPopup.module.css */
+
+/* Container for buttons */
+.popupActions {
+  display: flex;
+  justify-content: center; /* Align buttons to the right */
+  gap: 10px; /* Space between buttons */
+  margin-top: 20px; /* Space above buttons */
+}
+
+/* Submit Button */
+.saveBtn {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.saveBtn:hover {
+  background-color: green; /* Darker green on hover */
+}
+
+/* Cancel Button */
+.closeBtn {
+  background-color: #f44336; /* Red background */
+  color: white; /* White text */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.closeBtn:hover {
+  background-color: red; /* Darker red on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .popupActions {
+    flex-direction: column; /* Stack buttons vertically on small screens */
+    align-items: stretch; /* Make buttons full-width */
+  }
+
+  .saveBtn,
+  .closeBtn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+  
