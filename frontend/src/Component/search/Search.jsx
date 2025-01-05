@@ -29,13 +29,11 @@ const Search = () => {
         setLoaderPanel(false);
       } catch (error) {
         setLoaderPanel(false);
-        console.error("Error fetching products:", error);
       }
     };
     
     fetchProducts();
   }, []);
-  console.log(allProducts)
   useEffect(() => {
     if (searchData) {
       const results = allProducts.filter((product) =>
@@ -47,8 +45,6 @@ const Search = () => {
     }
   }, [searchData, allProducts]);
 
-  console.log(searchData);
-  console.log(filteredProducts);
   
   
 

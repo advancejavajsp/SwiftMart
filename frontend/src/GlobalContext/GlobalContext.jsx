@@ -43,18 +43,20 @@ const GlobalContext = ({ children }) => {
     setLoaderPanel(true);
     let response = await axios.get("http://localhost:8080/open/category/categoryall");
     setAllCategory(response.data);
-    console.log(response)
     setLoaderPanel(false);
     setCategoryId(response.data[0].categoryId)
 
   }
 
   let fetchProductByCategory =async (categoryId) => {
-    // console.log(categoryId)
-    setLoaderPanel(true);
+    try {
+      setLoaderPanel(true);
     let response =await axios.get(`http://localhost:8080/open/category/${categoryId}`);
     setProducts(response.data)
     setLoaderPanel(false);
+    } catch (error) {
+      
+    }
   }
 
 let getUserDataFromToken=()=>{
@@ -68,14 +70,12 @@ const decoded = token && jwtDecode(token);
 let getCartProducts = async()=>{
 if (user) {
   let response = await axios.get(`http://localhost:8080/open/cart/find/${user.userId}`);
-  console.log(response);
   setCartProducts(response?.data);
 }else{
   setCartProducts([])
 }
   
 }
-console.log(userDetails)
   let userData=async(userId)=>{
     
     let response = await axios.get(`http://localhost:8080/open/swiftmart/email/${userId}`);

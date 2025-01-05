@@ -14,7 +14,6 @@ import Footer from '../Footer/Footer';
 const CardPage = ({ product, cardProductQuantity }) => {
 
   let {state}=useLocation()
-  console.log(state)
   let [prodData, setProdData] = useState({});
 
   
@@ -24,7 +23,6 @@ const CardPage = ({ product, cardProductQuantity }) => {
 
 
 
-  console.log(prodData);
   
   
 

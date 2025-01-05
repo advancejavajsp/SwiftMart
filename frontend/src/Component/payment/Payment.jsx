@@ -23,7 +23,6 @@ const Payment = () => {
   const { paymentSuccessful, setPaymentSuccessful, userData, userDetails, setLoaderPanel, user, product, cartProducts, rez, mycartPanel, setMycartPanel, setLoginPanel, setCartProducts } = useContext(globalvar);
   const [quantity, setQuantity] = useState(0);
 
-  // console.log(user.userId)
 
 
   let { state } = useLocation();
@@ -34,7 +33,6 @@ const Payment = () => {
   })
 
 
-  console.log(orderDetails)
 
   const itemPrice = cartProducts.price;
   const deliveryCharge = 25;
@@ -57,14 +55,11 @@ const Payment = () => {
       const response = await axios.post(
         `http://localhost:8080/open/swiftmart/payments/makePayment/${user.userId}`, orderDetails
       );
-      console.log(response)
 
       if (response.status == 200) {
         setPaymentSuccessful(true);
         //call order api
         let res =await axios.post(`http://localhost:8080/open/swiftmart/place-order/${user.userId}/${response.data.paymentId}`)
-        console.log("first")
-        console.log(res)
         
         toast.success("Payment Successful");
       } else {
@@ -72,7 +67,6 @@ const Payment = () => {
         toast.error("Payment Unsuccessful");
       }
     } catch (error) {
-      console.error("Error placing the order:", error);
       setPaymentSuccessful(false);
       toast.error("Payment Unsuccessful");
     } finally {
@@ -101,7 +95,7 @@ const Payment = () => {
             <div className={style["checks"]}>
               <span className={style["check2_name"]}>Delivery Address</span>
               <div className={style["check2_home"]}>
-                <span>home:</span>{userDetails?.address || " Gurugram"}
+                <span>home:</span>{userDetails?.address[0].city || " Gurugram"}
               </div>
             </div>
           </div>
@@ -154,8 +148,8 @@ const Payment = () => {
         <li>
           <button
             id={style["payment-table-btn"]}
-            className={selectedPayment === 'Card' ? style.active : ""}
-            onClick={() => handlePayment('Card')}
+            className={selectedPayment === 'DEBIT_CARD' ? style.active : ""}
+            onClick={() => handlePayment('DEBIT_CARD')}
           >
             Card
           </button>
@@ -172,8 +166,8 @@ const Payment = () => {
         <li>
           <button
             id={style["payment-table-btn"]}
-            className={selectedPayment === 'NetBanking' ? style.active : ""}
-            onClick={() => handlePayment('NetBanking')}
+            className={selectedPayment === 'Net_Banking' ? style.active : ""}
+            onClick={() => handlePayment('Net_Banking')}
           >
             NetBanking
           </button>

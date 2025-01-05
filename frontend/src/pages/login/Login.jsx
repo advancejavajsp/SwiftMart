@@ -34,7 +34,6 @@ try {
       setLoaderPanel(false);
       getUserDataFromToken(data.token);
       toast.success("Login succesful");
-      console.log("Login succesful");
       setRefreshId(refreshId+ 1);
      setTimeout(()=>{
       setLoginPanel(false)
@@ -45,7 +44,6 @@ try {
     }
        
   } else {
-    console.log("Something Went Erong")
    toast.error("Something Went Erong")
    setLoaderPanel(false);
   }

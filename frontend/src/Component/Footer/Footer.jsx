@@ -113,7 +113,7 @@ const Footer = () => {
         <div className={styles.categories}>
           <div className={styles.heading}>
             <h2>Categories</h2>
-            <p>See all</p>
+            
           </div>
           <div className={styles.list1}>
             <div className={styles.listItem1}>

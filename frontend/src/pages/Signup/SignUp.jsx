@@ -108,8 +108,6 @@ const SignUp = () => {
           }, 1500);
         } catch (error) {
           setLoaderPanel(false);
-          console.log(formData);
-          console.log(error);
           toast.error(error.response.data);
         }
       }
@@ -123,7 +121,6 @@ const SignUp = () => {
       const response = await axios.get("http://localhost:8080/open/swiftmart/allstate");
       setStates(response.data);
     } catch (error) {
-      console.error("Error fetching states:", error);
     }
   };
 
@@ -134,7 +131,6 @@ const SignUp = () => {
   useEffect(() => {
     if (mailVerified === "verified") {
       handleSubmit();
-      console.log(mailVerified);
     }
   }, [mailVerified]);
 

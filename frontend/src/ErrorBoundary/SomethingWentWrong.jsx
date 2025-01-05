@@ -1,5 +1,6 @@
 import React from 'react';
 import './SomethingWentWrongPage.css'; 
+import { Link } from 'react-router-dom';
 
 const SomethingWentWrongPage = () => {
   return (
@@ -10,7 +11,7 @@ const SomethingWentWrongPage = () => {
           <span className="emoji">😞</span> We're sorry, but there was an issue processing your request. Please try again later.
         </p>
        
-        <a href="/" className="home-button">Return to Homepage</a>
+        <Link to="/"><button  className="home-button">Return to Homepage</button></Link>
       </div>
     </div>
   );

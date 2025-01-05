@@ -39,7 +39,6 @@ function EditProfile() {
           setError('User data not found.');
         }
       } catch (error) {
-        console.error('Error fetching user data:', error);
         setError('Failed to fetch user data.');
       } finally {
         setLoading(false);
@@ -60,7 +59,6 @@ function EditProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-      console.log(formData?.phone)
 
     try {
       setLoaderPanel(true)
@@ -90,7 +88,6 @@ function EditProfile() {
         setError('Failed to update profile.');
       }
     } catch (error) {
-      console.error('Error updating profile:', error);
       setError('Failed to update profile.');
       toast.error('Failed to update profile.')
     }

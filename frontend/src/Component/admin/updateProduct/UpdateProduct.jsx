@@ -23,7 +23,6 @@ const UpdateProduct = () => {
       ...prevState,
       [name]: value
     }));
-    console.log(updateProduct)
   };
 
   let onClose=(e)=>{e?.stopPropagation(),setUpdateProductPopUp(false)}
@@ -31,7 +30,6 @@ const UpdateProduct = () => {
     e.preventDefault();
     try {
       const response = await axios.put(`http://localhost:8080/open/products/${updateProduct.productId}`, updateProduct);
-      console.log(response);
       if (response.status == 200) {
         toast.success("Updated succesfully");
         setRefreshId(refreshId+1)
@@ -40,12 +38,11 @@ const UpdateProduct = () => {
         },1500)
       }
     } catch (error) {
-      console.error("Error updating product:", error);
     }
   };
 
   return (
-    <div className={style["addProduct"]} onClick={onClose}>
+    <div className={style["addProduct"]} onDoubleClick={onClose}>
       <div className={style["addProduct1"]} onClick={(e)=>{e.stopPropagation(), setUpdateProductPopUp(true)}}>
         <form onSubmit={handleSubmit}>
           <h1>Update Product</h1>

@@ -23,7 +23,6 @@ import Search from "./search/Search"
 const Layout = () => {
   let {addressPanel,setaddressPanel,orderdetails,loginPanel,setLoginPanel,signupPanel,setSignuPanel,paymentSuccessful,mycartPanel,updateProductPanel,addProductPanel, updateProductPopUp,addCategoryPanel,setUpdateProductPanel,setPaymentSuccessful,deleteProductPanel, setDeleteProductPanel, otpRender, setOtpRender,loaderPanel ,userProfilePanel,editProfile,searchPanel , setsearchPanel }=useContext(globalvar)
 
-  console.log(paymentSuccessful )
   return (
     <>
     <Toaster/>

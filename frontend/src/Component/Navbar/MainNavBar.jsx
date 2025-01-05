@@ -37,6 +37,7 @@ const useTypewriter = (texts, speed = 100, pause = 1000) => {
   return currentText;
 };
 
+
 const MainNavBar = () => {
   const { loginPanel, setLoginPanel,addressPanel,setaddressPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel,setUserProfilePanel,searchPanel , setsearchPanel,searchData , setSearchData,userDetails } = useContext(globalvar);
   const searchBarRef = useRef();
@@ -67,7 +68,6 @@ const MainNavBar = () => {
     const searchValue = e.target.value; 
     setSearchData(searchValue); 
   };
-
   const getNavbarQRData = (userData) => {
     return `Name: ${userData?.userName}\nEmail: ${userData?.email}`;
   };
@@ -93,10 +93,8 @@ const MainNavBar = () => {
 
 
   useEffect(()=>{
-    console.log(userDetails)
     if (userDetails) {
-      // setAddress(userDetails?.address[0]);
-    console.log(address)
+      setAddress(userDetails?.address[0]);
     }
   },[userDetails])
 

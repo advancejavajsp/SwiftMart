@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom';
 const PaymentDetails = () => {
   let {state} = useLocation()
 
-  console.log(state)
   return (
     <div className={style['mainbody']}>
       <button className={style['arrow']}><MdArrowBack className={style['icon']}/></button>

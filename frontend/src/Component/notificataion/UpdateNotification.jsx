@@ -23,7 +23,7 @@ const UpdateNotification = () => {
       
 
   return (
-    <section className={styles.notificationPannel} onClick={(e)=>{e.stopPropagation(), setUpdateProductPanel(false)}}>
+    <section className={styles.notificationPannel} onDoubleClick={(e)=>{e.stopPropagation(), setUpdateProductPanel(false)}}>
     <div className={styles.notification} onClick={(e)=>{e.stopPropagation(), setUpdateProductPanel(true)}}>
       {/* Header */}
       <div className={styles.notificationHeader}>

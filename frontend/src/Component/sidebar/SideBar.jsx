@@ -16,7 +16,6 @@ import toast from 'react-hot-toast'
 const SideBar = () => {
     let {user,allCategory,categoryId, setCategoryId,setAllCategory,refreshId,setRefreshId,loaderPanel,setLoaderPanel} = useContext(globalvar);
    
-    console.log(allCategory)
 
     const handleDelete = async (categ) => {
         try {

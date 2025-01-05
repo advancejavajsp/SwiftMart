@@ -13,7 +13,6 @@ const Payments = () => {
     let data = res.data;
     setPaymentData(data)
    
-    console.log(paymentData)
   }
 
   let paymentDetails = (ele)=>{
@@ -37,14 +36,7 @@ useEffect(()=>{
         </div>
         </>)}
         
-        {/* <div className={style['paymentscards']}>
-            <img src={icon} alt="" />
-            <div className={style["text"]}>
-            <h3>TTCNI022000800594·₹234</h3>
-            <p>Placed on thu, 31 oct'24, 4:51 pm</p>
-            </div>
-            <button>view details</button>
-        </div> */}
+       
       </div>
      
     </div>

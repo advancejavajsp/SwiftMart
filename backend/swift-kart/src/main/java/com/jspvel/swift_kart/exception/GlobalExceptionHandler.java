@@ -83,7 +83,6 @@ public class GlobalExceptionHandler {
     }
 
     // Handle validation errors for @Validated
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Map<String, String>> handleConstraintViolationException(ConstraintViolationException ex) {
         Map<String, String> errors = new HashMap<>();

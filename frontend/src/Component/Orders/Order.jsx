@@ -18,7 +18,6 @@ const Order = () => {
   const navigate = useNavigate();
 
 
-  console.log(state)
   // Function to fetch data
   const fetchDetails = async () => {
     try {
@@ -28,11 +27,9 @@ const Order = () => {
       setData(res.data);
       setLoaderPanel(false)
     } catch (error) {
-      console.error('Error fetching data:', error);
       toast.error(error)
     }
   };
-console.log(data)
   // Function to handle navigation
   const handleNavigation = (url, endPoint) => {
     navigate(url, { state: endPoint });

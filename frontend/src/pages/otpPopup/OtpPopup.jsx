@@ -22,8 +22,6 @@ const OtpPopup = ({mailOtp,verifiy, mailStatus}) => {
       setError('OTP must be 6 digits long');
       return;
     }
-    console.log("otp: ", otp);
-    console.log("mailOtp : ", mailOtp)
 
     if (otp == mailOtp) {
         toast.success("Otp Verified Succesfully")

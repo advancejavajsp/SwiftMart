@@ -30,9 +30,7 @@ let {setAddProductPanel, allCategory , setLoaderPanel,refreshId, setRefreshId} =
     e.stopPropagation(),
     e.preventDefault();
       if(name && quantityAvailable&& price&& description){
-        console.log(categoryId)
         setLoaderPanel(true);
-        // console.log(addProduct)
         let response = await axios.post(`http://localhost:8080/open/products/${categoryId}`,addProduct);
         setLoaderPanel(false);
         if (response.status == 201) {
@@ -47,7 +45,7 @@ let {setAddProductPanel, allCategory , setLoaderPanel,refreshId, setRefreshId} =
       }
    }
   return (
-    <div className={style["addProduct"]} onClick={(e) => {e.stopPropagation(),setAddProductPanel(false)}}>
+    <div className={style["addProduct"]} onDoubleClick={(e) => {e.stopPropagation(),setAddProductPanel(false)}}>
         <div className={style["addProduct1"]}  onClick={(e) => {e.stopPropagation(),setAddProductPanel(true)}}>
         <form action="" onSubmit={handSubmit}>
         <h2>Add Product</h2>

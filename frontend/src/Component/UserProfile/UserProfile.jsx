@@ -27,7 +27,7 @@ function UserProfile() {
 
   const qrData = getUserProfileQRData(fetchedUserdata);  
   return (
-    <section className={style['user-main']} onClick={(e)=>{e.stopPropagation(),setUserProfilePanel(false) }}>
+    <section className={style['user-main']} onDoubleClick={(e)=>{e.stopPropagation(),setUserProfilePanel(false) }}>
     <div className={style['user-profile']}>
       <div className={style['profile-header']}>
         <img

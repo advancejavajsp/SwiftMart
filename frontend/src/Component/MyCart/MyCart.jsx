@@ -22,12 +22,9 @@ const MyCart = () => {
     }
   
   };
-console.log(cartProducts)
   
   const handleDecrement = async (product) => {
     setLoaderPanel(true);
-    console.log(user?.userId);
-    console.log(product?.productId)
     let response = await axios.delete(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
     setCartProducts(response?.data)
       setLoaderPanel(false);
@@ -57,7 +54,6 @@ console.log(cartProducts)
 
   const cartIsEmpty = !cartProducts?.product?.length;
   
-  // console.log(cartProducts);
   useEffect(()=>{
     setQuantity(cartProducts?.quantity)
   },[cartProducts])

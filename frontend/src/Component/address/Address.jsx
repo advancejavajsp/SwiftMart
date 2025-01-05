@@ -17,7 +17,6 @@ const AddressDropdown = ({ addressId }) => {
         const parsedAddress = JSON.parse(address);
         setAddress(parsedAddress); 
       } catch (error) {
-        console.error("Error parsing address from localStorage", error);
       }
     }
   }, []);
