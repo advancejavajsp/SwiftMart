@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from "react";
 import style from "../Signup/SignUp.module.css";
 import { globalvar } from "../../GlobalContext/GlobalContext";
@@ -20,23 +21,28 @@ const SignUp = () => {
     }]
   });
 
-  console.log(formData)
+  const [mailVerified, setMailVerified] = useState("notVerified");
   const [otp, setOtp] = useState('');
   const [otpVerified, setOtpVerified] = useState(false);
   const [states, setStates] = useState([]);
 
-
-
+ 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "email") {
+      setOtpVerified(false);  
+      setOtp('');  
+      setMailVerified("notVerified");  
+    }
 
     if (name in formData.addresses[0]) {
       setFormData((prevState) => ({
         ...prevState,
-        addresses:[ {
+        addresses: [{
           ...prevState.addresses[0],
           [name]: value,
-        },]
+        }]
       }));
     } else {
       setFormData((prevState) => ({
@@ -46,8 +52,27 @@ const SignUp = () => {
     }
   };
 
+ 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e?.preventDefault();
+
+    const phone = formData.phone;
+    const phoneRegex = /^[7-9][0-9]{9}$/;
+
+    if (!phoneRegex.test(phone)) {
+      toast.error("Enter a 10-digit phone number, starting with 7 or higher");
+      return;
+    }
+
+    if (formData.name.length <= 3) {
+      toast.error("Username must be more than 3 characters.");
+      return;
+    }
+
+    if (String(formData.addresses[0].pincode).length !== 6) {
+      toast.error("Pincode must be 6 digits.");
+      return;
+    }
 
     if (
       formData.name &&
@@ -65,49 +90,57 @@ const SignUp = () => {
           `http://localhost:8080/auth/send-otp?email=${formData?.email}`
         );
         setLoaderPanel(false);
-        console.log(verify);
         setOtp(verify.data);
       }
 
       if (otpVerified) {
         setLoaderPanel(true);
         formData.addresses[0].pincode = parseInt(formData.addresses[0].pincode);
-         console.log(formData);
         try {
           let response = await axios.post(
             "http://localhost:8080/auth/signup",
-            formData,
-           
+            formData
           );
-          console.log(response);
           setLoaderPanel(false);
           toast.success("SignUp Successfully");
           setTimeout(() => {
             setSignuPanel(false);
           }, 1500);
         } catch (error) {
-          console.error("Error during sign up:", error);
           setLoaderPanel(false);
-          toast.error("SignUp failed. Please try again.");
+          console.log(formData);
+          console.log(error);
+          toast.error(error.response.data);
         }
       }
     } else {
       toast.error("All fields are required!");
     }
   };
-  let getStates=async()=>{
-    const response = await axios.get("http://localhost:8080/open/swiftmart/allstate");
-    setStates(response.data)
 
-  }
-  useEffect(()=>{
+  const getStates = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/open/swiftmart/allstate");
+      setStates(response.data);
+    } catch (error) {
+      console.error("Error fetching states:", error);
+    }
+  };
+
+  useEffect(() => {
     getStates();
+  }, []);
 
-  },[])
+  useEffect(() => {
+    if (mailVerified === "verified") {
+      handleSubmit();
+      console.log(mailVerified);
+    }
+  }, [mailVerified]);
 
   return (
     <>
-      {otpRender && <OtpPopup mailOtp={otp} verifiy={setOtpVerified} />}
+      {otpRender && <OtpPopup mailOtp={otp} verifiy={setOtpVerified} mailStatus={setMailVerified} />}
       <div
         className={style["signup"]}
         onClick={(e) => {
@@ -212,7 +245,7 @@ const SignUp = () => {
               <label>Pincode</label>
               <input
                 className={style["pincode"]}
-                type="number"
+                type="text"
                 name="pincode"
                 value={formData.addresses[0].pincode}
                 onChange={handleInputChange}
@@ -231,6 +264,6 @@ const SignUp = () => {
       </div>
     </>
   );
-};
+}
 
 export default SignUp;

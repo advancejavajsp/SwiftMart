@@ -91,28 +91,35 @@
   }
   
   /* ----- Payment Methods ----- */
-  .payment-table ul {
+  .payment-tablee {
+    list-style: none;
     display: flex;
     gap: 10px;
-    list-style: none;
-    margin: 20px 0;
     padding: 0;
     flex-wrap: wrap;
   }
   
-  .payment-table ul li {
-    background-color: #f1f1f1;
-    border-radius: 4px;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .payment-tablee li {
+    margin: 5px;
   }
   
-  .payment-table ul li:hover {
-    background-color: #4caf50;
+  #payment-table-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e0e0e0;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  #payment-table-btn:hover {
+    background-color:#28a745 ;
+  }
+  
+  #payment-table-btn.active {
+    background-color: #28a745; /* Green color for active state */
     color: white;
   }
   
@@ -169,6 +176,26 @@
   .payment-btn {
     margin-top: 20px;
     text-align: center;
+  }
+  .paymenttt-btn {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  #canclebtn{
+    background-color: rgba(248, 3, 3, 0.788);
+    color: white;
+    padding: 10px 20px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  #canclebtn:hover{
+    background-color: red;
   }
   
   #paybtn {
