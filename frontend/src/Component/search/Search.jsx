@@ -3,6 +3,7 @@ import style from './search.module.css';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { globalvar } from '../../GlobalContext/GlobalContext';
+import Card from '../Card/Card';
 
 
 const Search = () => {
@@ -10,36 +11,10 @@ const Search = () => {
   const [products, setProducts] = useState([]); // State for all products
   const [filteredProducts, setFilteredProducts] = useState([]); // State for filtered products
   const [allProducts , setAllProducts] = useState([]);
-  const {searchData , setSearchData,user,loaderPanel , setLoaderPanel} = useContext(globalvar);
+  const {searchData , setSearchData,user,loaderPanel , setLoaderPanel,setRefreshId,refreshId,cartProducts} = useContext(globalvar);
    const [quantity, setQuantity] = useState(0);
 
 
-   const handleIncrement =async () => {
-    if (user) {
-      setLoaderPanel(true);
-      let response = await axios.post(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
-      setRefreshId(refreshId+1)
-      setLoaderPanel(false);
-      setQuantity(quantity + 1);
-      setRefreshId(refreshId+1)
-    }else{
-      setLoginPanel(true)
-    }
-  
-  };
-
-  
-  const handleDecrement = async () => {
-    setLoaderPanel(true);
-    let response = await axios.delete(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
-    setRefreshId(refreshId+1)
-    setLoaderPanel(false);
-    if (quantity > 0) { 
-      let res = axios.delete(`http://localhost:8080/open/cart/${user.id}/${product?.productId}`)
-      setQuantity(quantity - 1);
-    }
-    setRefreshId(refreshId-1)
-  };
 
 
   // Fetch all products when the component mounts
@@ -49,7 +24,7 @@ const Search = () => {
       try {
         setLoaderPanel(true);
         const response = await axios.get(`http://localhost:8080/open/products/getAll`);
-        console.log(response)
+       
         setAllProducts(response.data);
         setLoaderPanel(false);
       } catch (error) {
@@ -60,7 +35,7 @@ const Search = () => {
     
     fetchProducts();
   }, []);
-
+  console.log(allProducts)
   useEffect(() => {
     if (searchData) {
       const results = allProducts.filter((product) =>
@@ -87,47 +62,26 @@ const Search = () => {
           <h5>All Products</h5>
         )}
       </div>
-    <div className={style["show"]}>
-          <div className={style["product-grid"]}>
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((product) => (
-            <div key={product.id} className={style["product-card"]}>
-              <img
-                src={product.imageUrl}
-                alt={product.name}
-                className={style["product-image"]}
-              />
-              <p className={style["product-name"]}>{product.name}</p>
-              <p className={style["product-price"]}>₹ {product.price}</p>
-              <div className={style.buttonGroup}>
-          {user?.role == "ADMIN" ? <>  <button className={style.updateButton} onClick={(e)=>{e.stopPropagation(), handleUpdateClick()}}>UPDATE</button>
-            </> : ( quantity === 0 ? (
-              <> 
-            <button className={style.addButton} onClick={handleIncrement}>
-              ADD
-            </button>
-            </>
-          ) : (
-            quantity === 0 ? (
-              <button className={style.addButton} onClick={handleIncrement}>
-                ADD
-              </button>
-            ) : (
-              <div className={style.quantityControls}>
-                <button className={style.quantityBtn} onClick={handleDecrement}>-</button>
-                <span className={style.quantity}>{quantity}</span>
-                <button className={style.quantityBtn} onClick={handleIncrement}>+</button>
-              </div>
-            )
-          ))}
-        </div>
-            </div>
-          ))
-        ) : (
-          <p className={style["no-results"]}>No products found for "{searchData}"</p>
-        )}
-      </div>
+      <div className={style["cardContainer"]}>
+        {allProducts?.length > 0 ? (
+          (filteredProducts ||allProducts).map((ele) => {
+            // Find quantity in cartProducts for the current product
+            const cartProduct = cartProducts?.product?.find(
+              (item) => item?.product?.productId === ele.productId
+            );
+            const quantity = cartProduct?.quantity || 0;
 
+            return (
+              <Card
+                key={ele.productId}
+                product={ele}
+                cardProductQuantity={quantity}
+              />
+            );
+          })
+        ) : (
+          <p>No products available.</p>
+        )}
       </div>
 
       </div>

@@ -1,241 +1,4 @@
-// import React, { useContext, useEffect, useState } from "react";
-// import style from "../Signup/SignUp.module.css";
-// import { globalvar } from "../../GlobalContext/GlobalContext";
-// import axios from "axios";
-// import toast from "react-hot-toast";
-// import OtpPopup from "../otpPopup/OtpPopup";
 
-// const SignUp = () => {
-//   let { signupPanel, setLoaderPanel, setSignuPanel, setLoginPanel, otpRender, setOtpRender } = useContext(globalvar);
-
-//   const [formData, setFormData] = useState({
-//     name: "",
-//     email: "",
-//     password: "",
-//     phone: "",
-//     addresses: [{
-//       city: "",
-//       state: "", 
-//       pincode: "",
-//     }]
-//   });
-
-//   console.log(formData)
-//   const [otp, setOtp] = useState('');
-//   const [otpVerified, setOtpVerified] = useState(false);
-//   const [states, setStates] = useState([]);
-
-
-
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-
-//     if (name in formData.addresses[0]) {
-//       setFormData((prevState) => ({
-//         ...prevState,
-//         addresses:[ {
-//           ...prevState.addresses[0],
-//           [name]: value,
-//         },]
-//       }));
-//     } else {
-//       setFormData((prevState) => ({
-//         ...prevState,
-//         [name]: value,
-//       }));
-//     }
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-
-//     if (
-//       formData.name &&
-//       formData.email &&
-//       formData.password &&
-//       formData.phone &&
-//       formData.addresses[0].city &&
-//       formData.addresses[0].state &&
-//       formData.addresses[0].pincode
-//     ) {
-//       if (!otpVerified) {
-//         setOtpRender(true);
-//         setLoaderPanel(true);
-//         let verify = await axios.post(
-//           `http://localhost:8080/auth/send-otp?email=${formData?.email}`
-//         );
-//         setLoaderPanel(false);
-//         console.log(verify);
-//         setOtp(verify.data);
-//       }
-
-//       if (otpVerified) {
-//         setLoaderPanel(true);
-//         formData.addresses[0].pincode = parseInt(formData.addresses[0].pincode);
-//          console.log(formData);
-//         try {
-//           let response = await axios.post(
-//             "http://localhost:8080/auth/signup",
-//             formData,
-           
-//           );
-//           console.log(response);
-//           setLoaderPanel(false);
-//           toast.success("SignUp Successfully");
-//           setTimeout(() => {
-//             setSignuPanel(false);
-//           }, 1500);
-//         } catch (error) {
-//           console.error("Error during sign up:", error);
-//           setLoaderPanel(false);
-//           toast.error("SignUp failed. Please try again.");
-//         }
-//       }
-//     } else {
-//       toast.error("All fields are required!");
-//     }
-//   };
-//   let getStates=async()=>{
-//     const response = await axios.get("http://localhost:8080/open/swiftmart/allstate");
-//     setStates(response.data)
-
-//   }
-//   useEffect(()=>{
-//     getStates();
-
-//   },[])
-
-//   return (
-//     <>
-//       {otpRender && <OtpPopup mailOtp={otp} verifiy={setOtpVerified} />}
-//       <div
-//         className={style["signup"]}
-//         onClick={(e) => {
-//           e.stopPropagation();
-//           setSignuPanel(false);
-//           setLoginPanel(false);
-//         }}
-//       >
-//         <div
-//           className={style["form-container"]}
-//           onClick={(e) => {
-//             e.stopPropagation();
-//             setSignuPanel(true);
-//           }}
-//         >
-//           <div className={style["form-title"]}>SignUp</div>
-//           <form onSubmit={handleSubmit}>
-//             <div>
-//               <label>Username</label>
-//               <input
-//                 className={style["username"]}
-//                 type="text"
-//                 name="name"
-//                 value={formData.name}
-//                 onChange={handleInputChange}
-//                 placeholder="Enter your username"
-//                 required
-//               />
-//             </div>
-
-//             <div>
-//               <label>Email</label>
-//               <input
-//                 className={style["email"]}
-//                 type="email"
-//                 name="email"
-//                 value={formData.email}
-//                 onChange={handleInputChange}
-//                 placeholder="Enter your email"
-//                 required
-//               />
-//             </div>
-
-//             <div>
-//               <label>Password</label>
-//               <input
-//                 className={style["password"]}
-//                 type="password"
-//                 name="password"
-//                 value={formData.password}
-//                 onChange={handleInputChange}
-//                 placeholder="Enter your password"
-//                 required
-//               />
-//             </div>
-          
-
-//             <div>
-//               <label>Contact</label>
-//               <input
-//                 className={style["contact"]}
-//                 type="tel"
-//                 max={10}
-//                 name="phone"
-//                 value={formData.phone}
-//                 onChange={handleInputChange}
-//                 placeholder="Enter your contact number"
-//                 required
-//               />
-//             </div>
-
-//             <div>
-//               <label>City</label>
-//               <input
-//                 className={style["city"]}
-//                 type="text"
-//                 name="city"
-//                 value={formData.addresses[0].city}
-//                 onChange={handleInputChange}
-//                 placeholder="Enter your city"
-//                 required
-//               />
-//             </div>
-
-//             <div>
-//               <label>State</label>
-//               <select
-//                 className={style["state"]}
-//                 name="state"
-//                 value={formData.addresses[0].state}
-//                 onChange={handleInputChange}
-//                 required
-//               >
-//                 <option value="">Select State</option>
-//                 {states.map((state, index) => (
-//                   <option key={index} value={state}>
-//                     {state}
-//                   </option>
-//                 ))}
-//               </select>
-//             </div>
-
-//             <div>
-//               <label>Pincode</label>
-//               <input
-//                 className={style["pincode"]}
-//                 type="number"
-//                 name="pincode"
-//                 value={formData.addresses[0].pincode}
-//                 onChange={handleInputChange}
-//                 placeholder="Enter your pincode"
-//                 required
-//               />
-//             </div>
-
-//             <div className={style["signButton"]}>
-//               <button type="submit">
-//                 {otpVerified ? "Sign Up" : "Get OTP"}
-//               </button>
-//             </div>
-//           </form>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default SignUp;
 import React, { useContext, useEffect, useState } from "react";
 import style from "../Signup/SignUp.module.css";
 import { globalvar } from "../../GlobalContext/GlobalContext";
@@ -258,13 +21,20 @@ const SignUp = () => {
     }]
   });
 
+  const [mailVerified, setMailVerified] = useState("notVerified");
   const [otp, setOtp] = useState('');
   const [otpVerified, setOtpVerified] = useState(false);
   const [states, setStates] = useState([]);
 
-  
+ 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "email") {
+      setOtpVerified(false);  
+      setOtp('');  
+      setMailVerified("notVerified");  
+    }
 
     if (name in formData.addresses[0]) {
       setFormData((prevState) => ({
@@ -282,14 +52,13 @@ const SignUp = () => {
     }
   };
 
-
+ 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e?.preventDefault();
 
-  
     const phone = formData.phone;
-    const phoneRegex = /^[7-9][0-9]{9}$/; 
-    
+    const phoneRegex = /^[7-9][0-9]{9}$/;
+
     if (!phoneRegex.test(phone)) {
       toast.error("Enter a 10-digit phone number, starting with 7 or higher");
       return;
@@ -299,13 +68,11 @@ const SignUp = () => {
       toast.error("Username must be more than 3 characters.");
       return;
     }
-    console.log(typeof formData.addresses[0].pincode)
-console.log(formData.addresses[0].pincode.length)
-    if (String(formData.addresses[0].pincode).length != 6) {
+
+    if (String(formData.addresses[0].pincode).length !== 6) {
       toast.error("Pincode must be 6 digits.");
       return;
     }
-
 
     if (
       formData.name &&
@@ -341,7 +108,9 @@ console.log(formData.addresses[0].pincode.length)
           }, 1500);
         } catch (error) {
           setLoaderPanel(false);
-          toast.error("SignUp failed. Please try again.");
+          console.log(formData);
+          console.log(error);
+          toast.error(error.response.data);
         }
       }
     } else {
@@ -349,7 +118,6 @@ console.log(formData.addresses[0].pincode.length)
     }
   };
 
- 
   const getStates = async () => {
     try {
       const response = await axios.get("http://localhost:8080/open/swiftmart/allstate");
@@ -363,9 +131,16 @@ console.log(formData.addresses[0].pincode.length)
     getStates();
   }, []);
 
+  useEffect(() => {
+    if (mailVerified === "verified") {
+      handleSubmit();
+      console.log(mailVerified);
+    }
+  }, [mailVerified]);
+
   return (
     <>
-      {otpRender && <OtpPopup mailOtp={otp} verifiy={setOtpVerified} />}
+      {otpRender && <OtpPopup mailOtp={otp} verifiy={setOtpVerified} mailStatus={setMailVerified} />}
       <div
         className={style["signup"]}
         onDoubleClick={(e) => {
@@ -431,8 +206,6 @@ console.log(formData.addresses[0].pincode.length)
                 value={formData.phone}
                 onChange={handleInputChange}
                 placeholder="Enter your contact number"
-                // pattern="^[7-9][0-9]{9}$" 
-                // title="Enter a 10-digit phone number, starting with 7 or higher"
                 required
               />
             </div>
@@ -477,8 +250,6 @@ console.log(formData.addresses[0].pincode.length)
                 value={formData.addresses[0].pincode}
                 onChange={handleInputChange}
                 placeholder="Enter your pincode"
-                // pattern="^[0-9]{6}$" // Pattern for pincode (exactly 6 digits)
-                // title="Pincode must be exactly 6 digits."
                 required
               />
             </div>

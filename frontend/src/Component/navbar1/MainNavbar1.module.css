@@ -12,6 +12,7 @@
     position: sticky;
     top: 74px;
     z-index: 5;
+  
 
 }
 
@@ -31,7 +32,7 @@
 
 .nav-links ul li {
     list-style-type: none;
-    font-size: 16px;
+    font-size: 14px;
     transition: color 0.3s ease;
     padding: 10px 20px ;
     border: 1px solid transparent;
