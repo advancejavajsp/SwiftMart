@@ -38,6 +38,9 @@ import DeleteNotification from "../Component/notificataion/DeleteNotification";
 import EditProfile from "../Component/editProfile/EditProfile";
 import HomeDefault from "../Component/HomeDefault/HomeDefault";
 import Address from "../Component/address/Address";
+import Partner from "../Component/partner/Partner";
+import BlogPage from "../Component/Blog/BlogPage";
+import Careers from "../Component/careers/Careers";
 export const globalRoute = createBrowserRouter([
   {
     path: "/",
@@ -85,6 +88,18 @@ export const globalRoute = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+  },
+  {
+    path: "/career",
+    element: <Careers />,
+  },
+  {
+    path: "/partner",
+    element: <Partner />,
+  },
+  {
+    path: "/blog",
+    element: <BlogPage/>,
   },
   {
     path: "/cardpage",

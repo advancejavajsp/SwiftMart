@@ -39,6 +39,7 @@ public class AuthenticationService {
 	public User signup(User user) throws Exception{
 
 		user.setRole(Role.USER);
+		user.setBalance(10000.00);
 		user.setId(customIdGenerator.generateCustomId());
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		List<Address> addresses = user.getAddresses().stream().peek(add -> add.setUser(user))

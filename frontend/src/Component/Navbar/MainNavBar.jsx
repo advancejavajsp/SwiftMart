@@ -114,7 +114,7 @@ const MainNavBar = () => {
       <div className={style["search-bar"]} onClick={(e) =>{e.stopPropagation , setsearchPanel(true)}}>
         <ul className={style["search-bar-ul"]}>
           <li><CiSearch className={style["search"]} /></li>
-          <li><input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} onChange={handleChange} /></li>
+          <input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} onChange={handleChange} />
         </ul>
       </div>
 
@@ -122,7 +122,7 @@ const MainNavBar = () => {
         {user ? (
           <>
             <div className={style["account-section"]}>
-              <button className={style["account-button"]} onClick={togglePopup}>
+              <button className={style["account-button"]} onClick={togglePopup}  onDoubleClick={()=>{setPopupVisible(false)}}>
                 Account ▼
               </button>
 
@@ -133,7 +133,7 @@ const MainNavBar = () => {
                       <button className={style["account-button"]} onClick={(e) => {e.stopPropagation(), setPopupVisible(false),setUserProfilePanel(true)}}>My Account</button>
                     <ul>
                     <Link to="/order"><li>My Orders</li></Link>
-                      <li className={style["Save-Address-li"]} onClick={()=>{setaddressPanel(!addressPanel)}} >Saved Address</li>
+                      <li className={style["Save-Address-li"]} onClick={()=>{setaddressPanel(!addressPanel)}} >Change Address</li>
                       <li>E-Gift Cards</li>
                       <li>FAQ's</li>
                       <li>Account Privacy</li>

@@ -72,7 +72,6 @@ function EditProfile() {
 
    
       if (response.status === 200) {
-        console.log('Profile updated:', response.data);
         setUser((prevUser) => ({
           ...prevUser,
           name: formData.fullName,
@@ -98,7 +97,7 @@ function EditProfile() {
   };
 
   return (
-    <section className={styles['edit-container']}  onClick={(e)=>{e.stopPropagation(), setEditProfile(true)}}>
+    <section className={styles['edit-container']}  onDoubleClick={(e)=>{e.stopPropagation(), setEditProfile(false)}}>
     <div className={styles['edit-profile']}>
       <h2>Edit Profile</h2>
 

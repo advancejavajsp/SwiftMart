@@ -1,0 +1,307 @@
+.partnerPage {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.header {
+    background-color: #232323;
+    color: #fff;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.nav {
+    display: flex;
+}
+
+.navList {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.navList li {
+    margin: 0 20px;
+}
+
+.navList li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navList li a:hover {
+    text-decoration: underline;
+}
+
+.navList li a.activeLink {
+    font-weight: bold;
+}
+
+.heroSection {
+    background: linear-gradient(135deg, #ff8a00, #4CAF50); /* Gradient from orange to green */
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.heroContent h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.heroContent p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.ctaButton {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+    background-color: #388E3C; 
+}
+
+
+.whyPartner {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.whyPartner h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.whyPartnerContent {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.whyItem {
+    width: 30%;
+    margin: 20px;
+}
+
+.whyItem h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #4CAF50; 
+}
+
+.whyItem p {
+    font-size: 16px;
+    color: #666;
+}
+
+
+.howItWorks {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.howItWorks h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.step {
+    width: 30%;
+    margin: 20px;
+}
+
+.step h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #e6ba88; 
+}
+
+.step p {
+    font-size: 16px;
+    color: #666;
+}
+
+
+.testimonials {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.testimonials h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.testimonialCards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.testimonialCard {
+    width: 45%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.testimonialCard h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.testimonialCard h4 {
+    font-size: 18px;
+    color: #777;
+    margin: 5px 0;
+}
+
+.testimonialCard p {
+    font-size: 16px;
+    color: #333;
+    margin-top: 15px;
+}
+
+
+.cta {
+    background-color: #ff8a00; 
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.cta h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.cta p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.ctaButton {
+    background-color: #4CAF50; 
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.ctaButton:hover {
+    background-color: #388E3C; 
+}
+
+
+.footer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.footerContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.socialMedia {
+    margin-top: 20px;
+}
+
+.socialMedia a {
+    color: white;
+    margin: 0 15px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.socialMedia a:hover {
+    text-decoration: underline;
+}
+
+.footer p {
+    font-size: 16px;
+    color: #ccc;
+}
+
+
+@media screen and (max-width: 768px) {
+    .heroSection {
+        padding: 50px 20px;
+    }
+
+    .heroContent h1 {
+        font-size: 32px;
+    }
+
+    .heroContent p {
+        font-size: 18px;
+    }
+
+    .navList {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navList li {
+        margin: 10px 0;
+    }
+
+    .whyPartnerContent, .steps {
+        flex-direction: column;
+    }
+
+    .whyItem, .step {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .testimonialCard {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .footerContent {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .socialMedia {
+        margin-top: 20px;
+    }
+}

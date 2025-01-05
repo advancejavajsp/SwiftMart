@@ -4,13 +4,13 @@
 
 .nav .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   background-color: #F8CB46;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
   min-width: 100%;
 }
 

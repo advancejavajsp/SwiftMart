@@ -108,14 +108,14 @@ const Payment = () => {
                 <div className={style["payment-invoice"]}>
                   <div className={style["payment-invoice-row"]}>
                     <div className={style["float-left"]}>Total Amount</div>
-                    <div className={style["float-right"]}>Rs {state?.totalPrice}</div>
+                    <div className={style["float-right"]}>Rs {state?.totalPrice+  25+4 }</div>
                   </div>
                   <div className={style["payment-invoice-row"]}>
                     <div className={style["float-left1"]}>
                       Amount Payable
                       <span>(incl. of all taxes)</span>
                     </div>
-                    <div className={style["float-right2"]}>Rs {Math.ceil(state?.totalPrice + state?.totalPrice * 0.18)}</div>
+                    <div className={style["float-right2"]}>Rs {Math.ceil(state?.totalPrice+25+4 + state?.totalPrice * 0.18)}</div>
                   </div>
                 </div>
                 <div className={style["promocode-container"]}>
@@ -134,7 +134,6 @@ const Payment = () => {
                 </div>
                 <div className={style["payment-table"]}>
                   <ul>
-                    <li onClick={() => handlePayment('Wallet')}>Wallet</li>
                     <li onClick={() => handlePayment('UPI')}>UPI</li>
                     <li onClick={() => handlePayment('Card')}>Card</li>
                     <li onClick={() => handlePayment('Cash')}>Cash</li>
@@ -192,8 +191,7 @@ const Payment = () => {
                               alt=""
                             />
                             <div>
-                              <span>MobiKwik</span>
-                              <span>MobiKwik</span>
+                              <span>MobiKwik </span>
                               <span>
                                 flat 5% MobiKwik cb |min txn ₹799 |no code
                                 needed |max cb ₹75
@@ -241,7 +239,7 @@ const Payment = () => {
               <h4>Bill details</h4>
               <div className={styles.billRow}>
                 <span>Items total</span>
-                <span>₹{itemPrice * quantity}</span>
+                <span>₹{itemPrice }</span>
               </div>
               <div className={styles.billRow}>
                 <span>Delivery charge</span>

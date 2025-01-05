@@ -20,14 +20,12 @@ const AboutNav = () => {
           <div className={styles["links"]}>
             <Link to="/" className={styles["link"]}>Home</Link>
             <Link to="/about" className={styles["link"]}>About</Link>
-            <Link to="/careers" className={styles["link"]}>Careers</Link>
+            <Link to="/career" className={styles["link"]}>Careers</Link>
             <Link to="/partner" className={styles["link"]}>Partner</Link>
             <Link to="/blog" className={styles["link"]}>Blog</Link>
           </div>
 
-          <div className={styles["icon"]}>
-            <IoMenu />
-          </div>
+          
         </nav>
       </div>
 

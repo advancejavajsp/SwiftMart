@@ -47,7 +47,7 @@ console.log(cartProducts)
   const handleProceedToPay = (e) => {
     e.stopPropagation();
     setMycartPanel(false)
-    navigate("/Payment" ,{state:{totalPrice:total,cartProducts,userId:user?.sub}});
+    navigate("/Payment" ,{state:{totalPrice:itemPrice,cartProducts,userId:user?.sub}});
   };
 
   const handleReturnToHome = (e) => {
@@ -64,7 +64,7 @@ console.log(cartProducts)
   return (
     <div
       className={styles["container"]}
-      onClick={(e) => {
+      onDoubleClick={(e) => {
         e.stopPropagation();
         setMycartPanel(false);
       }}

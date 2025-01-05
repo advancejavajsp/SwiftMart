@@ -69,6 +69,7 @@
     list-style-type: none;
     display: flex;
     flex-direction: row;
+    width: 100%;
 }
 .search-bar .search {
     display: flex;
@@ -80,7 +81,8 @@
 
 .search-bar input {
     /* border: 1px solid red; */
-    border: none;
+   min-width: 95% !important;
+   border: none;
     outline: none;
     background: transparent;
     font-size: 14px;
@@ -208,6 +210,13 @@
 /* ----- Responsive Design ----- */
 
 /* Hide Delivery Info at 800px or below */
+@media (max-width: 1150px) {
+    .search-bar{
+        margin-left: 10px;
+        max-width: 30%;
+    }
+}
+
 @media (max-width: 800px) {
     .delivery-info {
         display: none;

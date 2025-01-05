@@ -10,7 +10,7 @@ const Search = () => {
   const [products, setProducts] = useState([]); // State for all products
   const [filteredProducts, setFilteredProducts] = useState([]); // State for filtered products
   const [allProducts , setAllProducts] = useState([]);
-  const {searchData , setSearchData,user} = useContext(globalvar);
+  const {searchData , setSearchData,user,loaderPanel , setLoaderPanel} = useContext(globalvar);
    const [quantity, setQuantity] = useState(0);
 
 
@@ -44,15 +44,20 @@ const Search = () => {
 
   // Fetch all products when the component mounts
   useEffect(() => {
+    
     const fetchProducts = async () => {
       try {
+        setLoaderPanel(true);
         const response = await axios.get(`http://localhost:8080/open/products/getAll`);
         console.log(response)
         setAllProducts(response.data);
+        setLoaderPanel(false);
       } catch (error) {
+        setLoaderPanel(false);
         console.error("Error fetching products:", error);
       }
     };
+    
     fetchProducts();
   }, []);
 
