@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+ import React, { useContext, useEffect, useState } from "react";
 import style from "./payment.module.css";
 import mobikwik from "../../asset/mobikwik.webp"
 import paytm from "../../asset/paytm.webp"
