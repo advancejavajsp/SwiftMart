@@ -67,7 +67,7 @@ public class OrderServiceImp implements OrderService {
 	public Order placeOrder(String userId, String paymentId) {
 		User user = userRepository.findById(userId).orElseThrow(null);
 
-		Payment payment = paymentRepository.findById(paymentId).orElse(null);
+		Payment payment = paymentRepository.findById(paymentId).orElseThrow(()-> new PaymentFailedException("payment error"));
 
 		if (!(payment.getPaymentStatus().equals(PaymentStatus.SUCCESS))) {
 			throw new PaymentFailedException("Payment failed.");
@@ -77,7 +77,6 @@ public class OrderServiceImp implements OrderService {
 		order.setOrderId(orderCustomIdGenerator.generateCategoryId());
 		order.setOrderStatus(OrderStatus.PENDING);
 		order.setCustomer_id(user);
-
 		Cart cart = user.getCart();
 		if (cart == null || cart.getProduct() == null || cart.getProduct().isEmpty()) {
 			throw new CartNotFoundException("Cart is empty.");
@@ -111,7 +110,6 @@ public class OrderServiceImp implements OrderService {
 		}
 
 		order.setOrderItem(items);
-		order.setPayment(payment);
 		orderRepository.save(order);
 		
 		payment.setOrder(order);
@@ -179,5 +177,11 @@ public class OrderServiceImp implements OrderService {
 
 	        return filteredOrders;
 	    }
+	 
+	 public List<Order> getAllOrders() {
+	        return orderRepository.findAll();
+	    }
+	 
+	 
 
 }

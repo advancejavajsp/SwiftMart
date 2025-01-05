@@ -13,7 +13,7 @@ const OtpPopup = ({mailOtp,verifiy}) => {
   };
 
    let onClose=(e)=>{
-    setOtpRender(!otpRender)
+    setOtpRender(false)
    }
 
   const handleVerify = (e) => {
@@ -31,13 +31,16 @@ const OtpPopup = ({mailOtp,verifiy}) => {
         verifiy(true)
    setOtpRender(false)
        },1500)
+    }else {
+      toast.error("Wrong OTP! Please try again.");
+      setError("OTP is incorrect")
     }
   };
 
   return (
-    <div style={styles.overlay} onClick={(e)=>{e.stopPropagation(), setOtpRender(false)}}>
-      <div style={styles.popupContainer} onClick={(e)=>{e.stopPropagation(), setOtpRender(true)}}>
-        <h3 style={styles.header}>Verify OTP</h3>
+    <div style={styles.overlay} onClick={(e)=>{e.stopPropagation(), setOtpRender(false);}}>
+      <div style={styles.popupContainer} onClick={(e) => e.stopPropagation()}>
+        <h3 style={styles.header}>Verify Email OTP</h3>
         <form onSubmit={handleVerify} style={styles.form}>
           <label htmlFor="otp" style={styles.label}>Enter OTP</label>
           <input
@@ -45,12 +48,14 @@ const OtpPopup = ({mailOtp,verifiy}) => {
             id="otp"
             value={otp}
             onChange={handleInputChange}
-            placeholder="Enter 6-digit OTP"
+            placeholder="Enter 6-digit Email OTP"
             style={styles.input}
           />
           {error && <p style={styles.error}>{error}</p>}
+          <div style={styles.mainbuttonContainer}>
           <button type="submit" style={styles.button}>Verify</button>
           <button type="button" onClick={onClose} style={styles.closeButton}>Close</button>
+          </div>
         </form>
       </div>
     </div>
@@ -103,6 +108,13 @@ const styles = {
     fontSize: '12px',
     marginBottom: '10px',
   },
+
+  mainbuttonContainer:{
+    display: 'flex',
+    justifyContent: 'space-between',
+    gap: '10px',
+  },
+
   button: {
     padding: '10px',
     backgroundColor: '#4CAF50',
@@ -111,7 +123,8 @@ const styles = {
     borderRadius: '4px',
     cursor: 'pointer',
     fontSize: '14px',
-    marginBottom: '10px',
+  
+    flex: 1,
   },
   closeButton: {
     padding: '10px',
@@ -121,7 +134,13 @@ const styles = {
     borderRadius: '4px',
     cursor: 'pointer',
     fontSize: '14px',
+    flex: 1,
   },
 };
 
 export default OtpPopup;
+
+
+
+
+

@@ -1,13 +1,19 @@
 import React, { useContext, useState } from 'react';
 import style from './adminNav.module.css';
 import { globalvar } from '../../../GlobalContext/GlobalContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const AdminNav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const {addProductPanel, setAddProductPanel,addCategoryPanel, setAddCategoryPanel} = useContext(globalvar);
 
+  let navigate = useNavigate();
+
+  let getOrderAndPayments = (url,endPoint)=>{
+  navigate(url,{state:endPoint})
+
+  }
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -25,9 +31,10 @@ const AdminNav = () => {
         <Link><li>Home</li></Link>
         <li onClick={() => setAddProductPanel(!addProductPanel)}>Add Product</li>
         <li onClick={() => setAddCategoryPanel(!addCategoryPanel)}>Add Category</li>
-        <Link to="/order"><li>All Orders</li></Link>
+        <li onClick={()=>{getOrderAndPayments("/orders","get")}}>All Orders</li>
+        <li onClick={()=>{getOrderAndPayments("/payments","payments")}}>All Payments</li>
         <li>Delivery</li>
-        <Link to={"/Paymentss"}>Payments</Link>
+        
       </ul>
     </div>
   );

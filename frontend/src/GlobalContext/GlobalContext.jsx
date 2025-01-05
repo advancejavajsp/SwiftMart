@@ -28,21 +28,15 @@ const GlobalContext = ({ children }) => {
   let [cartProducts , setCartProducts] = useState([]);
   let [loaderPanel , setLoaderPanel] = useState(false);
   let [addressPanel,setaddressPanel]=useState(false);
-  let [userDetails,setUserDetails]=useState({})
+  let [userDetails,setUserDetails]=useState("")
   let  [getOrdersbyUserid , setgetOrdersbyUserid ] = useState([]);
   let [userProfilePanel , setUserProfilePanel] = useState(false);
   let [editProfile , setEditProfile] = useState(false);
-
+  let [searchPanel , setsearchPanel] = useState(false);
+  let [searchData , setSearchData] = useState("");
  
 
-  let getAlladdress = async () => {
-    setaddressPanel(true);
-    let response = await axios.get("https://countriesnow.space/api/v0.1/countries/states");
-    setAlladdress(response.data);
-    setaddressPanel(false);
-    setCategoryId(response.data[0].categoryId)
 
-  }
 
 
   let getAllcategory = async () => {
@@ -70,6 +64,7 @@ const decoded = token && jwtDecode(token);
 
 }
 
+
 let getCartProducts = async()=>{
 if (user) {
   let response = await axios.get(`http://localhost:8080/open/cart/find/${user.userId}`);
@@ -80,17 +75,17 @@ if (user) {
 }
   
 }
-
+console.log(userDetails)
   let userData=async(userId)=>{
     
     let response = await axios.get(`http://localhost:8080/open/swiftmart/email/${userId}`);
     setUserDetails(response?.data)
+    
   }
   useEffect(() => {
 
     let token = localStorage.getItem("token");
     const decoded = token && jwtDecode(token);
-    
     setUser(decoded)
     getAllcategory()
    
@@ -100,8 +95,15 @@ if (user) {
     fetchProductByCategory(categoryId);
     getCartProducts();
   },[categoryId, refreshId])
+
+  useEffect(()=>{
+    if(user){userData(user.sub)}
+    
+  },[user])
+
+
   return (
-    <globalvar.Provider value={{ getAlladdress,addressPanel,setaddressPanel ,userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, getOrdersbyUserid , setgetOrdersbyUserid,signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel ,userProfilePanel , setUserProfilePanel,editProfile , setEditProfile,paymentSuccessful, setPaymentSuccessful,userDetails,setUserDetails}}>
+    <globalvar.Provider value={{ addressPanel,setaddressPanel ,userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, getOrdersbyUserid , setgetOrdersbyUserid,signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel ,userProfilePanel , setUserProfilePanel,editProfile , setEditProfile,paymentSuccessful, setPaymentSuccessful,userDetails,setUserDetails,searchPanel , setsearchPanel,searchData , setSearchData}}>
       {children}
     </globalvar.Provider>
   );

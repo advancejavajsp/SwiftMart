@@ -38,10 +38,10 @@ const useTypewriter = (texts, speed = 100, pause = 1000) => {
 };
 
 const MainNavBar = () => {
-  const { loginPanel, setLoginPanel,addressPanel,setaddressPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel} = useContext(globalvar);
+  const { loginPanel, setLoginPanel,addressPanel,setaddressPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel,setUserProfilePanel,searchPanel , setsearchPanel,searchData , setSearchData,userDetails } = useContext(globalvar);
   const searchBarRef = useRef();
   const [isPopupVisible, setPopupVisible] = useState(false);
-  let [address, setAddress]=useState('B62, Pocket B, South City I, Sect...');
+  let [address, setAddress]=useState(null);
   const popupRef = useRef(null);  // Add reference for the popup container
   let navigate=useNavigate();
   const togglePopup = () => {
@@ -59,6 +59,11 @@ const MainNavBar = () => {
       setLoaderPanel(false);
     },1500)
     setUser("");
+  };
+
+  const handleChange = (e) => {
+    const searchValue = e.target.value; 
+    setSearchData(searchValue); 
   };
 
   const getNavbarQRData = (userData) => {
@@ -84,27 +89,34 @@ const MainNavBar = () => {
   }, []);
 
 
+
   useEffect(()=>{
-   setAddress(JSON.parse(localStorage.getItem("address")));
-   console.log(localStorage.getItem("address"))
-  },[refreshId])
+    console.log(userDetails)
+    if (userDetails) {
+      setAddress(userDetails?.address[0]);
+    console.log(address)
+    }
+  },[userDetails])
+
+
+  
   return (
     <nav className={style["navbar"]} >
-      <div className={style["logo"]}>
+      <div className={style["logo"]} onClick={(e) =>{e.stopPropagation , setsearchPanel(!searchPanel)}}>
         <img src={logo} alt="Logo" />
       </div>
 
-      <div className={style["delivery-info"]} onClick={()=>{setaddressPanel(!addressPanel)}}>
+      <div className={style["delivery-info"]}>
         <h3>
           <b>Delivery in 8 minutes</b>
         </h3>
-        <p>{address ?(`B${refreshId} ${address?.city} , ${address?.country} `) :'B62, Pocket B, South City I, Sect...'}</p>
+        <p>{address ?(`B2 ${address?.city} , ${address?.state} `) :'Gurgaon'}</p>
       </div>
 
-      <div className={style["search-bar"]}>
+      <div className={style["search-bar"]} onClick={(e) =>{e.stopPropagation , setsearchPanel(!searchPanel)}}>
         <ul className={style["search-bar-ul"]}>
           <li><CiSearch className={style["search"]} /></li>
-          <li><input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} /></li>
+          <li><input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} onChange={handleChange} /></li>
         </ul>
       </div>
 
@@ -123,7 +135,7 @@ const MainNavBar = () => {
                       <button className={style["account-button"]} onClick={(e) => {e.stopPropagation(), setPopupVisible(false),setUserProfilePanel(true)}}>My Account</button>
                     <ul>
                     <Link to="/order"><li>My Orders</li></Link>
-                      <li className={style["Save-Address-li"]} onClick={()=>{setaddressPanel(!addressPanel)}} >Saved Address</li>
+                      <li className={style["Save-Address-li"]} onClick={()=>{setaddressPanel(!addressPanel)}} >Change Address</li>
                       <li>E-Gift Cards</li>
                       <li>FAQ's</li>
                       <li>Account Privacy</li>

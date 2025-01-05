@@ -19,7 +19,7 @@ import com.jspvel.swift_kart.service.imp.OrderServiceImp;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/open/orders")
+@RequestMapping("/open/swiftmart")
 public class OrderController {
 
     @Autowired
@@ -45,7 +45,6 @@ public class OrderController {
     
     
 
-
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Order>> getOrdersByUserId(@PathVariable String userId) {
         List<Order> orders = orderServiceImp.getOrdersByUserId(userId);
@@ -59,6 +58,11 @@ public class OrderController {
     public ResponseEntity<Order> cancelOrder(@PathVariable String orderId) {
         Order cancelledOrder = orderServiceImp.cancelOrder(orderId);
         return ResponseEntity.ok(cancelledOrder);
+    }
+    
+    @GetMapping("/get")
+    public List<Order> getAllOrders() {
+        return orderServiceImp.getAllOrders();
     }
 	
 }

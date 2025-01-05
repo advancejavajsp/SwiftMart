@@ -22,6 +22,7 @@
   
   .dropdown {
     display: flex;
+    
     width:100%;
     justify-content: space-between;
     padding: 0px 10px;
@@ -33,13 +34,13 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
   }
-  .bropDownCont{
-    width: 40%;
+  .dropDownCont{
+    width: 35%;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .dropdown .bropDownCont label{
+  .dropdown .dropDownCont label{
     width: 80px;
     display: flex;
     align-items: center;
