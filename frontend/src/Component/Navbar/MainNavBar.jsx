@@ -93,7 +93,7 @@ const MainNavBar = () => {
   useEffect(()=>{
     console.log(userDetails)
     if (userDetails) {
-      setAddress(userDetails?.address[0]);
+      // setAddress(userDetails?.address[0]);
     console.log(address)
     }
   },[userDetails])
