@@ -83,12 +83,26 @@
   color: white;
   font-size: 14px;
   cursor: pointer;
-  margin-bottom: 10px;
   transition: background-color 0.3s ease;
 }
 
 .signButton button:hover {
   background-color: #388e3c;
+}
+
+.register-link {
+  
+  text-align: center;
+}
+
+.register-link p {
+  color: green;
+  cursor: pointer !important;
+  margin: 0;
+}
+
+.register-link p:hover {
+  text-decoration: underline;
 }
 
 

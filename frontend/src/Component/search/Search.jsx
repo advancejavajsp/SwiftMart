@@ -10,7 +10,36 @@ const Search = () => {
   const [products, setProducts] = useState([]); // State for all products
   const [filteredProducts, setFilteredProducts] = useState([]); // State for filtered products
   const [allProducts , setAllProducts] = useState([]);
-  const {searchData , setSearchData} = useContext(globalvar);
+  const {searchData , setSearchData,user} = useContext(globalvar);
+   const [quantity, setQuantity] = useState(0);
+
+
+   const handleIncrement =async () => {
+    if (user) {
+      setLoaderPanel(true);
+      let response = await axios.post(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
+      setRefreshId(refreshId+1)
+      setLoaderPanel(false);
+      setQuantity(quantity + 1);
+      setRefreshId(refreshId+1)
+    }else{
+      setLoginPanel(true)
+    }
+  
+  };
+
+  
+  const handleDecrement = async () => {
+    setLoaderPanel(true);
+    let response = await axios.delete(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
+    setRefreshId(refreshId+1)
+    setLoaderPanel(false);
+    if (quantity > 0) { 
+      let res = axios.delete(`http://localhost:8080/open/cart/${user.id}/${product?.productId}`)
+      setQuantity(quantity - 1);
+    }
+    setRefreshId(refreshId-1)
+  };
 
 
   // Fetch all products when the component mounts
@@ -65,6 +94,28 @@ const Search = () => {
               />
               <p className={style["product-name"]}>{product.name}</p>
               <p className={style["product-price"]}>₹ {product.price}</p>
+              <div className={style.buttonGroup}>
+          {user?.role == "ADMIN" ? <>  <button className={style.updateButton} onClick={(e)=>{e.stopPropagation(), handleUpdateClick()}}>UPDATE</button>
+            </> : ( quantity === 0 ? (
+              <> 
+            <button className={style.addButton} onClick={handleIncrement}>
+              ADD
+            </button>
+            </>
+          ) : (
+            quantity === 0 ? (
+              <button className={style.addButton} onClick={handleIncrement}>
+                ADD
+              </button>
+            ) : (
+              <div className={style.quantityControls}>
+                <button className={style.quantityBtn} onClick={handleDecrement}>-</button>
+                <span className={style.quantity}>{quantity}</span>
+                <button className={style.quantityBtn} onClick={handleIncrement}>+</button>
+              </div>
+            )
+          ))}
+        </div>
             </div>
           ))
         ) : (

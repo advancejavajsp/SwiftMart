@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import OtpPopup from "../otpPopup/OtpPopup";
 
 const SignUp = () => {
-  let { signupPanel, setLoaderPanel, setSignuPanel, setLoginPanel, otpRender, setOtpRender } = useContext(globalvar);
+  let { signupPanel, setLoaderPanel, setSignuPanel, setLoginPanel, otpRender, setOtpRender, loginPanel } = useContext(globalvar);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -15,7 +15,7 @@ const SignUp = () => {
     phone: "",
     addresses: [{
       city: "",
-      state: "", 
+      state: "",
       pincode: "",
     }]
   });
@@ -33,7 +33,7 @@ const SignUp = () => {
     if (name in formData.addresses[0]) {
       setFormData((prevState) => ({
         ...prevState,
-        addresses:[ {
+        addresses: [{
           ...prevState.addresses[0],
           [name]: value,
         },]
@@ -72,12 +72,12 @@ const SignUp = () => {
       if (otpVerified) {
         setLoaderPanel(true);
         formData.addresses[0].pincode = parseInt(formData.addresses[0].pincode);
-         console.log(formData);
+        console.log(formData);
         try {
           let response = await axios.post(
             "http://localhost:8080/auth/signup",
             formData,
-           
+
           );
           console.log(response);
           setLoaderPanel(false);
@@ -95,15 +95,15 @@ const SignUp = () => {
       toast.error("All fields are required!");
     }
   };
-  let getStates=async()=>{
+  let getStates = async () => {
     const response = await axios.get("http://localhost:8080/open/swiftmart/allstate");
     setStates(response.data)
 
   }
-  useEffect(()=>{
+  useEffect(() => {
     getStates();
 
-  },[])
+  }, [])
 
   return (
     <>
@@ -225,6 +225,9 @@ const SignUp = () => {
               <button type="submit">
                 {otpVerified ? "Sign Up" : "Get OTP"}
               </button>
+            </div>
+            <div className={style['register-link']}>
+              <p onClick={(e) => { e.stopPropagation(), setLoginPanel(!loginPanel), setSignuPanel(!signupPanel) }}>Already have an account?</p>
             </div>
           </form>
         </div>

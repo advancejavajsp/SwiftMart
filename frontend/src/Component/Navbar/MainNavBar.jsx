@@ -44,8 +44,10 @@ const MainNavBar = () => {
   let [address, setAddress]=useState('B62, Pocket B, South City I, Sect...');
   const popupRef = useRef(null);  // Add reference for the popup container
   let navigate=useNavigate();
-  const togglePopup = () => {
-    setPopupVisible(!isPopupVisible);
+
+  const togglePopup = (e) => {
+    // e.stopPropagation();
+    setPopupVisible((prevState) => !prevState); 
   };
 
   const handleLogout = () => {
@@ -95,7 +97,6 @@ const MainNavBar = () => {
   },[refreshId])
 
 
-  console.log(searchData);
   
   return (
     <nav className={style["navbar"]} >
@@ -110,7 +111,7 @@ const MainNavBar = () => {
         <p>{address ?(`B${refreshId} ${address?.city} , ${address?.country} `) :'B62, Pocket B, South City I, Sect...'}</p>
       </div>
 
-      <div className={style["search-bar"]} onClick={(e) =>{e.stopPropagation , setsearchPanel(!searchPanel)}}>
+      <div className={style["search-bar"]} onClick={(e) =>{e.stopPropagation , setsearchPanel(true)}}>
         <ul className={style["search-bar-ul"]}>
           <li><CiSearch className={style["search"]} /></li>
           <li><input type="text" placeholder={typewriterPlaceholder} ref={searchBarRef} onChange={handleChange} /></li>

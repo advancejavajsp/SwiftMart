@@ -5,9 +5,10 @@
   font-family: 'Arial', sans-serif;
   position: fixed;
   bottom: 0;
-  z-index: 20;
+  z-index: 9;
   width: 100%;
   height: 90%;
+  overflow-y: auto;
 }
 
 /* Search Information */
@@ -16,31 +17,58 @@
   text-align: center;
 }
 
+.addButton, .updateButton, .deleteButton {
+  height: 35px;
+  width: 80px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #4caf50;
+  background-color: transparent;
+  color: #333;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.addButton:hover {
+  color: white;
+  background-color: #4caf50;
+  transform: translateY(-2px);
+}
+
 .search-info h5 {
   font-size: 1.5rem;
   font-weight: 600;
   color: #333;
-  margin: 0;
 }
 
 /* Product Grid */
 .product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
-  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  height: 90%;
+  width: 100%;
   padding: 0 10px;
   overflow-y: auto;
 }
 
 /* Product Card */
 .product-card {
+  width: 200px; 
+  height: 280px; 
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
   background-color: #fff;
-  border: 1px solid #ddd; /* Subtle border */
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow */
-  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .product-card:hover {
@@ -50,27 +78,36 @@
 
 /* Product Image */
 .product-image {
-  width: 100%;
-  height: 150px;
+  width: 130px;
+  height: 130px;
   object-fit: cover;
+  object-position: center;
   border-radius: 8px;
-  margin-bottom: 10px;
+  margin: 10px auto;
 }
 
 /* Product Name */
 .product-name {
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: bold;
   color: #333;
-  margin: 5px 0;
+  margin: 1px 0;
+  text-overflow: ellipsis;   
+  overflow: hidden;          
+  white-space: nowrap;       
+  width: 100%;
+  max-width: 180px;          
+  flex-shrink: 1; 
 }
 
 /* Product Price */
 .product-price {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #555;
-  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 /* No Results */
