@@ -16,7 +16,8 @@ const Card = ({ product,cardProductQuantity }) => {
   setQuantity(cardProductQuantity)
  },[cardProductQuantity]);
 
-  const handleIncrement =async () => {
+  const handleIncrement =async (e) => {
+    e.stopPropagation()
     if (user) {
       setLoaderPanel(true);
       let response = await axios.post(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
@@ -31,7 +32,8 @@ const Card = ({ product,cardProductQuantity }) => {
   };
 
   
-  const handleDecrement = async () => {
+  const handleDecrement = async (e) => {
+    e.stopPropagation()
     setLoaderPanel(true);
     let response = await axios.delete(`http://localhost:8080/open/cart/${user?.userId}/${product?.productId}`);
     setRefreshId(refreshId+1)
@@ -43,23 +45,21 @@ const Card = ({ product,cardProductQuantity }) => {
     setRefreshId(refreshId-1)
   };
 
-  // let addProduct = ()=>{
-  //   let res = axios.post(`http://localhost:8080/open/cart/${user.id}/${""}`)
-  // }
-
   const truncatedTitle = product?.name?.length > 50 ? product?.name?.slice(0, 50) + "..." : product?.name;
 
   const handleUpdateClick = (e) => {
+    e.stopPropagation()
     setProductComp({ ...product});
     setUpdateProductPanel(true); 
   };
-  let handleDeleteClick = ()=>{
-    
+  let handleDeleteClick = (e)=>{
+    e.stopPropagation()
     setProductComp({ ...product});
     setDeleteProductPanel(true);
   }
 
-  let getProductDetails = ()=>{
+  let getProductDetails = (e)=>{
+    e.stopPropagation()
     navigate("/cardPage", {state:product})
   }
 
@@ -74,7 +74,7 @@ const Card = ({ product,cardProductQuantity }) => {
           src={product?.imageUrl || Milk}
           alt={truncatedTitle}
           className={styles.productImage}
-          onClick={getProductDetails}
+          
         />
       
       <div className={styles.productDetails}>

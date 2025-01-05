@@ -38,10 +38,10 @@ const useTypewriter = (texts, speed = 100, pause = 1000) => {
 };
 
 const MainNavBar = () => {
-  const { loginPanel, setLoginPanel,addressPanel,setaddressPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel,setUserProfilePanel,searchPanel , setsearchPanel,searchData , setSearchData } = useContext(globalvar);
+  const { loginPanel, setLoginPanel,addressPanel,setaddressPanel, mycartPanel, setMycartPanel, user, setUser ,refreshId,setRefreshId, setLoaderPanel,setUserProfilePanel,searchPanel , setsearchPanel,searchData , setSearchData,userDetails } = useContext(globalvar);
   const searchBarRef = useRef();
   const [isPopupVisible, setPopupVisible] = useState(false);
-  let [address, setAddress]=useState('B62, Pocket B, South City I, Sect...');
+  let [address, setAddress]=useState(null);
   const popupRef = useRef(null);  // Add reference for the popup container
   let navigate=useNavigate();
   const togglePopup = () => {
@@ -89,13 +89,16 @@ const MainNavBar = () => {
   }, []);
 
 
+
   useEffect(()=>{
-   setAddress(JSON.parse(localStorage.getItem("address")));
-   console.log(localStorage.getItem("address"))
-  },[refreshId])
+    console.log(userDetails)
+    if (userDetails) {
+      setAddress(userDetails?.address[0]);
+    console.log(address)
+    }
+  },[userDetails])
 
 
-  console.log(searchData);
   
   return (
     <nav className={style["navbar"]} >
@@ -103,11 +106,11 @@ const MainNavBar = () => {
         <img src={logo} alt="Logo" />
       </div>
 
-      <div className={style["delivery-info"]} onClick={()=>{setaddressPanel(!addressPanel)}}>
+      <div className={style["delivery-info"]}>
         <h3>
           <b>Delivery in 8 minutes</b>
         </h3>
-        <p>{address ?(`B${refreshId} ${address?.city} , ${address?.country} `) :'B62, Pocket B, South City I, Sect...'}</p>
+        <p>{address ?(`B2 ${address?.city} , ${address?.state} `) :'Gurgaon'}</p>
       </div>
 
       <div className={style["search-bar"]} onClick={(e) =>{e.stopPropagation , setsearchPanel(!searchPanel)}}>
