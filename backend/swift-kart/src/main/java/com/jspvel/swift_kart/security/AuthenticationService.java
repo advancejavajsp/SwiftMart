@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import com.jspvel.swift_kart.dao.UserRepository;
 import com.jspvel.swift_kart.entity.Address;
@@ -36,16 +37,17 @@ public class AuthenticationService {
 		this.passwordEncoder = passwordEncoder;
 	}
 
-	public User signup(User user) throws Exception{
+	public User signup(User user) throws MethodArgumentNotValidException{
 
 		user.setRole(Role.USER);
 		user.setBalance(10000.00);
 		user.setId(customIdGenerator.generateCustomId());
-		user.setPassword("USER"+ passwordEncoder.encode(user.getPassword()));
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		if(user.getAddresses()!=null) {
 		List<Address> addresses = user.getAddresses().stream().peek(add -> add.setUser(user))
 				.peek(add -> add.setId(user.getId() + customIdGenerator.generateCustomIdAddress())).toList();
 		user.setAddresses(addresses);
-
+		}
 //		ResponseEntity<Map> uploadImage = cloudinaryImageUploadController.uploadImage(user.getPhoto());
 //		String url=uploadImage.getBody().get("secured_url").toString();
 //        user.setImage(url);

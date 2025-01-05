@@ -98,7 +98,7 @@ function EditProfile() {
   };
 
   return (
-    <section className={styles['edit-container']}  onClick={(e)=>{e.stopPropagation(), setEditProfile(true)}}>
+    <section className={styles['edit-container']}  onDoubleClick={(e)=>{e.stopPropagation(), setEditProfile(false)}}>
     <div className={styles['edit-profile']}>
       <h2>Edit Profile</h2>
 

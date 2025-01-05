@@ -288,3 +288,12 @@
         width: 200px;
     }
 }
+.delivery-info .addressHead{
+    width: 60%;
+    height: 50%;
+}
+
+.delivery-info .addressPara{
+    width: 60%;
+    height: 50%;
+}

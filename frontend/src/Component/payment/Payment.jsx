@@ -134,11 +134,11 @@ const Payment = () => {
                 </div>
                 <div className={style["payment-table"]}>
                   <ul>
-                    <li onClick={() => handlePayment('Wallet')}>Wallet</li>
+      
                     <li onClick={() => handlePayment('UPI')}>UPI</li>
-                    <li onClick={() => handlePayment('Card')}>Card</li>
+                    <li onClick={() => handlePayment('DEBIT_CARD')}>Card</li>
                     <li onClick={() => handlePayment('Cash')}>Cash</li>
-                    <li onClick={() => handlePayment('NetBanking')}>NetBanking</li>
+                    <li onClick={() => handlePayment('NET_BANKING')}>NetBanking</li>
                   </ul>
                   {orderDetails.paymentMode === 'UPI' && (
                     <div className={style["upi-dropdown"]}>

@@ -47,7 +47,7 @@ let {setAddProductPanel, allCategory , setLoaderPanel,refreshId, setRefreshId} =
       }
    }
   return (
-    <div className={style["addProduct"]} onClick={(e) => {e.stopPropagation(),setAddProductPanel(false)}}>
+    <div className={style["addProduct"]} onDoubleClick={(e) => {e.stopPropagation(),setAddProductPanel(false)}}>
         <div className={style["addProduct1"]}  onClick={(e) => {e.stopPropagation(),setAddProductPanel(true)}}>
         <form action="" onSubmit={handSubmit}>
         <h2>Add Product</h2>

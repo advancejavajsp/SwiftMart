@@ -8,6 +8,7 @@
   z-index: 20;
   width: 100%;
   height: 90%;
+  overflow-y: auto;
 }
 
 /* Search Information */

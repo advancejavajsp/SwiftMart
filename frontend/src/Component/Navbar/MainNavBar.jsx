@@ -45,7 +45,13 @@ const MainNavBar = () => {
   const popupRef = useRef(null);  // Add reference for the popup container
   let navigate=useNavigate();
   const togglePopup = () => {
-    setPopupVisible(!isPopupVisible);
+    if(isPopupVisible === false){
+      setPopupVisible(true)
+    }
+    else{
+      setPopupVisible(false)
+    }
+   
   };
 
   const handleLogout = () => {
@@ -95,7 +101,7 @@ const MainNavBar = () => {
   },[refreshId])
 
 
-  console.log(searchData);
+ 
   
   return (
     <nav className={style["navbar"]} >
@@ -104,10 +110,10 @@ const MainNavBar = () => {
       </div>
 
       <div className={style["delivery-info"]} onClick={()=>{setaddressPanel(!addressPanel)}}>
-        <h3>
+        <h3 className={style["addressHead"]}>
           <b>Delivery in 8 minutes</b>
         </h3>
-        <p>{address ?(`B${refreshId} ${address?.city} , ${address?.country} `) :'B62, Pocket B, South City I, Sect...'}</p>
+        <p className={style["addressPara"]}>{address ?(`B${refreshId} ${address?.city} , ${address?.country} `) :'B62, Pocket B, South City I, Sect...'}</p>
       </div>
 
       <div className={style["search-bar"]} onClick={(e) =>{e.stopPropagation , setsearchPanel(!searchPanel)}}>

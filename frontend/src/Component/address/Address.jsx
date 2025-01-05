@@ -62,7 +62,7 @@ const CountryDropdown = () => {
   };
 
   return (
-    <section className={styles.mainContainer} onClick={handleOutsideClick}>
+    <section className={styles.mainContainer} onDoubleClick={handleOutsideClick}>
       <div className={styles.popupContainer} onClick={(e) => e.stopPropagation()}>
         <h2>Select Country & State</h2>
 

@@ -45,7 +45,7 @@ const UpdateProduct = () => {
   };
 
   return (
-    <div className={style["addProduct"]} onClick={onClose}>
+    <div className={style["addProduct"]} onDoubleClick={onClose}>
       <div className={style["addProduct1"]} onClick={(e)=>{e.stopPropagation(), setUpdateProductPopUp(true)}}>
         <form onSubmit={handleSubmit}>
           <h1>Update Product</h1>

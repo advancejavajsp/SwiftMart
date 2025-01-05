@@ -2,6 +2,7 @@ package com.jspvel.swift_kart.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -50,7 +51,7 @@ public class AuthenticationController {
 	@ApiResponse(description = "user sign up sucessfull", responseCode = "201")
 	@ApiResponse(description = "error in signup", responseCode = "404")
 	@PostMapping("/signup")
-	public ResponseEntity<User> register(@RequestBody @Valid User registerUserDto) throws Exception {
+	public ResponseEntity<User> register(@RequestBody @Valid User registerUserDto) throws MethodArgumentNotValidException {
 
 		User registeredUser = authenticationService.signup(registerUserDto);
 

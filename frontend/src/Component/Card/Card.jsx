@@ -78,7 +78,7 @@ const Card = ({ product,cardProductQuantity }) => {
         />
       
       <div className={styles.productDetails}>
-        <p className={styles['time']}> {user?.role !== "ADMIN" && <><IoMdStopwatch /> "8min"</>}</p>
+        <p className={styles['time']}> {user?.role !== "ADMIN" && <><IoMdStopwatch /> 8min</>}</p>
         <h3 className={styles.productTitle}>{truncatedTitle}</h3>
         {user?.role === "ADMIN" && <p className={styles.productSize}>Quantity: {product?.quantityAvailable}</p>}
         <p className={styles.productPrice}>Price:  ₹ {product?.price} &nbsp;{user?.role !== "ADMIN" && <del className={styles['discount']}>{product?.price + product?.price * 0.05}</del>}</p>

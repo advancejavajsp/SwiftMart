@@ -16,7 +16,7 @@ const DeleteNotification = () => {
           console.log(response.data)
     };
   return (
-    <section className={styles.notificationPannel} onClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(false)}}>
+    <section className={styles.notificationPannel} onDoubleClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(false)}}>
     <div className={styles.notification} onClick={(e)=>{e.stopPropagation(), setDeleteProductPanel(true)}}>
       {/* Header */}
       <div className={styles.notificationHeader}>

@@ -52,7 +52,7 @@ const AddCategory = () => {
 
 
   return (
-    <div className={styles["popupOverlay"]} onClick={handleCancel}>
+    <div className={styles["popupOverlay"]} onDoubleClick={handleCancel}>
       <div  className={styles["popupContent"]} onClick={(e)=>{e.stopPropagation(), setAddCategoryPanel(true)}}>
         <h2>Add Category</h2>
         <form onSubmit={handleSubmit}>
