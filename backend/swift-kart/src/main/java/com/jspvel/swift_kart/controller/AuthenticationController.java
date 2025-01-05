@@ -1,6 +1,9 @@
 package com.jspvel.swift_kart.controller;
 
+import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,7 +53,7 @@ public class AuthenticationController {
 	@ApiResponse(description = "user sign up sucessfull", responseCode = "201")
 	@ApiResponse(description = "error in signup", responseCode = "404")
 	@PostMapping("/signup")
-	public ResponseEntity<User> register(@RequestBody @Valid User registerUserDto) throws Exception {
+	public ResponseEntity<User> register(@RequestBody @Valid User registerUserDto) throws DataIntegrityViolationException,Exception,SQLException {
 
 		User registeredUser = authenticationService.signup(registerUserDto);
 

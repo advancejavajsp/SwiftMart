@@ -1,9 +1,11 @@
 package com.jspvel.swift_kart.exception;
 
 
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
@@ -153,5 +155,26 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CartNotFoundException.class)
     public ResponseEntity<String> OrderNotFoundException(CartNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+    @ExceptionHandler(SQLException.class)
+    public ResponseEntity<String> SQLExceptionHndling(SQLException ex) {
+        return new ResponseEntity(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<Object> handleDataIntegrityViolation(DataIntegrityViolationException ex) {
+        String word=ex.getMessage();
+        int start=word.indexOf('(')+1;
+        String words=word.substring(start,(word.indexOf(')')));
+    	
+        if (words.equalsIgnoreCase("email")) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("email already exist");
+        }
+        if (words.equalsIgnoreCase("phone")) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("phone number already exists.");
+        }
+
+        // Catch any other database integrity issues
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Database integrity violation."+words);
     }
 }

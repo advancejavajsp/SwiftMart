@@ -43,8 +43,8 @@ public class User implements UserDetails {
 	@Email(message = "valid mail format")
 	private String email;
 	@Column(unique = true, nullable = false)
-	@Max(9999999999l)
-	@Min(6000000000l)
+	@Max(value = 9999999999L, message = "Phone number should be 10 digits long and start with 6, 7, 8, or 9 ")
+    @Min(value = 6000000000L, message = "Phone number should be 10 digits long and start with 6, 7, 8, or 9")
 	private long phone;
 
 

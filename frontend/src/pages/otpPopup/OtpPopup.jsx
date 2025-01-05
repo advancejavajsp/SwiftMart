@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { globalvar } from '../../GlobalContext/GlobalContext';
 import toast from 'react-hot-toast';
 
-const OtpPopup = ({mailOtp,verifiy}) => {
+const OtpPopup = ({mailOtp,verifiy, mailStatus}) => {
    let {otpRender, setOtpRender } = useContext(globalvar)
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
@@ -27,6 +27,7 @@ const OtpPopup = ({mailOtp,verifiy}) => {
 
     if (otp == mailOtp) {
         toast.success("Otp Verified Succesfully")
+        mailStatus("verified")
        setTimeout(()=>{
         verifiy(true)
    setOtpRender(false)

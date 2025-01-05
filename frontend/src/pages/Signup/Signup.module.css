@@ -91,6 +91,10 @@
   background-color: #388e3c;
 }
 
+.verified{
+  cursor: crosshair;
+}
+
 
 @media (max-width: 768px) {
   .signup .form-container {
