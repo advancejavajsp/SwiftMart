@@ -29,9 +29,9 @@
 
   .imageSection img{
     height: 20%;
-    min-width: 80% !important;
+    min-width: 60% !important;
     gap: 200px;
-  
+    padding: 20px;
     
   }
   .textlist {

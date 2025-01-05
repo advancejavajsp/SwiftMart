@@ -57,7 +57,7 @@ const CardPage = ({ product, cardProductQuantity }) => {
     <div className={styles.container}>
     <div className={styles.imageSection}>
       <img 
-        src={Milk}
+        src={state.imageUrl}
         alt="Amul Taaza Milk" 
         className={styles.productImage} 
       />

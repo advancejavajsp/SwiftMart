@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import style from "./payment.module.css";
 import mobikwik from "../../asset/mobikwik.webp"
 import paytm from "../../asset/paytm.webp"
@@ -12,6 +13,12 @@ import milkImage from "../../asset/Milk.avif";
 
 
 const Payment = () => {
+
+  const [selectedPayment, setSelectedPayment] = useState(null); // State to track the selected button
+
+  const handlePayment = (method) => {
+    setSelectedPayment(method); // Update the selected button
+  };
 
   const [upiId, setUpiId] = useState('');
   const { paymentSuccessful, setPaymentSuccessful, userData, userDetails, setLoaderPanel, user, product, cartProducts, rez, mycartPanel, setMycartPanel, setLoginPanel, setCartProducts } = useContext(globalvar);
@@ -30,9 +37,7 @@ const Payment = () => {
   const handlingCharge = 4;
   const total = itemPrice + deliveryCharge + handlingCharge;
 
-  const handlePayment = (method) => {
-    setOrderDetails({ ...orderDetails, paymentMode: method })
-  }
+  
 
   const handleUpiChange = (event) => {
     setUpiId(event.target.value)
@@ -149,13 +154,60 @@ const Payment = () => {
                   </div>
                 </div>
                 <div className={style["payment-table"]}>
-                  <ul>
-                    <li onClick={() => handlePayment('Wallet')}>Wallet</li>
-                    <li onClick={() => handlePayment('UPI')}>UPI</li>
-                    <li onClick={() => handlePayment('Card')}>Card</li>
-                    <li onClick={() => handlePayment('Cash')}>Cash</li>
-                    <li onClick={() => handlePayment('NetBanking')}>NetBanking</li>
-                  </ul>
+                  {/* <ul className={style["payment-tablee"]}>
+                    <li><button  id={style["payment-table-btn"]}  className={selectedPayment === 'Wallet' ? style.active : ""}  onClick={() => handlePayment('UPI')}>Wallet</button></li>
+                    <li><button  id={style["payment-table-btn"]}  className={selectedPayment === 'UPI' ? style.active : ""}  onClick={() => handlePayment('UPI')}>UPI</button></li>
+                    <li><button  id={style["payment-table-btn"]}  className={selectedPayment === 'Card' ? style.active : ""}  onClick={() => handlePayment('Card')}>Card</button></li>
+                    <li><button  id={style["payment-table-btn"]}  className={selectedPayment === 'Cash' ? style.active : ""}  onClick={() => handlePayment('Cash')}>Cash</button></li>
+                    <li><button  id={style["payment-table-btn"]}  className={selectedPayment === 'NetBanking' ? style.active : ""}  onClick={() => handlePayment('NetBanking')}>NetBanking</button></li>
+                  </ul> */}
+                   <ul className={style["payment-tablee"]}>
+        <li>
+          <button
+            id={style["payment-table-btn"]}
+            className={selectedPayment === 'Wallet' ? style.active : ""}
+            onClick={() => handlePayment('Wallet')}
+          >
+            Wallet
+          </button>
+        </li>
+        <li>
+          <button
+            id={style["payment-table-btn"]}
+            className={selectedPayment === 'UPI' ? style.active : ""}
+            onClick={() => handlePayment('UPI')}
+          >
+            UPI
+          </button>
+        </li>
+        <li>
+          <button
+            id={style["payment-table-btn"]}
+            className={selectedPayment === 'Card' ? style.active : ""}
+            onClick={() => handlePayment('Card')}
+          >
+            Card
+          </button>
+        </li>
+        <li>
+          <button
+            id={style["payment-table-btn"]}
+            className={selectedPayment === 'Cash' ? style.active : ""}
+            onClick={() => handlePayment('Cash')}
+          >
+            Cash
+          </button>
+        </li>
+        <li>
+          <button
+            id={style["payment-table-btn"]}
+            className={selectedPayment === 'NetBanking' ? style.active : ""}
+            onClick={() => handlePayment('NetBanking')}
+          >
+            NetBanking
+          </button>
+        </li>
+      </ul>
                   {orderDetails.paymentMode === 'UPI' && (
                     <div className={style["upi-dropdown"]}>
                       <label htmlFor="upi">Enter UPI ID:</label>
@@ -221,7 +273,10 @@ const Payment = () => {
                     </ul>
                   </div>
                   <div className={style["payment-btn"]}>
-                    <button id={style["paybtn"]} onClick={() => { handleSubmit() }}>Pay Now</button>
+                    <ul className={style["paymenttt-btn"]}>
+                      <li><button id={style["paybtn"]} onClick={() => { handleSubmit() }}>Pay Now</button></li>
+                      <Link to ="/" ><li><button id={style["canclebtn"]}>Cancel</button></li></Link>
+                    </ul>
                   </div>
                   <div className={style["payment-text"]}>
                     You will be redirected to wallet’s website to authorize
@@ -243,7 +298,7 @@ const Payment = () => {
             <p>Shipment of {cartProducts?.product?.length} item</p>
           </div>
 
-          <section className={styles.cartItemsContainer}> {cartProducts?.product.map((ele, i) => <div className={styles.cartItem} key={ele.id}>
+          <section className={styles.cartItemsContainer}> {cartProducts?.product?.map((ele, i) => <div className={styles.cartItem} key={ele.id}>
             <img src={ele.product.imageUrl || milkImage} alt="Amul Milk" className={styles.itemImage} />
             <div className={styles.itemDetails}>
               <h4>{ele.product.name}</h4>
