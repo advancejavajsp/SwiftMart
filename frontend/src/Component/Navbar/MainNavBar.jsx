@@ -132,7 +132,7 @@ const MainNavBar = () => {
                       <button className={style["account-button"]} onClick={(e) => {e.stopPropagation(), setPopupVisible(false),setUserProfilePanel(true)}}>My Account</button>
                     <ul>
                     <Link to="/order"><li>My Orders</li></Link>
-                      <li className={style["Save-Address-li"]} onClick={()=>{setaddressPanel(!addressPanel)}} >Saved Address</li>
+                      <li className={style["Save-Address-li"]} onClick={()=>{setaddressPanel(!addressPanel)}} >Change Address</li>
                       <li>E-Gift Cards</li>
                       <li>FAQ's</li>
                       <li>Account Privacy</li>

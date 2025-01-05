@@ -41,7 +41,7 @@ public class AuthenticationService {
 		user.setRole(Role.USER);
 		user.setBalance(10000.00);
 		user.setId(customIdGenerator.generateCustomId());
-		user.setPassword("USER"+ passwordEncoder.encode(user.getPassword()));
+		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		List<Address> addresses = user.getAddresses().stream().peek(add -> add.setUser(user))
 				.peek(add -> add.setId(user.getId() + customIdGenerator.generateCustomIdAddress())).toList();
 		user.setAddresses(addresses);
