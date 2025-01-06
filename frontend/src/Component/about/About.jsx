@@ -21,7 +21,7 @@ const About = () => {
             Imagine needing something when you are at home and getting it before
             you have tied your shoelaces to step out. We are revolutionizing
             e-commerce by making the stuff most important to you available in a
-            blink of your eye.
+            swiftmart of your eye.
           </p>
           <p>
             We want our customers to focus on the more important things for
@@ -56,13 +56,13 @@ const About = () => {
 
         <div className={style["ownership"]}>
           <p>
-            <strong>"Blinkit"</strong> is owned & managed by{" "}
-            <strong>"Blink Commerce Private Limited”</strong> (formerly known as
-            Grofers India Private Limited) and is not related, linked, or
+            <strong>"Swiftmart"</strong> is owned & managed by{" "}
+            <strong>"Swiftmart Commerce Private Limited”</strong> (formerly known as
+            Swiftmart Private Limited) and is not related, linked, or
             interconnected in whatsoever manner or nature, to
-            <strong>“GROFFR.COM”</strong>, which is a real estate services
+            <strong> “Swiftmart.com”</strong>, which is a real estate services
             business operated by
-            <strong>“Redstone Consultancy Services Private Limited.”</strong>
+            <strong> “Velocitai Digitals Pvt. Ltd.”</strong>
           </p>
         </div>
       </div>
@@ -76,7 +76,7 @@ const About = () => {
             <p>
               We believe that being a leader is a mindset, much more than it is
               a title. We are codifying the operating principles that leaders at
-              Blinkit follow at all times. Learn about how we lead here.
+              Swiftmart follow at all times. Learn about how we lead here.
             </p>
           </div>
         </div>
@@ -155,7 +155,7 @@ const About = () => {
           <p>
             By continuing past this page you agree to our Terms, Cookie policy,
             and Privacy policy. All trademarks are properties of their
-            respective owners. © Blink Commerce Private Limited 2016-2024
+            respective owners. © Swiftmart Commerce Private Limited 2024-2025
           </p>
         </div>
       </footer>
