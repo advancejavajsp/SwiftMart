@@ -34,8 +34,15 @@ const GlobalContext = ({ children }) => {
   let [editProfile , setEditProfile] = useState(false);
   let [searchPanel , setsearchPanel] = useState(false);
   let [searchData , setSearchData] = useState("");
- 
-
+  let [paymentdetailsPanel,setPaymentdetailsPanel] = useState({
+    data :"",
+    visibility :false,
+  });
+  let [orderdetailsPanel,setOrderdetailsPanel] = useState({
+    data :"",
+    visibility :false,
+  });
+  const [data, setData] = useState([]);
 
 
 
@@ -67,6 +74,7 @@ const decoded = token && jwtDecode(token);
 }
 
 
+
 let getCartProducts = async()=>{
 if (user) {
   let response = await axios.get(`http://localhost:8080/open/cart/find/${user.userId}`);
@@ -74,7 +82,7 @@ if (user) {
 }else{
   setCartProducts([])
 }
-  
+
 }
   let userData=async(userId)=>{
     
@@ -103,7 +111,7 @@ if (user) {
 
 
   return (
-    <globalvar.Provider value={{ addressPanel,setaddressPanel ,userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, getOrdersbyUserid , setgetOrdersbyUserid,signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel ,userProfilePanel , setUserProfilePanel,editProfile , setEditProfile,paymentSuccessful, setPaymentSuccessful,userDetails,setUserDetails,searchPanel , setsearchPanel,searchData , setSearchData}}>
+    <globalvar.Provider value={{ addressPanel,setaddressPanel ,userData,user, setUser, loginPanel, setLoginPanel,accounts,setAccounts, getOrdersbyUserid , setgetOrdersbyUserid,signupPanel, setSignuPanel, product, setProducts, productCategory, setProductsCategory, updateProductPanel, setUpdateProductPanel, mycartPanel, setMycartPanel, getUserDataFromToken, deleteProductPanel, setDeleteProductPanel, addProductPanel, setAddProductPanel, addCategoryPanel, setAddCategoryPanel, allCategory, otpRender, setOtpRender, categoryId, setCategoryId, fetchProductByCategory, productComp, setProductComp,updateProductPopUp, setUpdateProductPopUp, refreshId, setRefreshId,getCartProducts,cartProducts , setCartProducts,loaderPanel , setLoaderPanel ,userProfilePanel , setUserProfilePanel,editProfile , setEditProfile,paymentSuccessful, setPaymentSuccessful,userDetails,setUserDetails,searchPanel , setsearchPanel,searchData , setSearchData,paymentdetailsPanel,setPaymentdetailsPanel,orderdetailsPanel,setOrderdetailsPanel,data, setData}}>
       {children}
     </globalvar.Provider>
   );

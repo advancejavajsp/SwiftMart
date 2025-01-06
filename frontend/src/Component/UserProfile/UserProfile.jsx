@@ -25,6 +25,7 @@ function UserProfile() {
     return `Name: ${fetchedUserdata?.name}\nEmail: ${fetchedUserdata?.email}`;
   };
 
+  
   const qrData = getUserProfileQRData(fetchedUserdata);  
   return (
     <section className={style['user-main']} onDoubleClick={(e)=>{e.stopPropagation(),setUserProfilePanel(false) }}>
@@ -47,7 +48,7 @@ function UserProfile() {
       <div className={style['user-details']}>
         <h4>Personal Information</h4>
         <p>Full Name: {fetchedUserdata?.name}</p>
-        <p>Address: Sector 14 Gurugram</p>
+        <p>Address: {fetchedUserdata?.address[0].city}</p>
         <p>{fetchedUserdata?.phone}</p>
         <button className={style['edit-button']} onClick={(e)=>{e.stopPropagation(), setEditProfile(true),setUserProfilePanel(false)}}>Edit Profile</button>
       </div>

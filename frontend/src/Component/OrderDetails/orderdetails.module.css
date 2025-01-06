@@ -1,208 +1,116 @@
-
 .mainbody {
-    margin: 50px auto;
-    height: 130vh; 
-    width: 60vw;
-    box-shadow: 0 2px 10px gray;
-    border-radius: 12px;
+    height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.76) !important;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  }
+
+.container {
+    height: 45vh; 
+    width: 30vw;
+    /* box-shadow: 0 2px 10px gray; */
+    margin: 0 auto;
+    margin-top: 200px;
+    border-radius: 10px;
     display: flex;
-    flex-wrap: wrap;
-    /* position: fixed;
-    z-index: 20; */
-    /* overflow-wrap: ; */
-}
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    z-index: 20;
+  }
 
-
-.mainbody .orderdetailss {
-    width: 70%;
-    margin-top: 5px;
-    border-left: 1px solid rgb(141, 136, 136);
-    border-bottom: 1px solid gray;
-}
-
-.mainbody .side {
-    height: 100%;
-    width: 30%;
-    display: flex;
-    justify-content: start;
-}
-
-.mainbody .side ul {
-    margin-top: 90px;
-    height: 70%;
-    width: 100%;
-    list-style: none;
-    font-size: 13px;
-}
-
-.mainbody .side ul li {
-    height: 50px;
-    width: 100%;
-    border-top: 1px solid rgb(150, 144, 144);
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    color: rgb(48, 43, 43);
-}
-
-.mainbody .side ul li .icon {
-    margin-right: 10px;
-    margin-left: 20px;
-}
-
-.mainbody .summary {
-    width: 100%;
-    margin-top: 15px;
-    /* margin-left: 30px; */
-    border-bottom: 1px solid gray;
-    padding-bottom: 15px;
-    padding-left: 30px;
-}
-
-.mainbody .arrow {
-    height: 50px;
-    width: 55px;
+  .arrow {
+    height: 60px;
+    width: 60px;
     border: none;
-    margin-top: 20px;
-    margin-left: 25px;
+    margin-left: 20px;
     background-color: white;
-}
-
-.mainbody .arrow .icon {
-    height: 35px;
-    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .icon {
+    height: 25px;
+    width: 30px;
     border-radius: 10px;
     border: 1px solid rgb(160, 154, 154);
-}
-
-.mainbody .summary .p2 {
-    margin-top: 20px;
-    margin-left: 40px;
-}
-
-.mainbody .summary .details {
-    display: flex;
-    margin-top: 15px;
-    justify-content: space-around;
-}
-
-.mainbody .summary .cards {
-    display: flex;
-    flex-direction: column;
-}
-
-.mainbody .summary .details img {
-    border-radius: 12px;
-    height: 70px;
-}
-
-.mainbody .detailshead {
-    margin-top: 15px;
-    margin-left: 35px;
+  }
+ 
+  .summary {
+    margin: 20px 50px ;
+    padding-bottom: 15px;
+  }
   
-}
-
-.mainbody .details1 {
-    width: 100%;
+  .summary h3 {
+    font-size: 25px;
+  }
+  
+  .summary p {
+    font-size: 18px;
+  }
+  
+  .details {
     display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid gray;
-    padding: 15px 30px;
-}
-
-.mainbody .details1 ul {
-    list-style-type: none;
-}
-
-.mainbody .address {
-    padding-top: 10px;
-    padding-left: 20px;
-    /* margin-left: 20px; */
-    height: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    border-bottom: 1px solid gray;
-    width: 100%;
-}
-
-.mainbody .chat {
     margin-top: 15px;
-    margin-left: 20px;
-}
-
-.mainbody .chat .content {
+    align-items: center;
+  }
+  
+  .details .text {
+    margin-left: 25px;
     margin-top: 10px;
-    margin-left: 20px;
-    display: flex;
-    font-size: 18px;
-}
-
-.mainbody .chat .content .text {
-    margin-left: 10px;
-}
-.address h2{
-    font-size: 18px;
-}
-
-@media (max-width: 1220px) {
-    .mainbody .side {
-        display: none; 
+    width: 60%;
+  }
+  
+  .details .price {
+    margin-top: 10px;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 1199px) and (min-width: 768px) {
+    .container {
+      width: 60vw;
     }
-
-    .mainbody .orderdetailss {
-        width: 100%; 
+  }
+  
+  @media (max-width: 767px) {
+    .container {
+      width: 80vw;
+      margin-top: 30px;
     }
-}
-
-@media (max-width: 768px) {
-    .mainbody {
-        width: 90vw;
+  
+    .title {
+      font-size: 1.2rem;
     }
-
-    .mainbody .summary .details .price {
-        margin-left: 10px; 
-        margin-top: 5px;
+  
+    .card p {
+      font-size: 13px;
     }
-
-    .mainbody .summary .details {
-        flex-direction: column; 
-        align-items: flex-start;
+  }
+  
+  @media (max-width: 479px) {
+    .container {
+      width: 90vw;
+      margin-top: 20px;
     }
-
-    .mainbody .summary .details img {
-        height: 50px; 
+  
+    .title {
+      font-size: 1rem;
     }
-
-    .mainbody .summary {
-        margin-left: 10px;
+  
+    .card {
+      padding: 10px;
     }
-}
-@media (max-width: 480px) {
-    .mainbody {
-        width: 95vw; 
-        margin: 20px auto;
+  
+    .card p {
+      font-size: 12px;
     }
-
-    .orderdetailss {
-        margin-top: 10px;
-    }
-
-    .mainbody .summary .p2 {
-        margin-left: 10px;
-    }
-
-    .mainbody .summary .details .text {
-        margin-left: 5px;
-    }
-
-    .mainbody .details1 {
-        flex-direction: column; 
-        align-items: flex-start;
-    }
-
-    .mainbody .chat .content {
-        flex-direction: column;
-        font-size: 14px;
-    }
-}
+  }
+  

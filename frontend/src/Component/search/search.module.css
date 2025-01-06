@@ -138,6 +138,12 @@
   margin-top: 20px;
 }
 
+.cardContainer{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 20px;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .product-grid {

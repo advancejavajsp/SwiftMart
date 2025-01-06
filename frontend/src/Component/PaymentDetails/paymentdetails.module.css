@@ -8,10 +8,21 @@
     display: flex;
     flex-direction: column;
     background-color: #fff;
-    /* border: 1px solid red; */
-    
+    position: fixed;
+    top: 0;
+    z-index: 20;
   }
-  
+
+.body{
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+}
 
   .arrow {
     height: 15px;
@@ -68,7 +79,7 @@
     margin-top: 10px;
     font-weight: bold;
   }
-  
+
 
   .detailshead {
     font-size: 15px;

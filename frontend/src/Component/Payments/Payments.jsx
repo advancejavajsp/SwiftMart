@@ -3,10 +3,10 @@ import style from './payments.module.css'
 import icon from '../../asset/order_icon.webp'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { globalvar } from '../../GlobalContext/GlobalContext'
 
 const Payments = () => {
-
-  let navigate = useNavigate()
+  let {paymentdetailsPanel,setPaymentdetailsPanel} = useContext(globalvar);
   let [paymentData, setPaymentData] = useState([]);
   let handleData = async()=>{
     let res = await axios.get("http://localhost:8080/open/swiftmart/payments")
@@ -15,9 +15,7 @@ const Payments = () => {
    
   }
 
-  let paymentDetails = (ele)=>{
-    navigate("/PaymentDetails",{state:ele})
-  }
+
 useEffect(()=>{
   handleData();
 
@@ -32,7 +30,7 @@ useEffect(()=>{
             <h3>{ele.transactionId}</h3>
             <p>{ele.paymentDate}</p>
             </div>
-            <button onClick={()=>{paymentDetails(ele)}}>view details</button>
+            <button onClick={()=>{setPaymentdetailsPanel(!paymentdetailsPanel)}}>view details</button>
         </div>
         </>)}
         

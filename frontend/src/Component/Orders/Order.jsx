@@ -12,11 +12,9 @@ import icon from '../../asset/order_icon.webp'
 import { globalvar } from '../../GlobalContext/GlobalContext';
 
 const Order = () => {
-  const { user,loaderPanel , setLoaderPanel ,} = useContext(globalvar); // For user context if needed
-  const [data, setData] = useState([]);
+  const { user,loaderPanel , setLoaderPanel,orderdetailsPanel,setOrderdetailsPanel,paymentdetailsPanel,setPaymentdetailsPanel,data, setData } = useContext(globalvar); // For user context if needed
   const { state } = useLocation();
   const navigate = useNavigate();
-
 
   // Function to fetch data
   const fetchDetails = async () => {
@@ -52,7 +50,7 @@ const Order = () => {
           <h3>Order ID: {order.orderId}</h3>
           <p>Order Date: {order.createdAt}</p>
           </div>
-          <button onClick={()=>{orderDetails(ele)}}>view details</button>
+          <button onClick={(e)=>{e.stopPropagation(),setOrderdetailsPanel({data:order, visibility:!orderdetailsPanel.visibility})}}>view details</button>
         
         </div>
       ));
@@ -65,7 +63,7 @@ const Order = () => {
         <h3>Payment ID: {payment.transactionId}</h3>
         <p>Payment Date: {payment.paymentDate}</p>
         </div>
-        <button onClick={()=>{paymentDetails(ele)}}>view details</button>
+        <button onClick={(e)=>{e.stopPropagation(),setPaymentdetailsPanel({data:payment,visibility:!paymentdetailsPanel?.visibility})}}>view details</button>
     </div>
       ));
     } else {
@@ -73,6 +71,8 @@ const Order = () => {
     }
     
   };
+
+  
 
   return (
     <div className={style['mainbody']}>

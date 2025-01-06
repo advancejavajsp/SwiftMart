@@ -79,6 +79,8 @@ const Payment = () => {
   }, [cartProducts])
 
   useEffect(() => { userData(state.userId) }, [])
+
+  
   return (
     <div>
       <div className={style["paymentcheckout"]}>
