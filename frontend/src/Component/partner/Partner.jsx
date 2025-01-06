@@ -57,13 +57,13 @@ const Partner = () => {
         <h2>What Our Partners Say</h2>
         <div className={styles.testimonialCards}>
           <div className={styles.testimonialCard}>
-            <h3>Sarah Lee</h3>
-            <h4>Store Owner, New York</h4>
+            <h3>Sr. Hemant Pawar</h3>
+            <h4>Qspiders, Gurugram</h4>
             <p>"SwiftMart has completely transformed my business. The support team is fantastic, and the app makes everything so easy!"</p>
           </div>
           <div className={styles.testimonialCard}>
-            <h3>Mark Brown</h3>
-            <h4>Partner, Los Angeles</h4>
+            <h3>Sr. Anwith Gowda</h3>
+            <h4>Qspiders, Gurugram</h4>
             <p>"Joining SwiftMart was one of the best decisions I’ve made. The speed and efficiency of the service has made me stand out in a competitive market."</p>
           </div>
         </div>

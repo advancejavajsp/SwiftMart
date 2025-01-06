@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styles from './CardPage.module.css';
 import { globalvar } from '../../GlobalContext/GlobalContext';
+import { Link } from 'react-router-dom';
+
 
 // Image imports
 import Milk from "../../asset/Milk.avif";
@@ -72,7 +74,7 @@ const CardPage = ({ product, cardProductQuantity }) => {
             
           </ul>
           <ul>
-            <li><h3>Unit</h3>{product?.quantityAvailable}</li>
+            <li><h3>Unit</h3>{state.quantityAvailable}</li>
           </ul>
           <ul>
             <li><h3>FSSAI License</h3>10014011001895</li>
@@ -90,14 +92,14 @@ const CardPage = ({ product, cardProductQuantity }) => {
             <li><h3>Packaging Type</h3>Pack</li>
           </ul>
           <ul>
-            <li><h3>Manufacturer Details</h3>Mother Dairy Fruit & Vegetable Pvt. Ltd., Unit-Motihari, Village-Bathna, PO.-</li>
-            <li>Piprakothi, Purbi Champaran, Bihar-845429</li>
+            <li><h3>Manufacturer Details</h3>Mother Dairy Fruit & Vegetable Pvt. Ltd., Gurugram</li>
+            <li>Piprakothi, Purbi Champaran, Gurugram-122002</li>
           </ul>
           <ul>
             <li><h3>Country of Origin</h3>India</li>
           </ul>
           <ul>
-            <li><h3>Customer Care Details</h3>Email: info@blinkit.com</li>
+            <li><h3>Customer Care Details</h3>Email: info@swiftmart.com</li>
           </ul>
           <ul>
             <li><h3>Seller</h3>KEMEXEL ECOMMERCE PRIVATE LIMITED</li>
@@ -115,18 +117,18 @@ const CardPage = ({ product, cardProductQuantity }) => {
     </div>
 
     <div className={styles.productContainer}>
-      <h5>Home / {state.name}</h5>
+      <Link to="/" className={styles["link"]}><h5>Home / {state.name}</h5></Link>
       <h2>{state.name}</h2>  
       <div className={styles.out}>
         <div className={styles.productDetails}>
-          <p className={styles.volume}>{state.quantityAvailable}</p>
-          <p className={styles.price}>{state.price}</p>
+          <p className={styles.volume}>{state.quantityAvailable} pieces</p>
+          <p className={styles.price}>Rs {state.price}</p>
           <p className={styles.Tax}>(Inclusive of all taxes)</p>
         </div>
     
       </div>
       <div className={styles.whyShop}>
-        <h3>Why shop from blinkit?</h3>
+        <h3>Why shop from Swiftmart?</h3>
         <ul>
           <li className={styles.newli}>
             <div className={styles.new}>

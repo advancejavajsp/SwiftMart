@@ -50,10 +50,10 @@ const Footer = () => {
                   <Link to ="/about" >About</Link>
                 </li>
                 <li>
-                  <Link >Career</Link>
+                  <Link to = "/career">Career</Link>
                 </li>
                 <li>
-                  <Link>Blog</Link>
+                  <Link to="/blog">Blog</Link>
                 </li>
                 <li>
                   <Link>Press</Link>
@@ -91,7 +91,7 @@ const Footer = () => {
             <div className={styles.listItem}>
               <ul>
                 <li>
-                  <Link>Partner</Link>
+                  <Link to="/partner">Partner</Link>
                 </li>
                 <li>
                   <Link>Franchise</Link>
@@ -179,7 +179,7 @@ const Footer = () => {
       </div>
       <div className={styles.divTwo}>
         <div className={styles.text}>
-          <p>© SmartMart Commerce Private Limited, 2016-2024</p>
+          <p>© SwiftMart Commerce Private Limited, 2024-2025</p>
         </div>
         <div className={styles.download}>
           <span>Download App</span>
@@ -196,10 +196,10 @@ const Footer = () => {
       </div>
       <div className={styles.divThree}>
         <p>
-          “SmartMart” is owned & managed by "SM Commerce Private Limited" and is
+          “SwiftMart” is owned & managed by "SM Commerce Private Limited" and is
           not related, linked, or interconnected in whatsoever manner or nature, to
-          “GROFFR.COM” which is a real estate services business operated by
-          “Redstone Consultancy Services Private Limited”.
+          “Swiftmart.com” which is a real estate services business operated by
+          “ Velocitai Digitals Pvt. Ltd.”.
         </p>
       </div>
     </section>

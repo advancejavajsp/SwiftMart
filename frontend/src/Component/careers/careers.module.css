@@ -6,16 +6,16 @@
 }
 
 .heroContent {
-  background-color: green; /* Green background */
-  color: white;
   padding: 40px 20px;
+background: linear-gradient(135deg, #ff8a00, #4CAF50); /* Gradient from orange to green */
+
   text-align: center;
 }
 
 
 /* Header Styles */
 .header {
-  background-color: #006400; /* Dark Green */
+  background: linear-gradient(135deg, #ff8a00, #4CAF50); /* Gradient from orange to green */
   color: white;
   padding: 1rem 2rem;
   display: flex;
@@ -40,7 +40,8 @@
 
 
 .heroSection {
-  background-color:green; 
+  background: linear-gradient(135deg, #ff8a00, #4CAF50); /* Gradient from orange to green */
+
   padding: 3rem 2rem;
   text-align: center;
 }
@@ -117,6 +118,7 @@
   display: flex;
   gap: 2rem;
   justify-content: center;
+  margin-top: 30px;
 }
 
 .testimonialCard {
@@ -124,6 +126,7 @@
   padding: 1rem;
   width: 250px;
   text-align: center;
+  margin-left: 20px;
 }
 
 .testimonialCard h3 {
