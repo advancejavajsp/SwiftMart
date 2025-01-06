@@ -22,7 +22,7 @@ function UserProfile() {
   },[user]);
 
   const getUserProfileQRData = (fetchedUserdata) => {
-    return `Name: ${fetchedUserdata?.name}\nEmail: ${fetchedUserdata?.email}`;
+    return `Name: ${fetchedUserdata?.name}\n   Email: ${fetchedUserdata?.email}\n   Phone No: ${fetchedUserdata?.phone}`;
   };
 
   
@@ -49,7 +49,7 @@ function UserProfile() {
         <h4>Personal Information</h4>
         <p>Full Name: {fetchedUserdata?.name}</p>
         <p>Address: {fetchedUserdata?.address[0].city}</p>
-        <p>{fetchedUserdata?.phone}</p>
+        <p>Phone No: {fetchedUserdata?.phone}</p>
         <button className={style['edit-button']} onClick={(e)=>{e.stopPropagation(), setEditProfile(true),setUserProfilePanel(false)}}>Edit Profile</button>
       </div>
 

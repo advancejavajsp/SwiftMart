@@ -57,7 +57,7 @@ try {
 
   return (
     <div className={style['login']} onDoubleClick={(e) => { e.stopPropagation(); setLoginPanel(false); }}>
-      <div className={style['container']}>
+      <div className={style['container']} onDoubleClick={(e) => { e.stopPropagation(); setLoginPanel(true); }}>
         <h2 className={style['login-title']}>Login</h2>
         <form onSubmit={handleSubmit} onClick={(e) => { e.stopPropagation(); setLoginPanel(true); }}>
 

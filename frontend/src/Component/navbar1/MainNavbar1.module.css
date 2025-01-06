@@ -64,9 +64,10 @@
 
 
 .dropdown {
-    width: 70px;
+    width: 130px;
+    padding: 0px 10px;
     height: 40px;
-    font-size: 16px;
+    font-size: 14px;
     color: rgba(0, 0, 0, 0.575);
     font-family: Arial, Helvetica, sans-serif;
     border-radius: 5px;
@@ -78,6 +79,10 @@
 
 .dropdown:hover {
     background-color: #f1f1f1;
+}
+#selected{
+    background-color: green !important;
+    color: white !important;
 }
 
 .dropdown option {

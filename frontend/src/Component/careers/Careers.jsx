@@ -60,14 +60,43 @@ const CareersPage = () => {
       {/* Employee Testimonials Section */}
       <section className={styles.testimonials}>
         <h2>What Our Employees Say</h2>
+
         <div className={styles.testimonialCards}>
           <div className={styles.testimonialCard}>
-            <h3>Jane Doe</h3>
-            <h4>Product Designer</h4>
+            <h3>Hemant Verma </h3>
+            <h4>Software Engineer</h4>
             <p>"SwiftMart is not just a company, it’s a community. I’ve grown both professionally and personally here. The environment fosters innovation and collaboration, and I feel empowered every day!"</p>
           </div>
           <div className={styles.testimonialCard}>
-            <h3>John Smith</h3>
+            <h3>Manav Gandhi</h3>
+            <h4>Software Engineer</h4>
+            <p>"At SwiftMart, every day feels like an opportunity to learn and grow. The company not only supports your professional aspirations but encourages personal development as well. It’s a place where ideas are celebrated, and innovation thrives."</p>
+          </div>
+          <div className={styles.testimonialCard}>
+            <h3>Sneha Bana</h3>
+            <h4>Software Engineer</h4>
+            <p>"oining SwiftMart has been one of the best decisions of my career. I’m not just part of a company; I’m part of a community that values each individual’s growth and contribution, both professionally and personally."</p>
+          </div>
+          </div>
+
+          <div className={styles.testimonialCards}>
+          <div className={styles.testimonialCard}>
+            <h3>Riya Goyal</h3>
+            <h4>Software Engineer</h4>
+            <p>"At SwiftMart, the values of teamwork, innovation, and empowerment are at the core of everything we do. The collaborative environment has allowed me to push boundaries and expand my skill set in ways I hadn’t imagined."</p>
+          </div>
+          <div className={styles.testimonialCard}>
+            <h3>Janhvi Tripathi</h3>
+            <h4>Software Engineer</h4>
+            <p>"SwiftMart has given me the freedom to explore my professional potential while encouraging a healthy work-life balance. It's the perfect environment for anyone looking to innovate and grow in their career."</p>
+          </div>
+          <div className={styles.testimonialCard}>
+            <h3>Shivam Jha</h3>
+            <h4>Software Engineer</h4>
+            <p>"The culture at SwiftMart is unique—one that fosters creativity, trust, and collaboration. It's a place where everyone’s voice is heard, and you feel motivated to take risks and bring new ideas to the table."</p>
+          </div>
+          <div className={styles.testimonialCard}>
+            <h3>Vandana Gusain</h3>
             <h4>Software Engineer</h4>
             <p>"The fast-paced environment and focus on innovation makes SwiftMart a great place to work. I’m constantly challenged and given opportunities to grow."</p>
           </div>

@@ -8,8 +8,9 @@ body {
 
 /* Header */
 .header {
-    background-color: green; /* SwiftMart branding color */
-    color: #fff;
+    background: linear-gradient(135deg, #ff8a00, #4CAF50); /* Gradient from orange to green */
+
+    color:black;
     padding: 20px 15px;
     text-align: center;
     position: relative; /* Ensure it doesn't overlap */

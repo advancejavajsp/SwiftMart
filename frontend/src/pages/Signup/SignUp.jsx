@@ -151,6 +151,10 @@ const SignUp = () => {
             e.stopPropagation();
             setSignuPanel(true);
           }}
+          onDoubleClick={(e) => {
+            e.stopPropagation();
+            setSignuPanel(true);
+          }}
         >
           <div className={style["form-title"]}>SignUp</div>
           <form onSubmit={handleSubmit}>
