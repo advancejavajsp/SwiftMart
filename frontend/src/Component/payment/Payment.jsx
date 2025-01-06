@@ -20,7 +20,7 @@ const Payment = () => {
 
   const [upiId, setUpiId] = useState('');
   
-  const { paymentSuccessful, setPaymentSuccessful, userData, userDetails, setLoaderPanel, user, product, cartProducts, rez, mycartPanel, setMycartPanel, setLoginPanel, setCartProducts } = useContext(globalvar);
+  const { paymentSuccessful, setPaymentSuccessful, userData, userDetails, setLoaderPanel, user, product, cartProducts, rez, mycartPanel, setMycartPanel, setLoginPanel, setCartProducts,setSignuPanel,setProducts,setProductsCategory,setUpdateProductPanel,setUpdateProductPopUp,setsearchPanel} = useContext(globalvar);
   const [quantity, setQuantity] = useState(0);
 
 
@@ -75,6 +75,16 @@ const Payment = () => {
   };
 
   useEffect(() => {
+    setLoginPanel(false);
+    setSignuPanel(false);
+    setMycartPanel(false);
+    setPaymentSuccessful(false);
+    setProducts(false);
+    setProductsCategory(false);
+    setUpdateProductPanel(false);
+    setUpdateProductPopUp(false);
+    setsearchPanel(false);
+    setsearchPanel(false);
     setQuantity(cartProducts?.quantity)
   }, [cartProducts])
 
@@ -95,7 +105,7 @@ const Payment = () => {
             <div className={style["checks"]}>
               <span className={style["check2_name"]}>Delivery Address</span>
               <div className={style["check2_home"]}>
-                <span>home:</span>{userDetails?.address[0].city || " Gurugram"}
+                <span>home:</span>{userDetails && userDetails?.address[0].city || " Gurugram"}
               </div>
             </div>
           </div>

@@ -71,6 +71,10 @@ const MyCart = () => {
           e.stopPropagation();
           setMycartPanel(true);
         }}
+        onDoubleClick={(e) => {
+          e.stopPropagation();
+          setMycartPanel(true);
+        }}
       >
         <div className={styles.header}>
           <h3>My Cart</h3>

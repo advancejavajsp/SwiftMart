@@ -34,9 +34,7 @@ const GlobalContext = ({ children }) => {
   let [editProfile , setEditProfile] = useState(false);
   let [searchPanel , setsearchPanel] = useState(false);
   let [searchData , setSearchData] = useState("");
- 
-
-
+  
 
 
   let getAllcategory = async () => {
