@@ -102,11 +102,14 @@
     text-align: left;
     border-radius: 4px;
   }
-  .productContainer h5{
-    color: gray;
+  .productContainer h4{
+    color: green;
+    font-size: 16px;
     margin-top:15px;
   }
-  
+  .productContainer h4:hover{
+    text-decoration: underline;
+  }
 
   .productContainer h2 {
     margin-top: 8px;

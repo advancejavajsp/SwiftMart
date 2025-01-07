@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 22%;
   height: 100%;
-  overflow-y: auto;
+  overflow-y: auto !important;
   border-right: 3px solid rgb(221, 220, 220);
 
 }
@@ -77,6 +77,26 @@
   background-color: rgba(135, 207, 235, 0.288);
   border-left: solid green;
 }
+
+.sidebar::-webkit-scrollbar {
+  color: #2d8e46;
+  width: 10px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #e0f7e4; /* Light green track background */
+  border-radius: 5px; /* Rounded corners for the track */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #32a852; /* Green scrollbar thumb */
+  border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #2d8e46; /* Darker green when hovered */
+}
+
 
 @media(max-width: 768px) {
   .sidebar {

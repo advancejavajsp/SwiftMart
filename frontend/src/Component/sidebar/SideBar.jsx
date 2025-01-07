@@ -23,8 +23,9 @@ const SideBar = () => {
           const response = await axios.delete(`http://localhost:8080/open/category/${categ}`);
           
           toast.success("Category deleted successfully!");
+ 
+          setCategoryId(allCategory[0].categoryId);
           setRefreshId(refreshId -1)
-          setCategoryId(allCategory[0].categoryId)
           setLoaderPanel(false)
         } 
         catch (error) {

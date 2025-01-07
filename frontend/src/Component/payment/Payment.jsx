@@ -57,10 +57,10 @@ const Payment = () => {
       );
 
       if (response.status == 200) {
-        setPaymentSuccessful(true);
+       
         //call order api
         let res =await axios.post(`http://localhost:8080/open/swiftmart/place-order/${user.userId}/${response.data.paymentId}`)
-        
+        setPaymentSuccessful(true);
         toast.success("Payment Successful");
       } else {
         setPaymentSuccessful(false);

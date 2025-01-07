@@ -119,7 +119,7 @@ const CardPage = ({ product, cardProductQuantity }) => {
     </div>
 
     <div className={styles.productContainer}>
-      <Link to="/" className={styles["link"]}><h5>Home / {state.name}</h5></Link>
+      <Link to="/" className={styles["link"]}><h4>Home</h4></Link>
       <h2>{state.name}</h2>  
       <div className={styles.out}>
         <div className={styles.productDetails}>

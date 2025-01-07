@@ -8,10 +8,28 @@
     width: 78%;
     height: 100%;
     overflow-y: auto;
+    
    }
    .section::-webkit-scrollbar{
-    display: none;
+    scrollbar-color: #2d8e46;
+    scrollbar-width: 10px;
+    
    }
+   
+.section::-webkit-scrollbar-track {
+  background: #e0f7e4; /* Light green track background */
+  border-radius: 5px; /* Rounded corners for the track */
+}
+
+.section::-webkit-scrollbar-thumb {
+  background: #32a852; /* Green scrollbar thumb */
+  border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+.section::-webkit-scrollbar-thumb:hover {
+  background: #2d8e46; /* Darker green when hovered */
+}
+
 
   .section h4 {
     font-size: 18px;
@@ -22,7 +40,6 @@
   
   .dropdown {
     display: flex;
-    
     width:100%;
     justify-content: space-between;
     padding: 0px 10px;
