@@ -105,6 +105,7 @@ const SignUp = () => {
           toast.success("SignUp Successfully");
           setTimeout(() => {
             setSignuPanel(false);
+            setLoginPanel(true);
           }, 1500);
         } catch (error) {
           setLoaderPanel(false);

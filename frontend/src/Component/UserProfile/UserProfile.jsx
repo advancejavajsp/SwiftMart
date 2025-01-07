@@ -48,7 +48,7 @@ function UserProfile() {
       <div className={style['user-details']}>
         <h4>Personal Information</h4>
         <p>Full Name: {fetchedUserdata?.name}</p>
-        <p>Address: {fetchedUserdata?.address[0].city}</p>
+      {user?.role !="ADMIN" &&   <p>Address: {fetchedUserdata?.address[0].city}</p>}
         <p>Phone No: {fetchedUserdata?.phone}</p>
         <button className={style['edit-button']} onClick={(e)=>{e.stopPropagation(), setEditProfile(true),setUserProfilePanel(false)}}>Edit Profile</button>
       </div>

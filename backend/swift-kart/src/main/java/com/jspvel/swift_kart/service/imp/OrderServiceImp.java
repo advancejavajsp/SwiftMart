@@ -75,7 +75,7 @@ public class OrderServiceImp implements OrderService {
 		System.out.println("hello");
 		Order order = new Order();
 		order.setOrderId(orderCustomIdGenerator.generateCategoryId());
-		order.setOrderStatus(OrderStatus.PENDING);
+		order.setOrderStatus(OrderStatus.DELIVERED);
 		order.setCustomer_id(user);
 		Cart cart = user.getCart();
 		if (cart == null || cart.getProduct() == null || cart.getProduct().isEmpty()) {

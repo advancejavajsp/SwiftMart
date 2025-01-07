@@ -55,6 +55,7 @@ const MainNavBar = () => {
     setLoaderPanel(true);
     localStorage.removeItem("token");
     setPopupVisible(false);
+    setsearchPanel(false);
     setRefreshId(refreshId+ 1);
 
     setTimeout(()=>{
@@ -103,7 +104,7 @@ const MainNavBar = () => {
   return (
     <nav className={style["navbar"]} >
       <div className={style["logo"]} onClick={(e) =>{e.stopPropagation , setsearchPanel(false)}}>
-        <img src={logo} alt="Logo" />
+       <Link to="/"><img src={logo} alt="Logo" /></Link> 
       </div>
 
       <div className={style["delivery-info"]}>
@@ -134,7 +135,7 @@ const MainNavBar = () => {
                    
                       <button className={style["account-button"]} onClick={(e) => {e.stopPropagation(), setPopupVisible(false),setUserProfilePanel(true)}}>My Account</button>
                     <ul>
-                    <Link to="/order"><li>My Orders</li></Link>
+                    <Link to={"/Paymentss"}>My Orders</Link>
                       
                       <li>E-Gift Cards</li>
                       <li>FAQ's</li>

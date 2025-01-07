@@ -57,7 +57,8 @@ const Partner = () => {
         <h2>What Our Partners Say</h2>
         <div className={styles.testimonialCards}>
           <div className={styles.testimonialCard}>
-            <h3>Sr. Hemant Pawar</h3>
+            <h3>Hemant Pawar</h3>
+            <h4>Sr. Software Engineer</h4>
             <h4>Qspiders, Gurugram</h4>
             <p>"SwiftMart has completely transformed my business. The support team is fantastic, and the app makes everything so easy!"</p>
           </div>

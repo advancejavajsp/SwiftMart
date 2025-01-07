@@ -12,6 +12,7 @@ import Why3 from "../../asset/Why3.avif";
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import Footer from '../Footer/Footer';
+import MainNavBar from '../Navbar/MainNavBar';
 
 const CardPage = ({ product, cardProductQuantity }) => {
 
@@ -54,6 +55,7 @@ const CardPage = ({ product, cardProductQuantity }) => {
 
   return (
     <div>
+      <MainNavBar/>
     <div className={styles.container}>
     <div className={styles.imageSection}>
       <img 

@@ -8,7 +8,7 @@ import { IoMdStopwatch } from "react-icons/io";
 
 const Card = ({ product,cardProductQuantity }) => {
 
-  let {productComp,setLoginPanel, user, setUpdateProductPanel, setDeleteProductPanel, setProductComp, setLoaderPanel,refreshId,setRefreshId } = useContext(globalvar);
+  let {productComp,setLoginPanel, user, setUpdateProductPanel, setDeleteProductPanel, setProductComp, setLoaderPanel,refreshId,setRefreshId ,setsearchPanel} = useContext(globalvar);
   const [quantity, setQuantity] = useState(0);
   let navigate=useNavigate()
    
@@ -60,6 +60,7 @@ const Card = ({ product,cardProductQuantity }) => {
 
   let getProductDetails = (e)=>{
     e.stopPropagation()
+    setsearchPanel(false)
     navigate("/cardPage", {state:product})
   }
 

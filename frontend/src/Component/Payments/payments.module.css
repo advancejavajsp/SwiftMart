@@ -1,46 +1,82 @@
 
 .mainbody {
-    height: 100%; 
-    width: 100%;
+    height: 75vh; 
+    width: 70% !important;
     box-shadow: 0 2px 10px gray;
-    margin: 0 auto;
-    margin-top: 10px;
+    margin: 20px auto;
     display: flex;
-    flex-direction: column; 
     border-radius: 10px;
-    padding-right: 15px;
-    flex-wrap: wrap;
-    overflow-y: auto;
-    
+    flex-wrap: wrap; 
 }
 
-.mainbody .payments {
-    margin-top: 20px;
+.mainbody .side {
     height: 100%;
+    width: 20%;
+    border-right: 1px solid rgb(141, 136, 136);
+    display: flex;
+    justify-content: start;
+}
+
+.mainbody .side ul {
+    margin-top: 50px;
+    height: 75%;
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    overflow-y: auto;
-}
-
-.mainbody .payments .paymentscards {
-    margin-top: 20px;
-    margin-left: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    height: 100%;
-    overflow-y: auto; 
-    padding-bottom: 20px;
-    border-bottom: 1px solid black;
-}
-
-.mainbody .payments .paymentscards .text {
-    margin-left: 15px;
+    list-style: none;
     font-size: 13px;
-    flex: 1; 
 }
 
-.mainbody .payments .paymentscards button {
+.mainbody .side ul .order{
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+.mainbody .side ul li {
+    height: 50px;
+    width: 100%;
+    border-top: 1px solid rgb(150, 144, 144);
+    border-bottom: 1px solid gray;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    color: rgb(48, 43, 43);
+}
+
+.mainbody .side ul li .icon {
+    margin-right: 10px;
+    margin-left: 20px;
+}
+
+.mainbody .orders {
+    margin-top: 25px;
+    width: 75%; 
+    height: 85%;
+  
+}
+
+.mainbody .orders .arroww{
+    margin: 0px 20px;
+    font-size: 20px;
+    color: black;
+}
+.mainbody .orders .ordercards {
+    margin-left: 35px;
+    display: flex;
+    padding-bottom: 20px;
+    flex-wrap: wrap; 
+    width: 100%;
+    padding-right: 15px;
+    overflow-y: auto;
+    height: 100%;
+    justify-content: space-evenly;
+}
+
+.mainbody .orders .ordercards .text {
+    margin-left: 25px;
+    font-size: 13px;
+}
+
+.mainbody .orders .ordercards button {
     margin-left: auto;
     color: green;
     background-color: white;
@@ -48,15 +84,35 @@
     height: 40px;
     width: 100px;
     border-radius: 10px;
+    margin-bottom: 10px;
 }
 
-
-@media (min-width: 1200px) {
-    .mainbody {
-        width: 35vw; 
-    }
+.mainbody .orders .ordercards button:hover{
+    background-color: rgba(0, 128, 0, 0.863);
+    color: white;
 }
 
+.mainbody .side ul :hover {
+    background-color: gray;
+    color: black;
+}
+.paymentscards{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid gray;
+}
+
+.ordercard{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid gray;
+}
 
 @media (min-width: 1200px) {
     .mainbody {
@@ -75,33 +131,7 @@
     }
 }
 
-
-@media (max-width: 650px) {
-    .mainbody {
-        width: 90vw; 
-        margin-top: 20px;
-    }
-
-    .mainbody .payments {
-        margin-top: 20px;
-    }
-    .mainbody .payments .paymentscards img{
-       display: none;
-    }
-
-    .mainbody .payments .paymentscards {
-        padding-bottom: 15px;
-    }
-
-    .mainbody .payments .paymentscards .text {
-        font-size: 12px;
-        margin-left: 0;
-    }
-
-    .mainbody .payments .paymentscards button {
-        margin-left: 0;
-        margin-top: 10px; 
-        width: 70px; 
-        font-size: 10px; 
-    }
-} 
+.active{
+    background-color: green !important;
+    color: white !important;
+}
